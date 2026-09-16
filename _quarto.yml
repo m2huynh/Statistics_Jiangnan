@@ -1,5 +1,40 @@
 project:
-  title: "Quarto Book"
+  type: book
+  output-dir: docs
 
-editor: visual
+book:
+  title: "Title Pending"
+  subtitle: Pending
+  # author: "Minh Huynh"
+  # date: "10/29/2025"
+  # downloads: pdf
+  reader-mode: true
+  sidebar:
+    align: left
+    style: floating
+    collapse-level: 3
+    pinned: true
+  
+  chapters:
+    - index.qmd
+    
+format:
+  html:
+    self-contained: false
+    css: 
+      - styles.css
+      - include/webex.css
+    include-after-body: 
+      - include/webex.js
+    theme:
+      light: 
+        - flatly
+        #- custom.scss
+      dark: 
+        - darkly
+        #- custom.scss
+    number-sections: true
+  pdf: default
+
+editor: source
 
