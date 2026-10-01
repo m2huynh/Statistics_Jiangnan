@@ -1,6 +1,9 @@
----
-title: "index"
-format: html
----
+## Preface {.unnumbered}
 
-This is a test
+Welcome to this short course in statistics, developed through a collaboration between Monash University and Jiangnan University.
+
+Statistics is an important part of your degree because it provides the tools needed to learn from data. Across business, economics, science, engineering, health and many other fields, data are used to describe patterns, compare groups, investigate relationships, make predictions and support decisions. Understanding statistics will help you critically evaluate evidence and communicate conclusions clearly.
+
+Throughout this course, we will take a modern approach to learning statistics. Rather than focusing only on calculations and formulas, we will consider the complete process of working with data. This includes understanding how data are collected, identifying and summarising variables, creating effective visualisations, applying statistical models and interpreting the results. We will also consider the uncertainty that naturally arises when using a sample to draw conclusions about a broader population.
+
+This book contains the main concepts, examples and learning materials for the course. We will cover most of its content during our classes, and you can use the book to review key ideas, revisit examples and continue learning outside the classroom.

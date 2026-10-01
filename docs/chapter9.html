@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Models of relationships between data – Introduction to Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter10.html" rel="next">
+<link href="./chapter6.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f07248834697d125d844cdaf4174b45d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a64f2b92d8b4b45ab5f5d9261e8b8c9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f07248834697d125d844cdaf4174b45d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="include/webex.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter9.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Models of relationships between data</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introduction to Statistics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Thinking with Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurement and Error</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter9.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Models of relationships between data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classification and Prediction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
+  <li><a href="#covariance-and-correlation" id="toc-covariance-and-correlation" class="nav-link" data-scroll-target="#covariance-and-correlation"><span class="header-section-number">7.2</span> Covariance and Correlation</a>
+  <ul class="collapse">
+  <li><a href="#a-motivating-example" id="toc-a-motivating-example" class="nav-link" data-scroll-target="#a-motivating-example"><span class="header-section-number">7.2.1</span> A motivating example</a></li>
+  <li><a href="#what-is-covariance" id="toc-what-is-covariance" class="nav-link" data-scroll-target="#what-is-covariance"><span class="header-section-number">7.2.2</span> What is covariance?</a></li>
+  <li><a href="#why-raw-covariance-is-hard-to-interpret" id="toc-why-raw-covariance-is-hard-to-interpret" class="nav-link" data-scroll-target="#why-raw-covariance-is-hard-to-interpret"><span class="header-section-number">7.2.3</span> Why raw covariance is hard to interpret</a></li>
+  <li><a href="#from-covariance-to-correlation" id="toc-from-covariance-to-correlation" class="nav-link" data-scroll-target="#from-covariance-to-correlation"><span class="header-section-number">7.2.4</span> From covariance to correlation</a></li>
+  <li><a href="#correlation-does-not-imply-causation" id="toc-correlation-does-not-imply-causation" class="nav-link" data-scroll-target="#correlation-does-not-imply-causation"><span class="header-section-number">7.2.5</span> Correlation Does Not Imply Causation</a></li>
+  </ul></li>
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><span class="header-section-number">7.3</span> Simple Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#the-basic-regression-model" id="toc-the-basic-regression-model" class="nav-link" data-scroll-target="#the-basic-regression-model"><span class="header-section-number">7.3.1</span> The basic regression model</a></li>
+  <li><a href="#a-worked-example" id="toc-a-worked-example" class="nav-link" data-scroll-target="#a-worked-example"><span class="header-section-number">7.3.2</span> A worked example</a></li>
+  </ul></li>
+  <li><a href="#extending-to-multiple-regression" id="toc-extending-to-multiple-regression" class="nav-link" data-scroll-target="#extending-to-multiple-regression"><span class="header-section-number">7.4</span> Extending to Multiple Regression</a>
+  <ul class="collapse">
+  <li><a href="#example-predicting-income" id="toc-example-predicting-income" class="nav-link" data-scroll-target="#example-predicting-income"><span class="header-section-number">7.4.1</span> Example: Predicting income</a></li>
+  </ul></li>
+  <li><a href="#interpreting-p-values-and-confidence-intervals" id="toc-interpreting-p-values-and-confidence-intervals" class="nav-link" data-scroll-target="#interpreting-p-values-and-confidence-intervals"><span class="header-section-number">7.5</span> Interpreting p-values and confidence intervals</a>
+  <ul class="collapse">
+  <li><a href="#interpreting-the-p-values" id="toc-interpreting-the-p-values" class="nav-link" data-scroll-target="#interpreting-the-p-values"><span class="header-section-number">7.5.1</span> Interpreting the p-values</a></li>
+  <li><a href="#interpreting-the-confidence-intervals" id="toc-interpreting-the-confidence-intervals" class="nav-link" data-scroll-target="#interpreting-the-confidence-intervals"><span class="header-section-number">7.5.2</span> Interpreting the confidence intervals</a></li>
+  <li><a href="#connecting-confidence-intervals-and-p-values" id="toc-connecting-confidence-intervals-and-p-values" class="nav-link" data-scroll-target="#connecting-confidence-intervals-and-p-values"><span class="header-section-number">7.5.3</span> Connecting confidence intervals and p-values</a></li>
+  <li><a href="#interpreting-the-intercept" id="toc-interpreting-the-intercept" class="nav-link" data-scroll-target="#interpreting-the-intercept"><span class="header-section-number">7.5.4</span> Interpreting the intercept</a></li>
+  <li><a href="#reporting-the-results" id="toc-reporting-the-results" class="nav-link" data-scroll-target="#reporting-the-results"><span class="header-section-number">7.5.5</span> Reporting the results</a></li>
+  </ul></li>
+  <li><a href="#goodness-of-fit" id="toc-goodness-of-fit" class="nav-link" data-scroll-target="#goodness-of-fit"><span class="header-section-number">7.6</span> Goodness of fit</a>
+  <ul class="collapse">
+  <li><a href="#r2-as-a-measure-of-model-fit" id="toc-r2-as-a-measure-of-model-fit" class="nav-link" data-scroll-target="#r2-as-a-measure-of-model-fit"><span class="header-section-number">7.6.1</span> <span class="math inline">\(R^2\)</span> as a measure of model fit</a></li>
+  <li><a href="#interpreting-r2-in-context" id="toc-interpreting-r2-in-context" class="nav-link" data-scroll-target="#interpreting-r2-in-context"><span class="header-section-number">7.6.2</span> Interpreting <span class="math inline">\(R^2\)</span> in context</a></li>
+  <li><a href="#r2-and-statistical-significance" id="toc-r2-and-statistical-significance" class="nav-link" data-scroll-target="#r2-and-statistical-significance"><span class="header-section-number">7.6.3</span> <span class="math inline">\(R^2\)</span> and statistical significance</a></li>
+  <li><a href="#computing-r2" id="toc-computing-r2" class="nav-link" data-scroll-target="#computing-r2"><span class="header-section-number">7.6.4</span> Computing <span class="math inline">\(R^2\)</span></a></li>
+  </ul></li>
+  <li><a href="#regression-with-a-binary-predictor" id="toc-regression-with-a-binary-predictor" class="nav-link" data-scroll-target="#regression-with-a-binary-predictor"><span class="header-section-number">7.7</span> Regression with a binary predictor</a></li>
+  <li><a href="#regression-with-a-categorical-predictor-k-2-levels" id="toc-regression-with-a-categorical-predictor-k-2-levels" class="nav-link" data-scroll-target="#regression-with-a-categorical-predictor-k-2-levels"><span class="header-section-number">7.8</span> Regression with a categorical predictor ((k &gt; 2) levels)</a>
+  <ul class="collapse">
+  <li><a href="#choosing-a-reference-level" id="toc-choosing-a-reference-level" class="nav-link" data-scroll-target="#choosing-a-reference-level"><span class="header-section-number">7.8.1</span> Choosing a reference level</a></li>
+  <li><a href="#dummy-coding-indicator-variables" id="toc-dummy-coding-indicator-variables" class="nav-link" data-scroll-target="#dummy-coding-indicator-variables"><span class="header-section-number">7.8.2</span> Dummy coding (indicator variables)</a></li>
+  <li><a href="#interpreting-the-coefficients" id="toc-interpreting-the-coefficients" class="nav-link" data-scroll-target="#interpreting-the-coefficients"><span class="header-section-number">7.8.3</span> Interpreting the coefficients</a></li>
+  <li><a href="#why-we-cannot-include-all-three-positions-as-predictors" id="toc-why-we-cannot-include-all-three-positions-as-predictors" class="nav-link" data-scroll-target="#why-we-cannot-include-all-three-positions-as-predictors"><span class="header-section-number">7.8.4</span> Why we <em>cannot</em> include all three positions as predictors</a></li>
+  <li><a href="#the-fix-use-k---1-dummy-variables" id="toc-the-fix-use-k---1-dummy-variables" class="nav-link" data-scroll-target="#the-fix-use-k---1-dummy-variables"><span class="header-section-number">7.8.5</span> The fix: use (k - 1) dummy variables</a></li>
+  <li><a href="#does-the-reference-level-matter" id="toc-does-the-reference-level-matter" class="nav-link" data-scroll-target="#does-the-reference-level-matter"><span class="header-section-number">7.8.6</span> Does the reference level matter?</a></li>
+  </ul></li>
+  <li><a href="#regression-with-time-series" id="toc-regression-with-time-series" class="nav-link" data-scroll-target="#regression-with-time-series"><span class="header-section-number">7.9</span> Regression with time-series</a></li>
+  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">7.10</span> Interaction Effects</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Models of relationships between data</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
+<p>Statistics is fundamentally about making sense of data. At its core, modern statistics blends art and science to help us extract meaningful patterns, uncover relationships, and generate useful predictions. One of the primary ways we do this is through models—simplified representations of complex real-world processes.</p>
+<p>Whenever we analyse data to answer a question, solve a problem, or understand a system, we are implicitly or explicitly building a model. And although statistical models may sound technical, the idea of modelling is something we all practice constantly. Every time we interpret information, anticipate what might happen next, or make a decision based on past experience, we are relying on informal mental models of the world.</p>
+<p>To illustrate, imagine a team of designers developing a new smartphone. They would never jump straight into manufacturing without planning. Instead, they study existing phones, gather data on battery performance, screen durability, camera quality, and user behaviour, and then construct a prototype. The prototype is not a perfect replica of the final product, but a simplified version that captures the essential features. It can then be tested—perhaps by running stress tests or user trials—to predict how the final device will perform in real-world conditions.</p>
+<center>
+<img src="images/Chapter 4/01.Models-01.png" class="img-fluid">
+</center>
+<p><br></p>
+<p>In statistics, this same idea appears in the concept of model fit: how well a model represents the patterns in the data.</p>
+<p>A well-fitting model behaves much like the real system, producing reliable predictions. A moderately fitting model captures some aspects of reality but misses others, leading to weaker predictions. A poorly fitting model bears little resemblance to the real world and provides unreliable or misleading results.</p>
+<p>This concept is just as important in business and economics. Consider a company using historical sales data (2017–2020) to forecast sales for 2021. A model that simply predicts the average of past sales ignores trends and seasonality (Model 1) — clearly a poor fit. A trending-only model (Model 2) improves slightly but still misses seasonal peaks. A model that incorporates both trend and seasonal patterns fits the data more closely and produces more credible forecasts.</p>
+<center>
+<img src="images/Chapter 4/01.Models-02.png" class="img-fluid">
+</center>
+<p><br></p>
+<p>These examples emphasise a key insight: a model is only as useful as its ability to reflect the underlying data-generating process.</p>
+<p>In the chapters ahead, we will gradually work our way toward the most fundamental and widely used statistical modelling tool: linear regression. Before we get there, we first need a solid understanding of how to model relationships between variables, how to assess model fit, and how to use models responsibly to answer questions about the world.</p>
+</section>
+<section id="covariance-and-correlation" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="covariance-and-correlation"><span class="header-section-number">7.2</span> Covariance and Correlation</h2>
+<p>So far we’ve talked about how to summarise a <em>single</em> variable. In practice, though, we are usually interested in how <strong>two variables move together</strong>. Do people who spend more time on TikTok also spend more money online? Do higher advertising budgets go hand-in-hand with higher sales? To answer questions like these we need tools that describe relationships between variables, not just each variable on its own. :contentReference<span data-index="0">oaicite:0</span></p>
+<section id="a-motivating-example" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="a-motivating-example"><span class="header-section-number">7.2.1</span> A motivating example</h3>
+<p>Imagine a participant, Charles, who is taking part in a marketing study. At the start of each week, researchers assign him a certain number of hours of marketing videos to watch. Over the same week they record:</p>
+<ul>
+<li>how much money he spends on online shopping; and<br>
+</li>
+<li>how many minutes of exercise he does.</li>
+</ul>
+<p>Across several weeks a pattern emerges:</p>
+<center>
+<img src="images/Chapter 4/02.Covariance-01.png" class="img-fluid">
+</center>
+<p><br></p>
+<ul>
+<li>In weeks with <strong>more marketing</strong>, Charles tends to <strong>spend more online</strong>.</li>
+<li>In those same weeks, he tends to <strong>exercise less</strong>.</li>
+</ul>
+<p>If we plot “time spent watching marketing videos” against “amount spent online”, the points slope upwards: large values of one tend to go with large values of the other. If we instead plot “time spent watching marketing videos” against “exercise minutes”, the points slope downwards: large values of one tend to go with small values of the other.</p>
+<p>What we are noticing informally is that <em>some pairs of variables rise and fall together, while others move in opposite directions</em>. We now want a numerical measure that captures this idea.</p>
+</section>
+<section id="what-is-covariance" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="what-is-covariance"><span class="header-section-number">7.2.2</span> What is covariance?</h3>
+<p><strong>Covariance</strong> is a measure of how two variables vary <em>jointly</em> around their means. For two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> measured on the same <span class="math inline">\(n\)</span> individuals, the sample covariance is</p>
+<p><span class="math display">\[
+\operatorname{Cov}(X,Y)
+= \frac{1}{n-1} \sum_{i=1}^{n}
+\bigl(x_i - \bar{x}\bigr)\bigl(y_i - \bar{y}\bigr).
+\]</span></p>
+<p>The logic mirrors the variance:</p>
+<ul>
+<li>For variance, we take deviations from the mean <span class="math inline">\((x_i - \bar{x})\)</span>, square them, and average to see how a <em>single</em> variable spreads around its mean.</li>
+<li>For covariance, we multiply <strong>paired deviations</strong><br>
+<span class="math inline">\((x_i - \bar{x})(y_i - \bar{y})\)</span> and average them to see whether the two variables wander away from their means <strong>in the same direction or in opposite directions</strong>.</li>
+</ul>
+<p>This leads to three broad possibilities:</p>
+<ul>
+<li><strong>Positive covariance</strong>: when <span class="math inline">\(x_i\)</span> is above <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(y_i\)</span> also tends to be above <span class="math inline">\(\bar{y}\)</span>; when one is below its mean, the other tends to be below as well. The product of deviations is mostly positive, so the average is positive. In Charles’ case, “time watching marketing videos” and “online spending” have <strong>positive covariance</strong>.</li>
+<li><strong>Negative covariance</strong>: when <span class="math inline">\(x_i\)</span> is above <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(y_i\)</span> tends to be below <span class="math inline">\(\bar{y}\)</span>, and vice versa. Products of deviations are mostly negative, giving a negative covariance. This describes the relationship between Charles’ “time watching marketing videos” and his “exercise minutes”.</li>
+<li><strong>Covariance near zero</strong>: there is no consistent pattern; sometimes the deviations have the same sign, sometimes opposite, and they cancel out on average. In that case the variables are said to have (approximately) <strong>no linear relationship</strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A worked example - Positive Covariance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the example below, each pair is moving in the same direction relative to their means, i.e.&nbsp;negative-negative, positive-positive. When this is applied to the formula, we obtain a positive covariance.</p>
+<center>
+<img src="images/Chapter 4/02.Covariance-02.png" class="img-fluid">
+</center>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A worked example - Negative Covariance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this example, most of the pairs are moving in opposite directions, e.g.&nbsp;negative-positive, positive-negative. When this is applied to the formula, we receive a negative covariance.</p>
+<center>
+<img src="images/Chapter 4/02.Covariance-03.png" class="img-fluid">
+</center>
+</div>
+</div>
+<p>A useful way to think about covariance is:</p>
+<blockquote class="blockquote">
+<p>Are high values of <span class="math inline">\(X\)</span> paired with high values of <span class="math inline">\(Y\)</span> (positive), low values of <span class="math inline">\(Y\)</span> (negative), or a bit of both (around zero)?</p>
+</blockquote>
+</section>
+<section id="why-raw-covariance-is-hard-to-interpret" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="why-raw-covariance-is-hard-to-interpret"><span class="header-section-number">7.2.3</span> Why raw covariance is hard to interpret</h3>
+<p>Covariance is excellent for telling us the <strong>direction</strong> of a relationship, but much less helpful for telling us the <strong>strength</strong> of that relationship.</p>
+<p>The problem is that covariance depends on the <strong>units</strong> of measurement:</p>
+<ul>
+<li>If online spending is measured in <strong>dollars</strong>, the covariance might be <span class="math inline">\(42.5\)</span>.</li>
+<li>If we re-express the same spending in <strong>cents</strong>, every spending value is multiplied by 100, and the covariance is multiplied by 100 as well (e.g.&nbsp;<span class="math inline">\(4250\)</span>).</li>
+</ul>
+<p>The underlying relationship between time and spending has not changed at all, but the numerical value of the covariance has. There is no natural upper or lower bound, and so it is difficult to look at a covariance of, say, <span class="math inline">\(150\)</span> and know whether that is “large” or “small”. We need a standardised version.</p>
+</section>
+<section id="from-covariance-to-correlation" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="from-covariance-to-correlation"><span class="header-section-number">7.2.4</span> From covariance to correlation</h3>
+<p>To obtain a measure that is independent of units, we <strong>standardise</strong> the covariance by dividing by the standard deviations of each variable:</p>
+<p><span class="math display">\[
+r_{XY} =
+\frac{\operatorname{Cov}(X,Y)}{s_X s_Y},
+\]</span></p>
+<p>where <span class="math inline">\(s_X\)</span> and <span class="math inline">\(s_Y\)</span> are the sample standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. This standardised measure is the <strong>correlation coefficient</strong>.</p>
+<p>Some key properties of the correlation coefficient:</p>
+<ul>
+<li>It always lies between <span class="math inline">\(-1\)</span> and <span class="math inline">\(+1\)</span>.</li>
+<li>The <strong>sign</strong> (positive or negative) tells us the <strong>direction</strong> of the relationship, just like covariance.</li>
+<li>The <strong>magnitude</strong> tells us the <strong>strength</strong> of the linear relationship:
+<ul>
+<li>values near <span class="math inline">\(\pm 1\)</span>: very strong linear relationships;</li>
+<li>values near 0: weak or no linear relationship.</li>
+</ul></li>
+<li>Because it is unit-free, a correlation of <span class="math inline">\(0.8\)</span> means the same “strength” whether we measure income in dollars or euros, or height in centimetres or inches.</li>
+</ul>
+<p>Visually, if we plot <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in a scatterplot:</p>
+<ul>
+<li>correlations close to <span class="math inline">\(+1\)</span> produce points that hug an upward-sloping straight line;</li>
+<li>correlations close to <span class="math inline">\(-1\)</span> hug a downward-sloping line;</li>
+<li>correlations near 0 produce a diffuse cloud with no obvious linear pattern.</li>
+</ul>
+<center>
+<img src="images/Chapter 4/03.Correlation.png" class="img-fluid">
+</center>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A worked example - Correlation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To illustrate how correlation is computed, consider the following 10 paired observations for variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(y_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 1 — Compute the means</strong></p>
+<p><span class="math display">\[
+\bar{x} = \frac{1}{10}\sum_{i=1}^{10} x_i = \frac{12+15+9+18+11+20+14+7+16+10}{10} = 13.2
+\]</span></p>
+<p><span class="math display">\[
+\bar{y} = \frac{1}{10}\sum_{i=1}^{10} y_i = \frac{10+14+11+16+9+19+13+8+15+9}{10} = 12.4
+\]</span></p>
+<p><strong>Step 2 — Compute deviations from the mean</strong></p>
+<p>For each pair:</p>
+<p><span class="math display">\[
+dx_i = x_i - \bar{x}, \qquad dy_i = y_i - \bar{y}
+\]</span></p>
+<p>We also compute the product <span class="math inline">\(dx_i \cdot dy_i\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(dx_i\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(dy_i\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(dx_i dy_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><span class="math inline">\(-1.2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-2.4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2.88\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><span class="math inline">\(1.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2.88\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"><span class="math inline">\(-4.2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-1.4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(5.88\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"><span class="math inline">\(4.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(17.28\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;"><span class="math inline">\(-2.2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-3.4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(7.48\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;"><span class="math inline">\(6.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(6.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(44.88\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;"><span class="math inline">\(0.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0.48\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;"><span class="math inline">\(-6.2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-4.4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(27.28\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;"><span class="math inline">\(2.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(7.28\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><span class="math inline">\(-3.2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-3.4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(10.88\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Sum of products:</p>
+<p><span class="math display">\[
+\sum dx_i dy_i = 127.08
+\]</span></p>
+<p><strong>Step 3 — Compute the sum of squared deviations</strong></p>
+<p>For <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[
+\sum dx_i^2 =
+(-1.2)^2 + (1.8)^2 + \cdots + (-3.2)^2 = 149.6
+\]</span></p>
+<p>For <span class="math inline">\(Y\)</span>:</p>
+<p><span class="math display">\[
+\sum dy_i^2 =
+(-2.4)^2 + (1.6)^2 + \cdots + (-3.4)^2 = 112.4
+\]</span></p>
+<p><strong>Step 4 — Compute the correlation</strong></p>
+<p>Correlation is defined as:</p>
+<p><span class="math display">\[
+r =
+\frac{\sum (x_i - \bar{x})(y_i - \bar{y}) }
+{\sqrt{\sum (x_i - \bar{x})^2 } \;
+\sqrt{\sum (y_i - \bar{y})^2 }}
+\]</span></p>
+<p>Substituting:</p>
+<p><span class="math display">\[
+r =
+\frac{127.08}{\sqrt{149.6} \, \sqrt{112.4}}
+\]</span></p>
+<p>Compute denominators:</p>
+<p><span class="math display">\[
+\sqrt{149.6} = 12.228,
+\qquad
+\sqrt{112.4} = 10.602
+\]</span></p>
+<p>Thus:</p>
+<p><span class="math display">\[
+r = \frac{127.08}{12.228 \times 10.602}
+\]</span></p>
+<p><span class="math display">\[
+r = \frac{127.08}{129.62} \approx 0.98
+\]</span></p>
+<p><strong>Interpretation</strong></p>
+<ul>
+<li>The correlation <span class="math inline">\(r = 0.98\)</span> indicates a <strong>very strong positive linear relationship</strong> between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+<li>Almost all the variation in one variable corresponds to variation in the other.</li>
+<li>This example demonstrates how correlation is simply a <em>standardised</em> version of covariance, built from deviations from the mean and scaled by the spread of each variable.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="correlation-does-not-imply-causation" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="correlation-does-not-imply-causation"><span class="header-section-number">7.2.5</span> Correlation Does Not Imply Causation</h3>
+<p>A correlation tells us <strong>how strongly two variables move together</strong>, but it tells us <em>nothing</em> about why they move together or whether changes in one variable cause changes in the other.<br>
+Many students (and many adults!) fall into the trap of assuming that a strong correlation means one variable <strong>causes</strong> the other. This is often incorrect and can lead to misleading conclusions.</p>
+<section id="what-causation-actually-means" class="level4" data-number="7.2.5.1">
+<h4 data-number="7.2.5.1" class="anchored" data-anchor-id="what-causation-actually-means"><span class="header-section-number">7.2.5.1</span> What causation actually means</h4>
+<p>Causation reflects an <strong>if–then</strong> relationship:</p>
+<ul>
+<li><em>If</em> X happens, <em>then</em> Y becomes more likely.</li>
+</ul>
+<p>Importantly, this is <em>probabilistic</em>, not absolute.<br>
+For example:</p>
+<ul>
+<li><em>If</em> athletes use steroids, <em>then</em> their muscle mass <strong>increases the chances of</strong> improving.<br>
+This does not mean every athlete will necessarily experience the same effect.</li>
+</ul>
+<p>We express causal claims using language like <em>“increases the likelihood of”</em>, precisely because real-world data always contain variability.</p>
+</section>
+<section id="why-strong-correlations-can-mislead-us" class="level4" data-number="7.2.5.2">
+<h4 data-number="7.2.5.2" class="anchored" data-anchor-id="why-strong-correlations-can-mislead-us"><span class="header-section-number">7.2.5.2</span> Why strong correlations can mislead us</h4>
+<p>It is possible for two variables to move together simply because a <strong>third factor</strong> influences both.</p>
+<p>A classic example: Ice-cream sales and drownings both rise over summer. When graphed together, the relationship looks compelling—high sales coincide with more drownings.</p>
+<center>
+<img src="images/Chapter 4/04.Correlation-02.png" class="img-fluid">
+</center>
+<p>However:</p>
+<ul>
+<li>Eating ice-cream does <strong>not</strong> cause drowning.</li>
+<li>Both trends are caused by a lurking variable: <strong>temperature</strong>.<br>
+Warm weather increases both swimming activity <em>and</em> ice-cream consumption.</li>
+</ul>
+<center>
+<img src="images/Chapter 4/04.Correlation-03.png" class="img-fluid">
+</center>
+<p>The key lesson is simple:</p>
+<blockquote class="blockquote">
+<p><strong>Just because two things move together does not mean one causes the other.</strong></p>
+</blockquote>
+<p>This principle is essential before we introduce regression modelling.</p>
+</section>
+</section>
+</section>
+<section id="simple-linear-regression" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">7.3</span> Simple Linear Regression</h2>
+<p>Correlation summarises a relationship numerically, but regression provides a <strong>model</strong> of that relationship.<br>
+Simple linear regression is the most widely used statistical modelling framework for understanding how one variable predicts another.</p>
+<section id="the-basic-regression-model" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="the-basic-regression-model"><span class="header-section-number">7.3.1</span> The basic regression model</h3>
+<p>Simple linear regression models a dependent variable <span class="math inline">\(Y\)</span> as a straight-line function of one predictor <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[
+\hat{Y} = b_0 + b_1 X
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(b_0\)</span> = <em>intercept</em> (predicted value of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X = 0\)</span>)</li>
+<li><span class="math inline">\(b_1\)</span> = <em>slope</em>, describing how much <span class="math inline">\(Y\)</span> changes for a one-unit change in <span class="math inline">\(X\)</span></li>
+</ul>
+<center>
+<img src="images/Chapter 4/05.Regression-01.png" class="img-fluid">
+</center>
+<p>The regression line is chosen to come as close as possible to all the points in a scatterplot. In this sense, it is the “best fitting” straight-line model for the data.</p>
+</section>
+<section id="a-worked-example" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="a-worked-example"><span class="header-section-number">7.3.2</span> A worked example</h3>
+<p>Suppose we had some data relating to number of close friends and measured depression for 10 people.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-4785f16c{}.cl-4779fede{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-477fdb56{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-47802ba6{width:0.99in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-47802bba{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-47802bbb{width:0.99in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-47802bbc{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-47802bc4{width:0.99in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-47802bc5{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4785f16c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-47802ba6"><p class="cl-477fdb56"><span class="cl-4779fede">N_Friends</span></p></th><th class="cl-47802bba"><p class="cl-477fdb56"><span class="cl-4779fede">Depression</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">8</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">1</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">5</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">10</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">5</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">8</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">6</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">5</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bbb"><p class="cl-477fdb56"><span class="cl-4779fede">6</span></p></td><td class="cl-47802bbc"><p class="cl-477fdb56"><span class="cl-4779fede">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-47802bc4"><p class="cl-477fdb56"><span class="cl-4779fede">10</span></p></td><td class="cl-47802bc5"><p class="cl-477fdb56"><span class="cl-4779fede">1</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>We can visualise this data by pairing each observation:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Using linear regression, we can construct a <strong>model</strong> that fits this data. This is a time-consuming process so it’d standard practice to use software to perform this task for us. However, I have also provided the mathematical formulas below so that you are familiar with the steps as well.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Simple linear regression
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/Chapter 4/05.Regression-02.png" class="img-fluid"></p>
+</div>
+</div>
+<p>From the model above:</p>
+<ul>
+<li>The slope <span class="math inline">\(b_1 = -0.71\)</span>:<br>
+<strong>For each additional friend, depression score decreases on average by 0.71 points.</strong><br>
+</li>
+<li>The negative slope implies an inverse relationship: more friends → lower depression.</li>
+</ul>
+<p>However, even with a clear model, we must remember:<br>
+<strong>This is still correlational data, not causal evidence.</strong></p>
+</section>
+</section>
+<section id="extending-to-multiple-regression" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="extending-to-multiple-regression"><span class="header-section-number">7.4</span> Extending to Multiple Regression</h2>
+<p>Simple regression uses one predictor. But most real-world outcomes are influenced by <em>many</em> variables.<br>
+Multiple regression extends the simple model by including more predictors: :contentReference<span data-index="7">oaicite:7</span></p>
+<p><span class="math display">\[
+\hat{Y} = b_0 + b_1 X_1 + b_2 X_2 + \cdots + b_k X_k
+\]</span></p>
+<p>This allows us to:</p>
+<ul>
+<li>control for additional variables,</li>
+<li>isolate the effect of each predictor,</li>
+<li>improve prediction accuracy,</li>
+<li>and reduce the risk of misleading correlations caused by omitted variables.</li>
+</ul>
+<section id="example-predicting-income" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="example-predicting-income"><span class="header-section-number">7.4.1</span> Example: Predicting income</h3>
+<p>Suppose we have some data on worker’s: (1) years of education and (2) age, and we want to build a regression model for <strong>income</strong>:</p>
+<p><span class="math display">\[
+\hat{\text{Income}} = b_0 + b_1 \text{Education} + b_2 \text{Age}
+\]</span></p>
+<p>And suppose we have used software to determine our <span class="math inline">\(b\)</span> coefficients as:</p>
+<p><span class="math display">\[
+\hat{\text{Income}} = -117{,}110 + 4540(\text{Education}) + 3368(\text{Age})
+\]</span></p>
+<p>In the model above, the <span class="math inline">\(b\)</span> coefficient for education is</p>
+<p><span class="math display">\[b_1=4540\]</span></p>
+<p>This means that for each additional year in education, income increases by $4540, when we <strong>hold all other variables constant</strong>.</p>
+<p>This is like saying, if you take two people of the same age (i.e.&nbsp;<strong>holding age constant</strong>), but have one unit of difference in education, then the predicted difference in income would:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">1 unit difference</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">2 unit difference</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>The difference in the predictions for the two people ($76,21 - $72,081 = $4,450) is equal to the b coefficient for education:</p>
+<center>
+<img src="images/Chapter 4/05.Regression-03.png" class="img-fluid">
+</center>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>The difference in the predictions for the two people ($81,161 - $72,081 = $9,080) is equal to the 2 x b coefficient for education:</p>
+<center>
+<img src="images/Chapter 4/05.Regression-04.png" class="img-fluid">
+</center>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="interpreting-p-values-and-confidence-intervals" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="interpreting-p-values-and-confidence-intervals"><span class="header-section-number">7.5</span> Interpreting p-values and confidence intervals</h2>
+<p>The estimated regression coefficients describe the relationships observed in the sample. However, these relationships may partly reflect random sampling variation. Regression output therefore also includes <strong>p-values</strong> and <strong>confidence intervals</strong>, which help us assess how much evidence the data provide for relationships in the wider population.</p>
+<p>Suppose Excel’s Data Analysis ToolPak produced the following coefficient table for our income model:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Coefficients</th>
+<th style="text-align: right;">Standard Error</th>
+<th style="text-align: right;">t Stat</th>
+<th style="text-align: right;">P-value</th>
+<th style="text-align: right;">Lower 95%</th>
+<th style="text-align: right;">Upper 95%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">-117,110</td>
+<td style="text-align: right;">18,750</td>
+<td style="text-align: right;">-6.25</td>
+<td style="text-align: right;">&lt;0.001</td>
+<td style="text-align: right;">-154,324</td>
+<td style="text-align: right;">-79,896</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Education</td>
+<td style="text-align: right;">4,540</td>
+<td style="text-align: right;">760</td>
+<td style="text-align: right;">5.97</td>
+<td style="text-align: right;">&lt;0.001</td>
+<td style="text-align: right;">3,032</td>
+<td style="text-align: right;">6,048</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">3,368</td>
+<td style="text-align: right;">920</td>
+<td style="text-align: right;">3.66</td>
+<td style="text-align: right;">&lt;0.001</td>
+<td style="text-align: right;">1,542</td>
+<td style="text-align: right;">5,194</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>coefficient</strong> provides the estimated change in income associated with a one-unit increase in a predictor, while holding the other predictors constant. The remaining columns tell us how uncertain that estimate is.</p>
+<section id="interpreting-the-p-values" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="interpreting-the-p-values"><span class="header-section-number">7.5.1</span> Interpreting the p-values</h3>
+<p>For each predictor, the regression output tests whether its population coefficient is equal to zero.</p>
+<p>For education, the hypotheses are:</p>
+<p><span class="math display">\[
+H_0:\beta_{\text{Education}}=0
+\]</span></p>
+<p><span class="math display">\[
+H_1:\beta_{\text{Education}}\neq0
+\]</span></p>
+<p>The null hypothesis states that, after controlling for age, there is no linear relationship between education and income in the population.</p>
+<p>The alternative hypothesis states that education is related to income after controlling for age.</p>
+<p>Similarly, for age, the hypotheses are:</p>
+<p><span class="math display">\[
+H_0:\beta_{\text{Age}}=0
+\]</span></p>
+<p><span class="math display">\[
+H_1:\beta_{\text{Age}}\neq0
+\]</span></p>
+<p>The p-value measures how unusual the estimated coefficient would be if the corresponding population coefficient were zero. We commonly compare the p-value with a significance level of:</p>
+<p><span class="math display">\[
+\alpha=0.05
+\]</span></p>
+<p>The decision can then be made as follows:</p>
+<ul>
+<li>If the p-value is less than <span class="math inline">\(0.05\)</span>, we reject the null hypothesis and conclude that there is evidence of a relationship.</li>
+<li>If the p-value is greater than <span class="math inline">\(0.05\)</span>, we do not reject the null hypothesis. The data do not provide sufficient evidence of a relationship.</li>
+</ul>
+<p>For <strong>education</strong>, the p-value is less than <span class="math inline">\(0.001\)</span>. We therefore reject the null hypothesis and conclude that there is strong evidence of a relationship between education and income after controlling for age.</p>
+<p>For <strong>age</strong>, the p-value is also less than <span class="math inline">\(0.001\)</span>. We therefore reject the null hypothesis and conclude that there is strong evidence of a relationship between age and income after controlling for education.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A p-value does not tell us the size or practical importance of a relationship. It also does not represent the probability that the null hypothesis is true. The size and direction of the relationship should be interpreted using the coefficient and its confidence interval.</p>
+</div>
+</div>
+</section>
+<section id="interpreting-the-confidence-intervals" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="interpreting-the-confidence-intervals"><span class="header-section-number">7.5.2</span> Interpreting the confidence intervals</h3>
+<p>A confidence interval provides a range of plausible values for the corresponding population coefficient. The regression output gives the lower and upper limits of a 95% confidence interval.</p>
+<p>For education, the estimated coefficient and confidence interval are:</p>
+<p><span class="math display">\[
+b_1=4540
+\]</span></p>
+<p><span class="math display">\[
+95\%\text{ CI }[3032,\ 6048]
+\]</span></p>
+<p>Holding age constant, each additional year of education is associated with an estimated <strong>$4,540 increase in annual income</strong>.</p>
+<p>The 95% confidence interval indicates that the increase in annual income associated with an additional year of education could plausibly be between approximately <strong>$3,032 and $6,048</strong>.</p>
+<p>For age, the estimated coefficient and confidence interval are:</p>
+<p><span class="math display">\[
+b_2=3368
+\]</span></p>
+<p><span class="math display">\[
+95\%\text{ CI }[1542,\ 5194]
+\]</span></p>
+<p>Holding education constant, each additional year of age is associated with an estimated <strong>$3,368 increase in annual income</strong>.</p>
+<p>The 95% confidence interval indicates that the increase in annual income associated with an additional year of age could plausibly be between approximately <strong>$1,542 and $5,194</strong>.</p>
+<p>The width of a confidence interval also tells us about the <strong>precision</strong> of an estimate:</p>
+<ul>
+<li>A narrow confidence interval indicates a more precise estimate.</li>
+<li>A wide confidence interval indicates greater uncertainty about the size of the relationship.</li>
+</ul>
+</section>
+<section id="connecting-confidence-intervals-and-p-values" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="connecting-confidence-intervals-and-p-values"><span class="header-section-number">7.5.3</span> Connecting confidence intervals and p-values</h3>
+<p>For a two-sided hypothesis test using a significance level of <span class="math inline">\(0.05\)</span>, the p-value and 95% confidence interval lead to the same conclusion:</p>
+<ul>
+<li>If the confidence interval <strong>does not include zero</strong>, the coefficient is statistically significant at the 5% level.</li>
+<li>If the confidence interval <strong>includes zero</strong>, the coefficient is not statistically significant at the 5% level.</li>
+</ul>
+<p>The confidence interval for education is:</p>
+<p><span class="math display">\[
+[3032,\ 6048]
+\]</span></p>
+<p>The confidence interval does not contain zero. This agrees with the p-value of less than <span class="math inline">\(0.001\)</span> and provides evidence that education is related to income after controlling for age.</p>
+<p>The confidence interval for age is:</p>
+<p><span class="math display">\[
+[1542,\ 5194]
+\]</span></p>
+<p>This interval also does not contain zero. This agrees with the p-value of less than <span class="math inline">\(0.001\)</span> and provides evidence that age is related to income after controlling for education.</p>
+</section>
+<section id="interpreting-the-intercept" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="interpreting-the-intercept"><span class="header-section-number">7.5.4</span> Interpreting the intercept</h3>
+<p>The intercept is the predicted value of the outcome when all predictors equal zero. In this model, the intercept is:</p>
+<p><span class="math display">\[
+b_0=-117{,}110
+\]</span></p>
+<p>This represents the predicted income of someone who is zero years old and has completed zero years of education.</p>
+<p>Although the intercept is statistically significant, it does not have a useful real-world interpretation because a worker aged zero is outside the meaningful range of the data. This illustrates why <strong>statistical significance does not necessarily imply practical meaning</strong>.</p>
+</section>
+<section id="reporting-the-results" class="level3" data-number="7.5.5">
+<h3 data-number="7.5.5" class="anchored" data-anchor-id="reporting-the-results"><span class="header-section-number">7.5.5</span> Reporting the results</h3>
+<p>A concise interpretation of the regression results might be:</p>
+<blockquote class="blockquote">
+<p>Holding age constant, each additional year of education was associated with an estimated $4,540 increase in annual income, 95% CI [$3,032, $6,048], <span class="math inline">\(p&lt;.001\)</span>. Holding education constant, each additional year of age was associated with an estimated $3,368 increase in annual income, 95% CI [$1,542, $5,194], <span class="math inline">\(p&lt;.001\)</span>.</p>
+</blockquote>
+<p>These results describe <strong>associations</strong>, not necessarily causal effects. Unless the data come from a suitable experimental design, or other assumptions supporting causal inference can be justified, we cannot conclude that increasing a person’s education or age will directly cause their income to increase.</p>
+</section>
+</section>
+<section id="goodness-of-fit" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="goodness-of-fit"><span class="header-section-number">7.6</span> Goodness of fit</h2>
+<p>So far, we have focused on interpreting individual regression coefficients and using p-values to assess whether a relationship is statistically significant. However, a statistically significant relationship does not automatically mean that a model is <em>useful</em> or <em>informative</em>.* A model can detect a real association while still doing a poor job of explaining the outcome overall. This leads to an important next question:</p>
+<blockquote class="blockquote">
+<p>how well does our regression model actually fit the data?</p>
+</blockquote>
+<p>Measures of goodness of fit help us quantify how closely the model’s predictions align with the observed values, allowing us to assess how much of the variation in the outcome is explained by the model and to compare different regression models in a meaningful way.</p>
+<section id="r2-as-a-measure-of-model-fit" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="r2-as-a-measure-of-model-fit"><span class="header-section-number">7.6.1</span> <span class="math inline">\(R^2\)</span> as a measure of model fit</h3>
+<p>One of the most commonly reported measures of goodness of fit in regression is <span class="math inline">\(R^2\)</span>, known as the coefficient of determination. While regression coefficients tell us about the direction and size of relationships between variables, <span class="math inline">\(R^2\)</span> focuses on the model as a whole. Conceptually, <span class="math inline">\(R^2\)</span> answers the following question:</p>
+<blockquote class="blockquote">
+<p>How much of the variation in the outcome variable is explained by the regression model?</p>
+</blockquote>
+<p>To understand this, recall that real-world data vary. Individuals differ in their outcomes for many reasons, not all of which are captured by the predictors in a model. A regression model attempts to explain some of this variability using the predictors we include. The remaining variation reflects factors not in the model, randomness, or measurement error.</p>
+<p>The value of <span class="math inline">\(R^2\)</span> lies between 0 and 1:</p>
+<ul>
+<li>An <span class="math inline">\(R^2\)</span> close to 0 indicates that the model explains very little of the variation in the outcome.</li>
+<li>An <span class="math inline">\(R^2\)</span> close to 1 indicates that the model explains a large proportion of the variation.</li>
+</ul>
+<p>For example, an <span class="math inline">\(R^2=0.65\)</span> means that 65% of the variability in the outcome variable can be explained by the predictors in the regression model, while the remaining 35% is unexplained.</p>
+</section>
+<section id="interpreting-r2-in-context" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="interpreting-r2-in-context"><span class="header-section-number">7.6.2</span> Interpreting <span class="math inline">\(R^2\)</span> in context</h3>
+<p>It is important to interpret <span class="math inline">\(R^2\)</span> in context, rather than treating it as a universal benchmark of model quality.</p>
+<p>In fields such as physics or engineering, very high <span class="math inline">\(R^2\)</span> values are common because systems are tightly controlled. In contrast, in social, behavioural, and economic data — — human behaviour is influenced by many unobserved factors. As a result, moderate <span class="math inline">\(R^2\)</span> values can still represent meaningful and useful models.</p>
+<p>A low <span class="math inline">\(R^2\)</span> does not necessarily imply that a model is “wrong.” It may simply reflect the complexity of the phenomenon being studied. Likewise, a high <span class="math inline">\(R^2\)</span> does not guarantee that a model is appropriate or that the relationship is causal.</p>
+</section>
+<section id="r2-and-statistical-significance" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="r2-and-statistical-significance"><span class="header-section-number">7.6.3</span> <span class="math inline">\(R^2\)</span> and statistical significance</h3>
+<p>A common misconception is that a high <span class="math inline">\(R^2\)</span> is required for regression coefficients to be statistically significant. In reality, these concepts address different questions:</p>
+<ul>
+<li>Statistical significance (via p-values) assesses whether a relationship is likely to exist in the population.</li>
+<li><span class="math inline">\(R^2\)</span> assesses how much of the outcome’s variability the model explains.</li>
+</ul>
+<p>It is entirely possible to have:</p>
+<ul>
+<li>a statistically significant coefficient with a low <span class="math inline">\(R^2\)</span>, or</li>
+<li>a high <span class="math inline">\(R^2\)</span> with some non-significant predictors.</li>
+</ul>
+<p>This distinction reinforces why both coefficient-level inference and model-level fit should be considered together when interpreting regression results.</p>
+</section>
+<section id="computing-r2" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="computing-r2"><span class="header-section-number">7.6.4</span> Computing <span class="math inline">\(R^2\)</span></h3>
+<p>Back in Chapter 2 we learnt the formula for the variance as:</p>
+<p><span class="math display">\[
+\frac{1}{n-1}\sum_{i=1}^{n} (X_i - \bar{X})^2
+\]</span> This formula (more importantly: the sum of squares) will help us to determine <span class="math inline">\(R^2\)</span>. Let’s use a small sample to explore this. Consider the time spent on the phone in one week (mins) by 6 random university students. In the table below, we compute the squared errors for each student:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-480d3316{}.cl-4803b142{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4807b26a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-48086886{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4808689a{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4808689b{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4808689c{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-480868a4{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-480868a5{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-480d3316"><thead><tr style="overflow-wrap:break-word;"><th class="cl-48086886"><p class="cl-4807b26a"><span class="cl-4803b142">Student</span></p></th><th class="cl-4808689a"><p class="cl-4807b26a"><span class="cl-4803b142">Time</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4808689b"><p class="cl-4807b26a"><span class="cl-4803b142">1</span></p></td><td class="cl-4808689c"><p class="cl-4807b26a"><span class="cl-4803b142">308</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4808689b"><p class="cl-4807b26a"><span class="cl-4803b142">2</span></p></td><td class="cl-4808689c"><p class="cl-4807b26a"><span class="cl-4803b142">300</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4808689b"><p class="cl-4807b26a"><span class="cl-4803b142">3</span></p></td><td class="cl-4808689c"><p class="cl-4807b26a"><span class="cl-4803b142">306</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4808689b"><p class="cl-4807b26a"><span class="cl-4803b142">4</span></p></td><td class="cl-4808689c"><p class="cl-4807b26a"><span class="cl-4803b142">304</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4808689b"><p class="cl-4807b26a"><span class="cl-4803b142">5</span></p></td><td class="cl-4808689c"><p class="cl-4807b26a"><span class="cl-4803b142">308</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-480868a4"><p class="cl-4807b26a"><span class="cl-4803b142">6</span></p></td><td class="cl-480868a5"><p class="cl-4807b26a"><span class="cl-4803b142">310</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>We’ll begin by visualising this data on a scatterplot (and we can see that overall, there is variability bewteen the data points). If we plot the mean (<span class="math inline">\(306\)</span>), we can see how far away each point is from this line (referred to as a deviation, or error):</p>
+<center>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</center>
+<p>When we add up the squared errors, we get the sum of squares. Now at this point, we are only looking at the outcome variable (i.e.&nbsp;we haven’t included any predictors yet), so we can refer to this as the sum of squares total (<span class="math inline">\(SS_T\)</span>):</p>
+<p><span class="math display">\[
+\begin{aligned}
+SS_T &amp;= \sum_{i=1}^{n} (X_i - \bar{X})^2 \\
+   &amp;= (308-306)^2+(300-306)^2+(306-306)^2+(304-306)^2+(308-306)^2+(310-306)^2 \\
+   &amp;= 4+36+0+4+4+16 \\
+   &amp;= 64
+\end{aligned}
+\]</span></p>
+<p>Note there are three sources of <span class="math inline">\(SS\)</span> that we need to be aware of:</p>
+<ul>
+<li><span class="math inline">\(SS_T\)</span> (Sum of Squares Total)</li>
+<li><span class="math inline">\(SS_E\)</span> (Sum of Squares Error)</li>
+<li><span class="math inline">\(SS_R\)</span> (Sum of Squares Regression)</li>
+</ul>
+<p>In this example, we have computed <span class="math inline">\(SS_T=64\)</span>. In other words:</p>
+<blockquote class="blockquote">
+<p>The total variability in “Time” is 64 units</p>
+</blockquote>
+<p>Now suppose we build a regression model to predict Time based on number of social media friends (let’s call this variable <code>Social</code>). Suppose the data looks something like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-48a4a7be{}.cl-489a9580{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-489ea04e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-489ee69e{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6a8{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6a9{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6b2{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6b3{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6b4{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6bc{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6bd{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-489ee6be{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-48a4a7be"><thead><tr style="overflow-wrap:break-word;"><th class="cl-489ee69e"><p class="cl-489ea04e"><span class="cl-489a9580">Student</span></p></th><th class="cl-489ee6a8"><p class="cl-489ea04e"><span class="cl-489a9580">Time</span></p></th><th class="cl-489ee6a9"><p class="cl-489ea04e"><span class="cl-489a9580">Social</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-489ee6b2"><p class="cl-489ea04e"><span class="cl-489a9580">1</span></p></td><td class="cl-489ee6b3"><p class="cl-489ea04e"><span class="cl-489a9580">308</span></p></td><td class="cl-489ee6b4"><p class="cl-489ea04e"><span class="cl-489a9580">110</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-489ee6b2"><p class="cl-489ea04e"><span class="cl-489a9580">2</span></p></td><td class="cl-489ee6b3"><p class="cl-489ea04e"><span class="cl-489a9580">300</span></p></td><td class="cl-489ee6b4"><p class="cl-489ea04e"><span class="cl-489a9580">115</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-489ee6b2"><p class="cl-489ea04e"><span class="cl-489a9580">3</span></p></td><td class="cl-489ee6b3"><p class="cl-489ea04e"><span class="cl-489a9580">306</span></p></td><td class="cl-489ee6b4"><p class="cl-489ea04e"><span class="cl-489a9580">120</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-489ee6b2"><p class="cl-489ea04e"><span class="cl-489a9580">4</span></p></td><td class="cl-489ee6b3"><p class="cl-489ea04e"><span class="cl-489a9580">304</span></p></td><td class="cl-489ee6b4"><p class="cl-489ea04e"><span class="cl-489a9580">125</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-489ee6b2"><p class="cl-489ea04e"><span class="cl-489a9580">5</span></p></td><td class="cl-489ee6b3"><p class="cl-489ea04e"><span class="cl-489a9580">308</span></p></td><td class="cl-489ee6b4"><p class="cl-489ea04e"><span class="cl-489a9580">130</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-489ee6bc"><p class="cl-489ea04e"><span class="cl-489a9580">6</span></p></td><td class="cl-489ee6bd"><p class="cl-489ea04e"><span class="cl-489a9580">310</span></p></td><td class="cl-489ee6be"><p class="cl-489ea04e"><span class="cl-489a9580">135</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>And let’s suppose we used software to obtain the regression coefficients for this model to be:</p>
+<p><span class="math display">\[Time=283.6+0.18(Social)\]</span></p>
+<p>Using this regression equation, we can see what the model would have predicted <code>Time</code> to be for each student. And we can determine the <span class="math inline">\(SS\)</span> using a similar approach to <span class="math inline">\(SS_T\)</span>. However, we refer to this as <span class="math inline">\(SS_E\)</span> (Sum of Squares Error):</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-490535d4{}.cl-48e63f26{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-48f90ba6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-48f9596c{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f95976{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f95980{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f95981{width:2.213in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f95982{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f9598a{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f95994{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959a8{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959a9{width:2.213in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959b2{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959bc{width:0.812in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959bd{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959be{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959bf{width:2.213in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-48f959d0{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-490535d4"><thead><tr style="overflow-wrap:break-word;"><th class="cl-48f9596c"><p class="cl-48f90ba6"><span class="cl-48e63f26">Student</span></p></th><th class="cl-48f95976"><p class="cl-48f90ba6"><span class="cl-48e63f26">Time</span></p></th><th class="cl-48f95980"><p class="cl-48f90ba6"><span class="cl-48e63f26">Social</span></p></th><th class="cl-48f95981"><p class="cl-48f90ba6"><span class="cl-48e63f26">Model</span></p></th><th class="cl-48f95976"><p class="cl-48f90ba6"><span class="cl-48e63f26">Error</span></p></th><th class="cl-48f95982"><p class="cl-48f90ba6"><span class="cl-48e63f26">Error2</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-48f9598a"><p class="cl-48f90ba6"><span class="cl-48e63f26">1</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">308</span></p></td><td class="cl-48f959a8"><p class="cl-48f90ba6"><span class="cl-48e63f26">110</span></p></td><td class="cl-48f959a9"><p class="cl-48f90ba6"><span class="cl-48e63f26">283.6 + (0.18 x 110) = 303.4</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">4.6</span></p></td><td class="cl-48f959b2"><p class="cl-48f90ba6"><span class="cl-48e63f26">18.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-48f9598a"><p class="cl-48f90ba6"><span class="cl-48e63f26">2</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">300</span></p></td><td class="cl-48f959a8"><p class="cl-48f90ba6"><span class="cl-48e63f26">115</span></p></td><td class="cl-48f959a9"><p class="cl-48f90ba6"><span class="cl-48e63f26">283.6 + (0.18 x 115) = 304.3</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">-4.3</span></p></td><td class="cl-48f959b2"><p class="cl-48f90ba6"><span class="cl-48e63f26">21.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-48f9598a"><p class="cl-48f90ba6"><span class="cl-48e63f26">3</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">306</span></p></td><td class="cl-48f959a8"><p class="cl-48f90ba6"><span class="cl-48e63f26">120</span></p></td><td class="cl-48f959a9"><p class="cl-48f90ba6"><span class="cl-48e63f26">283.6 + (0.18 x 120) = 305.2</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">0.8</span></p></td><td class="cl-48f959b2"><p class="cl-48f90ba6"><span class="cl-48e63f26">0.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-48f9598a"><p class="cl-48f90ba6"><span class="cl-48e63f26">4</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">304</span></p></td><td class="cl-48f959a8"><p class="cl-48f90ba6"><span class="cl-48e63f26">125</span></p></td><td class="cl-48f959a9"><p class="cl-48f90ba6"><span class="cl-48e63f26">283.6 + (0.18 x 125) = 306.1</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">-2.1</span></p></td><td class="cl-48f959b2"><p class="cl-48f90ba6"><span class="cl-48e63f26">6.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-48f9598a"><p class="cl-48f90ba6"><span class="cl-48e63f26">5</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">308</span></p></td><td class="cl-48f959a8"><p class="cl-48f90ba6"><span class="cl-48e63f26">130</span></p></td><td class="cl-48f959a9"><p class="cl-48f90ba6"><span class="cl-48e63f26">283.6 + (0.18 x 130) = 307.0</span></p></td><td class="cl-48f95994"><p class="cl-48f90ba6"><span class="cl-48e63f26">1.0</span></p></td><td class="cl-48f959b2"><p class="cl-48f90ba6"><span class="cl-48e63f26">0.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-48f959bc"><p class="cl-48f90ba6"><span class="cl-48e63f26">6</span></p></td><td class="cl-48f959bd"><p class="cl-48f90ba6"><span class="cl-48e63f26">310</span></p></td><td class="cl-48f959be"><p class="cl-48f90ba6"><span class="cl-48e63f26">135</span></p></td><td class="cl-48f959bf"><p class="cl-48f90ba6"><span class="cl-48e63f26">283.6 + (0.18 x 135) = 307.9</span></p></td><td class="cl-48f959bd"><p class="cl-48f90ba6"><span class="cl-48e63f26">2.1</span></p></td><td class="cl-48f959d0"><p class="cl-48f90ba6"><span class="cl-48e63f26">0.9</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<center>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</center>
+<p><span class="math display">\[
+\begin{aligned}
+SS_E &amp;= \sum_{i=1}^{n} (X_i - \bar{X})^2 \\
+   &amp;= (308-303.4)^2+(300-304.3)^2+(306-305.2)^2+(304-306.1)^2+(308-307.0)^2+(310-307.9)^2 \\
+   &amp;= 18.5+21.2+0.3+6.3+0.4+2.9 \\
+   &amp;= 49.4
+\end{aligned}
+\]</span> With these two sources of error (<span class="math inline">\(SS_T\)</span> and <span class="math inline">\(SS_E\)</span>), we can determined <span class="math inline">\(SS_R\)</span>. This is because</p>
+<p><span class="math display">\[SS_T=SS_E+SS_R\]</span></p>
+<p>Therefore:</p>
+<p><span class="math display">\[SS_R=SS_T-SS_E\]</span></p>
+<p>And because we have calculated <span class="math inline">\(SS_T\)</span> and <span class="math inline">\(SS_E\)</span> to be 64 and 49.4, respectively, we can solve <span class="math inline">\(SS_R\)</span> to be:</p>
+<p><span class="math display">\[SS_R=64-49.4=14.6\]</span></p>
+<p>More importantly, if we take the ratio of <span class="math inline">\(SS_R\)</span> and <span class="math inline">\(SS_T\)</span>, we can express how much of the variance in our outcome is explained by the regression model, rather than left unexplained by random variation. This is called the coefficient of determination, or <span class="math inline">\(R^2\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+R^2 &amp;= \frac{SS_R}{SS_T} \\
+   &amp;= \frac{14.6}{64} \\
+   &amp;= 0.229
+\end{aligned}
+\]</span></p>
+<p>In this example, we can interpret this as:</p>
+<blockquote class="blockquote">
+<p>22.9% of the variation in time on the phone can be explained by this model.</p>
+</blockquote>
+<p>Note: <span class="math inline">\(R^2\)</span> is more suitable when we are dealing with simple linear regression. For multiple linear regression, we should use <span class="math inline">\(\text{Adjusted } R^2\)</span>. This is because <span class="math inline">\(R^2\)</span> will always increase (or stay the same) when additional predictors are added to a model, even if those predictors contribute little or no meaningful explanatory power, whereas adjusted <span class="math inline">\(R^2\)</span> penalises unnecessary model complexity and provides a fairer measure of model fit.</p>
+<p>We will learn how to compute <span class="math inline">\(\text{Adjusted } R^2\)</span> in the <strong>Excel</strong> section of this chapter.</p>
+</section>
+</section>
+<section id="regression-with-a-binary-predictor" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="regression-with-a-binary-predictor"><span class="header-section-number">7.7</span> Regression with a binary predictor</h2>
+<p>Up to this point, all of our regression examples have used numeric predictors. In these settings, interpretation is relatively straightforward: a regression coefficient represents the expected change in the outcome associated with a one-unit increase in the predictor, holding all other variables constant.</p>
+<p>However, many important variables in real data are categorical rather than numeric. Examples include treatment group, employment status, or whether a customer is new or returning. Regression can still be used in these situations, but the interpretation of the coefficients changes.</p>
+<p>We begin with the simplest categorical case: a binary predictor, which takes only two possible values. Suppose we are interested in understanding job satisfaction among employees. For each employee, we record:</p>
+<ul>
+<li>Job satisfaction (measured on a numeric scale)</li>
+<li>Income (numeric)</li>
+<li>Years at company, coded as a binary variable:
+<ul>
+<li>0 = less than 4 years</li>
+<li>1 = 4 years or more</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[\text{Job Satisfaction} =\beta_0+\beta_1\text{Income}+\beta_2 \text{Years}\]</span></p>
+<p>Suppose we ran a regression model on some data and determined the coefficients to be:</p>
+<p><span class="math display">\[\text{Job Satisfaction} =7.2953+0.001(\text{Income})+ 3.4714 (\text{Years})\]</span></p>
+<p>Let’s interpret what the coefficient for Years (here = 3.4717) actually means by comparing two people with different codes for this variable, but keeping everything else constant:</p>
+<ul>
+<li>Person A
+<ul>
+<li>Income: <span class="math inline">\(75,000\)</span></li>
+<li>Years: “Less than 4” (<span style="color:red">0</span>)</li>
+</ul></li>
+<li>Person B
+<ul>
+<li>Income: <span class="math inline">\(75,000\)</span></li>
+<li>Years: “More than 4” (<span style="color:red">1</span>)</li>
+</ul></li>
+</ul>
+<p>If we substitute these values into the model for each person, we can determine their predicted job satisfaction scores:</p>
+<p><span class="math display">\[\text{Job Satisfaction}_A =7.2953+0.001(\text{Income})+ 3.4714 (\text{0})=14.7953\]</span> <span class="math display">\[\text{Job Satisfaction}_B =7.2953+0.001(\text{Income})+ 3.4714 (\text{1})=18.2667\]</span></p>
+<p>The difference between the two predictions (18.2667 – 14.7953) is equal to the coefficient for years (3.4714). Therefore, we can interpret this coefficient as:</p>
+<blockquote class="blockquote">
+<p>Job satisfaction is 3.4714 points higher, on average, for employees who have been at the company for more than 4 years, compared to those who have been at the company less than 4 years, when income is controlled for.</p>
+</blockquote>
+<p>Now, what if we had used different codes? E.g. what if we switched the 0s and 1s the other way?</p>
+<ul>
+<li>Years at company, coded as a binary variable:
+<ul>
+<li>1 = less than 4 years</li>
+<li>0 = 4 years or more</li>
+</ul></li>
+</ul>
+<p>In this case, the coefficients for the other terms might change, but the coefficient for Years will remain the same. The only difference is that the direction (i.e.&nbsp;positive or negative) will switch. For example, running a regression analysis on the same data, but switching the codes for <code>Years</code> would yield us the following:</p>
+<p><span class="math display">\[\text{Job Satisfaction} =10.7668+0.001(\text{Income})- 3.4714 (\text{Years})\]</span></p>
+<p>If we take the same two people from before, but now with the codes reversed:</p>
+<ul>
+<li>Person A
+<ul>
+<li>Income: <span class="math inline">\(75,000\)</span></li>
+<li>Years: “Less than 4” (<span style="color:red">1</span>)</li>
+</ul></li>
+<li>Person B
+<ul>
+<li>Income: <span class="math inline">\(75,000\)</span></li>
+<li>Years: “More than 4” (<span style="color:red">0</span>)</li>
+</ul></li>
+</ul>
+<p>And substitute these values into the model for each person with the new model:</p>
+<p><span class="math display">\[\text{Job Satisfaction}_A =10.7668+0.001(\text{Income})- 3.4714 (\text{1})=14.7953\]</span></p>
+<p><span class="math display">\[\text{Job Satisfaction}_B =10.7668+0.001(\text{Income})- 3.4714 (\text{0})=18.2667\]</span></p>
+<p>Notice here that the predictions work out to be exactly the same as above. And that the difference between the two predictions (18.2667 – 14.7953) is equal to the coefficient for years (3.4714).</p>
+</section>
+<section id="regression-with-a-categorical-predictor-k-2-levels" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="regression-with-a-categorical-predictor-k-2-levels"><span class="header-section-number">7.8</span> Regression with a categorical predictor ((k &gt; 2) levels)</h2>
+<p>The binary predictor case works neatly because there are only two groups. But in many real-world problems, categorical variables have <strong>more than two categories</strong>. Common examples include job position, education level, or type of contract. Regression can still be used in these situations — but we need to be more careful about how the variable is represented in the model.</p>
+<p>Suppose we extend our job satisfaction example by including <strong>job position</strong> as a predictor, with three possible levels:</p>
+<ul>
+<li>Clerical<br>
+</li>
+<li>Labourer<br>
+</li>
+<li>Manager</li>
+</ul>
+<p>Our goal is to understand how job satisfaction differs across these roles, while still controlling for income.</p>
+<section id="choosing-a-reference-level" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="choosing-a-reference-level"><span class="header-section-number">7.8.1</span> Choosing a reference level</h3>
+<p>A categorical variable with three levels does not correspond to a single numeric coefficient. Instead, regression works by comparing groups to a reference level (also called the <em>baseline</em>).</p>
+<p>We must choose one category to act as this reference group. Suppose we choose:</p>
+<blockquote class="blockquote">
+<p><strong>Clerical</strong> as the reference level.</p>
+</blockquote>
+<p>All other categories will be interpreted <em>relative to clerical employees</em>.</p>
+</section>
+<section id="dummy-coding-indicator-variables" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="dummy-coding-indicator-variables"><span class="header-section-number">7.8.2</span> Dummy coding (indicator variables)</h3>
+<p>To include job position in the regression model, we create dummy variables (also called indicator variables). With three categories, we need two dummy variables:</p>
+<ul>
+<li><code>Labourer</code>
+<ul>
+<li>1 = Labourer<br>
+</li>
+<li>0 = otherwise</li>
+</ul></li>
+<li><code>Manager</code>
+<ul>
+<li>1 = Manager<br>
+</li>
+<li>0 = otherwise</li>
+</ul></li>
+</ul>
+<p>Clerical employees are implicitly represented when both dummy variables are equal to 0.</p>
+<p>The regression model can be written as:</p>
+<p><span class="math display">\[
+\text{Job Satisfaction}
+= \beta_0
++ \beta_1 \text{Income}
++ \beta_2 \text{Labourer}
++ \beta_3 \text{Manager}
+\]</span></p>
+</section>
+<section id="interpreting-the-coefficients" class="level3" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="interpreting-the-coefficients"><span class="header-section-number">7.8.3</span> Interpreting the coefficients</h3>
+<p>Under this coding:</p>
+<ul>
+<li><span class="math inline">\((\beta_1)\)</span> represents the predicted job satisfaction for every unit increase in income, holding position constant.</li>
+<li><span class="math inline">\((\beta_2)\)</span> represents the expected difference in job satisfaction between labourers and clerical employees, holding income constant.</li>
+<li><span class="math inline">\((\beta_3)\)</span> represents the expected difference in job satisfaction between managers and clerical employees, holding income constant.</li>
+</ul>
+<p>Once we include a categorical predictor, the coefficients should be interpreted as group differences <em>relative to the reference category</em>, rather than as “per-unit increases”.</p>
+<p>As an example, suppose we used software to fit the model, and we determined the coefficients to be:</p>
+<p><span class="math display">\[
+\text{Job Satisfaction}
+= 6.20
++ 0.002\,(\text{Income})
+- 1.50\,(\text{Labourer})
++ 2.80\,(\text{Manager})
+\]</span> When can interpret each term in this equation as:</p>
+<ul>
+<li><strong>Income</strong> <span class="math inline">\((\beta_1 = 0.002)\)</span><br>
+For every $1 increase in income, predicted job satisfaction increases by 0.002 points, on average, holding job position constant.</li>
+<li><strong>Labourer</strong> <span class="math inline">\((\beta_2 = -1.50)\)</span><br>
+Labourers are predicted to have job satisfaction scores that are 1.50 points lower than clerical employees, on average, holding income constant.</li>
+<li><strong>Manager</strong> <span class="math inline">\((\beta_3 = 2.80)\)</span><br>
+Managers are predicted to have job satisfaction scores that are 2.80 points higher than clerical employees, on average, holding income constant.</li>
+</ul>
+<hr>
+</section>
+<section id="why-we-cannot-include-all-three-positions-as-predictors" class="level3" data-number="7.8.4">
+<h3 data-number="7.8.4" class="anchored" data-anchor-id="why-we-cannot-include-all-three-positions-as-predictors"><span class="header-section-number">7.8.4</span> Why we <em>cannot</em> include all three positions as predictors</h3>
+<p>A natural question at this point is:</p>
+<blockquote class="blockquote">
+<p><em>Why don’t we just include three dummy variables — one for clerical, one for labourer, and one for manager?</em></p>
+</blockquote>
+<p>For example:</p>
+<p><span class="math display">\[
+\text{Job Satisfaction}
+= \beta_0
++ \beta_1 \text{Income}
++ \beta_2 \text{Labourer}
++ \beta_3 \text{Manager}
++ \beta_3 \text{Clerical}
+\]</span></p>
+<p>If we attempted this, we would run into a problem known as perfect multicollinearity. This occurs because, for every observation:</p>
+<p><span class="math display">\[
+\text{Clerical} + \text{Labourer} + \text{Manager} = 1.
+\]</span></p>
+<p>This creates redundancy in the predictors, meaning the regression model cannot estimate all coefficients uniquely.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>More advanced: why the model becomes rank deficient (matrix view)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The maths for this is beyond the scopes of this unit, but for those interested, consider that linear regression can be written in matrix form as:</p>
+<p><span class="math display">\[
+\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}.
+\]</span></p>
+<p>If we include an intercept, income, and <strong>three</strong> dummy variables (clerical, labourer, manager), then for three example employees (A), (B), and (C), the design matrix would look like:</p>
+<p><span class="math display">\[
+\mathbf{X}
+=
+\begin{bmatrix}
+1 &amp; \text{Income}_A &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; \text{Income}_B &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; \text{Income}_C &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}.
+\]</span></p>
+<p>For every row, exactly one of the three dummy variables equals 1 and the other two equal 0. Therefore:</p>
+<p><span class="math display">\[
+\text{Clerical} + \text{Labourer} + \text{Manager} = 1 = \text{Intercept}.
+\]</span></p>
+<p>This means:</p>
+<p><span class="math display">\[
+\text{Column 3} + \text{Column 4} + \text{Column 5} = \text{Column 1}.
+\]</span></p>
+<p>In other words, one column of the design matrix is an <strong>exact linear combination</strong> of the others. The matrix () is therefore <strong>rank deficient</strong> (it does not have full rank).</p>
+<p>Ordinary least squares (OLS) estimation relies on:</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}.
+\]</span></p>
+<p>When <span class="math inline">\(\mathbf{X}\)</span> is rank deficient, the matrix <span class="math inline">\(\mathbf{X}^\top \mathbf{X}\)</span> is singular (non-invertible), so OLS regression cannot compute unique coefficient estimates.</p>
+<p>In practice, statistical software will typically return an error or warning such as:</p>
+<ul>
+<li><em>“Coefficients are not uniquely determined”</em></li>
+<li><em>“Model matrix is rank deficient”</em></li>
+</ul>
+<p>In Excel, the model will still run, but one of the rows will have an error:</p>
+<center>
+<img src="images/Chapter 6/Excel table.png" class="img-fluid">
+</center>
+</div>
+</div>
+</section>
+<section id="the-fix-use-k---1-dummy-variables" class="level3" data-number="7.8.5">
+<h3 data-number="7.8.5" class="anchored" data-anchor-id="the-fix-use-k---1-dummy-variables"><span class="header-section-number">7.8.5</span> The fix: use (k - 1) dummy variables</h3>
+<p>To avoid this issue, we must always include only (k - 1) dummy variables for a categorical predictor with (k) levels, treating the remaining category as the reference level.</p>
+<p>With three job positions, we include two dummy variables (e.g.&nbsp;labourer and manager), and clerical becomes the baseline group.</p>
+</section>
+<section id="does-the-reference-level-matter" class="level3" data-number="7.8.6">
+<h3 data-number="7.8.6" class="anchored" data-anchor-id="does-the-reference-level-matter"><span class="header-section-number">7.8.6</span> Does the reference level matter?</h3>
+<p>The choice of reference level affects how we <strong>interpret</strong> the coefficients, but it does <strong>not</strong> change the fitted values or predictions produced by the model. Changing the reference category simply changes which comparisons appear explicitly in the regression output.</p>
+</section>
+</section>
+<section id="regression-with-time-series" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="regression-with-time-series"><span class="header-section-number">7.9</span> Regression with time-series</h2>
+<p>Up to this point, our independent variables (IVs) have been either continuous (such as income or years at the company) or categorical (such as position coded with dummy variables).</p>
+<p>However, when we work with time series data, the situation is quite different. Time carries a natural sequential order, and the relationships between observations often depend on their position in that sequence.</p>
+<p>Unlike income or years of experience, which can vary independently across individuals, time introduces <strong>autocorrelation</strong> - today’s outcome is usually related to yesterday’s.</p>
+<p>As an example, suppose I had some <em>Google Trends</em> data, where I wanted to see how popular was the search term <strong>AFL</strong> on Google. And, let’s suppose, I looked at this across a five year period. The table below shows the first and last five obervations in this data set.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-4a843c98{}.cl-4a733650{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4a7a8da6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4a7ae85a{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae86e{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae86f{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae870{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae878{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae882{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae88c{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae88d{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4a7ae896{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4a843c98"><thead><tr style="overflow-wrap:break-word;"><th class="cl-4a7ae85a"><p class="cl-4a7a8da6"><span class="cl-4a733650">Week</span></p></th><th class="cl-4a7ae86e"><p class="cl-4a7a8da6"><span class="cl-4a733650">Time</span></p></th><th class="cl-4a7ae86f"><p class="cl-4a7a8da6"><span class="cl-4a733650">afl</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2020-08-16</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">1</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">43</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2020-08-23</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">2</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">52</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2020-08-30</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">3</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">52</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2020-09-06</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">4</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">57</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2020-09-13</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">5</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">53</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">⋮</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">⋮</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">⋮</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2025-07-20</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">258</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">47</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2025-07-27</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">259</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">48</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2025-08-03</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">260</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">53</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae870"><p class="cl-4a7a8da6"><span class="cl-4a733650">2025-08-10</span></p></td><td class="cl-4a7ae878"><p class="cl-4a7a8da6"><span class="cl-4a733650">261</span></p></td><td class="cl-4a7ae882"><p class="cl-4a7a8da6"><span class="cl-4a733650">53</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4a7ae88c"><p class="cl-4a7a8da6"><span class="cl-4a733650">2025-08-17</span></p></td><td class="cl-4a7ae88d"><p class="cl-4a7a8da6"><span class="cl-4a733650">262</span></p></td><td class="cl-4a7ae896"><p class="cl-4a7a8da6"><span class="cl-4a733650">42</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>If we were to plot the data it shows a very obvious seasonal pattern, where AFL interest is low in Q1 and Q4 of any given year (because it’s the off-season), and high during Q2 and Q3 (within season).</p>
+<center>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</center>
+<p>Now, suppose we modelled <code>afl</code> as a regression model (using <code>Time</code> as our predictor). Visually, this might look like:</p>
+<center>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</center>
+<p>Notice here that this model, which is a straight line, is only picking up on the <strong>trend</strong> of the data. It does a very poor job of predicting actual <code>afl</code> interest for most of the data. As an example, suppose the fitted model was:</p>
+<p><span class="math display">\[afl=32.45+0.023(Time)\]</span></p>
+<p>And suppose we wanted to predict <code>afl</code> interest at time = 62 (which was 17/10/2021). The predicted value would be:</p>
+<p><span class="math display">\[afl=32.45+0.023(62)=33.876\]</span></p>
+<p>This is quite different to the actual value of 8:</p>
+<center>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</center>
+<p>In future units, you will learn about <strong>time-series analysis</strong>, which is a more appropriate technique for handling this type of data. In this unit, ETC1000, you just need to be aware of this limitation when constructing your regression models.</p>
+<p>As an example, consider the image below. Both panels use the exact same data (<code>afl</code> over time). The panel on the left is fitted with a linear regression model, and has made a linear forecast for the next 52 weeks. The panel on the right is a time series model, and it’s forecast is much more reflective on the actual data:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="interaction-effects" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">7.10</span> Interaction Effects</h2>
+<p>Thus far, our regression models have only considered additive effects, where each predictor is assumed to influence the outcome independently of the others. These are sometimes referred to as <strong>main</strong> effects. Under this assumption, the effect of a predictor — such as income, years at a company, or job position — is the same for all individuals, regardless of the values of other variables in the model.</p>
+<p>In many real-world situations, however, this assumption is too simplistic. The relationship between a predictor and the outcome may depend on another variable. For example, an increase in income may have a different impact on job satisfaction for managers than it does for clerical staff, or the effect of time at a company may vary across roles. Interaction effects allow us to model these conditional relationships explicitly, extending regression beyond “average effects” and enabling more nuanced and realistic interpretations.</p>
+<p>As an example, suppose a team of scientists recruited 40 high school students who enjoyed playing violent video games on a regular basis. They were asked to keep a record of how many hours of violent video games they played in one week. In addition, they had to complete a (pre-post) aggression questionnaire, where higher scores represented higher levels of aggression.</p>
+<p>In this example, the researchers are investigating if time spent playing violent video games is associated with aggression. Graphically, this could be expressed as predictor <span class="math inline">\(\longrightarrow\)</span> Outcome (a standard one-one relationship):</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interactions occur when we believe a third variable (usually called a moderator) can influence that one-to-one relationship:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In our current example, the main effect is:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In our current dataset, if we consider just the relationship between Time and Aggression, we can observe a positive linear trend line (i.e.&nbsp;the more time one plays violent video games <span class="math inline">\(\longrightarrow\)</span> the higher the aggression score), see the left panel below. However, suppose there was a third variable, <code>History of Family Violence</code> (yes / no). And we fitted separate models for each group. We can see that depending on whether or not the participant had a history of family violence, then the slope of the relationship is quite different (see the right panel).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If we look at the relationship between Time and Aggression for those with a family history of violence,then it appears that there is a strong positive relationship between Time and Aggression. However, if we only look at the children from the No history of violence group, then we can see that there is a very weak relationship between Time and Aggression. Given these differences, using the original scatter plot (left-panel) would not paint a clear picture of what is really happening. Depending on the child’s group (Yes / No), the relationship between Time and Aggression is quite different!</p>
+<blockquote class="blockquote">
+<p>Therefore, we would say that Family History is moderating the relationship between Time and Aggression</p>
+</blockquote>
+<p>Mathematically, moderation (or interaction) is represented by including a product term in the regression model, formed by multiplying the two variables together (for example, Variable 1 × Variable 2). This interaction term allows the slope of one predictor to vary across levels of the other.</p>
+<p>Suppose the first five rows of our data looked like the table below, where</p>
+<ul>
+<li><code>Group</code> (0 = No family history; 1 = Yes family history)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-636ff85a{}.cl-6366dc34{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-636b3702{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-636b6b5a{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b64{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b6e{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b6f{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b70{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b78{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b79{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b82{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-636b6b83{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-636ff85a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-636b6b5a"><p class="cl-636b3702"><span class="cl-6366dc34">Group</span></p></th><th class="cl-636b6b64"><p class="cl-636b3702"><span class="cl-6366dc34">Time</span></p></th><th class="cl-636b6b6e"><p class="cl-636b3702"><span class="cl-6366dc34">Aggression</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-636b6b6f"><p class="cl-636b3702"><span class="cl-6366dc34">0</span></p></td><td class="cl-636b6b70"><p class="cl-636b3702"><span class="cl-6366dc34">5.42</span></p></td><td class="cl-636b6b78"><p class="cl-636b3702"><span class="cl-6366dc34">2.78</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-636b6b6f"><p class="cl-636b3702"><span class="cl-6366dc34">1</span></p></td><td class="cl-636b6b70"><p class="cl-636b3702"><span class="cl-6366dc34">4.04</span></p></td><td class="cl-636b6b78"><p class="cl-636b3702"><span class="cl-6366dc34">6.42</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-636b6b6f"><p class="cl-636b3702"><span class="cl-6366dc34">0</span></p></td><td class="cl-636b6b70"><p class="cl-636b3702"><span class="cl-6366dc34">4.78</span></p></td><td class="cl-636b6b78"><p class="cl-636b3702"><span class="cl-6366dc34">6.87</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-636b6b6f"><p class="cl-636b3702"><span class="cl-6366dc34">0</span></p></td><td class="cl-636b6b70"><p class="cl-636b3702"><span class="cl-6366dc34">7.20</span></p></td><td class="cl-636b6b78"><p class="cl-636b3702"><span class="cl-6366dc34">5.09</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-636b6b79"><p class="cl-636b3702"><span class="cl-6366dc34">1</span></p></td><td class="cl-636b6b82"><p class="cl-636b3702"><span class="cl-6366dc34">4.30</span></p></td><td class="cl-636b6b83"><p class="cl-636b3702"><span class="cl-6366dc34">6.58</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>The interaction term is computed by multiplying <code>Group</code> and <code>Time</code> together. In this example:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-63bf0300{}.cl-63b3d7b4{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-63b3d7c8{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-63b7defe{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-63b8152c{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b81540{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b8154a{width:1.3in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b81554{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b81555{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b8155e{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b81568{width:1.3in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b81572{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b81573{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b8157c{width:0.625in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b8157d{width:1.3in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-63b81586{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-63bf0300"><thead><tr style="overflow-wrap:break-word;"><th class="cl-63b8152c"><p class="cl-63b7defe"><span class="cl-63b3d7b4">Group</span></p></th><th class="cl-63b81540"><p class="cl-63b7defe"><span class="cl-63b3d7b4">Time</span></p></th><th class="cl-63b8154a"><p class="cl-63b7defe"><span class="cl-63b3d7b4">Group.Time</span></p></th><th class="cl-63b81554"><p class="cl-63b7defe"><span class="cl-63b3d7b4">Aggression</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-63b81555"><p class="cl-63b7defe"><span class="cl-63b3d7b4">0</span></p></td><td class="cl-63b8155e"><p class="cl-63b7defe"><span class="cl-63b3d7b4">5.42</span></p></td><td class="cl-63b81568"><p class="cl-63b7defe"><span class="cl-63b3d7c8">0 x 5.42 = 0</span></p></td><td class="cl-63b81572"><p class="cl-63b7defe"><span class="cl-63b3d7b4">2.78</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-63b81555"><p class="cl-63b7defe"><span class="cl-63b3d7b4">1</span></p></td><td class="cl-63b8155e"><p class="cl-63b7defe"><span class="cl-63b3d7b4">4.04</span></p></td><td class="cl-63b81568"><p class="cl-63b7defe"><span class="cl-63b3d7c8">1 x 4.04 = 4.04</span></p></td><td class="cl-63b81572"><p class="cl-63b7defe"><span class="cl-63b3d7b4">6.42</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-63b81555"><p class="cl-63b7defe"><span class="cl-63b3d7b4">0</span></p></td><td class="cl-63b8155e"><p class="cl-63b7defe"><span class="cl-63b3d7b4">4.78</span></p></td><td class="cl-63b81568"><p class="cl-63b7defe"><span class="cl-63b3d7c8">0 x 4.78 = 0</span></p></td><td class="cl-63b81572"><p class="cl-63b7defe"><span class="cl-63b3d7b4">6.87</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-63b81555"><p class="cl-63b7defe"><span class="cl-63b3d7b4">0</span></p></td><td class="cl-63b8155e"><p class="cl-63b7defe"><span class="cl-63b3d7b4">7.20</span></p></td><td class="cl-63b81568"><p class="cl-63b7defe"><span class="cl-63b3d7c8">0 x 7.2 = 0</span></p></td><td class="cl-63b81572"><p class="cl-63b7defe"><span class="cl-63b3d7b4">5.09</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-63b81573"><p class="cl-63b7defe"><span class="cl-63b3d7b4">1</span></p></td><td class="cl-63b8157c"><p class="cl-63b7defe"><span class="cl-63b3d7b4">4.30</span></p></td><td class="cl-63b8157d"><p class="cl-63b7defe"><span class="cl-63b3d7c8">1 x 4.3 = 4.3</span></p></td><td class="cl-63b81586"><p class="cl-63b7defe"><span class="cl-63b3d7b4">6.58</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>We would then fit this as a term (effect) in our regression model. Suppose the coefficients table, for the full 40 children provided the following results:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-640a8c44{}.cl-64024160{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6405a7b0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6405a7c4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6405d820{width:1.109in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d82a{width:1.083in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d82b{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d834{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d835{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d83e{width:1.109in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d83f{width:1.083in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d852{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d853{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d854{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d85c{width:1.109in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d85d{width:1.083in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d866{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d867{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6405d868{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-640a8c44"><thead><tr style="overflow-wrap:break-word;"><th class="cl-6405d820"><p class="cl-6405a7b0"><span class="cl-64024160">.</span></p></th><th class="cl-6405d82a"><p class="cl-6405a7c4"><span class="cl-64024160">Coefficients</span></p></th><th class="cl-6405d82b"><p class="cl-6405a7c4"><span class="cl-64024160">SE</span></p></th><th class="cl-6405d834"><p class="cl-6405a7c4"><span class="cl-64024160">t.Stat</span></p></th><th class="cl-6405d835"><p class="cl-6405a7c4"><span class="cl-64024160">P.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-6405d83e"><p class="cl-6405a7b0"><span class="cl-64024160">Intercept</span></p></td><td class="cl-6405d83f"><p class="cl-6405a7c4"><span class="cl-64024160">3.854</span></p></td><td class="cl-6405d852"><p class="cl-6405a7c4"><span class="cl-64024160">0.902</span></p></td><td class="cl-6405d853"><p class="cl-6405a7c4"><span class="cl-64024160">4.274</span></p></td><td class="cl-6405d854"><p class="cl-6405a7c4"><span class="cl-64024160">0.0001</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6405d83e"><p class="cl-6405a7b0"><span class="cl-64024160">Group</span></p></td><td class="cl-6405d83f"><p class="cl-6405a7c4"><span class="cl-64024160">-1.814</span></p></td><td class="cl-6405d852"><p class="cl-6405a7c4"><span class="cl-64024160">1.184</span></p></td><td class="cl-6405d853"><p class="cl-6405a7c4"><span class="cl-64024160">-1.523</span></p></td><td class="cl-6405d854"><p class="cl-6405a7c4"><span class="cl-64024160">0.1311</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6405d83e"><p class="cl-6405a7b0"><span class="cl-64024160">Time</span></p></td><td class="cl-6405d83f"><p class="cl-6405a7c4"><span class="cl-64024160">0.239</span></p></td><td class="cl-6405d852"><p class="cl-6405a7c4"><span class="cl-64024160">0.173</span></p></td><td class="cl-6405d853"><p class="cl-6405a7c4"><span class="cl-64024160">1.384</span></p></td><td class="cl-6405d854"><p class="cl-6405a7c4"><span class="cl-64024160">0.1718</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6405d85c"><p class="cl-6405a7b0"><span class="cl-64024160">Group*Time</span></p></td><td class="cl-6405d85d"><p class="cl-6405a7c4"><span class="cl-64024160">0.663</span></p></td><td class="cl-6405d866"><p class="cl-6405a7c4"><span class="cl-64024160">0.219</span></p></td><td class="cl-6405d867"><p class="cl-6405a7c4"><span class="cl-64024160">3.023</span></p></td><td class="cl-6405d868"><p class="cl-6405a7c4"><span class="cl-64024160">0.0038</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Using this table, we can determine the model to be:</p>
+<p><span class="math display">\[
+Aggression=3.85-1.81(Group)+0.24(Time)+0.66(Group\times Time)
+\]</span></p>
+<p>And because we know how Group is coded (0 = No; 1 = Yes), we can construct seperate models for each group:</p>
+<p><span class="math display">\[
+\begin{aligned}
+Aggression_{Group:0} &amp;= 3.85 -1.81(0)+0.24(Time)+0.66(0 \times Time) \\
+   &amp;= 3.85+0.24(Time) \\
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+Aggression_{Group:1} &amp;= 3.85 -1.81(1)+0.24(Time)+0.66(1 \times Time) \\
+   &amp;= 2.04+0.90(Time) \\
+\end{aligned}
+\]</span></p>
+<p>Notice here that the slope for Group 0 (No history of family violence) is relatively small (<span class="math inline">\(\beta=0.24\)</span>), indicating little increase in Aggression as Time increases. By comparison, the slope for Group 1 (Yes history of family violence) is much larger (<span class="math inline">\(\beta=0.90\)</span>), indicating a much larger increase in Aggression as Time increases. This is consistent with what we saw in our scatterplots earlier:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter9_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Finally, let’s look at the p-values for this scenario.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-64b76072{}.cl-64af229a{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-64af22ae{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-64b29934{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-64b2993e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-64b2ba7c{width:1.109in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2ba86{width:1.083in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2ba90{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2ba91{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2ba92{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2ba9a{width:1.109in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2baa4{width:1.083in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2baa5{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2baa6{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2baa7{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2baae{width:1.109in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2bab8{width:1.083in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2bab9{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2baba{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-64b2babb{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-64b76072"><thead><tr style="overflow-wrap:break-word;"><th class="cl-64b2ba7c"><p class="cl-64b29934"><span class="cl-64af229a">.</span></p></th><th class="cl-64b2ba86"><p class="cl-64b2993e"><span class="cl-64af229a">Coefficients</span></p></th><th class="cl-64b2ba90"><p class="cl-64b2993e"><span class="cl-64af229a">SE</span></p></th><th class="cl-64b2ba91"><p class="cl-64b2993e"><span class="cl-64af229a">t.Stat</span></p></th><th class="cl-64b2ba92"><p class="cl-64b2993e"><span class="cl-64af229a">P.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-64b2ba9a"><p class="cl-64b29934"><span class="cl-64af229a">Intercept</span></p></td><td class="cl-64b2baa4"><p class="cl-64b2993e"><span class="cl-64af229a">3.854</span></p></td><td class="cl-64b2baa5"><p class="cl-64b2993e"><span class="cl-64af229a">0.902</span></p></td><td class="cl-64b2baa6"><p class="cl-64b2993e"><span class="cl-64af229a">4.274</span></p></td><td class="cl-64b2baa7"><p class="cl-64b2993e"><span class="cl-64af22ae">0.0001</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-64b2ba9a"><p class="cl-64b29934"><span class="cl-64af229a">Group</span></p></td><td class="cl-64b2baa4"><p class="cl-64b2993e"><span class="cl-64af229a">-1.814</span></p></td><td class="cl-64b2baa5"><p class="cl-64b2993e"><span class="cl-64af229a">1.184</span></p></td><td class="cl-64b2baa6"><p class="cl-64b2993e"><span class="cl-64af229a">-1.523</span></p></td><td class="cl-64b2baa7"><p class="cl-64b2993e"><span class="cl-64af22ae">0.1311</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-64b2ba9a"><p class="cl-64b29934"><span class="cl-64af229a">Time</span></p></td><td class="cl-64b2baa4"><p class="cl-64b2993e"><span class="cl-64af229a">0.239</span></p></td><td class="cl-64b2baa5"><p class="cl-64b2993e"><span class="cl-64af229a">0.173</span></p></td><td class="cl-64b2baa6"><p class="cl-64b2993e"><span class="cl-64af229a">1.384</span></p></td><td class="cl-64b2baa7"><p class="cl-64b2993e"><span class="cl-64af22ae">0.1718</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-64b2baae"><p class="cl-64b29934"><span class="cl-64af229a">Group*Time</span></p></td><td class="cl-64b2bab8"><p class="cl-64b2993e"><span class="cl-64af229a">0.663</span></p></td><td class="cl-64b2bab9"><p class="cl-64b2993e"><span class="cl-64af229a">0.219</span></p></td><td class="cl-64b2baba"><p class="cl-64b2993e"><span class="cl-64af229a">3.023</span></p></td><td class="cl-64b2babb"><p class="cl-64b2993e"><span class="cl-64af22ae">0.0038</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>The interaction term (Group × Time) is statistically significant (p = .0038), providing strong evidence that the effect of Time on Aggression differs between the two groups. In contrast, the main effect of Time alone (p = 0.1718) is not statistically significant, highlighting that the relationship between Time and Aggression cannot be adequately described by a single common slope. Together, these results confirm that Group moderates the relationship between Time and Aggression, which is precisely what we observed visually in the scatterplots.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+
+
+/* update total correct if #webex-total_correct exists */
+
+update_total_correct = function() {
+
+  console.log("webex: update total_correct");
+
+
+
+  var t = document.getElementsByClassName("webex-total_correct");
+
+  for (var i = 0; i < t.length; i++) {
+
+    p = t[i].parentElement;
+
+    var correct = p.getElementsByClassName("webex-correct").length;
+
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
+    var selects = p.getElementsByClassName("webex-select").length;
+
+
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
+  }
+
+}
+
+
+
+/* webex-solution button toggling function */
+
+b_func = function() {
+
+  console.log("webex: toggle hide");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('open')) {
+
+    cl.remove("open");
+
+  } else {
+
+    cl.add("open");
+
+  }
+
+}
+
+
+
+/* check answers */
+
+check_func = function() {
+
+  console.log("webex: check answers");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('unchecked')) {
+
+    cl.remove("unchecked");
+
+    this.innerHTML = "Hide Answers";
+
+  } else {
+
+    cl.add("unchecked");
+
+    this.innerHTML = "Show Answers";
+
+  }
+
+}
+
+
+
+/* function for checking solveme answers */
+
+solveme_func = function(e) {
+
+  console.log("webex: check solveme");
+
+
+
+  var real_answers = JSON.parse(this.dataset.answer);
+
+  var my_answer = this.value;
+
+  var cl = this.classList;
+
+  if (cl.contains("ignorecase")) {
+
+    my_answer = my_answer.toLowerCase();
+
+  }
+
+  if (cl.contains("nospaces")) {
+
+    my_answer = my_answer.replace(/ /g, "")
+
+  }
+
+
+
+  if (my_answer == "") {
+
+    cl.remove("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else if (real_answers.includes(my_answer)) {
+
+    cl.add("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+    cl.remove("webex-correct");
+
+  }
+
+
+
+  // match numeric answers within a specified tolerance
+
+  if(this.dataset.tol > 0){
+
+    var tol = JSON.parse(this.dataset.tol);
+
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+
+      cl.add("webex-correct");
+
+    } else {
+
+      cl.remove("webex-correct");
+
+    }
+
+  }
+
+
+
+  // added regex bit
+
+  if (cl.contains("regex")){
+
+    answer_regex = RegExp(real_answers.join("|"))
+
+    if (answer_regex.test(my_answer)) {
+
+      cl.add("webex-correct");
+
+    }
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking select answers */
+
+select_func = function(e) {
+
+  console.log("webex: check select");
+
+
+
+  var cl = this.classList
+
+
+
+  /* add style */
+
+  cl.remove("webex-incorrect");
+
+  cl.remove("webex-correct");
+
+  if (this.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else if (this.value != "blank") {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking radiogroups answers */
+
+radiogroups_func = function(e) {
+
+  console.log("webex: check radiogroups");
+
+
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
+  var cl = checked_button.parentElement.classList;
+
+  var labels = checked_button.parentElement.parentElement.children;
+
+
+
+  /* get rid of styles */
+
+  for (i = 0; i < labels.length; i++) {
+
+    labels[i].classList.remove("webex-incorrect");
+
+    labels[i].classList.remove("webex-correct");
+
+  }
+
+
+
+  /* add style */
+
+  if (checked_button.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+window.onload = function() {
+
+  console.log("webex onload");
+
+  /* set up solution buttons */
+
+  var buttons = document.getElementsByTagName("button");
+
+
+
+  for (var i = 0; i < buttons.length; i++) {
+
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
+      buttons[i].onclick = b_func;
+
+    }
+
+  }
+
+
+
+  var check_sections = document.getElementsByClassName("webex-check");
+
+  console.log("check:", check_sections.length);
+
+  for (var i = 0; i < check_sections.length; i++) {
+
+    check_sections[i].classList.add("unchecked");
+
+
+
+    let btn = document.createElement("button");
+
+    btn.innerHTML = "Show Answers";
+
+    btn.classList.add("webex-check-button");
+
+    btn.onclick = check_func;
+
+    check_sections[i].appendChild(btn);
+
+
+
+    let spn = document.createElement("span");
+
+    spn.classList.add("webex-total_correct");
+
+    check_sections[i].appendChild(spn);
+
+  }
+
+
+
+  /* set up webex-solveme inputs */
+
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+
+
+  for (var i = 0; i < solveme.length; i++) {
+
+    /* make sure input boxes don't auto-anything */
+
+    solveme[i].setAttribute("autocomplete","off");
+
+    solveme[i].setAttribute("autocorrect", "off");
+
+    solveme[i].setAttribute("autocapitalize", "off");
+
+    solveme[i].setAttribute("spellcheck", "false");
+
+    solveme[i].value = "";
+
+
+
+    /* adjust answer for ignorecase or nospaces */
+
+    var cl = solveme[i].classList;
+
+    var real_answer = solveme[i].dataset.answer;
+
+    if (cl.contains("ignorecase")) {
+
+      real_answer = real_answer.toLowerCase();
+
+    }
+
+    if (cl.contains("nospaces")) {
+
+      real_answer = real_answer.replace(/ /g, "");
+
+    }
+
+    solveme[i].dataset.answer = real_answer;
+
+
+
+    /* attach checking function */
+
+    solveme[i].onkeyup = solveme_func;
+
+    solveme[i].onchange = solveme_func;
+
+
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  /* set up radiogroups */
+
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
+  for (var i = 0; i < radiogroups.length; i++) {
+
+    radiogroups[i].onchange = radiogroups_func;
+
+  }
+
+
+
+  /* set up selects */
+
+  var selects = document.getElementsByClassName("webex-select");
+
+  for (var i = 0; i < selects.length; i++) {
+
+    selects[i].onchange = select_func;
+
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter6.html" class="pagination-link" aria-label="Hypothesis Testing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter10.html" class="pagination-link" aria-label="Classification and Prediction">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classification and Prediction</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

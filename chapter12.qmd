@@ -1,0 +1,1054 @@
+---
+title: "Introduction to R"
+format: html
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(gt)
+library(flextable)
+```
+
+## Some background information
+
+### What is R?
+
+Up to this point, most of your data handling and analysis has probably been carried out in Microsoft Excel. Excel is an extremely accessible and versatile tool. It is excellent for tasks such as entering data, performing quick calculations, producing pivot tables, and creating basic charts. For many introductory tasks, particularly when datasets are relatively simple and the required analyses are straightforward, Excel is both sufficient and efficient. However, as data analysis requirements become more complex, the limitations of Excel start to appear. Large datasets can quickly slow Excel down or cause it to become unstable. Sophisticated statistical analyses can be difficult or impossible to implement in Excel without resorting to cumbersome add-ins.
+
+R addresses many of these limitations directly. R is an open-source (and free!) programming language and computing environment designed specifically for statistical analysis, data manipulation, and visualisation. It was developed in the mid-1990s by Ross Ihaka and Robert Gentleman at the University of Auckland, with the explicit goal of providing a free, flexible, and powerful tool for statistical computing.
+
+It is important to emphasise that learning R does not mean abandoning Excel entirely. In many workplaces, Excel remains the default tool for data sharing and quick checks, while R is used for the more demanding analytical tasks. You might export results from R into Excel for colleagues to view, or import Excel files into R for more sophisticated analysis. Rather than replacing Excel, R complements it, adding depth, efficiency, and power to your analytical skill set.
+
+### What is RStudio?
+
+While R is the programming language and computational engine that performs the analysis, RStudio is the interface that makes working with R more intuitive, organised, and efficient. At its simplest:
+
+-   R is like the operating system on your phone (e.g. iOS or Android) — it’s the engine that actually does the calculations and runs the code.
+-   RStudio is like the phone itself — the screen, keyboard, and interface that make using R easy and comfortable.
+
+<center><img src="images/Chapter%207/Phone.png" width="400"/></center>
+
+<br>
+
+RStudio was developed to make the process of coding in R more approachable, especially for those who may be new to programming. Without RStudio’s Integrated development environment (IDE), using R would involve writing code in a basic text editor and running it through the R console, an approach that is functional but lacks structure and ease of navigation. RStudio addresses this by combining a code editor, console, file manager, plotting tools, and help system into a single, unified workspace. This integration allows you to work more productively, keep track of your files and scripts, and view outputs such as plots or model results without switching between multiple programs.
+
+In essence, RStudio provides a professional and efficient working environment for anyone using R, from beginners to experienced data scientists. It is designed to streamline your workflow, reduce the friction of managing code and outputs, and make R more accessible without sacrificing power or flexibility.
+
+### Installation
+
+You will need to install **both** R and RStudio. Depending on your operating system, the instructions will be different:
+
+#### Installing R (**Do this first**)
+
+::: panel-tabset
+### Windows
+
+1.  Open your web browser and go to the <a href="https://cran.r-project.org/" target="_blank" rel="noopener"> R Projectwebsite</a>.
+2.  Under the "Download and Install R" section, click on the "Download R for Windows" Link
+3.  On the next page, click "base" to download the base distribution of R.
+4.  Click on the "Download R x.x.x for Windows" link (the version number will vary).
+5.  Once the file has been downloaded, run the `.exe` file (by default it will go to your 'My Downloads' folder and will look something like R-x.x.x-win.exe)
+6.  Click through the installation wizard to finish installation.
+
+### macOS
+
+1.  Open your web browser and go to the <a href="https://cran.r-project.org/" target="_blank" rel="noopener"> R Projectwebsite</a>.
+2.  Under the "Download and Install R" section, click on the "Download R for macOS" Link
+3.  On the next page, click the “R-4.x.x.pkg” link (where “x.x” will be the version number) to download the R installer for macOS. This will download a .pkg file.
+4.  After downloading the .pkg file, open it to start the installation process.
+5.  Follow the on-screen instructions in the installation wizard
+:::
+
+#### Installing RStudio (**Do this second**)
+
+::: panel-tabset
+### Windows
+
+1.  Open your web browser and go to the <a href="https://posit.co/download/rstudio-desktop/" target="_blank" rel="noopener"> RStudio website</a>.
+2.  Under the “RStudio Desktop” section, click on the Download RStudio button.
+3.  You will be directed to a page where you can select the version of RStudio for your operating system. Select RStudio for Windows.
+4.  Click on the Download RStudio Desktop button to download the installer for Windows. It will download a .exe file.
+5.  After downloading the .exe file, open the executable file, and follow the instructions in the installation wizard.
+
+### macOS
+
+1.  Open your web browser and go to the <a href="https://posit.co/download/rstudio-desktop/" target="_blank" rel="noopener"> RStudio website</a>.
+2.  Scroll down to the “RStudio Desktop” section and click Download RStudio.
+3.  On the next page, under RStudio Desktop for macOS, click Download RStudio Desktop (this will download the .dmg file).
+4.  After the .dmg file has downloaded, locate the file and double-click it to open the disk image.
+5.  A new window will appear showing the RStudio application icon. Drag the RStudio icon into your Applications folder.
+6.  Once the application is copied to the Applications folder, you can close the disk image window.
+:::
+
+## RStudio Interface Tour
+
+When you first open RStudio, you will see that the window is divided into four main panes (if you only see 3 panes, go to File \> New File \> R Script). Each pane serves a distinct purpose and can be customised to suit your workflow. Understanding these panes is the first step to working efficiently in RStudio.
+
+![](images/Chapter%207/02.RStudio%20Interface.png)
+
+### The Console (bottom left)
+
+The Console is the beating heart of RStudio—it’s where R actually executes commands. When you type something like:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+2+2
+```
+:::
+
+and press Enter, the Console evaluates it and returns the answer (in this case "4"). Think of the Console as a direct conversation with R: you speak in R code, and R answers back.
+
+-   Good for quick calculations or testing out snippets of code.
+-   Not ideal for saving longer scripts—once you close RStudio, your Console history may be lost.
+
+### The Source Editor (top left)
+
+While the Console is for “chatting” with R, the Source Editor is for writing full documents. This is where you type and save your scripts (.R files) or notebooks (.Rmd files).
+
+Key features:
+
+-   Run Code: You can highlight a line (or multiple lines) and press Ctrl+Enter (Windows/Linux) or Cmd+Enter (Mac) to send it to the Console for execution.
+-   Scripts are Saved: Unlike Console commands, everything in the Editor can be saved and reused. This makes it the best place for reproducible analysis.
+
+### The Environment / History Pane (top right)
+
+This pane helps you keep track of what’s happening “behind the scenes.”
+
+-   Environment tab: Shows all the objects (data frames, vectors, functions) currently stored in memory. You can think of this as your backpack, everything you’ve created or loaded in this session lives here.
+-   History tab: Lists all the commands you’ve run, even those typed directly into the Console.
+
+This pane is invaluable for staying organized and avoiding the classic beginner question: “*Wait, where did my dataset go*?”
+
+### The Output Pane (Bottom-Right)
+
+This multipurpose pane is like a Swiss Army knife, switching roles depending on which tab you select:
+
+-   **Files:** A file browser - lets you navigate folders and open files without leaving RStudio.
+-   **Plots:** Displays the visualisations you create with `plot()`, `ggplot()`, and other tools.
+-   **Packages:** Lists installed packages and allows you to check which are currently loaded.
+-   **Help:** A searchable manual for R functions. Try typing ?mean in the Console - this tab will show the documentation.
+-   **Viewer:** Displays rendered outputs such as interactive plots, Shiny apps, or R Markdown HTML documents.
+
+## Installing and Loading Packages
+
+When you first download and install R onto your computer, think of it like buying a brand-new smartphone. Out of the box, the phone comes with a handful of useful apps already installed: a calculator, messaging, and a web browser. Similarly, R comes with a base set of functions ready to use immediately: functions for arithmetic, working with vectors and data frames, or producing simple plots. These built-in tools are powerful, but sooner or later you’ll want to extend what your R phone can do.
+
+On your smartphone, if you want to stream music, you open the App Store and download Spotify. If you want to edit photos, you might download Instagram. Each app extends the base functionality of the phone. In the world of R, these add-ons are called packages.
+
+![](images/Chapter%207/03.Phone%20and%20Apps.png)
+
+<center>**Image Source:** Statistical Inference via Data Science: A modern dive in R and the Tidyverse (2025)</center>
+
+<br>
+
+Packages are collections of R functions, data, and documentation bundled together to solve specific problems. For example:
+
+-   `ggplot2` adds advanced data visualization tools.
+-   `dplyr` makes data wrangling faster and easier.
+-   `lme4` allows you to fit complex mixed-effects models.
+
+Just as there are millions of apps in the App Store, there are thousands of packages available for R, hosted on the Comprehensive R Archive Network (CRAN) and other repositories.
+
+### Installing a Package
+
+Installing a package is like downloading an app to your phone. You only need to do this once. On a smartphone, once you have downloaded Spotify, the app is stored on your device until you delete it. Likewise, when you run:
+
+::: callout-note
+### R Code
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages("ggplot2")
+```
+:::
+
+R connects to CRAN (the App Store equivalent) and downloads the files it needs. These files are then stored in your R library folder. You do not need to install ggplot2 again unless you remove it or want to update it.
+
+A useful point to emphasise to learners is that “install” is about making the tool available on your computer, not about actually starting to use it. Installing Spotify doesn’t mean music starts playing, it just means the app is on your phone.
+
+### Loading a Package
+
+Now imagine you restart your phone. Even though Spotify is installed, it doesn’t automatically open itself every time the phone powers on. If you want to listen to music, you need to tap the Spotify icon. In R, this step is accomplished with the `library()` function:
+
+::: callout-note
+### R Code
+
+```{r, eval=FALSE, echo=TRUE}
+library(ggplot2)
+```
+:::
+
+This command tells R to load the package into the current session so its functions are available. Until you run library(ggplot2), R doesn’t “know” about the package: you can’t call ggplot() or other functions it contains. This is like your phone not be able to play music until you’ve loaded your Spotify app.
+
+The key distinction:
+
+-   `install.packages()` = downloading the app once.
+-   `library()` = opening the app each time you want to use it.
+
+This means if you close R or restart your computer, the package is still installed but not yet loaded. You must run library(ggplot2) again in your new session, just like you would open the Spotify app each time you want to play music.
+
+## Functions and Arguments
+
+One of the most important ideas to understand early in R is that almost everything you do involves functions. Functions are the verbs of the R language: they perform actions. You supply arguments to a function, which are the nouns - the data or instructions the function uses to do its job.
+
+### Functions: Action Words
+
+In everyday life, think of functions as commands like bake, drive, or add. Each one requires some input to make sense. You can’t just say “bake” without specifying what to bake. Similarly, in R, functions require input.
+
+For example, the function `sum()` calculates the total of a set of numbers:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+sum(2, 4, 6)
+```
+:::
+
+Here, `sum()` is the function, and the numbers 2, 4, 6 are the arguments.
+
+### Arguments: The Details
+
+Arguments are the details you give to the function so it knows exactly what to do. Some arguments are required, while others are optional.
+
+For example:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+round(3.14159, digits = 2)
+```
+:::
+
+-   The first argument (3.14159) is the number to round.
+-   The second argument (digits = 2) tells R how many decimal places to keep.
+
+If you pass an argument that doesn’t make sense into a function, R will return an error. For example:
+
+::: callout-note
+### R Code
+
+```{r, error=TRUE, echo=TRUE}
+round(3.14159, digits = "apple")
+```
+:::
+
+### Named vs Unnamed Arguments
+
+Arguments can be provided in two ways **named** or **unnamed**. In the example below we will use the `seq` function, which generates a sequence of numbers by entering in 3 arguments:
+
+-   what number we are starting `from`
+-   what number are we going `to`
+-   how much are we increasing `by`
+
+The first way is a **named** argument (by keyword). You specify the keywords within the function (i.e. `from`, `to` and `by`). Beginners are encouraged to use named arguments until they are confident with the order of positional arguments.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+seq(from = 1, to = 5, by = 1)
+```
+:::
+
+The second way is with **unnamed** (by position). Here, R interprets 1 as the starting number, 5 as the ending number, and 1 as the step size. You need to know the position of the arguments to use this method. In the code below, the three numbers (1,5,1) represent the arguments (`from`,`to`,`by`).
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+seq(1, 5, 1)
+```
+:::
+
+### Functions inside Functions
+
+Functions can also be nested, where the output of one becomes the input of another:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+sqrt(sum(4, 5, 6))
+```
+:::
+
+And you can keep nested arguments inside more and more functions. For example:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+round(sqrt(sum(4, 5, 6)), digits = 2)
+```
+:::
+
+### The Native Pipe Operator
+
+In the previous section, we saw how functions can be nested, the output of one function becomes the input of another. R worked through those functions to receive an output:
+
+1.  R first calculated the sum of 4, 5 and 6
+2.  R then took the square root
+3.  Finally, R rounded the answer to 2 decimal places.
+
+In newer versions of R, there is something called a native pipe operator. The pipe lets you express the same logic in a step-by-step sequence, reading from left to right. Instead of wrapping one function inside another, you “pipe” the result forward.
+
+**Note:** you might need to enable this in your settings:
+
+> click on Tools \> Global Options \> Code \> make sure ‘Use native pipe operator’ is ticked
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+sum(4, 5, 6) |> 
+  sqrt() |> 
+  round(digits = 2)
+
+```
+:::
+
+## Entering Data Manually
+
+When working with R, most of the time you’ll import datasets from a file (for example, a CSV or Excel sheet). However, in the early stages of learning, it’s useful to practice by entering data manually. This helps you understand how R stores information and how to create your own data frames.
+
+Let’s consider the dataset below, which records annual income (in thousands of dollars) and years of education for five individuals:
+
+```{r}
+data.frame(
+  Income = c(20,32.4,40,1.1,26),
+  Education = c(14,14,16,13,13)
+) |> 
+  rename("Income (per $1000)" = Income,
+         "Years of Education" = Education) |> 
+  regulartable() |> 
+  align(align = "center") |> 
+  autofit()
+```
+
+### Creating vectors
+
+The simplest way to enter this data is by creating vectors. A vector is an ordered list of values of the same type (all numbers, all characters, etc.). Here, we will create a vector for income. We can do this with the `c()` function, which stands for ‘combine.’
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+c(20, 32.4, 40, 1.1, 26)
+
+```
+:::
+
+This is useful for a quick calculation, but if we wanted to save this vector (so that we can use it later) we will need to store it as an object. To do this, we need to assign it to a name using the assignment operator `<-`. In the code below I am assigning these five numbers to an object that I will call `income`.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income <- c(20, 32.4, 40, 1.1, 26)
+
+```
+:::
+
+Note that when you assign something a name and run the code, no output appears. This is because the object is now stored in your global environment (have a look at the global environment pane in the top-right). It will be stored there until we ‘call’ upon it. For example:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income
+```
+:::
+
+Let’s do the same for the second variable as well:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+education <- c(14, 14, 16, 13, 13)
+```
+:::
+
+Check to make sure you now have two vectors (income and education) stored in your environment.
+
+### Creating a data frame
+
+A data frame is R’s way of storing tabular data, much like a spreadsheet. Each column is a vector (all of the same type: numeric, character, logical, etc.), and each row is an observation. In our example:
+
+-   The income vector is one column.
+-   The education vector is another column.
+-   Together, they make a two-column table.
+
+We can combine our two vectors into a data frame using the `data.frame()` function (assumming you have created two objects and assigned them to your global environment as `income` and `education`.)
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+data.frame(
+  income,
+  education
+)
+```
+:::
+
+**Note:** in the example above, we did not assign our data frame with a name, so the output is printed directly into the console. Let’s now assign it a name so that we can use it in a meaningful way.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data <- data.frame(
+  income,
+  education
+)
+
+```
+:::
+
+If we look at the Environment pane now, we should see:
+
+<center>![](images/Chapter%207/04.%20GlobalEnvi.png)</center>
+
+This tells us the data frame has:
+
+-   5 observations (rows).
+-   2 variables (columns).
+
+Clicking on the object name (income_data) in the Environment pane will open the Data Viewer in RStudio, which displays the data frame in a spreadsheet-like format.
+
+<center>![](images/Chapter%207/06.%20Data.png)</center>
+
+<br>
+
+### Inspecting the data frame
+
+Now that we’ve created our first data frame, it’s important to learn how to look inside it. When working with larger datasets, it’s easy to lose track of what variables you have, how many rows are included, and what types of data each column contains.
+
+R provides several functions for inspecting data, but one of the most versatile is `str()`, short for structure, which tells us:
+
+-   The number of observations (rows).
+-   The number of variables (columns).
+-   The names of the variables.
+-   The data type of each variable (numeric, character, factor, etc.).
+-   A preview of the first few values.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+str(income_data)
+
+```
+:::
+
+## Applying functions to data frames
+
+### Base R functions (traditional methods)
+
+In base R, we directly call functions and pass columns as arguments. To access a variable inside a data frame, we use the `$` operator. For example, in the section above we used `str()` to see that the `income_data` has two variables: `income` and `education`. By calling **income_data\$income**, we're basically saying *take the income variablle from the income_data data frame*. We can then pass this into different functions, for example:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+mean(income_data$income)
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+median(income_data$income)
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+sd(income_data$income)
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+min(income_data$income)
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+max(income_data$income)
+
+```
+:::
+
+### Using the Native Pipe
+
+The pipe operator allows us to read code from left to right, almost like a recipe: \> *“take this data, then apply this function.”*
+
+Here’s the same analysis from above with pipes:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data$income |> mean()
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data$income |> median()
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data$income |> sd()
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data$income |> min()
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data$income |> max()
+
+```
+:::
+
+### Using packages
+
+Similar to Excel's 'Data Analysis Tool Kit,' R has a lot of packages that can make our lives much easier. One of the most widely used packages for data manipulation is `dplyr`. This package is part of the tidyverse collection and is designed to make working with data frames simple, consistent, and highly readable.
+
+To use `dplyr`, you first need to install it (just once per computer) and then load it:
+
+::: callout-note
+### R Code
+
+```{r, eval = FALSE, echo=TRUE}
+install.packages("dplyr")
+library(dplyr)
+
+```
+:::
+
+While base R requires you to manually extract vectors with `$` or use `with()`, dplyr is designed to work directly on data frames. Its functions pair naturally with the pipe `|>`, allowing you to write code that reads almost like English.
+
+For example, we could use the `summarise()` function to calculate the mean of income in our income_data dataset:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data |> 
+  summarise(mean_income = mean(income))
+
+
+```
+:::
+
+One of the biggest advantages of dplyr is how easy it is to calculate several summaries in a single step:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data |> 
+  summarise(
+    mean   = mean(income),
+    median = median(income),
+    sd     = sd(income),
+    min    = min(income),
+    max    = max(income)
+  )
+
+```
+:::
+
+In the previous section we used `summarise()` to collapse the dataset down to single values such as the mean or median. Another approach is to use `mutate()`, which adds new columns to the data frame while keeping the original rows intact.
+
+This is less common for summaries (since we usually don’t need the row detail), but it’s useful to see the difference.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data |> 
+  mutate(
+    mean   = mean(income),
+    median = median(income)
+  )
+
+
+```
+:::
+
+### Creating New Variables with `mutate()`
+
+While `mutate()` can be used to attach summary statistics, its real power is in creating new variables derived from existing ones. This keeps the original data intact while extending it with additional information.
+
+Suppose our dataset stores income in thousands of dollars, but we want a new column showing income in actual dollars.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data |> 
+  mutate(income_dollars = income * 1000)
+
+```
+:::
+
+We can also create multiple new variables in the same `mutate()` call. For example:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data |> 
+  mutate(
+    income_dollars = income * 1000,
+    income_per_years = income / education
+  )
+
+```
+:::
+
+### Combining `mutate()` and `summarise()`
+
+One of the strengths of the pipe workflow is that you can apply several transformations in sequence, each building on the previous step. Let’s create two new variables with `mutate()`, then compute summary statistics with `summarise()`.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+income_data |> 
+  mutate(income_dollars = income * 1000) |> 
+  mutate(income_per_years = income_dollars / education) |> 
+  summarise(
+    mean = mean(income_per_years),
+    sd   = sd(income_per_years),
+  )
+
+
+```
+:::
+
+We can read the above pipeline in plain English as:
+
+-   Start with the income_data data frame, then
+-   Create a new variable called income_dollars by taking income variable and multiply it by 1000, then
+-   Create a new variable called income_per_years by taking the income_dollars variable and dividing by the education variable, then
+-   Compute the mean and standard deviation for income_per_years
+
+## Creating Factor Variables
+
+Up to this point, we have worked with numeric data such as income and years of education. However, in many situations, data is categorical—representing groups, categories, or yes/no outcomes rather than continuous numbers. In R, categorical variables are stored as factors. Factors are useful because they carry not just the raw labels (e.g., "Yes", "No"), but also information about the possible categories, known as levels.
+
+Let’s imagine that, in addition to income and education, we collected two categorical variables for each of the same 5 participants:
+
+-   `Status`: "Employed" or "Unemployed"
+-   `Sex`: “Male” or “Female”
+
+We can create these as factors and then attach them to our existing data frame, or to a new data frame. In the code example below, I create a new data frame called income_data2.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+# This creates two new variables
+Status <- c("Employed", "Employed", "Unemployed", "Unemployed", "Employed")
+Sex <- c("Male", "Female", "Male", "Female", "Male")
+
+# This adds those two new variables to the current data and creates a new data frame
+income_data2 <- income_data |> 
+  mutate(
+    Status = Status,
+    Sex = Sex
+  )
+
+# This allows us to view the new data
+str(income_data2)
+
+
+```
+:::
+
+### Exploring Factors with `table()`
+
+Now that our income_data dataset includes categorical variables (Status and Sex), we can explore how they relate to one another. One of the simplest and most useful tools for this is the `table()` function.
+
+If we call `table()` on a single factor, R will show us the counts of each category. This tells us there are 2 females and 3 males in the dataset.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+table(income_data2$Sex)
+
+```
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+table(income_data2$Status)
+```
+:::
+
+If we supply two factors, `table()` produces a contingency table: a cross-tabulation showing how the categories overlap.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+table(income_data2$Status, income_data2$Sex)
+```
+:::
+
+### From Counts to Probabilities
+
+The `table()` function gives raw counts, but we can easily convert them into relative frequencies (probabilities) using `prop.table()`.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+prop.table(table(income_data2$Status, income_data2$Sex))
+
+```
+:::
+
+Here:
+
+-   The probability of randomly selecting an employed male is 0.4 (40%).
+-   The probability of selecting an unemployed female is 0.2 (20%).
+-   All cells sum to 1, as probabilities should.
+
+### Conditional Probabilities
+
+We can also calculate conditional probabilities, for example, the probability of being employed given someone is male, by including the **margin** argument:
+
+-   margin = 1 → proportions within rows.
+-   margin = 2 → proportions within columns.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+prop.table(table(income_data2$Status, income_data2$Sex), margin = 1)
+
+```
+
+-   Among employed, 33% are female and 67% male.
+-   Among unemployed, 50% are female and 50% male.
+:::
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+prop.table(table(income_data2$Status, income_data2$Sex), margin = 2)
+
+```
+
+-   Among females, 50% are employed and 50% unemployed.
+-   Among males, 67% are employed and 33% unemployed.
+:::
+
+## Visualising Data with `ggplot2`
+
+One of the most effective ways to understand your data is through visualisation. While functions such as summary() or table() provide numerical insights, a well-chosen plot can make relationships and patterns instantly clear. In R, the most widely used package for data visualisation is ggplot2, which is part of the tidyverse. It implements the “grammar of graphics,” where plots are constructed by layering components: you start with a dataset, map variables to visual aesthetics such as axes or colours, and then add geometric layers (geoms) such as points, boxes, or bars.
+
+<center>![](images/Chapter%207/07.ggplot.png)</center>
+
+<br>
+
+The general structure of a ggplot2 command is:
+
+::: callout-note
+### R Code
+
+```{r, eval=FALSE, echo=TRUE}
+ggplot(data = <DATA>, mapping = aes(<AESTHETICS>)) +
+  <GEOM_FUNCTION>() +
+  <other layers>
+```
+
+Here, <DATA> is your data frame, <AESTHETICS> define how variables are represented visually (e.g., x-axis, y-axis, colour, fill), and <GEOM_FUNCTION> specifies the type of plot. Additional layers such as labels, scales, or themes can then be added with the + operator.
+:::
+
+Let’s use our income_data dataset, which now contains numeric variables (income and education) as well as categorical variables (Status and Sex). We will explore three different plots: a scatterplot, a boxplot, and a stacked bar chart.
+
+### Scatterplots
+
+Scatterplots are ideal for showing the relationship between two numeric variables. Here, we plot education on the x-axis and income on the y-axis.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+library(ggplot2)
+
+ggplot(data = income_data2,
+       aes(x = education, y = income)) +
+  geom_point()
+```
+:::
+
+We can add a layer to our current code, using the + operator, to add new elements. For example:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+ggplot(data = income_data2,
+       aes(x = education, y = income)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+```
+:::
+
+### Boxplot
+
+To compare a numeric variable across categories, a boxplot is more effective. Here, we compare income between males and females. Note here that I added in a few extra layers.
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+ggplot(data = income_data2,
+       aes(x = Sex, y = income)) +
+  geom_boxplot()
+```
+:::
+
+Within each `geom` function, we can add additional arguments. For example, suppose we wanted to **fill** the box plots with colors. In this case we can:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+ggplot(data = income_data2,
+       aes(x = Sex, y = income)) +
+  geom_boxplot(aes(fill = Sex))
+```
+:::
+
+### Bar charts
+
+Here’s a few examples of bar charts. Can you try to break the code into their different layers and explain them in plain English?
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+ggplot(data = income_data2,
+       aes(x = Sex, fill = Status)) +
+  geom_bar()
+```
+:::
+
+Lets create another version of this plot that rescales the bars to 100%, making it easy to compare proportions across groups. For example, you can directly interpret 𝑃(Employed ∣ Male) versus 𝑃(Employed ∣ Female).
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+ggplot(data = income_data2,
+       aes(x = Sex, fill = Status)) +
+  geom_bar(position = 'fill')
+```
+:::
+
+## Importing Data into R
+
+So far, we have created small datasets by typing values directly into R. This is excellent for learning, but in practice most datasets come from external files - for example, CSV spreadsheets, Excel workbooks, or databases. Being able to import data into R is the essential first step in any real analysis. The most common format for data exchange is the CSV file (comma-separated values). These are plain text files where each row is an observation and each column is separated by commas. They are lightweight, portable, and can be opened in Excel, Google Sheets, or even a text editor.
+
+### Working Directory
+
+Before we learn how to import data into R, it’s important to understand the idea of the working directory. The working directory is the “default folder” where R looks for files to read and where it saves files you write.
+
+You can see your current working directory with the `getwd()` function. For example, in creating this ETC1000 eBook, I set my working directory to be:
+
+::: callout-note
+### R Code
+
+```{r, echo=TRUE}
+getwd()
+```
+
+This tells me that my working directory for this project is. By default R usually sets your working directory as your **Documents** folder.
+:::
+
+### Using RStudio Projects
+
+A more reliable and professional way to manage working directories is to use RStudio Projects. When you create a new Project in RStudio, the project folder automatically becomes your working directory whenever the project is opened. This means you don’t have to keep changing directories manually or worrying about paths breaking when you share your code with others.
+
+To create a project:
+
+1.  Go to File → New Project.
+2.  Choose New Directory
+3.  Choose New Project
+4.  Give it a directory name and choose where this folder will be placed.
+
+Let’s create a Folder (click on the + Folder button in this pane) and call it “Data.” This creates a folder directly in the working directory. We can see it in the RStudio, but also if you navigated to this location on your device you would see it as well.
+
+### 9.3 Moving files to your Project Folders
+
+Download the “Lecture7_data.csv” file using the link below.
+
+<center>
+
+```{r}
+library(downloadthis)
+download_file(
+  path = "data/Lecture7_data.csv",
+  button_label = "Lecture7_data",
+  button_type = 'success'
+)
+```
+
+</center>
+
+<br>
+
+Afterwards, locate this file (probably in your **Downloads** folder) and copy it into the newly created “Data” folder in your R project.
+
+We can use the `read.csv()` function to import the data into our environment.
+
+Minh will demonstrate (during the lecture) how to use this data to replicate some of the tasks we have already completed thus far (and a few new ones). If you would like to try it yourself before the lecture, the tasks are:
+
+1.  Inspect the data (using the str function)
+2.  Obtaining descriptive statistics for Job.Satisfaction (mean, median, sd, min, max)
+3.  Creating a new variable, called Z, that divides Job.Satisfaction by Years.at.company
+4.  Finding the correlation (using the cor function) between Income and Years.at.company
+5.  Building a linear model (using the lm function) for Z based on Income
+6.  Creating plots
+    -   Scatter plot (Z and Income)
+    -   Boxplot (Z and Position)
+
+::: {.callout-note collapse="true"}
+## Click for Solutions
+
+```{r}
+data <- read.csv("data/Lecture7_data.csv")
+```
+
+```{r, echo=TRUE, eval=FALSE}
+# Load the Data
+data <- read.csv("Lecture7_data.csv")
+```
+
+```{r, echo=TRUE}
+# Descriptive Statistics
+data |> 
+  summarise(
+    mean = mean(Job.Satisfaction),
+    median = median(Job.Satisfaction),
+    sd = sd(Job.Satisfaction),
+    min = min(Job.Satisfaction),
+    max = max(Job.Satisfaction)
+  )
+```
+
+```{r, echo=TRUE}
+# Create new variable
+data2 <- 
+  data |> 
+  mutate(Z = Job.Satisfaction / Years.at.company)
+
+```
+
+```{r, echo=TRUE}
+# Correlation
+data2 |> 
+  summarise(correlation = cor(Income, Years.at.company))
+```
+
+```{r, echo=TRUE}
+# Linear Regression
+satisfaction_model <- 
+  lm(
+  formula = Z ~ Income,
+  data = data2
+)
+
+coef(satisfaction_model) |> round(5) # Z = 7.64370 - 0.00005(Income)
+```
+
+```{r, echo=TRUE}
+# Create scatterplot
+data2 |> 
+  ggplot(aes(x = Income, y = Z)) + 
+  geom_point() +
+  geom_smooth(method = 'lm', se = F) +
+  scale_x_continuous(
+    limits = c(40000,120000),
+    breaks = seq(40000, 120000, by = 20000))
+```
+
+```{r, echo=TRUE}
+# Optional (and not recommend without a valid reason): 
+# See what happens if we filter out the outlier
+data2 |> 
+  filter(Z < 10) |> 
+  ggplot(aes(x = Income, y = Z)) + 
+  geom_point() +
+  geom_smooth(method = 'lm', se = F) +
+  scale_x_continuous(
+    limits = c(40000,120000),
+    breaks = seq(40000, 120000, by = 20000))
+```
+
+```{r, echo=TRUE}
+# Create boxplot
+data2 |> 
+  ggplot(aes(x = Position, y = Z)) +
+  geom_boxplot()
+```
+:::
+
+## Summary
+
+This chapter introduced R and RStudio as powerful, modern tools for data analysis that complement, rather than replace, Excel. You learned what R is, why it is widely used for statistical computing, and how RStudio provides a structured and user-friendly environment for writing, running, and managing R code. The chapter guided you through installing both R and RStudio, navigating the RStudio interface, and understanding the roles of its key panes.
+
+You were introduced to core programming ideas in R, including functions, arguments, errors, and the use of the native pipe operator to write clear, step-by-step code. You learned how to enter data manually, create vectors and data frames, inspect data structures, and apply functions to variables using both base R and tidyverse tools such as dplyr. The chapter also covered creating new variables, summarising data, and working with categorical variables (factors), including contingency tables and probabilities.
+
+Finally, you explored data visualisation with ggplot2, learning how to build scatterplots, boxplots, and bar charts using the grammar of graphics. The chapter concluded by introducing good data-management practices, including working directories, RStudio Projects, and importing data from external files such as CSVs. Together, these skills form the foundation for reproducible, efficient, and transparent data analysis in the chapters that follow.

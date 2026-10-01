@@ -1,0 +1,627 @@
+---
+title: "Between Subjects ANOVA"
+format: html
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(gt)
+```
+
+
+## Introduction
+
+In the previous chapter, we used hypothesis tests to compare a sample result with a claim about a population. We also considered the independent-samples $t$-test, which compares the population means of two separate groups.
+
+Many research questions involve more than two groups. A university might compare assessment scores across three teaching methods. A business might compare average sales across four store layouts. A medical study might compare outcomes for a control group and several treatments.
+
+It would be possible to compare every pair of groups using separate $t$-tests. However, the number of comparisons grows quickly, and conducting many tests increases the chance of finding an apparently significant difference simply by chance. **Analysis of variance**, usually abbreviated to **ANOVA**, provides a single overall test of whether the population means differ.
+
+This chapter introduces two forms of ANOVA:
+
+1. **one-way ANOVA**, which compares groups formed by one categorical explanatory variable; and
+2. **factorial ANOVA**, which studies two or more categorical explanatory variables at the same time.
+
+Only **between-subjects designs** are considered in this chapter. Each participant, household, product or other observational unit appears in only one group or experimental condition.
+
+## From the independent-samples $t$-test to ANOVA
+
+Suppose we want to compare the mean assessment scores of students who experienced two different teaching methods. The null hypothesis for an independent-samples $t$-test is
+
+$$
+H_0:\mu_1=\mu_2,
+$$
+
+where $\mu_1$ and $\mu_2$ are the two population means. The alternative hypothesis is
+
+$$
+H_1:\mu_1\neq\mu_2.
+$$
+
+Now suppose there are three teaching methods. The question is no longer whether two population means are equal, but whether all three population means are equal:
+
+$$
+H_0:\mu_1=\mu_2=\mu_3.
+$$
+
+The alternative is that the population means are not all equal:
+
+$$
+H_1:\text{at least one population mean differs.}
+$$
+
+The alternative does not state that every mean differs from every other mean. It is satisfied if even one population mean is different.
+
+### Why not conduct several $t$-tests?
+
+With $k$ groups, the number of possible pairwise comparisons is
+
+$$
+\frac{k(k-1)}{2}.
+$$
+
+For example, four groups produce
+
+$$
+\frac{4(4-1)}{2}=6
+$$
+
+pairwise comparisons. If each comparison is conducted at the 5% significance level, the overall probability of making at least one Type I error across the collection of tests can be much greater than 5%.
+
+As a rough illustration, if six tests were independent, the probability of at least one false positive when every null hypothesis was true would be
+
+$$
+1-(1-0.05)^6\approx 0.265.
+$$
+
+The pairwise tests are not generally independent, so this calculation is only an illustration. Nevertheless, it shows why repeatedly applying unadjusted $t$-tests is not a satisfactory general strategy.
+
+ANOVA begins with one **omnibus test**. This test asks whether there is evidence of any difference among the population means while maintaining one overall significance level.
+
+::: {.callout-important}
+## One overall question
+
+ANOVA first asks:
+
+> Is there evidence that any of the population means differ?
+
+If the answer is yes, follow-up comparisons can then investigate where the differences appear.
+:::
+
+## One-way between-subjects ANOVA
+
+A **one-way ANOVA** is used when there is:
+
+- one categorical explanatory variable, called a **factor**;
+- three or more independent groups, called the **levels** of the factor; and
+- one quantitative outcome variable.
+
+For example, consider a study comparing assessment scores across three teaching methods.
+
+| Role | Variable | Values |
+|---|---|---|
+| Factor | Teaching method | Lecture, online, workshop |
+| Outcome | Assessment score | A numerical score from 0 to 100 |
+
+: Variables in a one-way ANOVA study {#tbl-one-way-variables}
+
+The word *one-way* refers to the presence of one factor. It does not refer to a one-sided hypothesis test.
+
+The term *between subjects* means that different students appear in the three teaching-method groups. A student is not measured under all three methods.
+
+### A worked example
+
+Suppose 30 students are randomly allocated to one of three teaching methods. Ten students are placed in each group. Their assessment scores are summarised in @tbl-one-way-descriptives.
+
+| Teaching method | Sample size | Mean score | Standard deviation |
+|---|---:|---:|---:|
+| Lecture | 10 | 68.00 | 7.33 |
+| Online | 10 | 74.00 | 7.33 |
+| Workshop | 10 | 81.00 | 7.33 |
+
+: Descriptive statistics for the teaching-method example {#tbl-one-way-descriptives}
+
+The sample means are not identical. The workshop group has the highest mean, while the lecture group has the lowest. However, sample means naturally vary from sample to sample, even when the population means are equal. We therefore need to judge whether the observed differences are large relative to the ordinary variation among students receiving the same method.
+
+This is the central idea of ANOVA.
+
+## Two sources of variation
+
+The name *analysis of variance* can initially seem strange because the research question concerns means. ANOVA tests differences among means by comparing two sources of variation:
+
+1. **between-group variation**: how far the group means are from the grand mean; and
+2. **within-group variation**: how far individual observations are from their own group mean.
+
+The **grand mean** is the mean across all observations. In the teaching-method example, because the groups have equal sizes,
+
+$$
+\bar{x}_{\text{grand}}
+=\frac{68+74+81}{3}
+=74.33.
+$$
+
+### Between-group variation
+
+The group means are 68, 74 and 81. If the teaching method has no relationship with assessment performance, we would not expect these means to be very far apart beyond what sampling variation might produce.
+
+Between-group variation measures the weighted distances between the group means and the grand mean. It is represented by the **between-group sum of squares**:
+
+$$
+SS_{\text{between}}
+=\sum_{j=1}^{k}n_j(\bar{x}_j-\bar{x}_{\text{grand}})^2,
+$$
+
+where:
+
+- $k$ is the number of groups;
+- $n_j$ is the sample size in group $j$;
+- $\bar{x}_j$ is the sample mean for group $j$; and
+- $\bar{x}_{\text{grand}}$ is the grand mean.
+
+Large differences among the group means produce a large value of $SS_{\text{between}}$.
+
+### Within-group variation
+
+Students within the same teaching-method group do not all receive exactly the same score. They differ in prior knowledge, study time, motivation and many other ways. Measurement error and random variation may also contribute.
+
+Within-group variation measures the distances between individual scores and their own group mean. It is represented by the **within-group sum of squares**:
+
+$$
+SS_{\text{within}}
+=\sum_{j=1}^{k}\sum_{i=1}^{n_j}(x_{ij}-\bar{x}_j)^2.
+$$
+
+This is also called the **error sum of squares** or **residual sum of squares**. It describes variation that is not explained by membership of the groups in the model.
+
+### Total variation
+
+The total variation in the outcome can be separated into the two components:
+
+$$
+SS_{\text{total}}=SS_{\text{between}}+SS_{\text{within}}.
+$$
+
+This decomposition is the foundation of ANOVA.
+
+```{mermaid}
+flowchart TD
+    T["Total variation in scores"] --> B["Between-group variation"]
+    T --> W["Within-group variation"]
+    B --> E["Variation associated with teaching method"]
+    W --> U["Unexplained individual variation"]
+```
+
+::: {.callout-tip}
+## Signal compared with noise
+
+A useful way to think about ANOVA is:
+
+- between-group variation represents the potential **signal**; and
+- within-group variation represents the **noise** against which that signal must be judged.
+
+Large differences among group means are more convincing when students within each group have relatively similar scores.
+:::
+
+## The $F$-statistic
+
+Sums of squares increase as the sample size or number of groups increases. To make the two sources of variation comparable, each sum of squares is divided by its degrees of freedom.
+
+For a one-way ANOVA with $k$ groups and $N$ total observations:
+
+$$
+df_{\text{between}}=k-1
+$$
+
+and
+
+$$
+df_{\text{within}}=N-k.
+$$
+
+The resulting quantities are called **mean squares**:
+
+$$
+MS_{\text{between}}
+=\frac{SS_{\text{between}}}{k-1}
+$$
+
+and
+
+$$
+MS_{\text{within}}
+=\frac{SS_{\text{within}}}{N-k}.
+$$
+
+The ANOVA test statistic is the ratio
+
+$$
+F=\frac{MS_{\text{between}}}{MS_{\text{within}}}.
+$$
+
+If the null hypothesis is true, both mean squares estimate the same underlying population variance, so an $F$-statistic near 1 is plausible. When the group means are far apart relative to the variation within the groups, the numerator becomes large and the $F$-statistic moves above 1.
+
+An $F$-statistic cannot be negative because it is a ratio of quantities based on squared deviations. Evidence against the null hypothesis lies in the upper tail of an $F$-distribution.
+
+### The ANOVA table
+
+The calculations for the teaching-method example are summarised in @tbl-one-way-anova.
+
+| Source | Sum of squares | Degrees of freedom | Mean square | $F$ | $p$-value |
+|---|---:|---:|---:|---:|---:|
+| Teaching method | 846.7 | 2 | 423.3 | 7.88 | 0.002 |
+| Within groups (error) | 1450.7 | 27 | 53.7 |  |  |
+| Total | 2297.4 | 29 |  |  |  |
+
+: One-way ANOVA table for assessment score {#tbl-one-way-anova}
+
+At the 5% significance level, the decision is
+
+$$
+p=0.002<0.05.
+$$
+
+We therefore reject the null hypothesis that the three population means are equal. There is evidence that mean assessment score differs among the teaching methods.
+
+This conclusion does **not** tell us that every pair of teaching methods differs. It also does not, by itself, tell us which method has the highest population mean.
+
+::: {.callout-warning}
+## Avoid an overly strong conclusion
+
+An appropriate conclusion is:
+
+> There is evidence that at least one population mean assessment score differs among the three teaching methods.
+
+It is too strong to conclude from the omnibus test alone that all three methods differ from one another.
+:::
+
+## ANOVA as an extension of the $t$-test
+
+When there are exactly two independent groups, the conventional equal-variance independent-samples $t$-test and a one-way ANOVA test the same null hypothesis. Their test statistics are related by
+
+$$
+F=t^2.
+$$
+
+Squaring the $t$-statistic removes its sign. This makes sense because the omnibus ANOVA asks only whether the means differ, not which group has the larger mean.
+
+With two groups, the $t$-test is usually easier to interpret because the sign of $t$ indicates the direction of the estimated difference. ANOVA becomes especially useful when there are three or more groups or when several factors are studied together.
+
+| Two-group $t$-test | One-way ANOVA |
+|---|---|
+| Compares two population means | Compares two or more population means |
+| Uses a $t$-statistic | Uses an $F$-statistic |
+| Tests $H_0:\mu_1=\mu_2$ | Tests $H_0:\mu_1=\cdots=\mu_k$ |
+| Direction can be retained in the sign of $t$ | Omnibus $F$-test has no direction |
+| For the equal-variance two-group case, $t^2=F$ | Generalises naturally to several groups and factors |
+
+: Relationship between the independent-samples $t$-test and ANOVA {#tbl-t-anova}
+
+## What happens after a significant ANOVA?
+
+A significant omnibus test establishes that the population means are not all equal. Researchers will often want to know which groups differ.
+
+### Planned comparisons
+
+A **planned comparison** is chosen before examining the results and is based on the research question. For example, a study might be designed primarily to compare the workshop with the average of the other two methods.
+
+Planned comparisons can be efficient because they focus on a small number of questions that were specified in advance.
+
+### Post-hoc comparisons
+
+**Post-hoc comparisons** examine differences after the overall ANOVA. Common procedures, such as Tukey's method, adjust for the fact that several comparisons are being made.
+
+In the teaching-method example, a follow-up analysis might find clear evidence of a difference between the workshop and lecture groups, but insufficient evidence for the remaining pairwise differences after adjustment. This would be consistent with the significant omnibus ANOVA: at least one difference exists, but not every pair must be distinguishable.
+
+::: {.callout-note}
+## Omnibus and follow-up tests answer different questions
+
+- The omnibus ANOVA asks whether **any** population means differ.
+- A follow-up comparison asks whether **particular** population means differ.
+
+The comparisons should be reported with their estimated mean differences and confidence intervals, not only their $p$-values.
+:::
+
+## From one factor to two
+
+The one-way ANOVA considers one factor at a time. However, outcomes are often related to several factors.
+
+Suppose the university wants to study both:
+
+- **teaching method**: lecture or workshop; and
+- **practice quiz**: absent or present.
+
+Studying both factors in a single design allows us to ask three questions:
+
+1. Is assessment score related to teaching method?
+2. Is assessment score related to the presence of a practice quiz?
+3. Does the relationship between teaching method and assessment score depend on whether a practice quiz is present?
+
+The third question concerns an **interaction**.
+
+## Factorial between-subjects designs
+
+A **factorial design** includes every combination of the levels of two or more factors. Each combination is called a **cell**.
+
+The example has two teaching methods and two quiz conditions. It is therefore a $2\times2$ factorial design with four cells.
+
+|  | No practice quiz | Practice quiz |
+|---|---|---|
+| Lecture | Lecture, no quiz | Lecture, quiz |
+| Workshop | Workshop, no quiz | Workshop, quiz |
+
+: Cells in the $2\times2$ teaching study {#tbl-factorial-cells}
+
+In a fully between-subjects design, each student appears in exactly one cell. A student assigned to the lecture-with-quiz condition does not also appear in any of the other three conditions.
+
+::: {.callout-tip}
+## Reading the design notation
+
+A $2\times2$ design contains two factors, each with two levels.
+
+A $3\times2$ design contains one factor with three levels and another factor with two levels, producing $3\times2=6$ cells.
+:::
+
+## Main effects
+
+A **main effect** describes the relationship between one factor and the outcome after averaging across the levels of the other factor.
+
+Suppose 20 different students are assigned to each cell and the sample means are those shown in @tbl-factorial-means.
+
+| Teaching method | No practice quiz | Practice quiz | Marginal mean |
+|---|---:|---:|---:|
+| Lecture | 62 | 78 | 70 |
+| Workshop | 74 | 76 | 75 |
+| Marginal mean | 68 | 77 | 72.5 |
+
+: Mean assessment scores in the factorial example {#tbl-factorial-means}
+
+The averages at the right and bottom of the table are called **marginal means**.
+
+### Main effect of teaching method
+
+Averaging across the quiz conditions:
+
+$$
+\bar{x}_{\text{lecture}}=70
+$$
+
+and
+
+$$
+\bar{x}_{\text{workshop}}=75.
+$$
+
+The sample main effect of teaching method is therefore
+
+$$
+75-70=5\text{ points}.
+$$
+
+On average across the two quiz conditions, the workshop group scored 5 points higher than the lecture group.
+
+### Main effect of practice quiz
+
+Averaging across the teaching methods:
+
+$$
+\bar{x}_{\text{no quiz}}=68
+$$
+
+and
+
+$$
+\bar{x}_{\text{quiz}}=77.
+$$
+
+The sample main effect of the practice quiz is
+
+$$
+77-68=9\text{ points}.
+$$
+
+On average across the two teaching methods, students with a practice quiz scored 9 points higher than students without one.
+
+Main effects provide useful summaries, but averages can conceal an important pattern. We therefore need to examine the interaction.
+
+## Interactions
+
+An **interaction** occurs when the relationship between one factor and the outcome changes across the levels of another factor.
+
+In @tbl-factorial-means, the estimated quiz effect is not the same for the two teaching methods:
+
+$$
+\text{Quiz effect for lecture}=78-62=16
+$$
+
+while
+
+$$
+\text{Quiz effect for workshop}=76-74=2.
+$$
+
+The difference between these differences is
+
+$$
+16-2=14.
+$$
+
+This **difference in differences** represents the interaction in a $2\times2$ design. The practice quiz is associated with a much larger improvement under the lecture method than under the workshop method.
+
+The interaction can also be described from the other direction. Without a quiz, the workshop mean is 12 points higher than the lecture mean. With a quiz, the workshop mean is 2 points lower than the lecture mean. The relationship between teaching method and score therefore depends on the quiz condition.
+
+::: {.callout-important}
+## The meaning of an interaction
+
+An interaction means that a single statement such as “workshops produce higher scores” or “practice quizzes improve scores” is incomplete. The size, or even the direction, of one relationship depends on the level of the other factor.
+:::
+
+### Interaction plots
+
+An interaction plot places one factor on the horizontal axis and uses separate lines for the levels of the other factor.
+
+- Approximately parallel lines suggest little interaction.
+- Clearly non-parallel lines suggest an interaction.
+- Crossing lines indicate that the direction of a difference changes, but lines do not need to cross for an interaction to exist.
+
+An interaction plot is descriptive. Sampling variation can make lines appear somewhat non-parallel even when there is no population interaction, so the plot should be considered alongside the factorial ANOVA test.
+
+## Hypotheses in a two-factor ANOVA
+
+A two-factor ANOVA usually contains three $F$-tests: one for each main effect and one for the interaction.
+
+Let factor A be teaching method and factor B be quiz condition.
+
+### Main effect of factor A
+
+For the teaching-method main effect:
+
+$$
+H_0:\text{the population marginal means are equal for the teaching methods}
+$$
+
+against
+
+$$
+H_1:\text{the population marginal means differ for the teaching methods.}
+$$
+
+### Main effect of factor B
+
+For the practice-quiz main effect:
+
+$$
+H_0:\text{the population marginal means are equal for the quiz conditions}
+$$
+
+against
+
+$$
+H_1:\text{the population marginal means differ for the quiz conditions.}
+$$
+
+### Interaction between factors A and B
+
+For the interaction:
+
+$$
+H_0:\text{there is no interaction between teaching method and quiz condition}
+$$
+
+against
+
+$$
+H_1:\text{there is an interaction between teaching method and quiz condition.}
+$$
+
+In a $2\times2$ design, the no-interaction hypothesis can be written as equality of two differences:
+
+$$
+(\mu_{\text{lecture, quiz}}-\mu_{\text{lecture, no quiz}})
+=
+(\mu_{\text{workshop, quiz}}-\mu_{\text{workshop, no quiz}}).
+$$
+
+## A model for factorial ANOVA
+
+A two-factor between-subjects ANOVA can be represented by
+
+$$
+Y_{ijk}
+=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\varepsilon_{ijk},
+$$
+
+where:
+
+- $Y_{ijk}$ is the outcome for observation $k$ in cell $(i,j)$;
+- $\mu$ is the grand mean;
+- $\alpha_i$ is the contribution associated with level $i$ of factor A;
+- $\beta_j$ is the contribution associated with level $j$ of factor B;
+- $(\alpha\beta)_{ij}$ is the interaction contribution for that combination; and
+- $\varepsilon_{ijk}$ is the individual error.
+
+The model extends the same logic used in a one-way ANOVA. Variation in the outcome is separated into components:
+
+$$
+SS_{\text{total}}
+=SS_A+SS_B+SS_{A\times B}+SS_{\text{error}}.
+$$
+
+Each model term has its own mean square and $F$-statistic. For example,
+
+$$
+F_A=\frac{MS_A}{MS_{\text{error}}}
+$$
+
+and
+
+$$
+F_{A\times B}=\frac{MS_{A\times B}}{MS_{\text{error}}}.
+$$
+
+The same within-cell error variation forms the denominator for each test.
+
+## Interpreting a factorial ANOVA table
+
+An illustrative ANOVA table for the teaching-method and practice-quiz study is shown in @tbl-factorial-anova.
+
+| Source | Sum of squares | Degrees of freedom | Mean square | $F$ | $p$-value |
+|---|---:|---:|---:|---:|---:|
+| Teaching method | 500 | 1 | 500 | 7.81 | 0.007 |
+| Practice quiz | 1620 | 1 | 1620 | 25.31 | $<0.001$ |
+| Teaching method $\times$ practice quiz | 980 | 1 | 980 | 15.31 | $<0.001$ |
+| Error | 4864 | 76 | 64 |  |  |
+| Total | 7964 | 79 |  |  |  |
+
+: Factorial ANOVA table for assessment score {#tbl-factorial-anova}
+
+At the 5% significance level, all three tests are statistically significant. However, interpretation should begin with the interaction because it qualifies the main effects.
+
+An appropriate interpretation is:
+
+> There is evidence of an interaction between teaching method and practice-quiz condition, $F(1,76)=15.31$, $p<0.001$. The estimated benefit of the practice quiz is much larger for students taught by lecture than for students taught by workshop. Although the marginal means also produce significant main effects, these averages do not fully describe the differing pattern across the four conditions.
+
+### Why interpret the interaction first?
+
+The main effect of teaching method averages over the quiz conditions and reports a 5-point advantage for workshops. That average conceals two quite different comparisons:
+
+- without a quiz, the workshop mean is 12 points higher; and
+- with a quiz, the workshop mean is 2 points lower.
+
+When an interaction is present, the most useful next step is often to examine **simple effects**: the effect of one factor at a particular level of the other factor.
+
+For this example, relevant simple effects include:
+
+- comparing quiz and no-quiz conditions separately within the lecture group;
+- comparing quiz and no-quiz conditions separately within the workshop group;
+- comparing lecture and workshop methods when no quiz is provided; and
+- comparing lecture and workshop methods when a quiz is provided.
+
+These comparisons should be selected to answer the research question, reported with confidence intervals, and adjusted when several tests are performed.
+
+::: {.callout-warning}
+## A non-significant interaction
+
+Failing to reject the interaction null hypothesis does not prove that the factors operate independently. It means the data do not provide sufficiently strong evidence of an interaction at the chosen significance level.
+
+Interaction tests can require substantial sample sizes because a difference in differences is often estimated less precisely than a single mean difference.
+:::
+
+## Balanced and unbalanced designs
+
+A **balanced design** has the same number of observations in every cell. The factorial example is balanced because each of the four cells contains 20 students.
+
+Balanced designs have several advantages:
+
+- marginal means are simple averages of the cell means;
+- the effects are easier to separate and interpret;
+- precision is distributed evenly across conditions; and
+- the analysis is less sensitive to some forms of unequal variance.
+
+An **unbalanced design** has different cell sizes. This commonly occurs in observational studies or when participants withdraw from some conditions more often than others.
+
+Factorial ANOVA can still be used with unequal cell sizes, but interpretation becomes more delicate. The factors may be associated with one another, different definitions of sums of squares can produce different tests, and unweighted marginal means may no longer represent the sample composition. In such cases, the analysis should clearly state how the effects were defined and estimated.
+

@@ -1,0 +1,5001 @@
+Person,Medical Condition,Exercise
+1,None of Above,Moderate
+2,Heart Disease,Moderate
+3,Diabetes,Moderate
+4,None of Above,Moderate
+5,None of Above,Minimal
+6,None of Above,Moderate
+7,Asthma,Minimal
+8,None of Above,Moderate
+9,None of Above,Minimal
+10,Depression,Moderate
+11,None of Above,Minimal
+12,None of Above,Minimal
+13,Heart Disease,Minimal
+14,Cancer,Minimal
+15,None of Above,Moderate
+16,Depression,Minimal
+17,Depression,Minimal
+18,None of Above,Minimal
+19,None of Above,Minimal
+20,None of Above,Moderate
+21,Depression,Minimal
+22,None of Above,Minimal
+23,Asthma,Moderate
+24,Depression,Minimal
+25,None of Above,Minimal
+26,None of Above,Moderate
+27,Asthma,Moderate
+28,Depression,Minimal
+29,None of Above,Moderate
+30,None of Above,Moderate
+31,Cancer,Minimal
+32,None of Above,Minimal
+33,None of Above,Moderate
+34,None of Above,Minimal
+35,None of Above,Minimal
+36,None of Above,Moderate
+37,Depression,Moderate
+38,None of Above,Moderate
+39,None of Above,Moderate
+40,None of Above,Minimal
+41,Depression,Minimal
+42,Asthma,Moderate
+43,None of Above,Minimal
+44,None of Above,Minimal
+45,None of Above,Moderate
+46,None of Above,Moderate
+47,Cancer,Minimal
+48,Depression,Minimal
+49,None of Above,Minimal
+50,None of Above,Moderate
+51,None of Above,Minimal
+52,None of Above,Minimal
+53,None of Above,Moderate
+54,Asthma,Minimal
+55,None of Above,Moderate
+56,Diabetes,Minimal
+57,Asthma,Minimal
+58,None of Above,Minimal
+59,None of Above,Moderate
+60,None of Above,Moderate
+61,None of Above,Minimal
+62,Asthma,Minimal
+63,None of Above,Minimal
+64,None of Above,Minimal
+65,Depression,Minimal
+66,None of Above,Minimal
+67,Cancer,Moderate
+68,None of Above,Minimal
+69,None of Above,Minimal
+70,None of Above,Minimal
+71,None of Above,Minimal
+72,Heart Disease,Minimal
+73,None of Above,Moderate
+74,Asthma,Minimal
+75,None of Above,Moderate
+76,Heart Disease,Minimal
+77,None of Above,Minimal
+78,None of Above,Moderate
+79,None of Above,Minimal
+80,Depression,Minimal
+81,Asthma,Moderate
+82,Depression,Minimal
+83,None of Above,Minimal
+84,None of Above,Minimal
+85,None of Above,Minimal
+86,None of Above,Minimal
+87,Asthma,Minimal
+88,None of Above,Moderate
+89,None of Above,Moderate
+90,None of Above,Moderate
+91,Diabetes,Minimal
+92,None of Above,Moderate
+93,Heart Disease,Minimal
+94,Diabetes,Minimal
+95,Cancer,Minimal
+96,None of Above,Minimal
+97,Depression,Minimal
+98,Heart Disease,Minimal
+99,Asthma,Minimal
+100,None of Above,Moderate
+101,Asthma,Moderate
+102,None of Above,Minimal
+103,Heart Disease,Minimal
+104,None of Above,Minimal
+105,None of Above,Moderate
+106,None of Above,Minimal
+107,None of Above,Moderate
+108,Asthma,Minimal
+109,None of Above,Minimal
+110,None of Above,Minimal
+111,Depression,Minimal
+112,None of Above,Minimal
+113,None of Above,Moderate
+114,Asthma,Minimal
+115,None of Above,Moderate
+116,Cancer,Minimal
+117,None of Above,Moderate
+118,Heart Disease,Minimal
+119,None of Above,Moderate
+120,None of Above,Moderate
+121,None of Above,Moderate
+122,None of Above,Minimal
+123,Depression,Moderate
+124,Cancer,Minimal
+125,Asthma,Minimal
+126,None of Above,Minimal
+127,None of Above,Minimal
+128,Depression,Moderate
+129,None of Above,Minimal
+130,None of Above,Minimal
+131,Depression,Minimal
+132,None of Above,Minimal
+133,None of Above,Moderate
+134,Cancer,Minimal
+135,Cancer,Minimal
+136,Cancer,Minimal
+137,None of Above,Minimal
+138,None of Above,Moderate
+139,None of Above,Minimal
+140,None of Above,Minimal
+141,Depression,Minimal
+142,None of Above,Moderate
+143,Depression,Moderate
+144,None of Above,Minimal
+145,Depression,Moderate
+146,None of Above,Minimal
+147,Depression,Minimal
+148,None of Above,Minimal
+149,None of Above,Minimal
+150,None of Above,Moderate
+151,None of Above,Minimal
+152,None of Above,Minimal
+153,None of Above,Minimal
+154,None of Above,Minimal
+155,Diabetes,Minimal
+156,Asthma,Minimal
+157,Asthma,Minimal
+158,Cancer,Moderate
+159,None of Above,Moderate
+160,Cancer,Minimal
+161,Heart Disease,Minimal
+162,Depression,Minimal
+163,None of Above,Moderate
+164,Asthma,Minimal
+165,None of Above,Moderate
+166,Depression,Minimal
+167,None of Above,Minimal
+168,Depression,Minimal
+169,None of Above,Minimal
+170,Diabetes,Minimal
+171,Depression,Minimal
+172,Asthma,Minimal
+173,None of Above,Minimal
+174,Cancer,Minimal
+175,Cancer,Moderate
+176,Cancer,Moderate
+177,None of Above,Moderate
+178,None of Above,Moderate
+179,Cancer,Moderate
+180,None of Above,Minimal
+181,None of Above,Minimal
+182,Asthma,Minimal
+183,Depression,Minimal
+184,Asthma,Moderate
+185,None of Above,Minimal
+186,None of Above,Moderate
+187,None of Above,Minimal
+188,None of Above,Minimal
+189,None of Above,Moderate
+190,None of Above,Moderate
+191,Depression,Minimal
+192,None of Above,Minimal
+193,None of Above,Minimal
+194,None of Above,Moderate
+195,Depression,Minimal
+196,Cancer,Minimal
+197,Depression,Moderate
+198,None of Above,Minimal
+199,None of Above,Moderate
+200,None of Above,Minimal
+201,None of Above,Moderate
+202,None of Above,Minimal
+203,None of Above,Minimal
+204,Depression,Moderate
+205,None of Above,Minimal
+206,None of Above,Moderate
+207,None of Above,Moderate
+208,Asthma,Minimal
+209,Depression,Minimal
+210,None of Above,Moderate
+211,Asthma,Minimal
+212,None of Above,Minimal
+213,None of Above,Moderate
+214,Asthma,Minimal
+215,Diabetes,Minimal
+216,None of Above,Minimal
+217,None of Above,Moderate
+218,Depression,Moderate
+219,None of Above,Minimal
+220,None of Above,Moderate
+221,None of Above,Minimal
+222,None of Above,Minimal
+223,Cancer,Moderate
+224,Depression,Minimal
+225,None of Above,Minimal
+226,None of Above,Moderate
+227,Cancer,Moderate
+228,None of Above,Moderate
+229,None of Above,Moderate
+230,None of Above,Moderate
+231,Depression,Moderate
+232,None of Above,Minimal
+233,Asthma,Moderate
+234,None of Above,Minimal
+235,Cancer,Minimal
+236,Asthma,Moderate
+237,None of Above,Minimal
+238,None of Above,Minimal
+239,None of Above,Minimal
+240,None of Above,Minimal
+241,None of Above,Moderate
+242,None of Above,Moderate
+243,Depression,Minimal
+244,None of Above,Minimal
+245,Asthma,Minimal
+246,Diabetes,Moderate
+247,None of Above,Minimal
+248,Heart Disease,Minimal
+249,Depression,Minimal
+250,Depression,Moderate
+251,None of Above,Moderate
+252,Asthma,Moderate
+253,None of Above,Minimal
+254,None of Above,Minimal
+255,Heart Disease,Minimal
+256,Cancer,Minimal
+257,None of Above,Moderate
+258,None of Above,Minimal
+259,None of Above,Minimal
+260,None of Above,Minimal
+261,None of Above,Moderate
+262,Diabetes,Minimal
+263,None of Above,Minimal
+264,None of Above,Moderate
+265,None of Above,Moderate
+266,None of Above,Moderate
+267,None of Above,Moderate
+268,None of Above,Minimal
+269,Asthma,Minimal
+270,None of Above,Minimal
+271,None of Above,Minimal
+272,None of Above,Minimal
+273,None of Above,Minimal
+274,None of Above,Moderate
+275,Cancer,Minimal
+276,Cancer,Moderate
+277,None of Above,Minimal
+278,Heart Disease,Minimal
+279,None of Above,Moderate
+280,None of Above,Minimal
+281,None of Above,Moderate
+282,None of Above,Minimal
+283,None of Above,Minimal
+284,None of Above,Minimal
+285,None of Above,Moderate
+286,Depression,Moderate
+287,None of Above,Minimal
+288,None of Above,Minimal
+289,Depression,Minimal
+290,Depression,Minimal
+291,None of Above,Moderate
+292,None of Above,Minimal
+293,None of Above,Minimal
+294,Heart Disease,Moderate
+295,None of Above,Minimal
+296,None of Above,Moderate
+297,None of Above,Minimal
+298,None of Above,Minimal
+299,None of Above,Minimal
+300,None of Above,Moderate
+301,None of Above,Minimal
+302,Asthma,Moderate
+303,None of Above,Minimal
+304,None of Above,Moderate
+305,None of Above,Minimal
+306,None of Above,Moderate
+307,None of Above,Minimal
+308,Depression,Moderate
+309,Heart Disease,Minimal
+310,None of Above,Minimal
+311,None of Above,Minimal
+312,Asthma,Minimal
+313,Depression,Moderate
+314,None of Above,Moderate
+315,None of Above,Moderate
+316,None of Above,Minimal
+317,Diabetes,Minimal
+318,Cancer,Moderate
+319,Heart Disease,Minimal
+320,None of Above,Moderate
+321,None of Above,Minimal
+322,None of Above,Minimal
+323,Asthma,Minimal
+324,None of Above,Minimal
+325,None of Above,Minimal
+326,Cancer,Moderate
+327,None of Above,Moderate
+328,Asthma,Minimal
+329,None of Above,Minimal
+330,None of Above,Moderate
+331,None of Above,Minimal
+332,None of Above,Minimal
+333,None of Above,Moderate
+334,Asthma,Minimal
+335,Depression,Minimal
+336,None of Above,Moderate
+337,None of Above,Moderate
+338,Cancer,Minimal
+339,None of Above,Minimal
+340,None of Above,Minimal
+341,Asthma,Moderate
+342,None of Above,Minimal
+343,Heart Disease,Minimal
+344,Cancer,Moderate
+345,None of Above,Minimal
+346,None of Above,Minimal
+347,None of Above,Moderate
+348,None of Above,Minimal
+349,None of Above,Moderate
+350,None of Above,Minimal
+351,None of Above,Moderate
+352,Depression,Minimal
+353,None of Above,Minimal
+354,Asthma,Moderate
+355,None of Above,Minimal
+356,None of Above,Minimal
+357,None of Above,Minimal
+358,None of Above,Minimal
+359,None of Above,Moderate
+360,Depression,Minimal
+361,Asthma,Minimal
+362,None of Above,Moderate
+363,None of Above,Moderate
+364,Depression,Minimal
+365,Asthma,Minimal
+366,None of Above,Minimal
+367,Heart Disease,Minimal
+368,Asthma,Moderate
+369,None of Above,Moderate
+370,None of Above,Moderate
+371,Heart Disease,Minimal
+372,Cancer,Moderate
+373,None of Above,Minimal
+374,Asthma,Moderate
+375,Heart Disease,Moderate
+376,None of Above,Minimal
+377,Diabetes,Minimal
+378,None of Above,Moderate
+379,None of Above,Moderate
+380,None of Above,Minimal
+381,None of Above,Moderate
+382,None of Above,Minimal
+383,None of Above,Moderate
+384,None of Above,Moderate
+385,Depression,Minimal
+386,Cancer,Moderate
+387,Depression,Minimal
+388,None of Above,Minimal
+389,None of Above,Minimal
+390,None of Above,Minimal
+391,None of Above,Minimal
+392,None of Above,Moderate
+393,None of Above,Minimal
+394,Cancer,Minimal
+395,Heart Disease,Minimal
+396,Asthma,Moderate
+397,Asthma,Minimal
+398,None of Above,Minimal
+399,None of Above,Minimal
+400,Depression,Minimal
+401,Cancer,Moderate
+402,Depression,Minimal
+403,Asthma,Moderate
+404,None of Above,Minimal
+405,None of Above,Minimal
+406,Depression,Minimal
+407,None of Above,Moderate
+408,Depression,Minimal
+409,None of Above,Moderate
+410,None of Above,Minimal
+411,None of Above,Moderate
+412,Depression,Minimal
+413,None of Above,Minimal
+414,None of Above,Moderate
+415,None of Above,Moderate
+416,None of Above,Minimal
+417,None of Above,Moderate
+418,None of Above,Moderate
+419,None of Above,Minimal
+420,None of Above,Moderate
+421,Asthma,Minimal
+422,Depression,Minimal
+423,Cancer,Minimal
+424,Asthma,Minimal
+425,Depression,Minimal
+426,Asthma,Minimal
+427,Depression,Minimal
+428,Asthma,Minimal
+429,None of Above,Minimal
+430,None of Above,Minimal
+431,Asthma,Minimal
+432,None of Above,Moderate
+433,None of Above,Moderate
+434,None of Above,Minimal
+435,None of Above,Minimal
+436,Heart Disease,Minimal
+437,None of Above,Minimal
+438,Heart Disease,Minimal
+439,None of Above,Minimal
+440,Asthma,Minimal
+441,None of Above,Moderate
+442,None of Above,Moderate
+443,Heart Disease,Moderate
+444,Heart Disease,Moderate
+445,None of Above,Minimal
+446,None of Above,Minimal
+447,None of Above,Moderate
+448,Asthma,Minimal
+449,Depression,Minimal
+450,None of Above,Moderate
+451,Cancer,Minimal
+452,Cancer,Moderate
+453,None of Above,Moderate
+454,None of Above,Minimal
+455,Asthma,Minimal
+456,Diabetes,Minimal
+457,None of Above,Minimal
+458,Depression,Minimal
+459,None of Above,Moderate
+460,None of Above,Moderate
+461,Diabetes,Minimal
+462,None of Above,Minimal
+463,None of Above,Minimal
+464,None of Above,Minimal
+465,None of Above,Minimal
+466,None of Above,Minimal
+467,Diabetes,Moderate
+468,Depression,Moderate
+469,None of Above,Minimal
+470,Heart Disease,Minimal
+471,None of Above,Minimal
+472,None of Above,Moderate
+473,None of Above,Minimal
+474,Diabetes,Minimal
+475,None of Above,Moderate
+476,None of Above,Moderate
+477,Diabetes,Minimal
+478,None of Above,Minimal
+479,None of Above,Minimal
+480,Asthma,Minimal
+481,None of Above,Minimal
+482,Asthma,Moderate
+483,Depression,Moderate
+484,None of Above,Moderate
+485,None of Above,Minimal
+486,None of Above,Minimal
+487,None of Above,Moderate
+488,None of Above,Minimal
+489,Asthma,Minimal
+490,None of Above,Moderate
+491,None of Above,Minimal
+492,Depression,Moderate
+493,None of Above,Minimal
+494,Cancer,Moderate
+495,None of Above,Moderate
+496,None of Above,Moderate
+497,Depression,Minimal
+498,None of Above,Moderate
+499,Asthma,Moderate
+500,None of Above,Minimal
+501,Depression,Minimal
+502,None of Above,Minimal
+503,Heart Disease,Minimal
+504,Depression,Minimal
+505,None of Above,Moderate
+506,None of Above,Minimal
+507,Cancer,Moderate
+508,None of Above,Minimal
+509,None of Above,Moderate
+510,Cancer,Minimal
+511,None of Above,Minimal
+512,Diabetes,Moderate
+513,None of Above,Minimal
+514,Diabetes,Minimal
+515,None of Above,Minimal
+516,None of Above,Minimal
+517,Cancer,Minimal
+518,None of Above,Minimal
+519,None of Above,Moderate
+520,None of Above,Moderate
+521,Heart Disease,Moderate
+522,None of Above,Moderate
+523,Depression,Minimal
+524,None of Above,Minimal
+525,Heart Disease,Minimal
+526,Asthma,Minimal
+527,None of Above,Moderate
+528,None of Above,Moderate
+529,Cancer,Minimal
+530,None of Above,Minimal
+531,None of Above,Moderate
+532,None of Above,Minimal
+533,None of Above,Moderate
+534,None of Above,Minimal
+535,None of Above,Moderate
+536,Depression,Moderate
+537,Heart Disease,Minimal
+538,None of Above,Moderate
+539,None of Above,Moderate
+540,None of Above,Minimal
+541,Cancer,Minimal
+542,Depression,Minimal
+543,None of Above,Minimal
+544,Depression,Minimal
+545,None of Above,Minimal
+546,None of Above,Moderate
+547,None of Above,Moderate
+548,Depression,Minimal
+549,None of Above,Minimal
+550,None of Above,Minimal
+551,None of Above,Moderate
+552,Diabetes,Minimal
+553,None of Above,Minimal
+554,None of Above,Moderate
+555,None of Above,Minimal
+556,Cancer,Minimal
+557,None of Above,Moderate
+558,None of Above,Moderate
+559,None of Above,Minimal
+560,None of Above,Moderate
+561,None of Above,Moderate
+562,None of Above,Minimal
+563,None of Above,Minimal
+564,None of Above,Minimal
+565,None of Above,Moderate
+566,None of Above,Moderate
+567,None of Above,Minimal
+568,None of Above,Minimal
+569,Depression,Moderate
+570,None of Above,Moderate
+571,None of Above,Moderate
+572,None of Above,Minimal
+573,Cancer,Minimal
+574,None of Above,Moderate
+575,None of Above,Minimal
+576,None of Above,Minimal
+577,None of Above,Minimal
+578,Heart Disease,Minimal
+579,None of Above,Minimal
+580,None of Above,Minimal
+581,None of Above,Moderate
+582,None of Above,Minimal
+583,None of Above,Moderate
+584,None of Above,Moderate
+585,None of Above,Minimal
+586,Depression,Moderate
+587,Asthma,Minimal
+588,Asthma,Minimal
+589,None of Above,Minimal
+590,Asthma,Minimal
+591,None of Above,Moderate
+592,Depression,Moderate
+593,Heart Disease,Minimal
+594,None of Above,Minimal
+595,None of Above,Minimal
+596,None of Above,Minimal
+597,None of Above,Moderate
+598,Depression,Minimal
+599,Asthma,Minimal
+600,Heart Disease,Minimal
+601,Depression,Minimal
+602,None of Above,Minimal
+603,None of Above,Moderate
+604,None of Above,Moderate
+605,None of Above,Minimal
+606,Asthma,Minimal
+607,Diabetes,Moderate
+608,None of Above,Moderate
+609,Diabetes,Minimal
+610,Asthma,Minimal
+611,None of Above,Minimal
+612,None of Above,Minimal
+613,Depression,Moderate
+614,None of Above,Minimal
+615,None of Above,Moderate
+616,None of Above,Minimal
+617,None of Above,Minimal
+618,None of Above,Moderate
+619,None of Above,Moderate
+620,None of Above,Moderate
+621,Heart Disease,Minimal
+622,None of Above,Moderate
+623,None of Above,Minimal
+624,None of Above,Minimal
+625,Diabetes,Minimal
+626,None of Above,Minimal
+627,Depression,Moderate
+628,None of Above,Minimal
+629,Depression,Minimal
+630,Asthma,Moderate
+631,None of Above,Minimal
+632,Asthma,Moderate
+633,Depression,Moderate
+634,None of Above,Moderate
+635,Heart Disease,Minimal
+636,Diabetes,Minimal
+637,None of Above,Moderate
+638,None of Above,Minimal
+639,Cancer,Moderate
+640,None of Above,Minimal
+641,None of Above,Moderate
+642,None of Above,Moderate
+643,None of Above,Minimal
+644,None of Above,Minimal
+645,Asthma,Minimal
+646,None of Above,Minimal
+647,None of Above,Moderate
+648,None of Above,Minimal
+649,Heart Disease,Minimal
+650,None of Above,Minimal
+651,None of Above,Minimal
+652,None of Above,Moderate
+653,None of Above,Minimal
+654,Depression,Minimal
+655,None of Above,Minimal
+656,None of Above,Minimal
+657,None of Above,Minimal
+658,None of Above,Minimal
+659,Diabetes,Minimal
+660,Cancer,Minimal
+661,Diabetes,Minimal
+662,None of Above,Moderate
+663,None of Above,Minimal
+664,None of Above,Moderate
+665,Asthma,Moderate
+666,None of Above,Moderate
+667,Heart Disease,Minimal
+668,None of Above,Moderate
+669,None of Above,Moderate
+670,Cancer,Moderate
+671,None of Above,Minimal
+672,None of Above,Minimal
+673,Depression,Moderate
+674,None of Above,Minimal
+675,None of Above,Minimal
+676,Heart Disease,Minimal
+677,None of Above,Minimal
+678,None of Above,Moderate
+679,None of Above,Minimal
+680,None of Above,Moderate
+681,Asthma,Minimal
+682,None of Above,Minimal
+683,Depression,Minimal
+684,Depression,Minimal
+685,None of Above,Minimal
+686,None of Above,Moderate
+687,None of Above,Minimal
+688,None of Above,Minimal
+689,None of Above,Moderate
+690,None of Above,Moderate
+691,None of Above,Minimal
+692,Cancer,Minimal
+693,None of Above,Minimal
+694,None of Above,Moderate
+695,None of Above,Moderate
+696,Asthma,Minimal
+697,Cancer,Minimal
+698,Depression,Moderate
+699,None of Above,Moderate
+700,Asthma,Moderate
+701,Depression,Minimal
+702,None of Above,Moderate
+703,None of Above,Moderate
+704,None of Above,Moderate
+705,Asthma,Minimal
+706,None of Above,Minimal
+707,None of Above,Moderate
+708,None of Above,Moderate
+709,Cancer,Minimal
+710,Heart Disease,Minimal
+711,Cancer,Minimal
+712,Heart Disease,Moderate
+713,None of Above,Moderate
+714,Depression,Minimal
+715,None of Above,Moderate
+716,None of Above,Moderate
+717,Cancer,Moderate
+718,Depression,Minimal
+719,Depression,Minimal
+720,None of Above,Minimal
+721,Diabetes,Minimal
+722,Heart Disease,Minimal
+723,None of Above,Minimal
+724,None of Above,Moderate
+725,None of Above,Minimal
+726,Depression,Minimal
+727,Cancer,Minimal
+728,None of Above,Moderate
+729,Depression,Moderate
+730,None of Above,Minimal
+731,None of Above,Minimal
+732,Asthma,Moderate
+733,None of Above,Moderate
+734,Depression,Moderate
+735,None of Above,Moderate
+736,Depression,Minimal
+737,Diabetes,Moderate
+738,None of Above,Minimal
+739,None of Above,Minimal
+740,None of Above,Minimal
+741,None of Above,Moderate
+742,Cancer,Minimal
+743,None of Above,Moderate
+744,Asthma,Minimal
+745,None of Above,Minimal
+746,Cancer,Minimal
+747,None of Above,Moderate
+748,None of Above,Moderate
+749,None of Above,Minimal
+750,Heart Disease,Minimal
+751,None of Above,Minimal
+752,Heart Disease,Minimal
+753,None of Above,Minimal
+754,None of Above,Moderate
+755,None of Above,Minimal
+756,Cancer,Moderate
+757,None of Above,Moderate
+758,None of Above,Minimal
+759,None of Above,Minimal
+760,None of Above,Minimal
+761,None of Above,Moderate
+762,None of Above,Minimal
+763,None of Above,Moderate
+764,Depression,Moderate
+765,Cancer,Moderate
+766,None of Above,Minimal
+767,None of Above,Moderate
+768,Depression,Minimal
+769,None of Above,Moderate
+770,None of Above,Moderate
+771,None of Above,Minimal
+772,Depression,Minimal
+773,None of Above,Minimal
+774,Asthma,Minimal
+775,Diabetes,Minimal
+776,None of Above,Moderate
+777,Asthma,Minimal
+778,None of Above,Moderate
+779,None of Above,Minimal
+780,Diabetes,Moderate
+781,Depression,Minimal
+782,None of Above,Moderate
+783,Asthma,Moderate
+784,Asthma,Minimal
+785,Cancer,Minimal
+786,Depression,Moderate
+787,None of Above,Minimal
+788,Diabetes,Minimal
+789,None of Above,Minimal
+790,None of Above,Moderate
+791,None of Above,Minimal
+792,None of Above,Moderate
+793,None of Above,Minimal
+794,Cancer,Moderate
+795,Heart Disease,Moderate
+796,Asthma,Moderate
+797,Depression,Moderate
+798,Diabetes,Minimal
+799,Depression,Minimal
+800,None of Above,Minimal
+801,None of Above,Moderate
+802,None of Above,Minimal
+803,None of Above,Minimal
+804,None of Above,Minimal
+805,None of Above,Moderate
+806,None of Above,Moderate
+807,None of Above,Minimal
+808,Asthma,Moderate
+809,Heart Disease,Minimal
+810,None of Above,Moderate
+811,None of Above,Moderate
+812,None of Above,Minimal
+813,Diabetes,Moderate
+814,Depression,Minimal
+815,Asthma,Minimal
+816,None of Above,Moderate
+817,None of Above,Moderate
+818,None of Above,Minimal
+819,Depression,Minimal
+820,None of Above,Moderate
+821,None of Above,Minimal
+822,None of Above,Minimal
+823,None of Above,Moderate
+824,None of Above,Minimal
+825,None of Above,Minimal
+826,None of Above,Moderate
+827,None of Above,Minimal
+828,Cancer,Minimal
+829,None of Above,Moderate
+830,Heart Disease,Moderate
+831,Depression,Minimal
+832,None of Above,Minimal
+833,None of Above,Minimal
+834,None of Above,Minimal
+835,None of Above,Minimal
+836,Cancer,Minimal
+837,Asthma,Minimal
+838,Cancer,Minimal
+839,Depression,Minimal
+840,None of Above,Moderate
+841,None of Above,Minimal
+842,None of Above,Moderate
+843,None of Above,Minimal
+844,None of Above,Minimal
+845,Cancer,Minimal
+846,None of Above,Minimal
+847,None of Above,Minimal
+848,None of Above,Minimal
+849,None of Above,Minimal
+850,Cancer,Moderate
+851,None of Above,Minimal
+852,Depression,Minimal
+853,Diabetes,Minimal
+854,None of Above,Moderate
+855,None of Above,Moderate
+856,None of Above,Minimal
+857,None of Above,Minimal
+858,Depression,Minimal
+859,Diabetes,Minimal
+860,Depression,Minimal
+861,None of Above,Minimal
+862,Depression,Minimal
+863,None of Above,Minimal
+864,None of Above,Moderate
+865,None of Above,Moderate
+866,None of Above,Minimal
+867,None of Above,Minimal
+868,None of Above,Moderate
+869,Asthma,Minimal
+870,None of Above,Minimal
+871,None of Above,Minimal
+872,None of Above,Minimal
+873,None of Above,Minimal
+874,None of Above,Minimal
+875,Depression,Minimal
+876,None of Above,Moderate
+877,None of Above,Moderate
+878,None of Above,Minimal
+879,Depression,Minimal
+880,Depression,Minimal
+881,None of Above,Minimal
+882,Asthma,Moderate
+883,None of Above,Minimal
+884,None of Above,Minimal
+885,Depression,Minimal
+886,None of Above,Minimal
+887,None of Above,Moderate
+888,None of Above,Minimal
+889,None of Above,Minimal
+890,None of Above,Moderate
+891,Heart Disease,Minimal
+892,None of Above,Minimal
+893,Depression,Moderate
+894,None of Above,Minimal
+895,None of Above,Moderate
+896,None of Above,Minimal
+897,None of Above,Minimal
+898,Cancer,Minimal
+899,Cancer,Moderate
+900,Cancer,Moderate
+901,Asthma,Minimal
+902,None of Above,Moderate
+903,None of Above,Minimal
+904,Cancer,Minimal
+905,None of Above,Moderate
+906,Heart Disease,Minimal
+907,Depression,Minimal
+908,Cancer,Minimal
+909,None of Above,Moderate
+910,None of Above,Moderate
+911,Heart Disease,Minimal
+912,None of Above,Minimal
+913,None of Above,Minimal
+914,None of Above,Moderate
+915,None of Above,Moderate
+916,None of Above,Moderate
+917,None of Above,Minimal
+918,None of Above,Moderate
+919,None of Above,Minimal
+920,Asthma,Minimal
+921,None of Above,Minimal
+922,None of Above,Minimal
+923,None of Above,Moderate
+924,None of Above,Moderate
+925,Depression,Moderate
+926,Heart Disease,Minimal
+927,None of Above,Minimal
+928,None of Above,Minimal
+929,None of Above,Minimal
+930,None of Above,Minimal
+931,Cancer,Minimal
+932,Heart Disease,Minimal
+933,None of Above,Minimal
+934,None of Above,Moderate
+935,None of Above,Moderate
+936,None of Above,Minimal
+937,None of Above,Moderate
+938,Asthma,Minimal
+939,None of Above,Moderate
+940,None of Above,Moderate
+941,None of Above,Minimal
+942,Asthma,Moderate
+943,None of Above,Moderate
+944,Depression,Minimal
+945,None of Above,Minimal
+946,Cancer,Minimal
+947,None of Above,Minimal
+948,Cancer,Minimal
+949,Asthma,Moderate
+950,None of Above,Minimal
+951,Depression,Minimal
+952,Asthma,Minimal
+953,None of Above,Minimal
+954,Heart Disease,Minimal
+955,Heart Disease,Minimal
+956,Depression,Minimal
+957,None of Above,Minimal
+958,None of Above,Minimal
+959,None of Above,Minimal
+960,None of Above,Moderate
+961,None of Above,Moderate
+962,None of Above,Moderate
+963,None of Above,Minimal
+964,None of Above,Moderate
+965,Depression,Minimal
+966,None of Above,Minimal
+967,None of Above,Minimal
+968,Asthma,Moderate
+969,Depression,Moderate
+970,None of Above,Minimal
+971,None of Above,Moderate
+972,Asthma,Minimal
+973,Cancer,Minimal
+974,None of Above,Minimal
+975,None of Above,Moderate
+976,Asthma,Minimal
+977,Diabetes,Minimal
+978,None of Above,Moderate
+979,Diabetes,Minimal
+980,None of Above,Minimal
+981,Depression,Minimal
+982,None of Above,Moderate
+983,Heart Disease,Minimal
+984,None of Above,Moderate
+985,None of Above,Moderate
+986,None of Above,Minimal
+987,None of Above,Minimal
+988,None of Above,Minimal
+989,None of Above,Minimal
+990,None of Above,Minimal
+991,None of Above,Minimal
+992,None of Above,Moderate
+993,None of Above,Minimal
+994,Asthma,Minimal
+995,Asthma,Moderate
+996,None of Above,Moderate
+997,Asthma,Moderate
+998,None of Above,Moderate
+999,None of Above,Minimal
+1000,None of Above,Minimal
+1001,None of Above,Moderate
+1002,None of Above,Minimal
+1003,Cancer,Minimal
+1004,None of Above,Minimal
+1005,None of Above,Moderate
+1006,None of Above,Minimal
+1007,None of Above,Minimal
+1008,Depression,Minimal
+1009,Diabetes,Minimal
+1010,None of Above,Moderate
+1011,None of Above,Moderate
+1012,Cancer,Minimal
+1013,Diabetes,Minimal
+1014,Depression,Moderate
+1015,None of Above,Minimal
+1016,Heart Disease,Minimal
+1017,None of Above,Minimal
+1018,Heart Disease,Minimal
+1019,Heart Disease,Moderate
+1020,None of Above,Moderate
+1021,None of Above,Minimal
+1022,None of Above,Minimal
+1023,Asthma,Moderate
+1024,None of Above,Minimal
+1025,None of Above,Moderate
+1026,None of Above,Minimal
+1027,None of Above,Minimal
+1028,None of Above,Minimal
+1029,None of Above,Minimal
+1030,Cancer,Minimal
+1031,None of Above,Minimal
+1032,None of Above,Moderate
+1033,None of Above,Minimal
+1034,None of Above,Moderate
+1035,Cancer,Minimal
+1036,None of Above,Moderate
+1037,None of Above,Minimal
+1038,None of Above,Moderate
+1039,Heart Disease,Minimal
+1040,Heart Disease,Minimal
+1041,None of Above,Moderate
+1042,Depression,Minimal
+1043,Heart Disease,Minimal
+1044,None of Above,Minimal
+1045,Cancer,Minimal
+1046,Depression,Moderate
+1047,Cancer,Minimal
+1048,Cancer,Minimal
+1049,Cancer,Moderate
+1050,Depression,Minimal
+1051,Heart Disease,Minimal
+1052,None of Above,Minimal
+1053,Asthma,Moderate
+1054,Diabetes,Minimal
+1055,None of Above,Minimal
+1056,None of Above,Minimal
+1057,None of Above,Minimal
+1058,None of Above,Minimal
+1059,None of Above,Minimal
+1060,Depression,Moderate
+1061,None of Above,Minimal
+1062,None of Above,Minimal
+1063,None of Above,Minimal
+1064,Cancer,Minimal
+1065,None of Above,Minimal
+1066,Depression,Moderate
+1067,None of Above,Minimal
+1068,Depression,Moderate
+1069,None of Above,Minimal
+1070,None of Above,Minimal
+1071,None of Above,Moderate
+1072,None of Above,Moderate
+1073,None of Above,Moderate
+1074,None of Above,Moderate
+1075,None of Above,Moderate
+1076,None of Above,Minimal
+1077,None of Above,Minimal
+1078,None of Above,Minimal
+1079,None of Above,Minimal
+1080,None of Above,Minimal
+1081,None of Above,Moderate
+1082,None of Above,Moderate
+1083,None of Above,Minimal
+1084,Depression,Minimal
+1085,None of Above,Minimal
+1086,None of Above,Minimal
+1087,None of Above,Minimal
+1088,Depression,Minimal
+1089,Depression,Minimal
+1090,None of Above,Minimal
+1091,Asthma,Moderate
+1092,None of Above,Minimal
+1093,Cancer,Moderate
+1094,None of Above,Minimal
+1095,None of Above,Minimal
+1096,None of Above,Minimal
+1097,Depression,Minimal
+1098,None of Above,Minimal
+1099,None of Above,Moderate
+1100,Cancer,Minimal
+1101,None of Above,Moderate
+1102,None of Above,Moderate
+1103,Cancer,Minimal
+1104,Asthma,Minimal
+1105,None of Above,Minimal
+1106,None of Above,Minimal
+1107,None of Above,Minimal
+1108,None of Above,Moderate
+1109,None of Above,Minimal
+1110,None of Above,Minimal
+1111,None of Above,Moderate
+1112,Depression,Moderate
+1113,Depression,Minimal
+1114,None of Above,Minimal
+1115,Cancer,Minimal
+1116,Asthma,Minimal
+1117,None of Above,Moderate
+1118,Heart Disease,Minimal
+1119,Diabetes,Minimal
+1120,None of Above,Minimal
+1121,Heart Disease,Minimal
+1122,None of Above,Minimal
+1123,None of Above,Moderate
+1124,None of Above,Moderate
+1125,Cancer,Moderate
+1126,Depression,Minimal
+1127,None of Above,Minimal
+1128,None of Above,Minimal
+1129,None of Above,Minimal
+1130,None of Above,Minimal
+1131,Asthma,Minimal
+1132,Heart Disease,Minimal
+1133,None of Above,Moderate
+1134,None of Above,Minimal
+1135,None of Above,Moderate
+1136,None of Above,Moderate
+1137,Cancer,Minimal
+1138,None of Above,Minimal
+1139,None of Above,Moderate
+1140,Heart Disease,Minimal
+1141,Depression,Minimal
+1142,Cancer,Minimal
+1143,Asthma,Minimal
+1144,Asthma,Minimal
+1145,None of Above,Minimal
+1146,None of Above,Minimal
+1147,None of Above,Minimal
+1148,None of Above,Minimal
+1149,None of Above,Moderate
+1150,Heart Disease,Minimal
+1151,None of Above,Moderate
+1152,Cancer,Moderate
+1153,None of Above,Minimal
+1154,None of Above,Minimal
+1155,None of Above,Minimal
+1156,Heart Disease,Moderate
+1157,None of Above,Moderate
+1158,Depression,Minimal
+1159,None of Above,Minimal
+1160,Depression,Minimal
+1161,None of Above,Minimal
+1162,None of Above,Minimal
+1163,Asthma,Minimal
+1164,Depression,Minimal
+1165,None of Above,Minimal
+1166,None of Above,Minimal
+1167,Cancer,Minimal
+1168,None of Above,Moderate
+1169,None of Above,Moderate
+1170,None of Above,Moderate
+1171,None of Above,Moderate
+1172,None of Above,Minimal
+1173,None of Above,Moderate
+1174,None of Above,Minimal
+1175,None of Above,Minimal
+1176,Diabetes,Moderate
+1177,Asthma,Moderate
+1178,None of Above,Minimal
+1179,None of Above,Moderate
+1180,Asthma,Minimal
+1181,Cancer,Moderate
+1182,Depression,Minimal
+1183,None of Above,Minimal
+1184,Cancer,Moderate
+1185,None of Above,Minimal
+1186,Depression,Moderate
+1187,None of Above,Minimal
+1188,None of Above,Minimal
+1189,Depression,Minimal
+1190,None of Above,Minimal
+1191,Asthma,Minimal
+1192,None of Above,Moderate
+1193,None of Above,Moderate
+1194,Depression,Moderate
+1195,None of Above,Minimal
+1196,None of Above,Minimal
+1197,None of Above,Minimal
+1198,None of Above,Moderate
+1199,None of Above,Minimal
+1200,None of Above,Minimal
+1201,None of Above,Moderate
+1202,None of Above,Minimal
+1203,Depression,Moderate
+1204,None of Above,Minimal
+1205,None of Above,Minimal
+1206,None of Above,Moderate
+1207,Heart Disease,Minimal
+1208,None of Above,Minimal
+1209,None of Above,Minimal
+1210,Diabetes,Minimal
+1211,Asthma,Minimal
+1212,Asthma,Minimal
+1213,None of Above,Minimal
+1214,None of Above,Moderate
+1215,None of Above,Minimal
+1216,Heart Disease,Minimal
+1217,Diabetes,Minimal
+1218,Cancer,Moderate
+1219,None of Above,Minimal
+1220,Diabetes,Minimal
+1221,Heart Disease,Minimal
+1222,None of Above,Minimal
+1223,Depression,Minimal
+1224,None of Above,Minimal
+1225,Depression,Minimal
+1226,None of Above,Minimal
+1227,None of Above,Moderate
+1228,Diabetes,Minimal
+1229,Cancer,Minimal
+1230,None of Above,Moderate
+1231,None of Above,Moderate
+1232,None of Above,Minimal
+1233,None of Above,Minimal
+1234,None of Above,Minimal
+1235,None of Above,Minimal
+1236,None of Above,Moderate
+1237,Depression,Minimal
+1238,Asthma,Minimal
+1239,None of Above,Minimal
+1240,None of Above,Minimal
+1241,Diabetes,Minimal
+1242,None of Above,Minimal
+1243,Asthma,Minimal
+1244,None of Above,Minimal
+1245,Depression,Moderate
+1246,Cancer,Moderate
+1247,None of Above,Minimal
+1248,None of Above,Minimal
+1249,None of Above,Moderate
+1250,None of Above,Moderate
+1251,None of Above,Moderate
+1252,None of Above,Moderate
+1253,None of Above,Moderate
+1254,None of Above,Moderate
+1255,Cancer,Minimal
+1256,Diabetes,Minimal
+1257,Asthma,Minimal
+1258,None of Above,Minimal
+1259,Heart Disease,Minimal
+1260,None of Above,Moderate
+1261,None of Above,Minimal
+1262,None of Above,Moderate
+1263,None of Above,Moderate
+1264,None of Above,Minimal
+1265,None of Above,Moderate
+1266,None of Above,Minimal
+1267,None of Above,Minimal
+1268,None of Above,Minimal
+1269,None of Above,Minimal
+1270,None of Above,Minimal
+1271,Cancer,Moderate
+1272,None of Above,Minimal
+1273,Cancer,Minimal
+1274,None of Above,Minimal
+1275,Heart Disease,Minimal
+1276,Depression,Minimal
+1277,Depression,Minimal
+1278,None of Above,Minimal
+1279,None of Above,Moderate
+1280,None of Above,Moderate
+1281,None of Above,Moderate
+1282,None of Above,Moderate
+1283,None of Above,Minimal
+1284,None of Above,Minimal
+1285,None of Above,Minimal
+1286,Depression,Minimal
+1287,None of Above,Minimal
+1288,None of Above,Minimal
+1289,None of Above,Moderate
+1290,Asthma,Moderate
+1291,Asthma,Minimal
+1292,None of Above,Minimal
+1293,Heart Disease,Moderate
+1294,Asthma,Minimal
+1295,None of Above,Minimal
+1296,Diabetes,Minimal
+1297,None of Above,Minimal
+1298,Diabetes,Minimal
+1299,None of Above,Minimal
+1300,None of Above,Minimal
+1301,Depression,Moderate
+1302,None of Above,Moderate
+1303,Depression,Moderate
+1304,Asthma,Moderate
+1305,Cancer,Minimal
+1306,Asthma,Moderate
+1307,Depression,Moderate
+1308,None of Above,Minimal
+1309,None of Above,Minimal
+1310,Depression,Moderate
+1311,None of Above,Minimal
+1312,None of Above,Moderate
+1313,None of Above,Moderate
+1314,None of Above,Minimal
+1315,None of Above,Minimal
+1316,Asthma,Minimal
+1317,None of Above,Minimal
+1318,Diabetes,Minimal
+1319,None of Above,Moderate
+1320,None of Above,Minimal
+1321,Asthma,Minimal
+1322,None of Above,Minimal
+1323,None of Above,Minimal
+1324,None of Above,Moderate
+1325,None of Above,Minimal
+1326,None of Above,Minimal
+1327,None of Above,Minimal
+1328,Depression,Minimal
+1329,Heart Disease,Minimal
+1330,None of Above,Moderate
+1331,None of Above,Minimal
+1332,None of Above,Minimal
+1333,Cancer,Minimal
+1334,Depression,Moderate
+1335,None of Above,Moderate
+1336,None of Above,Minimal
+1337,None of Above,Minimal
+1338,None of Above,Minimal
+1339,Diabetes,Moderate
+1340,Heart Disease,Minimal
+1341,Cancer,Minimal
+1342,None of Above,Minimal
+1343,None of Above,Minimal
+1344,None of Above,Minimal
+1345,None of Above,Moderate
+1346,Heart Disease,Minimal
+1347,Asthma,Minimal
+1348,Depression,Minimal
+1349,None of Above,Minimal
+1350,Asthma,Moderate
+1351,None of Above,Moderate
+1352,None of Above,Minimal
+1353,None of Above,Minimal
+1354,None of Above,Moderate
+1355,None of Above,Minimal
+1356,None of Above,Minimal
+1357,None of Above,Minimal
+1358,None of Above,Minimal
+1359,None of Above,Moderate
+1360,None of Above,Moderate
+1361,None of Above,Minimal
+1362,Depression,Moderate
+1363,None of Above,Moderate
+1364,None of Above,Moderate
+1365,None of Above,Minimal
+1366,None of Above,Minimal
+1367,Heart Disease,Minimal
+1368,Depression,Moderate
+1369,Cancer,Minimal
+1370,None of Above,Minimal
+1371,None of Above,Minimal
+1372,None of Above,Moderate
+1373,None of Above,Minimal
+1374,None of Above,Moderate
+1375,None of Above,Moderate
+1376,None of Above,Moderate
+1377,None of Above,Moderate
+1378,None of Above,Minimal
+1379,None of Above,Minimal
+1380,None of Above,Minimal
+1381,None of Above,Moderate
+1382,None of Above,Minimal
+1383,None of Above,Moderate
+1384,Depression,Minimal
+1385,Depression,Moderate
+1386,Depression,Moderate
+1387,Depression,Minimal
+1388,None of Above,Minimal
+1389,None of Above,Minimal
+1390,Heart Disease,Minimal
+1391,None of Above,Moderate
+1392,None of Above,Minimal
+1393,Cancer,Moderate
+1394,Cancer,Minimal
+1395,None of Above,Minimal
+1396,None of Above,Minimal
+1397,None of Above,Minimal
+1398,Depression,Minimal
+1399,None of Above,Moderate
+1400,None of Above,Minimal
+1401,None of Above,Minimal
+1402,None of Above,Moderate
+1403,None of Above,Minimal
+1404,Diabetes,Moderate
+1405,None of Above,Minimal
+1406,Cancer,Minimal
+1407,None of Above,Moderate
+1408,None of Above,Moderate
+1409,Depression,Minimal
+1410,None of Above,Minimal
+1411,Asthma,Moderate
+1412,None of Above,Minimal
+1413,Depression,Minimal
+1414,Heart Disease,Minimal
+1415,None of Above,Minimal
+1416,None of Above,Minimal
+1417,Cancer,Moderate
+1418,None of Above,Minimal
+1419,None of Above,Moderate
+1420,None of Above,Moderate
+1421,None of Above,Minimal
+1422,None of Above,Moderate
+1423,Asthma,Moderate
+1424,Heart Disease,Moderate
+1425,None of Above,Minimal
+1426,Cancer,Minimal
+1427,None of Above,Moderate
+1428,Depression,Minimal
+1429,None of Above,Minimal
+1430,None of Above,Minimal
+1431,None of Above,Minimal
+1432,None of Above,Minimal
+1433,None of Above,Minimal
+1434,None of Above,Minimal
+1435,None of Above,Moderate
+1436,Cancer,Moderate
+1437,Heart Disease,Moderate
+1438,None of Above,Minimal
+1439,Diabetes,Minimal
+1440,None of Above,Minimal
+1441,None of Above,Minimal
+1442,None of Above,Minimal
+1443,Heart Disease,Minimal
+1444,Heart Disease,Minimal
+1445,None of Above,Minimal
+1446,None of Above,Minimal
+1447,None of Above,Moderate
+1448,None of Above,Minimal
+1449,None of Above,Moderate
+1450,Heart Disease,Minimal
+1451,Heart Disease,Minimal
+1452,None of Above,Minimal
+1453,Diabetes,Minimal
+1454,None of Above,Minimal
+1455,Diabetes,Minimal
+1456,None of Above,Minimal
+1457,None of Above,Moderate
+1458,Asthma,Minimal
+1459,None of Above,Minimal
+1460,Diabetes,Moderate
+1461,None of Above,Minimal
+1462,None of Above,Minimal
+1463,Heart Disease,Minimal
+1464,None of Above,Minimal
+1465,None of Above,Minimal
+1466,None of Above,Moderate
+1467,Diabetes,Minimal
+1468,None of Above,Minimal
+1469,None of Above,Minimal
+1470,None of Above,Minimal
+1471,Depression,Minimal
+1472,Depression,Minimal
+1473,None of Above,Moderate
+1474,Cancer,Moderate
+1475,None of Above,Minimal
+1476,None of Above,Moderate
+1477,None of Above,Minimal
+1478,None of Above,Moderate
+1479,Asthma,Moderate
+1480,None of Above,Minimal
+1481,None of Above,Minimal
+1482,None of Above,Moderate
+1483,None of Above,Minimal
+1484,None of Above,Moderate
+1485,None of Above,Minimal
+1486,None of Above,Minimal
+1487,None of Above,Minimal
+1488,None of Above,Minimal
+1489,None of Above,Minimal
+1490,Cancer,Minimal
+1491,None of Above,Moderate
+1492,None of Above,Moderate
+1493,Cancer,Minimal
+1494,None of Above,Minimal
+1495,Cancer,Minimal
+1496,Diabetes,Minimal
+1497,None of Above,Minimal
+1498,None of Above,Minimal
+1499,None of Above,Minimal
+1500,None of Above,Moderate
+1501,None of Above,Minimal
+1502,Asthma,Minimal
+1503,Asthma,Moderate
+1504,None of Above,Minimal
+1505,None of Above,Moderate
+1506,Asthma,Minimal
+1507,Depression,Minimal
+1508,None of Above,Minimal
+1509,Depression,Minimal
+1510,Asthma,Minimal
+1511,None of Above,Minimal
+1512,Depression,Minimal
+1513,None of Above,Minimal
+1514,Heart Disease,Minimal
+1515,None of Above,Moderate
+1516,None of Above,Minimal
+1517,None of Above,Minimal
+1518,None of Above,Minimal
+1519,Asthma,Minimal
+1520,None of Above,Moderate
+1521,None of Above,Minimal
+1522,None of Above,Minimal
+1523,None of Above,Moderate
+1524,None of Above,Moderate
+1525,None of Above,Minimal
+1526,Depression,Minimal
+1527,None of Above,Minimal
+1528,Heart Disease,Minimal
+1529,None of Above,Moderate
+1530,None of Above,Minimal
+1531,Asthma,Moderate
+1532,None of Above,Minimal
+1533,Cancer,Minimal
+1534,None of Above,Moderate
+1535,None of Above,Moderate
+1536,None of Above,Minimal
+1537,Cancer,Moderate
+1538,Depression,Minimal
+1539,Depression,Minimal
+1540,None of Above,Moderate
+1541,None of Above,Minimal
+1542,None of Above,Minimal
+1543,Heart Disease,Minimal
+1544,Depression,Minimal
+1545,None of Above,Minimal
+1546,None of Above,Minimal
+1547,None of Above,Moderate
+1548,None of Above,Minimal
+1549,None of Above,Minimal
+1550,None of Above,Minimal
+1551,Depression,Minimal
+1552,Cancer,Moderate
+1553,None of Above,Minimal
+1554,None of Above,Minimal
+1555,Heart Disease,Minimal
+1556,None of Above,Minimal
+1557,None of Above,Minimal
+1558,Depression,Moderate
+1559,None of Above,Minimal
+1560,None of Above,Minimal
+1561,None of Above,Moderate
+1562,None of Above,Moderate
+1563,None of Above,Minimal
+1564,None of Above,Moderate
+1565,Cancer,Minimal
+1566,None of Above,Moderate
+1567,Depression,Minimal
+1568,None of Above,Minimal
+1569,None of Above,Minimal
+1570,None of Above,Moderate
+1571,None of Above,Minimal
+1572,None of Above,Minimal
+1573,None of Above,Moderate
+1574,Asthma,Minimal
+1575,None of Above,Moderate
+1576,None of Above,Minimal
+1577,None of Above,Minimal
+1578,None of Above,Minimal
+1579,None of Above,Moderate
+1580,None of Above,Minimal
+1581,Diabetes,Minimal
+1582,None of Above,Moderate
+1583,None of Above,Moderate
+1584,None of Above,Moderate
+1585,None of Above,Minimal
+1586,None of Above,Minimal
+1587,None of Above,Minimal
+1588,None of Above,Minimal
+1589,None of Above,Moderate
+1590,None of Above,Minimal
+1591,None of Above,Moderate
+1592,Depression,Minimal
+1593,Heart Disease,Minimal
+1594,Asthma,Minimal
+1595,None of Above,Moderate
+1596,Depression,Moderate
+1597,None of Above,Moderate
+1598,Depression,Minimal
+1599,None of Above,Minimal
+1600,None of Above,Minimal
+1601,Asthma,Minimal
+1602,None of Above,Minimal
+1603,None of Above,Moderate
+1604,None of Above,Moderate
+1605,Cancer,Minimal
+1606,None of Above,Minimal
+1607,None of Above,Moderate
+1608,None of Above,Moderate
+1609,None of Above,Minimal
+1610,None of Above,Minimal
+1611,Heart Disease,Minimal
+1612,Asthma,Minimal
+1613,Asthma,Minimal
+1614,None of Above,Moderate
+1615,None of Above,Moderate
+1616,None of Above,Moderate
+1617,None of Above,Minimal
+1618,Depression,Minimal
+1619,None of Above,Minimal
+1620,None of Above,Minimal
+1621,None of Above,Minimal
+1622,None of Above,Minimal
+1623,Asthma,Moderate
+1624,None of Above,Moderate
+1625,None of Above,Moderate
+1626,None of Above,Moderate
+1627,Depression,Moderate
+1628,Cancer,Minimal
+1629,None of Above,Moderate
+1630,None of Above,Moderate
+1631,None of Above,Minimal
+1632,None of Above,Moderate
+1633,Depression,Moderate
+1634,None of Above,Moderate
+1635,None of Above,Moderate
+1636,Asthma,Moderate
+1637,Diabetes,Moderate
+1638,None of Above,Moderate
+1639,None of Above,Moderate
+1640,None of Above,Moderate
+1641,Asthma,Moderate
+1642,Depression,Minimal
+1643,None of Above,Moderate
+1644,Heart Disease,Moderate
+1645,None of Above,Minimal
+1646,Asthma,Minimal
+1647,Heart Disease,Minimal
+1648,Cancer,Minimal
+1649,None of Above,Minimal
+1650,None of Above,Moderate
+1651,Asthma,Moderate
+1652,Depression,Moderate
+1653,None of Above,Minimal
+1654,None of Above,Moderate
+1655,None of Above,Minimal
+1656,Cancer,Minimal
+1657,None of Above,Moderate
+1658,None of Above,Moderate
+1659,None of Above,Moderate
+1660,Asthma,Minimal
+1661,Diabetes,Minimal
+1662,Cancer,Minimal
+1663,None of Above,Minimal
+1664,None of Above,Minimal
+1665,Asthma,Minimal
+1666,Cancer,Minimal
+1667,None of Above,Moderate
+1668,None of Above,Minimal
+1669,None of Above,Moderate
+1670,None of Above,Minimal
+1671,None of Above,Minimal
+1672,Cancer,Minimal
+1673,Asthma,Minimal
+1674,Asthma,Moderate
+1675,Depression,Minimal
+1676,None of Above,Minimal
+1677,Asthma,Moderate
+1678,None of Above,Moderate
+1679,None of Above,Minimal
+1680,Cancer,Minimal
+1681,None of Above,Moderate
+1682,Heart Disease,Minimal
+1683,Heart Disease,Moderate
+1684,None of Above,Moderate
+1685,Diabetes,Minimal
+1686,Depression,Moderate
+1687,None of Above,Minimal
+1688,Depression,Moderate
+1689,None of Above,Moderate
+1690,Depression,Minimal
+1691,None of Above,Moderate
+1692,Asthma,Minimal
+1693,None of Above,Minimal
+1694,None of Above,Moderate
+1695,Depression,Moderate
+1696,None of Above,Moderate
+1697,Depression,Moderate
+1698,None of Above,Minimal
+1699,None of Above,Minimal
+1700,None of Above,Minimal
+1701,Cancer,Minimal
+1702,None of Above,Moderate
+1703,None of Above,Minimal
+1704,None of Above,Moderate
+1705,None of Above,Minimal
+1706,None of Above,Moderate
+1707,None of Above,Minimal
+1708,None of Above,Minimal
+1709,Depression,Minimal
+1710,None of Above,Moderate
+1711,None of Above,Moderate
+1712,None of Above,Minimal
+1713,Asthma,Moderate
+1714,None of Above,Minimal
+1715,None of Above,Moderate
+1716,Depression,Minimal
+1717,Asthma,Moderate
+1718,Cancer,Moderate
+1719,None of Above,Minimal
+1720,Heart Disease,Minimal
+1721,None of Above,Moderate
+1722,None of Above,Minimal
+1723,None of Above,Minimal
+1724,Depression,Minimal
+1725,Depression,Minimal
+1726,None of Above,Minimal
+1727,Diabetes,Moderate
+1728,Asthma,Moderate
+1729,None of Above,Moderate
+1730,None of Above,Moderate
+1731,None of Above,Moderate
+1732,None of Above,Minimal
+1733,Diabetes,Minimal
+1734,None of Above,Moderate
+1735,Depression,Minimal
+1736,None of Above,Minimal
+1737,None of Above,Minimal
+1738,None of Above,Minimal
+1739,None of Above,Minimal
+1740,Heart Disease,Minimal
+1741,Diabetes,Minimal
+1742,Depression,Minimal
+1743,None of Above,Moderate
+1744,Diabetes,Minimal
+1745,Heart Disease,Minimal
+1746,None of Above,Moderate
+1747,Diabetes,Minimal
+1748,Depression,Minimal
+1749,None of Above,Moderate
+1750,None of Above,Moderate
+1751,None of Above,Moderate
+1752,Cancer,Minimal
+1753,None of Above,Minimal
+1754,Cancer,Minimal
+1755,Heart Disease,Minimal
+1756,None of Above,Minimal
+1757,Cancer,Minimal
+1758,None of Above,Minimal
+1759,Diabetes,Minimal
+1760,None of Above,Minimal
+1761,Cancer,Minimal
+1762,None of Above,Moderate
+1763,None of Above,Moderate
+1764,None of Above,Minimal
+1765,None of Above,Minimal
+1766,Depression,Minimal
+1767,None of Above,Minimal
+1768,None of Above,Moderate
+1769,None of Above,Minimal
+1770,None of Above,Minimal
+1771,None of Above,Minimal
+1772,None of Above,Minimal
+1773,None of Above,Moderate
+1774,None of Above,Minimal
+1775,None of Above,Moderate
+1776,Heart Disease,Minimal
+1777,None of Above,Minimal
+1778,None of Above,Moderate
+1779,Depression,Minimal
+1780,Diabetes,Moderate
+1781,None of Above,Minimal
+1782,None of Above,Moderate
+1783,Heart Disease,Minimal
+1784,None of Above,Minimal
+1785,None of Above,Moderate
+1786,None of Above,Minimal
+1787,Depression,Minimal
+1788,None of Above,Minimal
+1789,None of Above,Minimal
+1790,None of Above,Moderate
+1791,Depression,Moderate
+1792,None of Above,Minimal
+1793,Cancer,Moderate
+1794,None of Above,Minimal
+1795,Asthma,Minimal
+1796,None of Above,Minimal
+1797,None of Above,Minimal
+1798,Cancer,Minimal
+1799,Asthma,Moderate
+1800,None of Above,Moderate
+1801,Cancer,Moderate
+1802,Asthma,Moderate
+1803,None of Above,Moderate
+1804,None of Above,Moderate
+1805,None of Above,Minimal
+1806,Heart Disease,Minimal
+1807,Heart Disease,Minimal
+1808,Heart Disease,Moderate
+1809,None of Above,Minimal
+1810,None of Above,Moderate
+1811,None of Above,Minimal
+1812,Asthma,Minimal
+1813,None of Above,Moderate
+1814,None of Above,Minimal
+1815,None of Above,Minimal
+1816,None of Above,Minimal
+1817,None of Above,Minimal
+1818,Cancer,Minimal
+1819,None of Above,Minimal
+1820,Depression,Minimal
+1821,Depression,Minimal
+1822,None of Above,Minimal
+1823,Cancer,Minimal
+1824,None of Above,Minimal
+1825,None of Above,Minimal
+1826,Cancer,Minimal
+1827,Cancer,Minimal
+1828,Asthma,Minimal
+1829,Cancer,Moderate
+1830,Cancer,Minimal
+1831,Asthma,Moderate
+1832,None of Above,Minimal
+1833,None of Above,Minimal
+1834,Cancer,Minimal
+1835,None of Above,Minimal
+1836,None of Above,Minimal
+1837,Cancer,Moderate
+1838,Cancer,Minimal
+1839,None of Above,Minimal
+1840,None of Above,Minimal
+1841,None of Above,Minimal
+1842,None of Above,Minimal
+1843,Asthma,Minimal
+1844,Depression,Moderate
+1845,None of Above,Minimal
+1846,None of Above,Minimal
+1847,None of Above,Minimal
+1848,Cancer,Minimal
+1849,None of Above,Minimal
+1850,Asthma,Moderate
+1851,None of Above,Minimal
+1852,None of Above,Minimal
+1853,None of Above,Minimal
+1854,None of Above,Minimal
+1855,None of Above,Moderate
+1856,Depression,Moderate
+1857,None of Above,Moderate
+1858,None of Above,Moderate
+1859,Depression,Minimal
+1860,Asthma,Minimal
+1861,None of Above,Minimal
+1862,Depression,Minimal
+1863,Heart Disease,Moderate
+1864,None of Above,Moderate
+1865,None of Above,Minimal
+1866,None of Above,Minimal
+1867,None of Above,Moderate
+1868,None of Above,Moderate
+1869,None of Above,Moderate
+1870,None of Above,Moderate
+1871,None of Above,Minimal
+1872,Depression,Moderate
+1873,None of Above,Minimal
+1874,Heart Disease,Minimal
+1875,None of Above,Minimal
+1876,Cancer,Minimal
+1877,None of Above,Minimal
+1878,Cancer,Minimal
+1879,Diabetes,Minimal
+1880,None of Above,Minimal
+1881,None of Above,Minimal
+1882,None of Above,Minimal
+1883,None of Above,Moderate
+1884,None of Above,Minimal
+1885,None of Above,Moderate
+1886,None of Above,Minimal
+1887,Heart Disease,Minimal
+1888,Diabetes,Minimal
+1889,None of Above,Moderate
+1890,None of Above,Moderate
+1891,None of Above,Moderate
+1892,None of Above,Minimal
+1893,Cancer,Minimal
+1894,Asthma,Minimal
+1895,Depression,Minimal
+1896,None of Above,Minimal
+1897,None of Above,Moderate
+1898,None of Above,Minimal
+1899,Asthma,Moderate
+1900,None of Above,Minimal
+1901,None of Above,Minimal
+1902,Diabetes,Minimal
+1903,None of Above,Moderate
+1904,None of Above,Minimal
+1905,None of Above,Moderate
+1906,None of Above,Moderate
+1907,None of Above,Moderate
+1908,None of Above,Minimal
+1909,None of Above,Minimal
+1910,None of Above,Moderate
+1911,None of Above,Minimal
+1912,None of Above,Minimal
+1913,Cancer,Minimal
+1914,Depression,Minimal
+1915,None of Above,Minimal
+1916,None of Above,Minimal
+1917,None of Above,Minimal
+1918,None of Above,Minimal
+1919,Heart Disease,Minimal
+1920,Asthma,Minimal
+1921,Depression,Moderate
+1922,None of Above,Minimal
+1923,None of Above,Minimal
+1924,Asthma,Minimal
+1925,None of Above,Moderate
+1926,None of Above,Moderate
+1927,None of Above,Minimal
+1928,Cancer,Moderate
+1929,None of Above,Minimal
+1930,None of Above,Minimal
+1931,None of Above,Minimal
+1932,None of Above,Moderate
+1933,None of Above,Minimal
+1934,None of Above,Minimal
+1935,None of Above,Minimal
+1936,None of Above,Minimal
+1937,Diabetes,Moderate
+1938,None of Above,Minimal
+1939,Heart Disease,Minimal
+1940,Heart Disease,Minimal
+1941,Depression,Moderate
+1942,Depression,Minimal
+1943,None of Above,Minimal
+1944,None of Above,Moderate
+1945,Cancer,Minimal
+1946,Cancer,Minimal
+1947,Cancer,Moderate
+1948,Heart Disease,Minimal
+1949,None of Above,Moderate
+1950,Heart Disease,Minimal
+1951,None of Above,Minimal
+1952,None of Above,Moderate
+1953,None of Above,Minimal
+1954,None of Above,Minimal
+1955,Depression,Minimal
+1956,None of Above,Moderate
+1957,None of Above,Moderate
+1958,None of Above,Minimal
+1959,None of Above,Minimal
+1960,None of Above,Minimal
+1961,None of Above,Minimal
+1962,None of Above,Minimal
+1963,None of Above,Minimal
+1964,None of Above,Minimal
+1965,None of Above,Minimal
+1966,None of Above,Moderate
+1967,None of Above,Minimal
+1968,None of Above,Minimal
+1969,None of Above,Moderate
+1970,None of Above,Moderate
+1971,None of Above,Minimal
+1972,None of Above,Minimal
+1973,None of Above,Minimal
+1974,Heart Disease,Minimal
+1975,None of Above,Minimal
+1976,None of Above,Minimal
+1977,None of Above,Moderate
+1978,None of Above,Moderate
+1979,None of Above,Minimal
+1980,None of Above,Minimal
+1981,Asthma,Minimal
+1982,None of Above,Minimal
+1983,Asthma,Minimal
+1984,None of Above,Minimal
+1985,Cancer,Moderate
+1986,None of Above,Minimal
+1987,None of Above,Minimal
+1988,Asthma,Moderate
+1989,None of Above,Minimal
+1990,None of Above,Minimal
+1991,None of Above,Moderate
+1992,Asthma,Minimal
+1993,Cancer,Moderate
+1994,None of Above,Minimal
+1995,Heart Disease,Minimal
+1996,None of Above,Minimal
+1997,None of Above,Minimal
+1998,None of Above,Minimal
+1999,None of Above,Minimal
+2000,Depression,Minimal
+2001,None of Above,Minimal
+2002,None of Above,Moderate
+2003,None of Above,Minimal
+2004,None of Above,Moderate
+2005,None of Above,Moderate
+2006,Depression,Moderate
+2007,Heart Disease,Minimal
+2008,None of Above,Minimal
+2009,None of Above,Minimal
+2010,None of Above,Moderate
+2011,None of Above,Moderate
+2012,None of Above,Minimal
+2013,None of Above,Minimal
+2014,None of Above,Minimal
+2015,None of Above,Minimal
+2016,None of Above,Moderate
+2017,Depression,Moderate
+2018,None of Above,Minimal
+2019,None of Above,Minimal
+2020,None of Above,Minimal
+2021,Cancer,Moderate
+2022,Cancer,Moderate
+2023,None of Above,Minimal
+2024,None of Above,Moderate
+2025,None of Above,Minimal
+2026,None of Above,Minimal
+2027,Cancer,Moderate
+2028,None of Above,Minimal
+2029,None of Above,Minimal
+2030,Depression,Minimal
+2031,Diabetes,Moderate
+2032,Asthma,Minimal
+2033,None of Above,Minimal
+2034,None of Above,Moderate
+2035,Cancer,Minimal
+2036,Depression,Minimal
+2037,None of Above,Minimal
+2038,None of Above,Minimal
+2039,None of Above,Moderate
+2040,Asthma,Minimal
+2041,None of Above,Minimal
+2042,None of Above,Moderate
+2043,None of Above,Minimal
+2044,Diabetes,Moderate
+2045,None of Above,Moderate
+2046,None of Above,Moderate
+2047,None of Above,Moderate
+2048,Depression,Minimal
+2049,Depression,Minimal
+2050,None of Above,Minimal
+2051,Heart Disease,Minimal
+2052,None of Above,Minimal
+2053,Cancer,Moderate
+2054,None of Above,Minimal
+2055,None of Above,Minimal
+2056,None of Above,Minimal
+2057,Asthma,Minimal
+2058,None of Above,Moderate
+2059,Asthma,Moderate
+2060,Cancer,Moderate
+2061,None of Above,Moderate
+2062,Asthma,Minimal
+2063,None of Above,Moderate
+2064,None of Above,Minimal
+2065,None of Above,Minimal
+2066,None of Above,Minimal
+2067,Depression,Moderate
+2068,Cancer,Moderate
+2069,None of Above,Moderate
+2070,Asthma,Moderate
+2071,None of Above,Minimal
+2072,Cancer,Minimal
+2073,Depression,Moderate
+2074,None of Above,Minimal
+2075,None of Above,Moderate
+2076,None of Above,Minimal
+2077,None of Above,Moderate
+2078,Heart Disease,Minimal
+2079,None of Above,Moderate
+2080,Depression,Minimal
+2081,None of Above,Moderate
+2082,Heart Disease,Minimal
+2083,Diabetes,Minimal
+2084,None of Above,Minimal
+2085,None of Above,Moderate
+2086,Depression,Minimal
+2087,None of Above,Minimal
+2088,None of Above,Moderate
+2089,None of Above,Moderate
+2090,None of Above,Moderate
+2091,Depression,Moderate
+2092,None of Above,Minimal
+2093,None of Above,Moderate
+2094,None of Above,Moderate
+2095,None of Above,Minimal
+2096,None of Above,Minimal
+2097,None of Above,Minimal
+2098,None of Above,Moderate
+2099,None of Above,Minimal
+2100,None of Above,Minimal
+2101,None of Above,Minimal
+2102,None of Above,Minimal
+2103,Depression,Minimal
+2104,None of Above,Minimal
+2105,None of Above,Minimal
+2106,None of Above,Moderate
+2107,None of Above,Moderate
+2108,Asthma,Minimal
+2109,None of Above,Minimal
+2110,Depression,Minimal
+2111,None of Above,Minimal
+2112,None of Above,Minimal
+2113,Cancer,Minimal
+2114,None of Above,Minimal
+2115,None of Above,Minimal
+2116,Cancer,Minimal
+2117,Depression,Minimal
+2118,Cancer,Minimal
+2119,None of Above,Moderate
+2120,Depression,Minimal
+2121,Depression,Minimal
+2122,Cancer,Moderate
+2123,None of Above,Moderate
+2124,Depression,Minimal
+2125,None of Above,Minimal
+2126,None of Above,Moderate
+2127,None of Above,Minimal
+2128,Heart Disease,Minimal
+2129,Diabetes,Minimal
+2130,Cancer,Moderate
+2131,None of Above,Moderate
+2132,None of Above,Moderate
+2133,Cancer,Minimal
+2134,None of Above,Minimal
+2135,Depression,Minimal
+2136,None of Above,Minimal
+2137,Depression,Minimal
+2138,None of Above,Minimal
+2139,None of Above,Moderate
+2140,None of Above,Moderate
+2141,None of Above,Minimal
+2142,Asthma,Moderate
+2143,None of Above,Moderate
+2144,None of Above,Moderate
+2145,None of Above,Moderate
+2146,None of Above,Moderate
+2147,Cancer,Minimal
+2148,None of Above,Minimal
+2149,Depression,Minimal
+2150,None of Above,Minimal
+2151,None of Above,Moderate
+2152,None of Above,Moderate
+2153,Heart Disease,Moderate
+2154,Asthma,Minimal
+2155,Depression,Minimal
+2156,None of Above,Moderate
+2157,None of Above,Minimal
+2158,None of Above,Minimal
+2159,None of Above,Minimal
+2160,None of Above,Minimal
+2161,None of Above,Moderate
+2162,None of Above,Moderate
+2163,None of Above,Moderate
+2164,None of Above,Minimal
+2165,None of Above,Minimal
+2166,None of Above,Moderate
+2167,None of Above,Moderate
+2168,None of Above,Moderate
+2169,None of Above,Minimal
+2170,None of Above,Moderate
+2171,Depression,Moderate
+2172,Diabetes,Minimal
+2173,Depression,Minimal
+2174,None of Above,Moderate
+2175,Depression,Minimal
+2176,Diabetes,Minimal
+2177,None of Above,Minimal
+2178,None of Above,Moderate
+2179,None of Above,Moderate
+2180,Depression,Minimal
+2181,Cancer,Moderate
+2182,None of Above,Moderate
+2183,None of Above,Minimal
+2184,Asthma,Minimal
+2185,Asthma,Moderate
+2186,None of Above,Minimal
+2187,Asthma,Minimal
+2188,Asthma,Moderate
+2189,None of Above,Minimal
+2190,None of Above,Moderate
+2191,None of Above,Minimal
+2192,None of Above,Minimal
+2193,Asthma,Moderate
+2194,Depression,Moderate
+2195,Depression,Minimal
+2196,None of Above,Minimal
+2197,None of Above,Minimal
+2198,Heart Disease,Minimal
+2199,None of Above,Minimal
+2200,Asthma,Minimal
+2201,Diabetes,Moderate
+2202,None of Above,Moderate
+2203,Heart Disease,Moderate
+2204,None of Above,Minimal
+2205,None of Above,Minimal
+2206,None of Above,Minimal
+2207,None of Above,Moderate
+2208,None of Above,Minimal
+2209,None of Above,Minimal
+2210,None of Above,Minimal
+2211,Depression,Minimal
+2212,None of Above,Minimal
+2213,Heart Disease,Minimal
+2214,None of Above,Minimal
+2215,None of Above,Minimal
+2216,None of Above,Moderate
+2217,Depression,Minimal
+2218,None of Above,Minimal
+2219,Heart Disease,Minimal
+2220,None of Above,Minimal
+2221,None of Above,Minimal
+2222,None of Above,Minimal
+2223,None of Above,Minimal
+2224,None of Above,Minimal
+2225,Cancer,Minimal
+2226,Depression,Minimal
+2227,None of Above,Minimal
+2228,None of Above,Minimal
+2229,Diabetes,Moderate
+2230,Diabetes,Minimal
+2231,None of Above,Minimal
+2232,None of Above,Moderate
+2233,None of Above,Minimal
+2234,None of Above,Minimal
+2235,None of Above,Minimal
+2236,None of Above,Moderate
+2237,None of Above,Moderate
+2238,Cancer,Moderate
+2239,None of Above,Moderate
+2240,None of Above,Minimal
+2241,Cancer,Minimal
+2242,Heart Disease,Minimal
+2243,None of Above,Moderate
+2244,None of Above,Moderate
+2245,Diabetes,Minimal
+2246,Asthma,Minimal
+2247,None of Above,Minimal
+2248,None of Above,Moderate
+2249,None of Above,Moderate
+2250,Diabetes,Moderate
+2251,None of Above,Moderate
+2252,None of Above,Minimal
+2253,Depression,Moderate
+2254,Asthma,Moderate
+2255,Asthma,Minimal
+2256,None of Above,Minimal
+2257,Diabetes,Moderate
+2258,Depression,Minimal
+2259,Asthma,Moderate
+2260,Cancer,Moderate
+2261,None of Above,Moderate
+2262,Asthma,Moderate
+2263,Heart Disease,Minimal
+2264,None of Above,Minimal
+2265,None of Above,Minimal
+2266,None of Above,Minimal
+2267,None of Above,Moderate
+2268,Asthma,Moderate
+2269,None of Above,Minimal
+2270,Cancer,Minimal
+2271,Diabetes,Minimal
+2272,Asthma,Moderate
+2273,None of Above,Minimal
+2274,None of Above,Moderate
+2275,None of Above,Minimal
+2276,None of Above,Minimal
+2277,None of Above,Moderate
+2278,None of Above,Moderate
+2279,None of Above,Minimal
+2280,Depression,Moderate
+2281,Depression,Moderate
+2282,Cancer,Moderate
+2283,None of Above,Minimal
+2284,None of Above,Minimal
+2285,Heart Disease,Minimal
+2286,None of Above,Moderate
+2287,Cancer,Minimal
+2288,Asthma,Moderate
+2289,None of Above,Minimal
+2290,None of Above,Minimal
+2291,None of Above,Moderate
+2292,None of Above,Minimal
+2293,None of Above,Moderate
+2294,None of Above,Minimal
+2295,None of Above,Minimal
+2296,Cancer,Minimal
+2297,None of Above,Minimal
+2298,Diabetes,Moderate
+2299,None of Above,Minimal
+2300,None of Above,Minimal
+2301,None of Above,Moderate
+2302,Diabetes,Minimal
+2303,None of Above,Minimal
+2304,None of Above,Moderate
+2305,None of Above,Minimal
+2306,Asthma,Minimal
+2307,Asthma,Moderate
+2308,None of Above,Minimal
+2309,None of Above,Moderate
+2310,None of Above,Minimal
+2311,None of Above,Minimal
+2312,Cancer,Minimal
+2313,None of Above,Minimal
+2314,None of Above,Minimal
+2315,Diabetes,Moderate
+2316,None of Above,Moderate
+2317,Asthma,Minimal
+2318,Cancer,Minimal
+2319,Asthma,Minimal
+2320,None of Above,Moderate
+2321,Asthma,Minimal
+2322,None of Above,Moderate
+2323,None of Above,Minimal
+2324,None of Above,Minimal
+2325,Asthma,Moderate
+2326,Asthma,Moderate
+2327,None of Above,Moderate
+2328,None of Above,Minimal
+2329,None of Above,Moderate
+2330,Depression,Minimal
+2331,None of Above,Minimal
+2332,None of Above,Moderate
+2333,None of Above,Minimal
+2334,None of Above,Minimal
+2335,None of Above,Minimal
+2336,None of Above,Minimal
+2337,None of Above,Minimal
+2338,None of Above,Moderate
+2339,None of Above,Moderate
+2340,None of Above,Moderate
+2341,None of Above,Minimal
+2342,None of Above,Minimal
+2343,None of Above,Minimal
+2344,None of Above,Minimal
+2345,None of Above,Minimal
+2346,None of Above,Minimal
+2347,None of Above,Minimal
+2348,None of Above,Moderate
+2349,None of Above,Minimal
+2350,Depression,Minimal
+2351,None of Above,Moderate
+2352,None of Above,Minimal
+2353,None of Above,Minimal
+2354,None of Above,Minimal
+2355,Heart Disease,Minimal
+2356,None of Above,Moderate
+2357,Cancer,Minimal
+2358,Asthma,Minimal
+2359,None of Above,Moderate
+2360,None of Above,Moderate
+2361,None of Above,Moderate
+2362,None of Above,Moderate
+2363,Asthma,Minimal
+2364,Heart Disease,Minimal
+2365,None of Above,Moderate
+2366,None of Above,Minimal
+2367,None of Above,Minimal
+2368,Asthma,Moderate
+2369,None of Above,Minimal
+2370,None of Above,Minimal
+2371,Depression,Minimal
+2372,None of Above,Moderate
+2373,None of Above,Minimal
+2374,None of Above,Minimal
+2375,None of Above,Minimal
+2376,None of Above,Moderate
+2377,None of Above,Moderate
+2378,Cancer,Minimal
+2379,None of Above,Moderate
+2380,None of Above,Minimal
+2381,None of Above,Moderate
+2382,None of Above,Minimal
+2383,Asthma,Minimal
+2384,None of Above,Minimal
+2385,None of Above,Minimal
+2386,None of Above,Minimal
+2387,None of Above,Minimal
+2388,None of Above,Minimal
+2389,None of Above,Moderate
+2390,None of Above,Minimal
+2391,None of Above,Minimal
+2392,Heart Disease,Minimal
+2393,Asthma,Minimal
+2394,None of Above,Minimal
+2395,Asthma,Minimal
+2396,Asthma,Moderate
+2397,None of Above,Minimal
+2398,None of Above,Moderate
+2399,Diabetes,Minimal
+2400,Asthma,Moderate
+2401,None of Above,Minimal
+2402,None of Above,Moderate
+2403,Diabetes,Minimal
+2404,None of Above,Minimal
+2405,None of Above,Minimal
+2406,None of Above,Moderate
+2407,Cancer,Minimal
+2408,None of Above,Moderate
+2409,Asthma,Moderate
+2410,Asthma,Minimal
+2411,Cancer,Minimal
+2412,Diabetes,Minimal
+2413,None of Above,Minimal
+2414,Depression,Moderate
+2415,Diabetes,Minimal
+2416,Asthma,Minimal
+2417,None of Above,Minimal
+2418,None of Above,Moderate
+2419,None of Above,Minimal
+2420,Depression,Minimal
+2421,None of Above,Minimal
+2422,None of Above,Moderate
+2423,None of Above,Minimal
+2424,None of Above,Minimal
+2425,None of Above,Minimal
+2426,Asthma,Minimal
+2427,None of Above,Minimal
+2428,None of Above,Minimal
+2429,None of Above,Minimal
+2430,None of Above,Minimal
+2431,None of Above,Minimal
+2432,None of Above,Moderate
+2433,None of Above,Moderate
+2434,None of Above,Minimal
+2435,None of Above,Minimal
+2436,None of Above,Moderate
+2437,Depression,Moderate
+2438,None of Above,Minimal
+2439,None of Above,Minimal
+2440,Depression,Moderate
+2441,None of Above,Moderate
+2442,None of Above,Moderate
+2443,None of Above,Minimal
+2444,Depression,Minimal
+2445,None of Above,Moderate
+2446,None of Above,Moderate
+2447,Depression,Minimal
+2448,None of Above,Moderate
+2449,Cancer,Minimal
+2450,None of Above,Moderate
+2451,None of Above,Moderate
+2452,Asthma,Minimal
+2453,None of Above,Minimal
+2454,None of Above,Moderate
+2455,None of Above,Minimal
+2456,None of Above,Minimal
+2457,None of Above,Moderate
+2458,Cancer,Moderate
+2459,Diabetes,Moderate
+2460,None of Above,Moderate
+2461,None of Above,Minimal
+2462,None of Above,Moderate
+2463,Asthma,Minimal
+2464,None of Above,Minimal
+2465,Depression,Minimal
+2466,Depression,Minimal
+2467,Asthma,Minimal
+2468,None of Above,Minimal
+2469,None of Above,Minimal
+2470,None of Above,Moderate
+2471,None of Above,Minimal
+2472,None of Above,Minimal
+2473,None of Above,Moderate
+2474,None of Above,Moderate
+2475,None of Above,Minimal
+2476,None of Above,Moderate
+2477,None of Above,Minimal
+2478,None of Above,Minimal
+2479,None of Above,Minimal
+2480,None of Above,Moderate
+2481,Depression,Minimal
+2482,None of Above,Minimal
+2483,None of Above,Moderate
+2484,None of Above,Minimal
+2485,None of Above,Moderate
+2486,None of Above,Moderate
+2487,None of Above,Minimal
+2488,None of Above,Minimal
+2489,None of Above,Minimal
+2490,Diabetes,Moderate
+2491,None of Above,Moderate
+2492,None of Above,Minimal
+2493,None of Above,Minimal
+2494,None of Above,Minimal
+2495,None of Above,Minimal
+2496,None of Above,Moderate
+2497,None of Above,Minimal
+2498,None of Above,Minimal
+2499,Heart Disease,Minimal
+2500,None of Above,Moderate
+2501,Cancer,Minimal
+2502,Cancer,Minimal
+2503,None of Above,Moderate
+2504,None of Above,Minimal
+2505,Depression,Moderate
+2506,Depression,Minimal
+2507,None of Above,Moderate
+2508,None of Above,Minimal
+2509,None of Above,Minimal
+2510,None of Above,Moderate
+2511,Cancer,Minimal
+2512,None of Above,Moderate
+2513,Depression,Moderate
+2514,None of Above,Minimal
+2515,None of Above,Moderate
+2516,None of Above,Minimal
+2517,None of Above,Minimal
+2518,None of Above,Minimal
+2519,Cancer,Moderate
+2520,Depression,Moderate
+2521,None of Above,Minimal
+2522,None of Above,Minimal
+2523,Diabetes,Moderate
+2524,None of Above,Moderate
+2525,None of Above,Moderate
+2526,None of Above,Minimal
+2527,Diabetes,Minimal
+2528,None of Above,Moderate
+2529,None of Above,Minimal
+2530,None of Above,Moderate
+2531,None of Above,Minimal
+2532,Depression,Minimal
+2533,None of Above,Minimal
+2534,Heart Disease,Moderate
+2535,None of Above,Minimal
+2536,Heart Disease,Minimal
+2537,None of Above,Moderate
+2538,None of Above,Minimal
+2539,None of Above,Minimal
+2540,None of Above,Moderate
+2541,None of Above,Moderate
+2542,None of Above,Minimal
+2543,None of Above,Moderate
+2544,None of Above,Moderate
+2545,None of Above,Minimal
+2546,Asthma,Moderate
+2547,None of Above,Minimal
+2548,None of Above,Minimal
+2549,None of Above,Minimal
+2550,Asthma,Moderate
+2551,Cancer,Minimal
+2552,Cancer,Moderate
+2553,None of Above,Minimal
+2554,Cancer,Minimal
+2555,Cancer,Minimal
+2556,None of Above,Minimal
+2557,Heart Disease,Moderate
+2558,None of Above,Minimal
+2559,None of Above,Minimal
+2560,None of Above,Moderate
+2561,None of Above,Minimal
+2562,Asthma,Moderate
+2563,Depression,Minimal
+2564,None of Above,Moderate
+2565,None of Above,Minimal
+2566,None of Above,Minimal
+2567,Cancer,Minimal
+2568,None of Above,Minimal
+2569,None of Above,Moderate
+2570,Depression,Moderate
+2571,Diabetes,Minimal
+2572,None of Above,Minimal
+2573,None of Above,Minimal
+2574,Cancer,Minimal
+2575,None of Above,Minimal
+2576,None of Above,Minimal
+2577,Depression,Moderate
+2578,Asthma,Minimal
+2579,Depression,Minimal
+2580,Asthma,Moderate
+2581,None of Above,Minimal
+2582,None of Above,Moderate
+2583,None of Above,Minimal
+2584,None of Above,Moderate
+2585,None of Above,Minimal
+2586,Heart Disease,Minimal
+2587,Cancer,Moderate
+2588,None of Above,Moderate
+2589,None of Above,Minimal
+2590,None of Above,Minimal
+2591,Cancer,Minimal
+2592,None of Above,Minimal
+2593,Depression,Minimal
+2594,None of Above,Minimal
+2595,None of Above,Minimal
+2596,Asthma,Minimal
+2597,None of Above,Minimal
+2598,None of Above,Minimal
+2599,Cancer,Moderate
+2600,None of Above,Minimal
+2601,Depression,Moderate
+2602,None of Above,Minimal
+2603,Heart Disease,Minimal
+2604,None of Above,Moderate
+2605,Asthma,Moderate
+2606,None of Above,Minimal
+2607,Asthma,Minimal
+2608,None of Above,Minimal
+2609,None of Above,Minimal
+2610,Asthma,Minimal
+2611,Heart Disease,Minimal
+2612,None of Above,Minimal
+2613,Asthma,Minimal
+2614,None of Above,Moderate
+2615,None of Above,Moderate
+2616,Heart Disease,Minimal
+2617,Cancer,Minimal
+2618,None of Above,Minimal
+2619,None of Above,Minimal
+2620,Depression,Moderate
+2621,None of Above,Minimal
+2622,None of Above,Minimal
+2623,None of Above,Minimal
+2624,None of Above,Moderate
+2625,None of Above,Minimal
+2626,None of Above,Minimal
+2627,None of Above,Minimal
+2628,Depression,Moderate
+2629,None of Above,Minimal
+2630,None of Above,Minimal
+2631,Heart Disease,Minimal
+2632,None of Above,Moderate
+2633,None of Above,Moderate
+2634,None of Above,Minimal
+2635,Cancer,Moderate
+2636,None of Above,Minimal
+2637,Depression,Minimal
+2638,None of Above,Minimal
+2639,Asthma,Minimal
+2640,None of Above,Minimal
+2641,None of Above,Minimal
+2642,Heart Disease,Minimal
+2643,None of Above,Minimal
+2644,Asthma,Moderate
+2645,Cancer,Moderate
+2646,None of Above,Minimal
+2647,None of Above,Minimal
+2648,None of Above,Minimal
+2649,Asthma,Moderate
+2650,None of Above,Minimal
+2651,None of Above,Minimal
+2652,None of Above,Moderate
+2653,None of Above,Moderate
+2654,None of Above,Moderate
+2655,None of Above,Moderate
+2656,None of Above,Minimal
+2657,Heart Disease,Minimal
+2658,None of Above,Moderate
+2659,None of Above,Minimal
+2660,None of Above,Moderate
+2661,Cancer,Minimal
+2662,Asthma,Moderate
+2663,Diabetes,Minimal
+2664,None of Above,Minimal
+2665,None of Above,Moderate
+2666,None of Above,Minimal
+2667,None of Above,Minimal
+2668,Diabetes,Minimal
+2669,None of Above,Minimal
+2670,None of Above,Moderate
+2671,None of Above,Moderate
+2672,None of Above,Moderate
+2673,None of Above,Minimal
+2674,Asthma,Moderate
+2675,None of Above,Minimal
+2676,None of Above,Minimal
+2677,Cancer,Minimal
+2678,None of Above,Minimal
+2679,Cancer,Minimal
+2680,None of Above,Minimal
+2681,Cancer,Minimal
+2682,None of Above,Moderate
+2683,None of Above,Minimal
+2684,None of Above,Minimal
+2685,None of Above,Minimal
+2686,None of Above,Moderate
+2687,Cancer,Minimal
+2688,None of Above,Moderate
+2689,None of Above,Minimal
+2690,None of Above,Minimal
+2691,None of Above,Minimal
+2692,Cancer,Minimal
+2693,Cancer,Moderate
+2694,Heart Disease,Minimal
+2695,None of Above,Minimal
+2696,Depression,Minimal
+2697,None of Above,Minimal
+2698,None of Above,Minimal
+2699,Cancer,Minimal
+2700,None of Above,Minimal
+2701,None of Above,Minimal
+2702,Diabetes,Minimal
+2703,Depression,Moderate
+2704,Diabetes,Moderate
+2705,None of Above,Moderate
+2706,Diabetes,Minimal
+2707,Diabetes,Minimal
+2708,None of Above,Moderate
+2709,Heart Disease,Minimal
+2710,None of Above,Moderate
+2711,None of Above,Minimal
+2712,None of Above,Minimal
+2713,None of Above,Moderate
+2714,None of Above,Minimal
+2715,Depression,Moderate
+2716,None of Above,Moderate
+2717,None of Above,Minimal
+2718,None of Above,Minimal
+2719,None of Above,Minimal
+2720,None of Above,Moderate
+2721,None of Above,Minimal
+2722,Asthma,Moderate
+2723,None of Above,Minimal
+2724,None of Above,Minimal
+2725,None of Above,Minimal
+2726,None of Above,Moderate
+2727,None of Above,Minimal
+2728,None of Above,Minimal
+2729,None of Above,Minimal
+2730,None of Above,Moderate
+2731,Cancer,Minimal
+2732,None of Above,Moderate
+2733,None of Above,Minimal
+2734,None of Above,Moderate
+2735,Cancer,Minimal
+2736,None of Above,Moderate
+2737,None of Above,Minimal
+2738,None of Above,Moderate
+2739,None of Above,Minimal
+2740,None of Above,Minimal
+2741,None of Above,Moderate
+2742,Cancer,Minimal
+2743,Cancer,Minimal
+2744,None of Above,Minimal
+2745,None of Above,Minimal
+2746,Cancer,Minimal
+2747,Depression,Minimal
+2748,Cancer,Minimal
+2749,Asthma,Minimal
+2750,None of Above,Minimal
+2751,None of Above,Minimal
+2752,None of Above,Moderate
+2753,None of Above,Minimal
+2754,Depression,Moderate
+2755,Asthma,Moderate
+2756,None of Above,Minimal
+2757,None of Above,Minimal
+2758,None of Above,Moderate
+2759,None of Above,Moderate
+2760,None of Above,Minimal
+2761,None of Above,Moderate
+2762,Depression,Minimal
+2763,Asthma,Minimal
+2764,None of Above,Minimal
+2765,None of Above,Minimal
+2766,None of Above,Moderate
+2767,None of Above,Minimal
+2768,Cancer,Minimal
+2769,None of Above,Moderate
+2770,None of Above,Minimal
+2771,Asthma,Moderate
+2772,Asthma,Minimal
+2773,Cancer,Moderate
+2774,None of Above,Minimal
+2775,Asthma,Moderate
+2776,Heart Disease,Minimal
+2777,None of Above,Minimal
+2778,None of Above,Minimal
+2779,Depression,Moderate
+2780,None of Above,Moderate
+2781,None of Above,Minimal
+2782,Cancer,Minimal
+2783,None of Above,Moderate
+2784,Asthma,Minimal
+2785,None of Above,Minimal
+2786,Cancer,Minimal
+2787,Cancer,Moderate
+2788,None of Above,Minimal
+2789,None of Above,Moderate
+2790,Asthma,Minimal
+2791,None of Above,Moderate
+2792,None of Above,Moderate
+2793,Asthma,Minimal
+2794,None of Above,Minimal
+2795,None of Above,Minimal
+2796,None of Above,Moderate
+2797,Cancer,Minimal
+2798,Depression,Minimal
+2799,Depression,Minimal
+2800,Asthma,Minimal
+2801,None of Above,Moderate
+2802,None of Above,Minimal
+2803,None of Above,Moderate
+2804,Diabetes,Minimal
+2805,Asthma,Minimal
+2806,None of Above,Moderate
+2807,None of Above,Minimal
+2808,Heart Disease,Minimal
+2809,Cancer,Minimal
+2810,None of Above,Minimal
+2811,Asthma,Minimal
+2812,Cancer,Minimal
+2813,Cancer,Moderate
+2814,Asthma,Moderate
+2815,Asthma,Moderate
+2816,Asthma,Moderate
+2817,Diabetes,Minimal
+2818,None of Above,Moderate
+2819,Cancer,Minimal
+2820,Cancer,Moderate
+2821,Depression,Minimal
+2822,None of Above,Moderate
+2823,Cancer,Moderate
+2824,None of Above,Minimal
+2825,None of Above,Moderate
+2826,None of Above,Moderate
+2827,None of Above,Minimal
+2828,None of Above,Moderate
+2829,None of Above,Minimal
+2830,Asthma,Minimal
+2831,Depression,Minimal
+2832,None of Above,Minimal
+2833,None of Above,Moderate
+2834,None of Above,Minimal
+2835,Heart Disease,Moderate
+2836,None of Above,Moderate
+2837,Heart Disease,Minimal
+2838,None of Above,Moderate
+2839,Heart Disease,Minimal
+2840,None of Above,Moderate
+2841,None of Above,Moderate
+2842,Heart Disease,Minimal
+2843,None of Above,Minimal
+2844,None of Above,Minimal
+2845,None of Above,Minimal
+2846,Depression,Minimal
+2847,None of Above,Minimal
+2848,None of Above,Moderate
+2849,None of Above,Moderate
+2850,Cancer,Minimal
+2851,None of Above,Moderate
+2852,None of Above,Minimal
+2853,None of Above,Moderate
+2854,Asthma,Minimal
+2855,None of Above,Moderate
+2856,Heart Disease,Minimal
+2857,Depression,Moderate
+2858,None of Above,Minimal
+2859,Depression,Minimal
+2860,None of Above,Minimal
+2861,None of Above,Minimal
+2862,Cancer,Minimal
+2863,None of Above,Minimal
+2864,None of Above,Minimal
+2865,Cancer,Minimal
+2866,None of Above,Moderate
+2867,Cancer,Minimal
+2868,None of Above,Minimal
+2869,Depression,Moderate
+2870,Diabetes,Minimal
+2871,None of Above,Minimal
+2872,None of Above,Moderate
+2873,None of Above,Minimal
+2874,None of Above,Moderate
+2875,None of Above,Moderate
+2876,None of Above,Minimal
+2877,None of Above,Minimal
+2878,None of Above,Minimal
+2879,None of Above,Moderate
+2880,Depression,Minimal
+2881,None of Above,Moderate
+2882,Depression,Moderate
+2883,None of Above,Moderate
+2884,None of Above,Moderate
+2885,None of Above,Moderate
+2886,None of Above,Minimal
+2887,None of Above,Minimal
+2888,Cancer,Minimal
+2889,None of Above,Minimal
+2890,Asthma,Minimal
+2891,Asthma,Minimal
+2892,None of Above,Moderate
+2893,Asthma,Moderate
+2894,Cancer,Minimal
+2895,None of Above,Moderate
+2896,None of Above,Minimal
+2897,None of Above,Minimal
+2898,None of Above,Minimal
+2899,None of Above,Minimal
+2900,None of Above,Minimal
+2901,None of Above,Minimal
+2902,None of Above,Minimal
+2903,None of Above,Moderate
+2904,Diabetes,Minimal
+2905,None of Above,Moderate
+2906,Cancer,Moderate
+2907,Depression,Minimal
+2908,Depression,Minimal
+2909,None of Above,Minimal
+2910,Asthma,Minimal
+2911,None of Above,Minimal
+2912,Asthma,Minimal
+2913,Cancer,Minimal
+2914,None of Above,Minimal
+2915,None of Above,Moderate
+2916,Asthma,Moderate
+2917,None of Above,Moderate
+2918,None of Above,Minimal
+2919,None of Above,Minimal
+2920,None of Above,Moderate
+2921,None of Above,Moderate
+2922,None of Above,Minimal
+2923,None of Above,Moderate
+2924,None of Above,Minimal
+2925,None of Above,Minimal
+2926,Asthma,Moderate
+2927,None of Above,Minimal
+2928,None of Above,Moderate
+2929,None of Above,Minimal
+2930,Heart Disease,Minimal
+2931,None of Above,Moderate
+2932,None of Above,Moderate
+2933,None of Above,Moderate
+2934,Asthma,Minimal
+2935,None of Above,Moderate
+2936,None of Above,Moderate
+2937,None of Above,Minimal
+2938,Depression,Minimal
+2939,None of Above,Moderate
+2940,None of Above,Minimal
+2941,None of Above,Minimal
+2942,None of Above,Minimal
+2943,Cancer,Moderate
+2944,None of Above,Minimal
+2945,Depression,Minimal
+2946,None of Above,Moderate
+2947,None of Above,Moderate
+2948,None of Above,Moderate
+2949,None of Above,Moderate
+2950,Diabetes,Minimal
+2951,Depression,Minimal
+2952,None of Above,Minimal
+2953,None of Above,Minimal
+2954,None of Above,Minimal
+2955,Depression,Minimal
+2956,Diabetes,Minimal
+2957,Depression,Minimal
+2958,None of Above,Moderate
+2959,None of Above,Minimal
+2960,None of Above,Minimal
+2961,Depression,Moderate
+2962,Depression,Moderate
+2963,None of Above,Moderate
+2964,None of Above,Minimal
+2965,Diabetes,Minimal
+2966,Heart Disease,Moderate
+2967,Depression,Moderate
+2968,Cancer,Minimal
+2969,Diabetes,Minimal
+2970,None of Above,Moderate
+2971,Asthma,Minimal
+2972,None of Above,Minimal
+2973,Heart Disease,Minimal
+2974,Heart Disease,Minimal
+2975,None of Above,Moderate
+2976,None of Above,Minimal
+2977,None of Above,Minimal
+2978,Cancer,Moderate
+2979,Heart Disease,Minimal
+2980,None of Above,Minimal
+2981,None of Above,Moderate
+2982,None of Above,Moderate
+2983,Depression,Minimal
+2984,None of Above,Moderate
+2985,Asthma,Moderate
+2986,Depression,Moderate
+2987,None of Above,Moderate
+2988,None of Above,Minimal
+2989,Asthma,Moderate
+2990,Asthma,Minimal
+2991,None of Above,Minimal
+2992,None of Above,Moderate
+2993,Cancer,Moderate
+2994,None of Above,Minimal
+2995,None of Above,Minimal
+2996,Asthma,Minimal
+2997,None of Above,Minimal
+2998,None of Above,Moderate
+2999,None of Above,Minimal
+3000,None of Above,Minimal
+3001,None of Above,Minimal
+3002,Depression,Minimal
+3003,None of Above,Minimal
+3004,None of Above,Minimal
+3005,Heart Disease,Minimal
+3006,None of Above,Minimal
+3007,None of Above,Moderate
+3008,None of Above,Minimal
+3009,None of Above,Minimal
+3010,None of Above,Minimal
+3011,None of Above,Minimal
+3012,None of Above,Minimal
+3013,Heart Disease,Minimal
+3014,Depression,Moderate
+3015,None of Above,Minimal
+3016,None of Above,Minimal
+3017,None of Above,Minimal
+3018,None of Above,Minimal
+3019,None of Above,Minimal
+3020,None of Above,Minimal
+3021,None of Above,Minimal
+3022,Heart Disease,Minimal
+3023,Diabetes,Minimal
+3024,Heart Disease,Minimal
+3025,None of Above,Minimal
+3026,Depression,Moderate
+3027,None of Above,Minimal
+3028,None of Above,Moderate
+3029,Depression,Minimal
+3030,None of Above,Minimal
+3031,Heart Disease,Moderate
+3032,None of Above,Minimal
+3033,None of Above,Moderate
+3034,Asthma,Minimal
+3035,None of Above,Moderate
+3036,Depression,Minimal
+3037,None of Above,Minimal
+3038,Heart Disease,Moderate
+3039,None of Above,Minimal
+3040,Diabetes,Moderate
+3041,Asthma,Minimal
+3042,None of Above,Minimal
+3043,None of Above,Minimal
+3044,None of Above,Minimal
+3045,None of Above,Minimal
+3046,Cancer,Minimal
+3047,None of Above,Minimal
+3048,None of Above,Minimal
+3049,None of Above,Moderate
+3050,None of Above,Moderate
+3051,Cancer,Minimal
+3052,Depression,Moderate
+3053,None of Above,Moderate
+3054,None of Above,Minimal
+3055,None of Above,Moderate
+3056,None of Above,Minimal
+3057,None of Above,Moderate
+3058,None of Above,Minimal
+3059,None of Above,Moderate
+3060,Heart Disease,Minimal
+3061,None of Above,Moderate
+3062,None of Above,Minimal
+3063,Depression,Moderate
+3064,None of Above,Moderate
+3065,Heart Disease,Minimal
+3066,None of Above,Minimal
+3067,Diabetes,Minimal
+3068,Heart Disease,Minimal
+3069,None of Above,Minimal
+3070,None of Above,Minimal
+3071,Cancer,Minimal
+3072,Asthma,Moderate
+3073,None of Above,Minimal
+3074,Depression,Minimal
+3075,None of Above,Moderate
+3076,None of Above,Minimal
+3077,None of Above,Moderate
+3078,None of Above,Minimal
+3079,Heart Disease,Minimal
+3080,None of Above,Minimal
+3081,None of Above,Moderate
+3082,None of Above,Minimal
+3083,Diabetes,Minimal
+3084,None of Above,Minimal
+3085,Heart Disease,Moderate
+3086,None of Above,Minimal
+3087,None of Above,Moderate
+3088,None of Above,Moderate
+3089,None of Above,Minimal
+3090,Heart Disease,Minimal
+3091,None of Above,Minimal
+3092,None of Above,Minimal
+3093,Cancer,Moderate
+3094,Depression,Minimal
+3095,Depression,Minimal
+3096,Asthma,Minimal
+3097,Asthma,Minimal
+3098,Cancer,Minimal
+3099,None of Above,Moderate
+3100,None of Above,Moderate
+3101,None of Above,Moderate
+3102,None of Above,Moderate
+3103,None of Above,Minimal
+3104,None of Above,Minimal
+3105,Cancer,Minimal
+3106,None of Above,Minimal
+3107,None of Above,Minimal
+3108,None of Above,Minimal
+3109,Asthma,Minimal
+3110,Diabetes,Minimal
+3111,Heart Disease,Moderate
+3112,Diabetes,Minimal
+3113,None of Above,Minimal
+3114,None of Above,Moderate
+3115,None of Above,Minimal
+3116,None of Above,Moderate
+3117,None of Above,Minimal
+3118,None of Above,Minimal
+3119,None of Above,Moderate
+3120,None of Above,Minimal
+3121,Asthma,Minimal
+3122,None of Above,Minimal
+3123,None of Above,Moderate
+3124,None of Above,Minimal
+3125,None of Above,Minimal
+3126,None of Above,Minimal
+3127,None of Above,Minimal
+3128,None of Above,Minimal
+3129,None of Above,Moderate
+3130,Depression,Minimal
+3131,None of Above,Moderate
+3132,Cancer,Minimal
+3133,None of Above,Minimal
+3134,None of Above,Minimal
+3135,None of Above,Moderate
+3136,None of Above,Moderate
+3137,None of Above,Minimal
+3138,None of Above,Minimal
+3139,Heart Disease,Minimal
+3140,None of Above,Minimal
+3141,None of Above,Minimal
+3142,None of Above,Minimal
+3143,Asthma,Minimal
+3144,None of Above,Minimal
+3145,None of Above,Minimal
+3146,None of Above,Moderate
+3147,Asthma,Moderate
+3148,Heart Disease,Minimal
+3149,None of Above,Minimal
+3150,Depression,Minimal
+3151,None of Above,Minimal
+3152,Asthma,Minimal
+3153,None of Above,Minimal
+3154,None of Above,Moderate
+3155,None of Above,Minimal
+3156,None of Above,Minimal
+3157,None of Above,Moderate
+3158,None of Above,Moderate
+3159,None of Above,Minimal
+3160,None of Above,Minimal
+3161,None of Above,Minimal
+3162,None of Above,Minimal
+3163,None of Above,Minimal
+3164,None of Above,Moderate
+3165,None of Above,Moderate
+3166,Asthma,Moderate
+3167,None of Above,Minimal
+3168,Cancer,Minimal
+3169,Asthma,Moderate
+3170,None of Above,Moderate
+3171,Asthma,Moderate
+3172,None of Above,Moderate
+3173,None of Above,Minimal
+3174,None of Above,Moderate
+3175,None of Above,Minimal
+3176,None of Above,Moderate
+3177,None of Above,Minimal
+3178,Depression,Moderate
+3179,Asthma,Minimal
+3180,Cancer,Minimal
+3181,None of Above,Moderate
+3182,None of Above,Moderate
+3183,None of Above,Minimal
+3184,None of Above,Moderate
+3185,None of Above,Minimal
+3186,Cancer,Moderate
+3187,None of Above,Minimal
+3188,Asthma,Minimal
+3189,None of Above,Minimal
+3190,None of Above,Moderate
+3191,Depression,Moderate
+3192,Diabetes,Minimal
+3193,Heart Disease,Minimal
+3194,None of Above,Minimal
+3195,None of Above,Moderate
+3196,None of Above,Moderate
+3197,Diabetes,Minimal
+3198,None of Above,Moderate
+3199,None of Above,Moderate
+3200,Cancer,Minimal
+3201,None of Above,Minimal
+3202,Depression,Minimal
+3203,None of Above,Minimal
+3204,None of Above,Minimal
+3205,None of Above,Minimal
+3206,Heart Disease,Minimal
+3207,None of Above,Minimal
+3208,Asthma,Minimal
+3209,Depression,Moderate
+3210,None of Above,Minimal
+3211,None of Above,Minimal
+3212,None of Above,Moderate
+3213,None of Above,Minimal
+3214,Cancer,Minimal
+3215,Cancer,Minimal
+3216,None of Above,Moderate
+3217,None of Above,Moderate
+3218,None of Above,Moderate
+3219,Cancer,Minimal
+3220,None of Above,Minimal
+3221,None of Above,Minimal
+3222,Heart Disease,Minimal
+3223,None of Above,Minimal
+3224,Heart Disease,Minimal
+3225,None of Above,Moderate
+3226,None of Above,Moderate
+3227,None of Above,Minimal
+3228,Depression,Moderate
+3229,Heart Disease,Minimal
+3230,None of Above,Moderate
+3231,None of Above,Moderate
+3232,None of Above,Minimal
+3233,None of Above,Moderate
+3234,None of Above,Minimal
+3235,Diabetes,Moderate
+3236,None of Above,Minimal
+3237,None of Above,Moderate
+3238,Depression,Moderate
+3239,Diabetes,Minimal
+3240,None of Above,Minimal
+3241,None of Above,Moderate
+3242,None of Above,Moderate
+3243,None of Above,Minimal
+3244,Depression,Moderate
+3245,Asthma,Minimal
+3246,None of Above,Minimal
+3247,None of Above,Minimal
+3248,None of Above,Minimal
+3249,Cancer,Minimal
+3250,None of Above,Minimal
+3251,None of Above,Minimal
+3252,None of Above,Minimal
+3253,None of Above,Moderate
+3254,None of Above,Minimal
+3255,None of Above,Minimal
+3256,None of Above,Moderate
+3257,None of Above,Minimal
+3258,Asthma,Moderate
+3259,None of Above,Minimal
+3260,None of Above,Minimal
+3261,None of Above,Moderate
+3262,None of Above,Minimal
+3263,None of Above,Minimal
+3264,None of Above,Minimal
+3265,None of Above,Moderate
+3266,None of Above,Minimal
+3267,Asthma,Moderate
+3268,Cancer,Minimal
+3269,None of Above,Minimal
+3270,Depression,Minimal
+3271,Asthma,Moderate
+3272,Depression,Moderate
+3273,None of Above,Minimal
+3274,Heart Disease,Minimal
+3275,None of Above,Minimal
+3276,Cancer,Minimal
+3277,Depression,Minimal
+3278,None of Above,Minimal
+3279,None of Above,Minimal
+3280,Depression,Moderate
+3281,Depression,Moderate
+3282,None of Above,Minimal
+3283,None of Above,Minimal
+3284,Diabetes,Moderate
+3285,None of Above,Moderate
+3286,Heart Disease,Minimal
+3287,None of Above,Moderate
+3288,None of Above,Minimal
+3289,Depression,Moderate
+3290,Heart Disease,Minimal
+3291,None of Above,Minimal
+3292,None of Above,Moderate
+3293,Diabetes,Minimal
+3294,None of Above,Minimal
+3295,None of Above,Minimal
+3296,None of Above,Minimal
+3297,Diabetes,Moderate
+3298,None of Above,Minimal
+3299,None of Above,Minimal
+3300,None of Above,Minimal
+3301,None of Above,Minimal
+3302,None of Above,Minimal
+3303,None of Above,Minimal
+3304,None of Above,Moderate
+3305,Asthma,Moderate
+3306,Depression,Minimal
+3307,None of Above,Minimal
+3308,None of Above,Minimal
+3309,None of Above,Minimal
+3310,Depression,Moderate
+3311,None of Above,Moderate
+3312,None of Above,Minimal
+3313,None of Above,Minimal
+3314,None of Above,Minimal
+3315,None of Above,Moderate
+3316,Heart Disease,Minimal
+3317,None of Above,Minimal
+3318,Cancer,Minimal
+3319,None of Above,Minimal
+3320,Depression,Moderate
+3321,None of Above,Minimal
+3322,None of Above,Minimal
+3323,None of Above,Minimal
+3324,Cancer,Minimal
+3325,None of Above,Moderate
+3326,None of Above,Minimal
+3327,None of Above,Moderate
+3328,Depression,Minimal
+3329,Cancer,Minimal
+3330,None of Above,Minimal
+3331,None of Above,Minimal
+3332,None of Above,Moderate
+3333,Depression,Moderate
+3334,None of Above,Moderate
+3335,Cancer,Minimal
+3336,None of Above,Minimal
+3337,None of Above,Minimal
+3338,Cancer,Minimal
+3339,None of Above,Minimal
+3340,None of Above,Minimal
+3341,Cancer,Minimal
+3342,None of Above,Moderate
+3343,None of Above,Moderate
+3344,Depression,Minimal
+3345,None of Above,Moderate
+3346,None of Above,Moderate
+3347,None of Above,Moderate
+3348,Asthma,Minimal
+3349,Heart Disease,Minimal
+3350,None of Above,Moderate
+3351,Cancer,Minimal
+3352,None of Above,Minimal
+3353,Cancer,Moderate
+3354,None of Above,Moderate
+3355,None of Above,Minimal
+3356,None of Above,Moderate
+3357,None of Above,Moderate
+3358,None of Above,Minimal
+3359,None of Above,Minimal
+3360,None of Above,Minimal
+3361,None of Above,Minimal
+3362,Depression,Moderate
+3363,None of Above,Minimal
+3364,None of Above,Minimal
+3365,None of Above,Minimal
+3366,None of Above,Minimal
+3367,None of Above,Moderate
+3368,None of Above,Minimal
+3369,None of Above,Minimal
+3370,Depression,Moderate
+3371,None of Above,Minimal
+3372,Asthma,Moderate
+3373,Cancer,Moderate
+3374,Cancer,Minimal
+3375,None of Above,Minimal
+3376,Depression,Minimal
+3377,Asthma,Moderate
+3378,Asthma,Minimal
+3379,Depression,Minimal
+3380,None of Above,Moderate
+3381,Diabetes,Minimal
+3382,None of Above,Moderate
+3383,None of Above,Minimal
+3384,None of Above,Moderate
+3385,None of Above,Minimal
+3386,None of Above,Moderate
+3387,None of Above,Minimal
+3388,Depression,Moderate
+3389,None of Above,Minimal
+3390,None of Above,Minimal
+3391,None of Above,Moderate
+3392,None of Above,Minimal
+3393,Depression,Minimal
+3394,None of Above,Minimal
+3395,None of Above,Moderate
+3396,None of Above,Minimal
+3397,None of Above,Moderate
+3398,Cancer,Moderate
+3399,Depression,Minimal
+3400,Depression,Moderate
+3401,None of Above,Minimal
+3402,Heart Disease,Minimal
+3403,None of Above,Moderate
+3404,Depression,Minimal
+3405,None of Above,Minimal
+3406,Depression,Minimal
+3407,None of Above,Moderate
+3408,None of Above,Minimal
+3409,Diabetes,Minimal
+3410,None of Above,Minimal
+3411,None of Above,Minimal
+3412,None of Above,Minimal
+3413,Depression,Minimal
+3414,None of Above,Minimal
+3415,None of Above,Moderate
+3416,None of Above,Minimal
+3417,None of Above,Minimal
+3418,None of Above,Minimal
+3419,Asthma,Moderate
+3420,Cancer,Moderate
+3421,Depression,Minimal
+3422,None of Above,Minimal
+3423,None of Above,Minimal
+3424,None of Above,Moderate
+3425,None of Above,Minimal
+3426,None of Above,Moderate
+3427,Cancer,Minimal
+3428,None of Above,Minimal
+3429,None of Above,Minimal
+3430,None of Above,Moderate
+3431,Diabetes,Moderate
+3432,None of Above,Moderate
+3433,Depression,Moderate
+3434,None of Above,Minimal
+3435,None of Above,Minimal
+3436,None of Above,Minimal
+3437,None of Above,Minimal
+3438,Asthma,Minimal
+3439,Heart Disease,Minimal
+3440,None of Above,Minimal
+3441,None of Above,Moderate
+3442,Heart Disease,Minimal
+3443,None of Above,Minimal
+3444,None of Above,Minimal
+3445,None of Above,Moderate
+3446,Heart Disease,Minimal
+3447,None of Above,Moderate
+3448,Cancer,Moderate
+3449,Heart Disease,Minimal
+3450,Depression,Minimal
+3451,None of Above,Moderate
+3452,None of Above,Moderate
+3453,Asthma,Minimal
+3454,None of Above,Minimal
+3455,Depression,Minimal
+3456,Asthma,Moderate
+3457,None of Above,Minimal
+3458,Asthma,Moderate
+3459,Asthma,Moderate
+3460,None of Above,Minimal
+3461,None of Above,Minimal
+3462,None of Above,Minimal
+3463,None of Above,Minimal
+3464,None of Above,Moderate
+3465,None of Above,Minimal
+3466,Depression,Minimal
+3467,Asthma,Minimal
+3468,None of Above,Moderate
+3469,Depression,Minimal
+3470,None of Above,Minimal
+3471,Cancer,Moderate
+3472,Cancer,Moderate
+3473,None of Above,Minimal
+3474,None of Above,Moderate
+3475,Cancer,Minimal
+3476,None of Above,Minimal
+3477,Heart Disease,Moderate
+3478,Asthma,Moderate
+3479,None of Above,Moderate
+3480,None of Above,Minimal
+3481,None of Above,Moderate
+3482,None of Above,Minimal
+3483,None of Above,Moderate
+3484,Depression,Minimal
+3485,None of Above,Minimal
+3486,None of Above,Moderate
+3487,None of Above,Minimal
+3488,Asthma,Minimal
+3489,Depression,Moderate
+3490,None of Above,Minimal
+3491,Heart Disease,Minimal
+3492,None of Above,Minimal
+3493,None of Above,Minimal
+3494,Depression,Moderate
+3495,None of Above,Minimal
+3496,None of Above,Minimal
+3497,None of Above,Minimal
+3498,None of Above,Minimal
+3499,Asthma,Moderate
+3500,None of Above,Minimal
+3501,None of Above,Minimal
+3502,None of Above,Moderate
+3503,None of Above,Moderate
+3504,None of Above,Moderate
+3505,None of Above,Moderate
+3506,Depression,Moderate
+3507,None of Above,Minimal
+3508,None of Above,Minimal
+3509,Diabetes,Minimal
+3510,Cancer,Minimal
+3511,Cancer,Minimal
+3512,Depression,Minimal
+3513,None of Above,Minimal
+3514,Heart Disease,Minimal
+3515,Heart Disease,Minimal
+3516,None of Above,Moderate
+3517,None of Above,Moderate
+3518,None of Above,Moderate
+3519,None of Above,Moderate
+3520,Heart Disease,Minimal
+3521,None of Above,Minimal
+3522,Cancer,Minimal
+3523,None of Above,Moderate
+3524,None of Above,Moderate
+3525,None of Above,Minimal
+3526,None of Above,Minimal
+3527,None of Above,Minimal
+3528,None of Above,Moderate
+3529,Asthma,Moderate
+3530,None of Above,Minimal
+3531,Depression,Minimal
+3532,Depression,Moderate
+3533,None of Above,Minimal
+3534,None of Above,Moderate
+3535,None of Above,Minimal
+3536,Depression,Minimal
+3537,None of Above,Minimal
+3538,None of Above,Moderate
+3539,None of Above,Minimal
+3540,None of Above,Moderate
+3541,None of Above,Moderate
+3542,None of Above,Minimal
+3543,None of Above,Moderate
+3544,Asthma,Moderate
+3545,None of Above,Moderate
+3546,None of Above,Moderate
+3547,None of Above,Minimal
+3548,None of Above,Minimal
+3549,None of Above,Moderate
+3550,Depression,Moderate
+3551,None of Above,Minimal
+3552,Heart Disease,Moderate
+3553,Asthma,Minimal
+3554,None of Above,Moderate
+3555,None of Above,Moderate
+3556,None of Above,Minimal
+3557,Cancer,Minimal
+3558,Depression,Minimal
+3559,None of Above,Minimal
+3560,None of Above,Minimal
+3561,None of Above,Minimal
+3562,None of Above,Minimal
+3563,None of Above,Minimal
+3564,None of Above,Moderate
+3565,None of Above,Moderate
+3566,Asthma,Minimal
+3567,Depression,Minimal
+3568,Cancer,Moderate
+3569,None of Above,Minimal
+3570,None of Above,Minimal
+3571,None of Above,Minimal
+3572,Cancer,Moderate
+3573,Depression,Minimal
+3574,Heart Disease,Minimal
+3575,None of Above,Minimal
+3576,None of Above,Moderate
+3577,Depression,Moderate
+3578,None of Above,Moderate
+3579,None of Above,Minimal
+3580,None of Above,Minimal
+3581,None of Above,Minimal
+3582,None of Above,Minimal
+3583,None of Above,Moderate
+3584,None of Above,Minimal
+3585,None of Above,Minimal
+3586,None of Above,Minimal
+3587,None of Above,Minimal
+3588,None of Above,Minimal
+3589,Asthma,Minimal
+3590,Asthma,Minimal
+3591,None of Above,Minimal
+3592,Depression,Minimal
+3593,Depression,Moderate
+3594,Cancer,Minimal
+3595,None of Above,Minimal
+3596,None of Above,Minimal
+3597,Asthma,Moderate
+3598,Cancer,Minimal
+3599,None of Above,Minimal
+3600,None of Above,Minimal
+3601,Cancer,Moderate
+3602,None of Above,Minimal
+3603,None of Above,Minimal
+3604,None of Above,Minimal
+3605,None of Above,Minimal
+3606,Depression,Minimal
+3607,Cancer,Minimal
+3608,None of Above,Moderate
+3609,None of Above,Minimal
+3610,Diabetes,Minimal
+3611,Depression,Minimal
+3612,Asthma,Minimal
+3613,Depression,Minimal
+3614,Asthma,Minimal
+3615,Asthma,Moderate
+3616,Depression,Minimal
+3617,None of Above,Moderate
+3618,Cancer,Moderate
+3619,Diabetes,Minimal
+3620,Cancer,Moderate
+3621,Diabetes,Minimal
+3622,None of Above,Minimal
+3623,None of Above,Moderate
+3624,Cancer,Moderate
+3625,Heart Disease,Minimal
+3626,Diabetes,Minimal
+3627,Heart Disease,Minimal
+3628,None of Above,Minimal
+3629,None of Above,Moderate
+3630,Asthma,Minimal
+3631,None of Above,Moderate
+3632,None of Above,Minimal
+3633,None of Above,Moderate
+3634,Asthma,Minimal
+3635,None of Above,Moderate
+3636,Asthma,Minimal
+3637,None of Above,Minimal
+3638,None of Above,Moderate
+3639,None of Above,Moderate
+3640,None of Above,Minimal
+3641,Cancer,Minimal
+3642,None of Above,Minimal
+3643,None of Above,Moderate
+3644,Depression,Moderate
+3645,None of Above,Minimal
+3646,Depression,Minimal
+3647,Cancer,Minimal
+3648,None of Above,Minimal
+3649,None of Above,Minimal
+3650,None of Above,Minimal
+3651,Heart Disease,Minimal
+3652,None of Above,Minimal
+3653,None of Above,Moderate
+3654,Cancer,Minimal
+3655,None of Above,Moderate
+3656,Cancer,Minimal
+3657,None of Above,Minimal
+3658,Heart Disease,Moderate
+3659,None of Above,Moderate
+3660,None of Above,Moderate
+3661,None of Above,Minimal
+3662,Asthma,Minimal
+3663,None of Above,Moderate
+3664,None of Above,Minimal
+3665,None of Above,Minimal
+3666,None of Above,Minimal
+3667,None of Above,Moderate
+3668,None of Above,Minimal
+3669,None of Above,Moderate
+3670,Heart Disease,Moderate
+3671,None of Above,Minimal
+3672,Depression,Minimal
+3673,None of Above,Minimal
+3674,None of Above,Minimal
+3675,Diabetes,Minimal
+3676,None of Above,Moderate
+3677,Depression,Minimal
+3678,Heart Disease,Minimal
+3679,None of Above,Moderate
+3680,Cancer,Minimal
+3681,None of Above,Moderate
+3682,Depression,Minimal
+3683,None of Above,Minimal
+3684,Cancer,Minimal
+3685,None of Above,Minimal
+3686,None of Above,Minimal
+3687,Heart Disease,Minimal
+3688,None of Above,Minimal
+3689,None of Above,Minimal
+3690,Asthma,Minimal
+3691,None of Above,Minimal
+3692,Diabetes,Minimal
+3693,None of Above,Minimal
+3694,None of Above,Minimal
+3695,None of Above,Minimal
+3696,None of Above,Moderate
+3697,None of Above,Minimal
+3698,None of Above,Minimal
+3699,None of Above,Moderate
+3700,None of Above,Moderate
+3701,None of Above,Minimal
+3702,None of Above,Moderate
+3703,None of Above,Moderate
+3704,None of Above,Moderate
+3705,None of Above,Minimal
+3706,None of Above,Minimal
+3707,None of Above,Moderate
+3708,None of Above,Moderate
+3709,None of Above,Moderate
+3710,Depression,Minimal
+3711,Depression,Minimal
+3712,None of Above,Moderate
+3713,Asthma,Minimal
+3714,None of Above,Moderate
+3715,None of Above,Moderate
+3716,Asthma,Moderate
+3717,Heart Disease,Minimal
+3718,None of Above,Moderate
+3719,Diabetes,Minimal
+3720,Depression,Minimal
+3721,None of Above,Moderate
+3722,None of Above,Moderate
+3723,None of Above,Minimal
+3724,None of Above,Minimal
+3725,Diabetes,Moderate
+3726,None of Above,Moderate
+3727,None of Above,Moderate
+3728,None of Above,Minimal
+3729,None of Above,Minimal
+3730,Heart Disease,Moderate
+3731,None of Above,Minimal
+3732,Cancer,Moderate
+3733,None of Above,Moderate
+3734,Heart Disease,Minimal
+3735,Depression,Moderate
+3736,None of Above,Minimal
+3737,Asthma,Moderate
+3738,None of Above,Moderate
+3739,None of Above,Minimal
+3740,Asthma,Minimal
+3741,None of Above,Minimal
+3742,Asthma,Minimal
+3743,None of Above,Minimal
+3744,None of Above,Minimal
+3745,None of Above,Minimal
+3746,None of Above,Moderate
+3747,None of Above,Minimal
+3748,None of Above,Moderate
+3749,Asthma,Minimal
+3750,Cancer,Minimal
+3751,None of Above,Moderate
+3752,None of Above,Minimal
+3753,None of Above,Moderate
+3754,None of Above,Minimal
+3755,None of Above,Minimal
+3756,Diabetes,Moderate
+3757,None of Above,Moderate
+3758,None of Above,Moderate
+3759,None of Above,Moderate
+3760,Depression,Minimal
+3761,Depression,Moderate
+3762,None of Above,Minimal
+3763,None of Above,Minimal
+3764,None of Above,Minimal
+3765,None of Above,Minimal
+3766,Cancer,Minimal
+3767,None of Above,Moderate
+3768,None of Above,Moderate
+3769,None of Above,Minimal
+3770,Diabetes,Minimal
+3771,None of Above,Moderate
+3772,Cancer,Minimal
+3773,None of Above,Moderate
+3774,Cancer,Minimal
+3775,None of Above,Minimal
+3776,Depression,Minimal
+3777,None of Above,Moderate
+3778,None of Above,Minimal
+3779,None of Above,Minimal
+3780,Diabetes,Minimal
+3781,None of Above,Minimal
+3782,Heart Disease,Minimal
+3783,None of Above,Moderate
+3784,None of Above,Minimal
+3785,Depression,Moderate
+3786,Diabetes,Moderate
+3787,Heart Disease,Moderate
+3788,Depression,Moderate
+3789,Depression,Minimal
+3790,Asthma,Moderate
+3791,Diabetes,Minimal
+3792,Depression,Minimal
+3793,None of Above,Minimal
+3794,Diabetes,Minimal
+3795,None of Above,Moderate
+3796,Diabetes,Minimal
+3797,None of Above,Minimal
+3798,None of Above,Minimal
+3799,Depression,Minimal
+3800,None of Above,Minimal
+3801,None of Above,Minimal
+3802,None of Above,Moderate
+3803,None of Above,Minimal
+3804,None of Above,Minimal
+3805,None of Above,Moderate
+3806,None of Above,Minimal
+3807,None of Above,Minimal
+3808,Heart Disease,Moderate
+3809,None of Above,Minimal
+3810,None of Above,Minimal
+3811,Depression,Moderate
+3812,None of Above,Moderate
+3813,None of Above,Minimal
+3814,None of Above,Minimal
+3815,None of Above,Minimal
+3816,Diabetes,Minimal
+3817,Cancer,Minimal
+3818,Asthma,Minimal
+3819,None of Above,Minimal
+3820,Depression,Minimal
+3821,None of Above,Minimal
+3822,Depression,Moderate
+3823,None of Above,Moderate
+3824,None of Above,Moderate
+3825,None of Above,Minimal
+3826,Cancer,Minimal
+3827,None of Above,Minimal
+3828,None of Above,Minimal
+3829,None of Above,Minimal
+3830,None of Above,Minimal
+3831,None of Above,Minimal
+3832,None of Above,Minimal
+3833,None of Above,Minimal
+3834,None of Above,Minimal
+3835,Diabetes,Minimal
+3836,None of Above,Minimal
+3837,None of Above,Moderate
+3838,None of Above,Minimal
+3839,None of Above,Minimal
+3840,None of Above,Moderate
+3841,None of Above,Moderate
+3842,Asthma,Minimal
+3843,Heart Disease,Minimal
+3844,None of Above,Minimal
+3845,None of Above,Minimal
+3846,Asthma,Minimal
+3847,Asthma,Moderate
+3848,None of Above,Moderate
+3849,None of Above,Minimal
+3850,None of Above,Minimal
+3851,None of Above,Minimal
+3852,Heart Disease,Minimal
+3853,Asthma,Minimal
+3854,None of Above,Minimal
+3855,Depression,Minimal
+3856,None of Above,Minimal
+3857,Asthma,Moderate
+3858,None of Above,Minimal
+3859,None of Above,Minimal
+3860,None of Above,Minimal
+3861,None of Above,Minimal
+3862,None of Above,Minimal
+3863,None of Above,Minimal
+3864,None of Above,Minimal
+3865,Diabetes,Minimal
+3866,None of Above,Minimal
+3867,None of Above,Moderate
+3868,None of Above,Minimal
+3869,None of Above,Moderate
+3870,None of Above,Minimal
+3871,None of Above,Moderate
+3872,Cancer,Minimal
+3873,None of Above,Minimal
+3874,Heart Disease,Moderate
+3875,None of Above,Minimal
+3876,Cancer,Minimal
+3877,Asthma,Minimal
+3878,None of Above,Moderate
+3879,None of Above,Moderate
+3880,Asthma,Moderate
+3881,Depression,Minimal
+3882,None of Above,Moderate
+3883,Heart Disease,Minimal
+3884,None of Above,Moderate
+3885,Depression,Moderate
+3886,None of Above,Moderate
+3887,None of Above,Minimal
+3888,None of Above,Minimal
+3889,Diabetes,Minimal
+3890,Asthma,Minimal
+3891,Depression,Moderate
+3892,None of Above,Minimal
+3893,None of Above,Minimal
+3894,Diabetes,Moderate
+3895,Depression,Minimal
+3896,None of Above,Minimal
+3897,None of Above,Moderate
+3898,Asthma,Minimal
+3899,None of Above,Minimal
+3900,Diabetes,Minimal
+3901,Depression,Minimal
+3902,Asthma,Minimal
+3903,None of Above,Minimal
+3904,None of Above,Minimal
+3905,Cancer,Moderate
+3906,Cancer,Moderate
+3907,Asthma,Minimal
+3908,None of Above,Moderate
+3909,Asthma,Moderate
+3910,None of Above,Moderate
+3911,Asthma,Minimal
+3912,None of Above,Moderate
+3913,None of Above,Minimal
+3914,Asthma,Minimal
+3915,None of Above,Minimal
+3916,None of Above,Moderate
+3917,Depression,Moderate
+3918,None of Above,Minimal
+3919,None of Above,Minimal
+3920,Diabetes,Minimal
+3921,Asthma,Minimal
+3922,Depression,Moderate
+3923,None of Above,Minimal
+3924,None of Above,Minimal
+3925,None of Above,Minimal
+3926,None of Above,Moderate
+3927,None of Above,Minimal
+3928,Heart Disease,Minimal
+3929,Asthma,Minimal
+3930,Cancer,Minimal
+3931,None of Above,Moderate
+3932,None of Above,Moderate
+3933,None of Above,Minimal
+3934,None of Above,Minimal
+3935,None of Above,Minimal
+3936,Heart Disease,Minimal
+3937,None of Above,Minimal
+3938,Cancer,Moderate
+3939,None of Above,Minimal
+3940,Depression,Moderate
+3941,None of Above,Minimal
+3942,None of Above,Minimal
+3943,Cancer,Minimal
+3944,Heart Disease,Minimal
+3945,Depression,Minimal
+3946,None of Above,Minimal
+3947,None of Above,Moderate
+3948,None of Above,Minimal
+3949,None of Above,Moderate
+3950,None of Above,Moderate
+3951,None of Above,Moderate
+3952,None of Above,Minimal
+3953,None of Above,Moderate
+3954,Depression,Minimal
+3955,None of Above,Minimal
+3956,None of Above,Moderate
+3957,Asthma,Minimal
+3958,None of Above,Minimal
+3959,None of Above,Minimal
+3960,None of Above,Minimal
+3961,None of Above,Minimal
+3962,None of Above,Moderate
+3963,None of Above,Moderate
+3964,None of Above,Moderate
+3965,Asthma,Minimal
+3966,Asthma,Minimal
+3967,None of Above,Moderate
+3968,None of Above,Minimal
+3969,None of Above,Minimal
+3970,None of Above,Minimal
+3971,None of Above,Minimal
+3972,None of Above,Moderate
+3973,None of Above,Moderate
+3974,Cancer,Minimal
+3975,None of Above,Moderate
+3976,Heart Disease,Minimal
+3977,Diabetes,Moderate
+3978,None of Above,Moderate
+3979,Diabetes,Minimal
+3980,Depression,Minimal
+3981,None of Above,Moderate
+3982,None of Above,Moderate
+3983,None of Above,Minimal
+3984,None of Above,Minimal
+3985,None of Above,Moderate
+3986,None of Above,Moderate
+3987,None of Above,Moderate
+3988,Cancer,Moderate
+3989,Asthma,Minimal
+3990,Cancer,Moderate
+3991,None of Above,Minimal
+3992,None of Above,Minimal
+3993,None of Above,Moderate
+3994,None of Above,Minimal
+3995,Depression,Moderate
+3996,None of Above,Moderate
+3997,None of Above,Minimal
+3998,Asthma,Moderate
+3999,None of Above,Minimal
+4000,None of Above,Minimal
+4001,Cancer,Minimal
+4002,None of Above,Minimal
+4003,Heart Disease,Minimal
+4004,None of Above,Minimal
+4005,None of Above,Minimal
+4006,None of Above,Minimal
+4007,Asthma,Moderate
+4008,None of Above,Moderate
+4009,Depression,Moderate
+4010,Depression,Minimal
+4011,None of Above,Minimal
+4012,Depression,Minimal
+4013,Heart Disease,Minimal
+4014,None of Above,Minimal
+4015,Depression,Minimal
+4016,None of Above,Minimal
+4017,Depression,Minimal
+4018,Asthma,Minimal
+4019,None of Above,Minimal
+4020,None of Above,Minimal
+4021,None of Above,Minimal
+4022,Diabetes,Moderate
+4023,None of Above,Minimal
+4024,None of Above,Moderate
+4025,None of Above,Minimal
+4026,Diabetes,Minimal
+4027,None of Above,Moderate
+4028,Diabetes,Moderate
+4029,Heart Disease,Minimal
+4030,None of Above,Minimal
+4031,Asthma,Minimal
+4032,Cancer,Minimal
+4033,Heart Disease,Minimal
+4034,None of Above,Minimal
+4035,Asthma,Minimal
+4036,None of Above,Minimal
+4037,None of Above,Minimal
+4038,None of Above,Moderate
+4039,None of Above,Minimal
+4040,None of Above,Moderate
+4041,None of Above,Minimal
+4042,Asthma,Minimal
+4043,None of Above,Minimal
+4044,None of Above,Moderate
+4045,None of Above,Minimal
+4046,Cancer,Minimal
+4047,None of Above,Moderate
+4048,Asthma,Minimal
+4049,None of Above,Minimal
+4050,None of Above,Minimal
+4051,None of Above,Moderate
+4052,None of Above,Minimal
+4053,None of Above,Minimal
+4054,Depression,Moderate
+4055,Heart Disease,Minimal
+4056,None of Above,Minimal
+4057,Heart Disease,Minimal
+4058,None of Above,Minimal
+4059,None of Above,Minimal
+4060,None of Above,Minimal
+4061,None of Above,Minimal
+4062,None of Above,Minimal
+4063,Cancer,Minimal
+4064,None of Above,Minimal
+4065,None of Above,Minimal
+4066,None of Above,Minimal
+4067,None of Above,Minimal
+4068,Depression,Moderate
+4069,None of Above,Minimal
+4070,None of Above,Moderate
+4071,None of Above,Moderate
+4072,None of Above,Minimal
+4073,Cancer,Minimal
+4074,None of Above,Moderate
+4075,Asthma,Minimal
+4076,None of Above,Moderate
+4077,None of Above,Minimal
+4078,Depression,Moderate
+4079,Asthma,Minimal
+4080,Heart Disease,Minimal
+4081,Heart Disease,Minimal
+4082,None of Above,Minimal
+4083,Depression,Minimal
+4084,Heart Disease,Minimal
+4085,None of Above,Minimal
+4086,None of Above,Minimal
+4087,None of Above,Moderate
+4088,None of Above,Minimal
+4089,None of Above,Moderate
+4090,Asthma,Minimal
+4091,Depression,Minimal
+4092,None of Above,Minimal
+4093,None of Above,Minimal
+4094,None of Above,Minimal
+4095,Asthma,Minimal
+4096,None of Above,Minimal
+4097,None of Above,Moderate
+4098,None of Above,Minimal
+4099,Cancer,Moderate
+4100,Diabetes,Minimal
+4101,None of Above,Minimal
+4102,Diabetes,Minimal
+4103,None of Above,Minimal
+4104,None of Above,Moderate
+4105,None of Above,Moderate
+4106,Cancer,Minimal
+4107,None of Above,Minimal
+4108,None of Above,Moderate
+4109,Cancer,Minimal
+4110,None of Above,Moderate
+4111,None of Above,Minimal
+4112,Asthma,Minimal
+4113,Depression,Minimal
+4114,None of Above,Moderate
+4115,None of Above,Minimal
+4116,Asthma,Minimal
+4117,None of Above,Moderate
+4118,None of Above,Moderate
+4119,None of Above,Moderate
+4120,None of Above,Moderate
+4121,Cancer,Moderate
+4122,None of Above,Moderate
+4123,Depression,Minimal
+4124,None of Above,Minimal
+4125,None of Above,Minimal
+4126,Depression,Moderate
+4127,None of Above,Moderate
+4128,Diabetes,Minimal
+4129,Diabetes,Minimal
+4130,None of Above,Moderate
+4131,None of Above,Moderate
+4132,None of Above,Moderate
+4133,Depression,Minimal
+4134,None of Above,Moderate
+4135,None of Above,Moderate
+4136,None of Above,Moderate
+4137,None of Above,Moderate
+4138,Asthma,Minimal
+4139,Heart Disease,Minimal
+4140,None of Above,Minimal
+4141,Diabetes,Minimal
+4142,Heart Disease,Minimal
+4143,None of Above,Minimal
+4144,None of Above,Moderate
+4145,None of Above,Minimal
+4146,None of Above,Moderate
+4147,None of Above,Minimal
+4148,None of Above,Minimal
+4149,Depression,Minimal
+4150,None of Above,Minimal
+4151,Depression,Minimal
+4152,Asthma,Minimal
+4153,None of Above,Minimal
+4154,None of Above,Minimal
+4155,None of Above,Minimal
+4156,None of Above,Minimal
+4157,Diabetes,Minimal
+4158,None of Above,Minimal
+4159,None of Above,Moderate
+4160,None of Above,Minimal
+4161,Depression,Minimal
+4162,Asthma,Moderate
+4163,Diabetes,Minimal
+4164,None of Above,Minimal
+4165,None of Above,Minimal
+4166,None of Above,Moderate
+4167,None of Above,Minimal
+4168,None of Above,Minimal
+4169,None of Above,Moderate
+4170,None of Above,Moderate
+4171,Cancer,Minimal
+4172,Asthma,Moderate
+4173,None of Above,Minimal
+4174,None of Above,Minimal
+4175,None of Above,Minimal
+4176,None of Above,Moderate
+4177,None of Above,Moderate
+4178,None of Above,Minimal
+4179,None of Above,Minimal
+4180,Asthma,Minimal
+4181,Depression,Minimal
+4182,Cancer,Minimal
+4183,None of Above,Moderate
+4184,None of Above,Moderate
+4185,None of Above,Minimal
+4186,None of Above,Minimal
+4187,None of Above,Minimal
+4188,None of Above,Moderate
+4189,Heart Disease,Minimal
+4190,None of Above,Minimal
+4191,Diabetes,Minimal
+4192,None of Above,Moderate
+4193,None of Above,Moderate
+4194,None of Above,Minimal
+4195,None of Above,Moderate
+4196,Asthma,Moderate
+4197,None of Above,Minimal
+4198,None of Above,Moderate
+4199,None of Above,Moderate
+4200,None of Above,Minimal
+4201,None of Above,Moderate
+4202,Cancer,Minimal
+4203,Diabetes,Minimal
+4204,None of Above,Minimal
+4205,Diabetes,Minimal
+4206,None of Above,Minimal
+4207,Asthma,Minimal
+4208,None of Above,Moderate
+4209,None of Above,Minimal
+4210,None of Above,Moderate
+4211,Heart Disease,Moderate
+4212,None of Above,Moderate
+4213,None of Above,Moderate
+4214,None of Above,Minimal
+4215,None of Above,Minimal
+4216,Asthma,Moderate
+4217,None of Above,Moderate
+4218,None of Above,Moderate
+4219,Asthma,Minimal
+4220,None of Above,Moderate
+4221,None of Above,Minimal
+4222,None of Above,Minimal
+4223,None of Above,Minimal
+4224,None of Above,Moderate
+4225,Asthma,Minimal
+4226,None of Above,Minimal
+4227,None of Above,Minimal
+4228,None of Above,Moderate
+4229,Depression,Moderate
+4230,Cancer,Moderate
+4231,Asthma,Moderate
+4232,None of Above,Minimal
+4233,Depression,Minimal
+4234,None of Above,Minimal
+4235,None of Above,Minimal
+4236,None of Above,Minimal
+4237,None of Above,Minimal
+4238,None of Above,Minimal
+4239,Cancer,Minimal
+4240,None of Above,Minimal
+4241,None of Above,Minimal
+4242,Asthma,Minimal
+4243,None of Above,Minimal
+4244,None of Above,Minimal
+4245,None of Above,Minimal
+4246,None of Above,Moderate
+4247,Cancer,Moderate
+4248,None of Above,Minimal
+4249,None of Above,Minimal
+4250,Diabetes,Minimal
+4251,None of Above,Moderate
+4252,Cancer,Moderate
+4253,None of Above,Minimal
+4254,None of Above,Minimal
+4255,None of Above,Minimal
+4256,Asthma,Minimal
+4257,None of Above,Moderate
+4258,None of Above,Minimal
+4259,None of Above,Minimal
+4260,None of Above,Minimal
+4261,None of Above,Moderate
+4262,Heart Disease,Minimal
+4263,None of Above,Minimal
+4264,None of Above,Minimal
+4265,None of Above,Minimal
+4266,None of Above,Moderate
+4267,None of Above,Moderate
+4268,Cancer,Minimal
+4269,None of Above,Moderate
+4270,Diabetes,Moderate
+4271,None of Above,Minimal
+4272,Depression,Moderate
+4273,None of Above,Minimal
+4274,Asthma,Moderate
+4275,Asthma,Minimal
+4276,None of Above,Minimal
+4277,Asthma,Minimal
+4278,Diabetes,Minimal
+4279,Cancer,Moderate
+4280,Heart Disease,Minimal
+4281,Depression,Minimal
+4282,Depression,Minimal
+4283,None of Above,Minimal
+4284,None of Above,Moderate
+4285,Asthma,Minimal
+4286,Heart Disease,Minimal
+4287,Asthma,Moderate
+4288,None of Above,Minimal
+4289,None of Above,Minimal
+4290,Depression,Moderate
+4291,Cancer,Moderate
+4292,None of Above,Minimal
+4293,None of Above,Minimal
+4294,Depression,Moderate
+4295,None of Above,Moderate
+4296,None of Above,Minimal
+4297,None of Above,Moderate
+4298,None of Above,Minimal
+4299,None of Above,Minimal
+4300,None of Above,Moderate
+4301,Asthma,Minimal
+4302,Asthma,Minimal
+4303,None of Above,Minimal
+4304,None of Above,Minimal
+4305,None of Above,Minimal
+4306,None of Above,Moderate
+4307,None of Above,Minimal
+4308,None of Above,Minimal
+4309,None of Above,Minimal
+4310,Depression,Minimal
+4311,None of Above,Minimal
+4312,Asthma,Minimal
+4313,None of Above,Minimal
+4314,None of Above,Moderate
+4315,None of Above,Moderate
+4316,None of Above,Minimal
+4317,Asthma,Minimal
+4318,Asthma,Minimal
+4319,Cancer,Minimal
+4320,Diabetes,Moderate
+4321,None of Above,Minimal
+4322,None of Above,Minimal
+4323,None of Above,Moderate
+4324,Depression,Minimal
+4325,None of Above,Moderate
+4326,Depression,Minimal
+4327,Diabetes,Moderate
+4328,None of Above,Minimal
+4329,None of Above,Moderate
+4330,Diabetes,Minimal
+4331,None of Above,Minimal
+4332,None of Above,Minimal
+4333,None of Above,Minimal
+4334,None of Above,Moderate
+4335,Depression,Minimal
+4336,None of Above,Moderate
+4337,None of Above,Moderate
+4338,None of Above,Minimal
+4339,None of Above,Moderate
+4340,None of Above,Moderate
+4341,Cancer,Minimal
+4342,None of Above,Minimal
+4343,None of Above,Moderate
+4344,Heart Disease,Minimal
+4345,None of Above,Minimal
+4346,Depression,Minimal
+4347,Cancer,Moderate
+4348,None of Above,Minimal
+4349,None of Above,Moderate
+4350,None of Above,Minimal
+4351,Cancer,Moderate
+4352,None of Above,Moderate
+4353,None of Above,Minimal
+4354,None of Above,Moderate
+4355,None of Above,Minimal
+4356,None of Above,Minimal
+4357,Depression,Moderate
+4358,None of Above,Moderate
+4359,None of Above,Moderate
+4360,None of Above,Minimal
+4361,None of Above,Minimal
+4362,None of Above,Moderate
+4363,Asthma,Moderate
+4364,None of Above,Moderate
+4365,None of Above,Minimal
+4366,None of Above,Minimal
+4367,None of Above,Moderate
+4368,Heart Disease,Minimal
+4369,Asthma,Minimal
+4370,Depression,Moderate
+4371,Depression,Moderate
+4372,Depression,Minimal
+4373,Asthma,Moderate
+4374,None of Above,Moderate
+4375,None of Above,Minimal
+4376,Asthma,Minimal
+4377,None of Above,Moderate
+4378,Asthma,Moderate
+4379,None of Above,Minimal
+4380,None of Above,Moderate
+4381,None of Above,Minimal
+4382,Asthma,Moderate
+4383,None of Above,Moderate
+4384,None of Above,Minimal
+4385,None of Above,Moderate
+4386,None of Above,Minimal
+4387,None of Above,Moderate
+4388,None of Above,Moderate
+4389,Cancer,Minimal
+4390,None of Above,Minimal
+4391,None of Above,Minimal
+4392,Heart Disease,Moderate
+4393,None of Above,Minimal
+4394,None of Above,Moderate
+4395,None of Above,Moderate
+4396,None of Above,Moderate
+4397,None of Above,Minimal
+4398,None of Above,Minimal
+4399,Depression,Moderate
+4400,None of Above,Minimal
+4401,Diabetes,Moderate
+4402,None of Above,Minimal
+4403,Asthma,Moderate
+4404,None of Above,Minimal
+4405,Cancer,Moderate
+4406,None of Above,Minimal
+4407,Depression,Minimal
+4408,None of Above,Minimal
+4409,None of Above,Moderate
+4410,None of Above,Minimal
+4411,Asthma,Moderate
+4412,Asthma,Minimal
+4413,Cancer,Moderate
+4414,Diabetes,Minimal
+4415,None of Above,Moderate
+4416,None of Above,Minimal
+4417,None of Above,Minimal
+4418,Asthma,Minimal
+4419,Asthma,Minimal
+4420,Asthma,Moderate
+4421,None of Above,Minimal
+4422,None of Above,Minimal
+4423,None of Above,Minimal
+4424,Heart Disease,Minimal
+4425,None of Above,Minimal
+4426,None of Above,Minimal
+4427,None of Above,Minimal
+4428,Diabetes,Minimal
+4429,Depression,Moderate
+4430,None of Above,Minimal
+4431,None of Above,Minimal
+4432,Asthma,Minimal
+4433,None of Above,Minimal
+4434,Cancer,Minimal
+4435,None of Above,Minimal
+4436,Cancer,Moderate
+4437,None of Above,Moderate
+4438,None of Above,Moderate
+4439,None of Above,Moderate
+4440,Depression,Minimal
+4441,Depression,Minimal
+4442,None of Above,Minimal
+4443,None of Above,Minimal
+4444,None of Above,Minimal
+4445,None of Above,Minimal
+4446,Asthma,Minimal
+4447,None of Above,Minimal
+4448,None of Above,Minimal
+4449,None of Above,Moderate
+4450,None of Above,Moderate
+4451,None of Above,Moderate
+4452,Heart Disease,Minimal
+4453,None of Above,Moderate
+4454,None of Above,Moderate
+4455,Depression,Minimal
+4456,None of Above,Moderate
+4457,None of Above,Moderate
+4458,None of Above,Minimal
+4459,Diabetes,Moderate
+4460,None of Above,Moderate
+4461,None of Above,Minimal
+4462,Asthma,Moderate
+4463,None of Above,Minimal
+4464,Depression,Moderate
+4465,None of Above,Minimal
+4466,Heart Disease,Minimal
+4467,None of Above,Minimal
+4468,None of Above,Minimal
+4469,Depression,Moderate
+4470,Diabetes,Minimal
+4471,Asthma,Minimal
+4472,None of Above,Minimal
+4473,Cancer,Minimal
+4474,Heart Disease,Minimal
+4475,None of Above,Moderate
+4476,None of Above,Minimal
+4477,None of Above,Moderate
+4478,Depression,Minimal
+4479,None of Above,Minimal
+4480,None of Above,Moderate
+4481,None of Above,Minimal
+4482,Depression,Minimal
+4483,None of Above,Moderate
+4484,None of Above,Minimal
+4485,Diabetes,Minimal
+4486,Asthma,Moderate
+4487,None of Above,Minimal
+4488,Depression,Minimal
+4489,None of Above,Minimal
+4490,None of Above,Moderate
+4491,None of Above,Moderate
+4492,Depression,Moderate
+4493,Depression,Minimal
+4494,Depression,Minimal
+4495,None of Above,Minimal
+4496,None of Above,Moderate
+4497,Depression,Minimal
+4498,None of Above,Minimal
+4499,Cancer,Minimal
+4500,None of Above,Minimal
+4501,Asthma,Minimal
+4502,Heart Disease,Minimal
+4503,Depression,Minimal
+4504,None of Above,Minimal
+4505,Cancer,Minimal
+4506,None of Above,Minimal
+4507,Depression,Minimal
+4508,Depression,Minimal
+4509,Asthma,Moderate
+4510,None of Above,Minimal
+4511,None of Above,Minimal
+4512,Depression,Moderate
+4513,None of Above,Minimal
+4514,Asthma,Minimal
+4515,Depression,Minimal
+4516,None of Above,Minimal
+4517,None of Above,Minimal
+4518,None of Above,Minimal
+4519,None of Above,Minimal
+4520,None of Above,Minimal
+4521,None of Above,Minimal
+4522,None of Above,Minimal
+4523,None of Above,Moderate
+4524,None of Above,Minimal
+4525,None of Above,Minimal
+4526,None of Above,Moderate
+4527,None of Above,Minimal
+4528,Asthma,Minimal
+4529,None of Above,Minimal
+4530,None of Above,Moderate
+4531,None of Above,Moderate
+4532,Asthma,Minimal
+4533,None of Above,Moderate
+4534,None of Above,Minimal
+4535,Cancer,Minimal
+4536,Diabetes,Minimal
+4537,None of Above,Moderate
+4538,None of Above,Minimal
+4539,None of Above,Moderate
+4540,None of Above,Moderate
+4541,Asthma,Moderate
+4542,Cancer,Moderate
+4543,None of Above,Minimal
+4544,None of Above,Minimal
+4545,Asthma,Moderate
+4546,Asthma,Moderate
+4547,None of Above,Moderate
+4548,None of Above,Moderate
+4549,Depression,Minimal
+4550,None of Above,Minimal
+4551,Heart Disease,Minimal
+4552,None of Above,Minimal
+4553,Diabetes,Minimal
+4554,None of Above,Minimal
+4555,Depression,Minimal
+4556,Cancer,Minimal
+4557,None of Above,Minimal
+4558,Heart Disease,Moderate
+4559,None of Above,Minimal
+4560,Cancer,Moderate
+4561,None of Above,Minimal
+4562,None of Above,Minimal
+4563,None of Above,Moderate
+4564,Cancer,Moderate
+4565,None of Above,Minimal
+4566,None of Above,Minimal
+4567,Depression,Minimal
+4568,None of Above,Moderate
+4569,None of Above,Minimal
+4570,None of Above,Minimal
+4571,None of Above,Moderate
+4572,None of Above,Minimal
+4573,None of Above,Minimal
+4574,Asthma,Minimal
+4575,None of Above,Minimal
+4576,Cancer,Minimal
+4577,None of Above,Moderate
+4578,None of Above,Minimal
+4579,Asthma,Minimal
+4580,None of Above,Minimal
+4581,Diabetes,Moderate
+4582,None of Above,Minimal
+4583,None of Above,Minimal
+4584,Depression,Minimal
+4585,Cancer,Moderate
+4586,None of Above,Minimal
+4587,Depression,Minimal
+4588,Diabetes,Moderate
+4589,None of Above,Minimal
+4590,Depression,Minimal
+4591,Diabetes,Moderate
+4592,None of Above,Moderate
+4593,None of Above,Moderate
+4594,Depression,Minimal
+4595,None of Above,Moderate
+4596,None of Above,Moderate
+4597,None of Above,Minimal
+4598,None of Above,Minimal
+4599,Cancer,Minimal
+4600,None of Above,Moderate
+4601,None of Above,Minimal
+4602,Cancer,Minimal
+4603,None of Above,Minimal
+4604,Depression,Moderate
+4605,Asthma,Minimal
+4606,None of Above,Moderate
+4607,None of Above,Minimal
+4608,None of Above,Minimal
+4609,Heart Disease,Minimal
+4610,None of Above,Moderate
+4611,None of Above,Minimal
+4612,Depression,Moderate
+4613,None of Above,Minimal
+4614,None of Above,Moderate
+4615,Heart Disease,Minimal
+4616,None of Above,Minimal
+4617,Heart Disease,Minimal
+4618,None of Above,Minimal
+4619,Depression,Moderate
+4620,Diabetes,Minimal
+4621,None of Above,Minimal
+4622,Diabetes,Moderate
+4623,Heart Disease,Minimal
+4624,Asthma,Minimal
+4625,None of Above,Minimal
+4626,Depression,Minimal
+4627,None of Above,Moderate
+4628,None of Above,Moderate
+4629,None of Above,Minimal
+4630,Cancer,Minimal
+4631,Asthma,Moderate
+4632,Asthma,Moderate
+4633,None of Above,Minimal
+4634,None of Above,Minimal
+4635,Asthma,Moderate
+4636,None of Above,Minimal
+4637,None of Above,Minimal
+4638,Asthma,Moderate
+4639,None of Above,Minimal
+4640,Cancer,Minimal
+4641,None of Above,Minimal
+4642,None of Above,Minimal
+4643,Cancer,Minimal
+4644,None of Above,Minimal
+4645,Asthma,Moderate
+4646,None of Above,Minimal
+4647,Heart Disease,Minimal
+4648,None of Above,Minimal
+4649,Diabetes,Minimal
+4650,None of Above,Moderate
+4651,Asthma,Minimal
+4652,Cancer,Minimal
+4653,None of Above,Minimal
+4654,None of Above,Moderate
+4655,None of Above,Moderate
+4656,None of Above,Moderate
+4657,None of Above,Moderate
+4658,Depression,Moderate
+4659,None of Above,Minimal
+4660,None of Above,Minimal
+4661,Depression,Minimal
+4662,Heart Disease,Minimal
+4663,Heart Disease,Minimal
+4664,None of Above,Minimal
+4665,Depression,Moderate
+4666,None of Above,Minimal
+4667,Diabetes,Moderate
+4668,None of Above,Minimal
+4669,Cancer,Minimal
+4670,Depression,Moderate
+4671,None of Above,Minimal
+4672,None of Above,Minimal
+4673,None of Above,Moderate
+4674,None of Above,Moderate
+4675,Cancer,Moderate
+4676,None of Above,Minimal
+4677,Cancer,Minimal
+4678,Cancer,Minimal
+4679,None of Above,Minimal
+4680,Depression,Minimal
+4681,Depression,Minimal
+4682,None of Above,Moderate
+4683,None of Above,Moderate
+4684,None of Above,Minimal
+4685,None of Above,Moderate
+4686,None of Above,Minimal
+4687,None of Above,Moderate
+4688,None of Above,Minimal
+4689,Asthma,Minimal
+4690,Diabetes,Moderate
+4691,None of Above,Minimal
+4692,Cancer,Minimal
+4693,None of Above,Minimal
+4694,None of Above,Moderate
+4695,None of Above,Minimal
+4696,Cancer,Minimal
+4697,None of Above,Minimal
+4698,None of Above,Moderate
+4699,None of Above,Moderate
+4700,Depression,Minimal
+4701,Heart Disease,Minimal
+4702,None of Above,Minimal
+4703,None of Above,Moderate
+4704,None of Above,Minimal
+4705,None of Above,Minimal
+4706,None of Above,Moderate
+4707,Asthma,Moderate
+4708,None of Above,Minimal
+4709,Depression,Minimal
+4710,Heart Disease,Moderate
+4711,None of Above,Moderate
+4712,None of Above,Moderate
+4713,None of Above,Minimal
+4714,None of Above,Moderate
+4715,Diabetes,Minimal
+4716,None of Above,Minimal
+4717,Cancer,Minimal
+4718,None of Above,Minimal
+4719,Depression,Moderate
+4720,Depression,Minimal
+4721,Asthma,Moderate
+4722,None of Above,Minimal
+4723,None of Above,Moderate
+4724,Asthma,Moderate
+4725,None of Above,Minimal
+4726,None of Above,Minimal
+4727,None of Above,Moderate
+4728,Asthma,Moderate
+4729,Heart Disease,Minimal
+4730,None of Above,Moderate
+4731,Cancer,Minimal
+4732,None of Above,Minimal
+4733,None of Above,Moderate
+4734,None of Above,Minimal
+4735,None of Above,Moderate
+4736,Depression,Moderate
+4737,None of Above,Moderate
+4738,None of Above,Moderate
+4739,Diabetes,Moderate
+4740,Cancer,Minimal
+4741,None of Above,Moderate
+4742,None of Above,Minimal
+4743,None of Above,Minimal
+4744,None of Above,Minimal
+4745,Depression,Moderate
+4746,None of Above,Minimal
+4747,None of Above,Moderate
+4748,None of Above,Minimal
+4749,None of Above,Moderate
+4750,Asthma,Moderate
+4751,None of Above,Moderate
+4752,None of Above,Minimal
+4753,Heart Disease,Minimal
+4754,None of Above,Moderate
+4755,Cancer,Minimal
+4756,None of Above,Minimal
+4757,None of Above,Moderate
+4758,None of Above,Moderate
+4759,None of Above,Minimal
+4760,Asthma,Moderate
+4761,None of Above,Moderate
+4762,None of Above,Minimal
+4763,Heart Disease,Minimal
+4764,None of Above,Moderate
+4765,None of Above,Minimal
+4766,None of Above,Minimal
+4767,Asthma,Minimal
+4768,Diabetes,Moderate
+4769,None of Above,Minimal
+4770,None of Above,Moderate
+4771,None of Above,Minimal
+4772,None of Above,Minimal
+4773,None of Above,Moderate
+4774,None of Above,Minimal
+4775,None of Above,Minimal
+4776,None of Above,Moderate
+4777,None of Above,Moderate
+4778,Cancer,Moderate
+4779,None of Above,Minimal
+4780,Depression,Minimal
+4781,Diabetes,Minimal
+4782,None of Above,Minimal
+4783,None of Above,Moderate
+4784,None of Above,Minimal
+4785,None of Above,Moderate
+4786,None of Above,Minimal
+4787,None of Above,Minimal
+4788,Cancer,Minimal
+4789,None of Above,Minimal
+4790,None of Above,Minimal
+4791,Cancer,Minimal
+4792,Heart Disease,Minimal
+4793,None of Above,Moderate
+4794,None of Above,Minimal
+4795,Cancer,Minimal
+4796,None of Above,Minimal
+4797,None of Above,Minimal
+4798,None of Above,Moderate
+4799,Heart Disease,Minimal
+4800,Depression,Minimal
+4801,None of Above,Moderate
+4802,None of Above,Moderate
+4803,None of Above,Moderate
+4804,Heart Disease,Minimal
+4805,None of Above,Moderate
+4806,None of Above,Minimal
+4807,None of Above,Moderate
+4808,None of Above,Minimal
+4809,None of Above,Minimal
+4810,None of Above,Minimal
+4811,None of Above,Moderate
+4812,Diabetes,Minimal
+4813,None of Above,Minimal
+4814,None of Above,Minimal
+4815,None of Above,Minimal
+4816,None of Above,Minimal
+4817,Cancer,Moderate
+4818,None of Above,Moderate
+4819,Diabetes,Moderate
+4820,None of Above,Minimal
+4821,None of Above,Minimal
+4822,None of Above,Moderate
+4823,None of Above,Moderate
+4824,None of Above,Moderate
+4825,None of Above,Minimal
+4826,None of Above,Minimal
+4827,None of Above,Minimal
+4828,None of Above,Moderate
+4829,None of Above,Minimal
+4830,None of Above,Minimal
+4831,None of Above,Moderate
+4832,None of Above,Minimal
+4833,None of Above,Moderate
+4834,None of Above,Moderate
+4835,None of Above,Minimal
+4836,None of Above,Moderate
+4837,None of Above,Minimal
+4838,Depression,Minimal
+4839,Cancer,Minimal
+4840,None of Above,Minimal
+4841,None of Above,Moderate
+4842,Cancer,Moderate
+4843,Cancer,Minimal
+4844,Heart Disease,Minimal
+4845,None of Above,Moderate
+4846,Diabetes,Minimal
+4847,None of Above,Moderate
+4848,Diabetes,Minimal
+4849,Asthma,Minimal
+4850,Diabetes,Minimal
+4851,Heart Disease,Moderate
+4852,None of Above,Moderate
+4853,None of Above,Minimal
+4854,None of Above,Moderate
+4855,Asthma,Moderate
+4856,None of Above,Minimal
+4857,None of Above,Minimal
+4858,None of Above,Minimal
+4859,None of Above,Minimal
+4860,None of Above,Moderate
+4861,Depression,Moderate
+4862,None of Above,Minimal
+4863,None of Above,Moderate
+4864,Cancer,Minimal
+4865,None of Above,Minimal
+4866,None of Above,Minimal
+4867,Diabetes,Moderate
+4868,None of Above,Minimal
+4869,Heart Disease,Minimal
+4870,None of Above,Minimal
+4871,None of Above,Minimal
+4872,Cancer,Moderate
+4873,None of Above,Minimal
+4874,None of Above,Minimal
+4875,None of Above,Minimal
+4876,None of Above,Minimal
+4877,None of Above,Moderate
+4878,Cancer,Minimal
+4879,Heart Disease,Minimal
+4880,None of Above,Minimal
+4881,None of Above,Minimal
+4882,None of Above,Minimal
+4883,None of Above,Minimal
+4884,Diabetes,Moderate
+4885,None of Above,Moderate
+4886,Asthma,Minimal
+4887,None of Above,Minimal
+4888,None of Above,Moderate
+4889,None of Above,Minimal
+4890,None of Above,Moderate
+4891,None of Above,Minimal
+4892,None of Above,Moderate
+4893,None of Above,Moderate
+4894,None of Above,Minimal
+4895,None of Above,Minimal
+4896,Asthma,Moderate
+4897,None of Above,Minimal
+4898,None of Above,Moderate
+4899,None of Above,Moderate
+4900,None of Above,Moderate
+4901,None of Above,Minimal
+4902,None of Above,Minimal
+4903,Depression,Minimal
+4904,None of Above,Minimal
+4905,Asthma,Minimal
+4906,None of Above,Minimal
+4907,Cancer,Minimal
+4908,None of Above,Minimal
+4909,Diabetes,Minimal
+4910,Depression,Minimal
+4911,None of Above,Minimal
+4912,None of Above,Moderate
+4913,None of Above,Minimal
+4914,None of Above,Minimal
+4915,None of Above,Moderate
+4916,None of Above,Moderate
+4917,Cancer,Minimal
+4918,None of Above,Moderate
+4919,None of Above,Moderate
+4920,None of Above,Minimal
+4921,None of Above,Moderate
+4922,None of Above,Moderate
+4923,Depression,Minimal
+4924,None of Above,Moderate
+4925,Asthma,Minimal
+4926,None of Above,Minimal
+4927,None of Above,Moderate
+4928,None of Above,Minimal
+4929,None of Above,Minimal
+4930,None of Above,Moderate
+4931,Cancer,Moderate
+4932,None of Above,Minimal
+4933,None of Above,Moderate
+4934,None of Above,Moderate
+4935,None of Above,Minimal
+4936,None of Above,Minimal
+4937,None of Above,Minimal
+4938,None of Above,Minimal
+4939,None of Above,Moderate
+4940,None of Above,Minimal
+4941,None of Above,Minimal
+4942,None of Above,Moderate
+4943,Heart Disease,Moderate
+4944,Asthma,Moderate
+4945,Asthma,Moderate
+4946,Cancer,Moderate
+4947,Asthma,Minimal
+4948,None of Above,Moderate
+4949,None of Above,Minimal
+4950,Asthma,Minimal
+4951,None of Above,Minimal
+4952,Cancer,Minimal
+4953,None of Above,Minimal
+4954,None of Above,Moderate
+4955,None of Above,Minimal
+4956,Cancer,Moderate
+4957,Diabetes,Minimal
+4958,Asthma,Moderate
+4959,None of Above,Minimal
+4960,None of Above,Moderate
+4961,None of Above,Minimal
+4962,None of Above,Minimal
+4963,None of Above,Minimal
+4964,None of Above,Minimal
+4965,Heart Disease,Moderate
+4966,None of Above,Moderate
+4967,None of Above,Moderate
+4968,None of Above,Moderate
+4969,None of Above,Moderate
+4970,None of Above,Minimal
+4971,None of Above,Minimal
+4972,Diabetes,Minimal
+4973,None of Above,Minimal
+4974,None of Above,Minimal
+4975,None of Above,Minimal
+4976,None of Above,Minimal
+4977,None of Above,Minimal
+4978,None of Above,Minimal
+4979,Heart Disease,Minimal
+4980,Asthma,Minimal
+4981,Depression,Minimal
+4982,None of Above,Minimal
+4983,None of Above,Moderate
+4984,None of Above,Moderate
+4985,Heart Disease,Minimal
+4986,Cancer,Moderate
+4987,None of Above,Minimal
+4988,Cancer,Minimal
+4989,None of Above,Moderate
+4990,Heart Disease,Minimal
+4991,None of Above,Minimal
+4992,None of Above,Minimal
+4993,None of Above,Minimal
+4994,None of Above,Minimal
+4995,None of Above,Minimal
+4996,Depression,Minimal
+4997,None of Above,Moderate
+4998,None of Above,Minimal
+4999,None of Above,Minimal
+5000,None of Above,Moderate

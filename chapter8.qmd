@@ -1,0 +1,415 @@
+---
+title: "Repeated Measures ANOVA"
+format: html
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(gt)
+```
+
+
+## Introduction
+
+The previous chapter introduced analysis of variance for comparing independent groups. In a between-subjects design, each participant belongs to only one group or experimental condition.
+
+Many studies instead measure the same participants more than once. Employees may complete a performance task before training, immediately after training and several weeks later. Customers may rate several versions of a product. Patients may be assessed under several treatment conditions. In each case, the observations from the same person are related.
+
+When the same participants are measured under three or more conditions or at three or more times, a **repeated-measures ANOVA** can be used to compare the population means. It extends the paired $t$-test in much the same way that a one-way between-subjects ANOVA extends the independent-samples $t$-test.
+
+## From the paired $t$-test to repeated-measures ANOVA
+
+Suppose employee performance is measured before and after a training program. The paired $t$-test reduces the two measurements for each employee to a difference score:
+
+$$
+d_i=x_{i,\text{after}}-x_{i,\text{before}}.
+$$
+
+The null hypothesis is
+
+$$
+H_0:\mu_d=0,
+$$
+
+which is equivalent to stating that the two population means are equal:
+
+$$
+H_0:\mu_{\text{before}}=\mu_{\text{after}}.
+$$
+
+Now suppose performance is measured at three times: baseline, Week 4 and Week 8. There is no longer a single difference score that fully represents all possible changes. The null hypothesis becomes
+
+$$
+H_0:\mu_{\text{baseline}}=\mu_{\text{Week 4}}=\mu_{\text{Week 8}}.
+$$
+
+The alternative is
+
+$$
+H_1:\text{the population means are not all equal.}
+$$
+
+The repeated-measures ANOVA provides one omnibus test of this hypothesis.
+
+::: {.callout-important}
+## The direct connection
+
+- Two related means: paired $t$-test.
+- Three or more related means: one-way repeated-measures ANOVA.
+
+When there are exactly two repeated conditions, the repeated-measures ANOVA and paired $t$-test test the same hypothesis, and
+
+$$
+F=t^2.
+$$
+:::
+
+## What makes a design repeated measures?
+
+A design is repeated measures when each observational unit contributes outcomes under multiple conditions or at multiple times.
+
+The observational unit might be:
+
+- a person measured at several times;
+- a household observed in several years;
+- a store evaluated under several layouts;
+- a product tested at several temperatures; or
+- a company observed under several policy settings.
+
+The defining feature is not necessarily time. The same participants might experience several conditions in a single session. What matters is that the measurements can be matched within the same observational unit.
+
+### Between-subjects and repeated-measures designs
+
+| Feature | Between-subjects design | Repeated-measures design |
+|---|---|---|
+| Who provides the observations? | Different participants in each condition | The same participants in every condition |
+| Relationship among conditions | Independent groups | Related or matched measurements |
+| Two-condition method | Independent-samples $t$-test | Paired $t$-test |
+| Three-or-more-condition method | Between-subjects ANOVA | Repeated-measures ANOVA |
+| Main source of person-to-person variation | Included in within-group error | Separated as participant variation |
+
+: Comparing between-subjects and repeated-measures designs {#tbl-between-repeated}
+
+Suppose 30 employees are available for a study of three training conditions.
+
+- In a between-subjects design, 10 different employees might receive each condition.
+- In a repeated-measures design, all 30 employees experience all three conditions.
+
+These designs answer similar questions but produce different data structures and require different analyses.
+
+## Why repeated observations are related
+
+Some people consistently score higher than others. An experienced employee may perform well at baseline, Week 4 and Week 8, while a less experienced employee may score lower at all three times.
+
+Measurements from the same person therefore tend to be correlated. Knowing that an employee scored highly at baseline gives us information about their likely scores later.
+
+The ordinary between-subjects ANOVA assumes that all observations are independent. Treating three scores from one employee as though they came from three unrelated people ignores this dependence. The resulting standard errors, degrees of freedom and hypothesis tests will generally be incorrect.
+
+Repeated-measures ANOVA handles this structure by explicitly accounting for stable differences among participants.
+
+::: {.callout-warning}
+## Repeated scores are not extra independent participants
+
+If 20 employees are each measured three times, the dataset contains 60 scores but only 20 independent employees. The repeated scores increase the information about change, but they do not create 60 independent observational units.
+:::
+
+## Advantages and limitations of repeated-measures designs
+
+Repeated-measures designs are often efficient because each participant serves as their own reference. Stable characteristics such as prior knowledge, personality and long-term experience affect every measurement from that participant.
+
+By separating these stable participant differences from residual error, a repeated-measures analysis can estimate changes more precisely than a comparable study using unrelated groups.
+
+Other advantages include:
+
+- fewer participants may be required;
+- changes within individuals can be observed directly; and
+- comparisons are not distorted by chance differences in the types of people assigned to separate groups.
+
+However, repeated-measures designs also introduce challenges:
+
+- earlier conditions may affect later responses;
+- participants may improve through practice;
+- participants may become tired or bored;
+- the effect of a condition may persist into the next condition;
+- missing observations can complicate the analysis; and
+- the pattern of correlations among repeated measurements must be considered.
+
+The best design depends on the research question and on whether repeated exposure is scientifically and practically reasonable.
+
+## A worked example
+
+A company introduces a professional-development program. Ten employees complete the same 100-point performance task at baseline, after four weeks and after eight weeks.
+
+The observations are shown in @tbl-rm-data.
+
+| Employee | Baseline | Week 4 | Week 8 |
+|---|---:|---:|---:|
+| 1 | 63 | 61 | 66 |
+| 2 | 65 | 64 | 59 |
+| 3 | 66 | 66 | 71 |
+| 4 | 69 | 72 | 80 |
+| 5 | 76 | 78 | 85 |
+| 6 | 72 | 66 | 75 |
+| 7 | 60 | 67 | 66 |
+| 8 | 63 | 66 | 68 |
+| 9 | 69 | 76 | 76 |
+| 10 | 74 | 84 | 82 |
+| **Mean** | **67.7** | **70.0** | **72.8** |
+
+: Employee performance scores at three times {#tbl-rm-data}
+
+The mean score increases from 67.7 at baseline to 70.0 at Week 4 and 72.8 at Week 8. However, the employees do not all follow exactly the same pattern. Employee 4 improves substantially, while Employee 2 has a lower score at Week 8 than at baseline.
+
+The inferential question is whether the differences among the three sample means provide evidence of differences among the corresponding population means.
+
+### The hypotheses
+
+The omnibus hypotheses are
+
+$$
+H_0:\mu_{\text{baseline}}=\mu_{\text{Week 4}}=\mu_{\text{Week 8}}
+$$
+
+and
+
+$$
+H_1:\text{at least one population mean differs.}
+$$
+
+The alternative does not require every pair of time points to differ. One population mean could differ while the other two are equal.
+
+## Looking at individual trajectories
+
+Means provide a useful summary, but they do not show how individual participants changed. In a repeated-measures study, it is often helpful to examine trajectories connecting each person's observations.
+
+Individual trajectories can reveal:
+
+- whether most participants change in the same direction;
+- whether the overall mean is driven by only a few participants;
+- whether some participants respond differently from others;
+- unusual observations; and
+- possible ceiling or floor effects.
+
+The employee data show considerable differences in overall performance level. Employees 5 and 10 tend to score highly, while Employees 1 and 7 tend to score lower. These stable differences are large compared with some of the changes over time.
+
+Repeated-measures ANOVA separates this participant-to-participant variation rather than leaving it inside the error term.
+
+## Three sources of variation
+
+In a one-way repeated-measures ANOVA, total variation is separated into three components:
+
+1. **condition variation**: differences among the time or condition means;
+2. **participant variation**: stable differences among participants; and
+3. **residual variation**: remaining variation after accounting for condition and participant differences.
+
+The decomposition is
+
+$$
+SS_{\text{total}}
+=SS_{\text{condition}}
++SS_{\text{participant}}
++SS_{\text{error}}.
+$$
+
+```{mermaid}
+flowchart TD
+    T["Total variation"] --> C["Condition variation"]
+    T --> P["Participant variation"]
+    T --> E["Residual variation"]
+    C --> M["Differences among condition means"]
+    P --> S["Stable differences among participants"]
+    E --> R["Unexplained within-person variation"]
+```
+
+### Condition variation
+
+Condition variation measures how far the condition means are from the grand mean. With $n$ participants and $k$ conditions,
+
+$$
+SS_{\text{condition}}
+=n\sum_{j=1}^{k}
+(\bar{x}_{\cdot j}-\bar{x}_{\cdot\cdot})^2,
+$$
+
+where $\bar{x}_{\cdot j}$ is the mean for condition $j$ and $\bar{x}_{\cdot\cdot}$ is the grand mean.
+
+This is the variation of primary interest. It represents the potential signal associated with time or condition.
+
+### Participant variation
+
+Participant variation measures how far each participant's mean is from the grand mean:
+
+$$
+SS_{\text{participant}}
+=k\sum_{i=1}^{n}
+(\bar{x}_{i\cdot}-\bar{x}_{\cdot\cdot})^2,
+$$
+
+where $\bar{x}_{i\cdot}$ is the mean across conditions for participant $i$.
+
+This component captures the tendency for some employees to score consistently higher or lower than others.
+
+### Residual variation
+
+The remaining variation is
+
+$$
+SS_{\text{error}}
+=SS_{\text{total}}
+-SS_{\text{condition}}
+-SS_{\text{participant}}.
+$$
+
+This residual includes differences in how participants respond across conditions, measurement error and other unexplained within-person variation.
+
+::: {.callout-tip}
+## Why repeated measures can be more powerful
+
+In a between-subjects ANOVA, stable person-to-person differences contribute to the error term. In a repeated-measures ANOVA, participant variation is removed before the condition effect is tested.
+
+When participants differ greatly in their overall levels but show reasonably consistent changes, this can substantially reduce the error mean square and increase precision.
+:::
+
+## A model for repeated measurements
+
+A one-way repeated-measures model can be written as
+
+$$
+Y_{ij}=\mu+\tau_j+s_i+\varepsilon_{ij},
+$$
+
+where:
+
+- $Y_{ij}$ is the outcome for participant $i$ in condition $j$;
+- $\mu$ is the grand mean;
+- $\tau_j$ is the contribution associated with condition $j$;
+- $s_i$ is the contribution associated with participant $i$; and
+- $\varepsilon_{ij}$ is the remaining error.
+
+The participant term $s_i$ represents stable differences in overall outcome level. It is the mathematical expression of the idea that each participant acts as their own reference.
+
+The condition effect is tested against the residual variation, not against the participant variation.
+
+## Degrees of freedom and mean squares
+
+For $n$ participants measured under $k$ conditions, the degrees of freedom are:
+
+$$
+df_{\text{condition}}=k-1,
+$$
+
+$$
+df_{\text{participant}}=n-1,
+$$
+
+and
+
+$$
+df_{\text{error}}=(k-1)(n-1).
+$$
+
+The total degrees of freedom are
+
+$$
+df_{\text{total}}=nk-1.
+$$
+
+The relevant mean squares are
+
+$$
+MS_{\text{condition}}
+=\frac{SS_{\text{condition}}}{k-1}
+$$
+
+and
+
+$$
+MS_{\text{error}}
+=\frac{SS_{\text{error}}}{(k-1)(n-1)}.
+$$
+
+The repeated-measures $F$-statistic is
+
+$$
+F=\frac{MS_{\text{condition}}}{MS_{\text{error}}}.
+$$
+
+As before, the statistic compares potential signal with unexplained noise. A large $F$-statistic indicates that the differences among condition means are large relative to the unexplained within-person variation.
+
+## The repeated-measures ANOVA table
+
+The calculations for the employee-performance example are summarised in @tbl-rm-anova.
+
+| Source | Sum of squares | Degrees of freedom | Mean square | $F$ | $p$-value |
+|---|---:|---:|---:|---:|---:|
+| Time | 130.5 | 2 | 65.2 | 5.85 | 0.011 |
+| Participant | 1126.8 | 9 | 125.2 |  |  |
+| Error | 200.9 | 18 | 11.2 |  |  |
+| Total | 1458.2 | 29 |  |  |  |
+
+: Repeated-measures ANOVA table for employee performance {#tbl-rm-anova}
+
+At the 5% significance level,
+
+$$
+p=0.011<0.05.
+$$
+
+We therefore reject the null hypothesis that all three population means are equal. There is evidence that mean employee performance differs across the three measurement times.
+
+The participant sum of squares is much larger than the condition sum of squares. This reflects substantial stable differences among employees. Repeated-measures ANOVA removes this variation from the error term rather than treating it as unexplained noise.
+
+::: {.callout-warning}
+## What the omnibus test does not tell us
+
+The result does not establish that all three time points differ. It also does not show by itself whether performance increased steadily or whether the change is practically important.
+
+The condition means and appropriate follow-up comparisons are needed to answer those questions.
+:::
+
+## Follow-up comparisons
+
+A significant omnibus test indicates that the population means are not all equal. Follow-up comparisons can investigate particular differences.
+
+Because the observations are repeated, the follow-up comparisons must also preserve the pairing. Appropriate comparisons include paired $t$-tests or equivalent contrasts within the repeated-measures model.
+
+Possible comparisons for the employee study are:
+
+- Baseline versus Week 4;
+- Baseline versus Week 8; and
+- Week 4 versus Week 8.
+
+Conducting all comparisons without adjustment would increase the chance of a Type I error. Procedures such as Holm's adjustment can be used to control the familywise error rate.
+
+For the illustrative data, the estimated changes are shown in @tbl-rm-comparisons.
+
+| Comparison | Estimated mean change |
+|---|---:|
+| Baseline to Week 4 | 2.3 points |
+| Week 4 to Week 8 | 2.8 points |
+| Baseline to Week 8 | 5.1 points |
+
+: Estimated mean changes in employee performance {#tbl-rm-comparisons}
+
+After accounting for the three comparisons, the clearest evidence is for an increase from baseline to Week 8. The other observed changes are less precisely estimated.
+
+A complete report should include confidence intervals for the mean changes. These intervals show the range of population changes reasonably compatible with the data and help readers judge practical importance.
+
+### Planned comparisons and trends
+
+Researchers do not always need every pairwise comparison. A study may have one or two questions specified in advance, such as:
+
+- whether performance at Week 8 exceeds baseline performance;
+- whether the average of the two post-training measurements exceeds baseline; or
+- whether the mean outcome follows a linear trend over equally spaced times.
+
+These **planned comparisons** often correspond more closely to the research question than an exhaustive set of pairwise tests.
+
+A trend analysis can be useful when the repeated factor represents ordered, equally spaced times or doses. However, a statistically significant linear trend should not be interpreted as proof that change continues linearly outside the observed range.
+
+
+

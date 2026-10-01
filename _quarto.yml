@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 book:
-  title: "Title Pending"
-  subtitle: Pending
+  title: "Introduction to Statistics"
+  # subtitle: Pending
   # author: "Minh Huynh"
   # date: "10/29/2025"
   # downloads: pdf
@@ -17,6 +17,18 @@ book:
   
   chapters:
     - index.qmd
+    - chapter1.qmd
+    - chapter2.qmd
+    - chapter3.qmd
+    - chapter4.qmd
+    - chapter5.qmd
+    - chapter6.qmd
+    # - chapter7.qmd
+    # - chapter8.qmd
+    - chapter9.qmd
+    - chapter10.qmd
+    - chapter11.qmd
+    - chapter12.qmd
     
 format:
   html:
@@ -37,4 +49,4 @@ format:
   pdf: default
 
 editor: source
-
+engine: knitr
