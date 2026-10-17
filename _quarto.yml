@@ -2,6 +2,10 @@ project:
   type: book
   output-dir: docs
 
+execite:
+execute: 
+  freeze: auto
+
 book:
   title: "Introduction to Statistics"
   # subtitle: Pending
