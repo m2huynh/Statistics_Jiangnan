@@ -1,6 +1,8 @@
 ---
 title: "Descriptive Statistics"
-format: html
+format:
+  html:
+    prefer-html: true
 execute: 
   echo: false
   message: false
@@ -924,5 +926,322 @@ download_file(
 ```
 </center>
 <br>
+
+
+
+### Exercise 1
+
+Follow along with the teacher to complete the following tasks:
+
+a. In Column M: create a new variable called 'Profit_Category' by using the current `profit` variable. If `profit` < 0, classify it as 'no profit', otherwise 'profit'.
+
+```{r, eval=FALSE, echo=TRUE}
+=IF(proft < 0, "no profit", "profit")
+```
+
+b. Create a Pivot Table to determine how many businesses made a profit, and how many did not.
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_01.png)</center>
+
+:::
+
+c. Convert the counts from the previous pivot table to percentages
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_02.png)</center>
+
+:::
+
+d. Add `industry_sector` as a filter. Try out the filter, can you explain what it does?
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_03.png)</center>
+
+:::
+
+e. Add a pivot bar chart that links to the pivot table (i.e. if you make changes to the table, the chart will update automatically).
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_04.png)</center>
+
+:::
+
+f. Now add 'has_online_store` to your pivot table. This should update the  chart as well. Make sure you are able to interpret what the values in the table mean.
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_05.png)</center>
+
+:::
+
+g. Now indert a slicer for your pivot table. Choose `industry_sector`. Click on the different levels of your slicer and your table and chart should update automatically.
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_06.png)</center>
+
+:::
+
+### Exercise 2
+
+Now it's your turn. Choose another categorical variables and explore how it is related to **Profit_Category**. Also include `industry_sectory` as a filter so that your slicer can interact with this one as well.
+
+The other categorical variables are:
+
+- `has_online_store`
+- `uses_ai`
+- `brand_recognition`
+
+### Exercise 3
+
+We will now use the results of our first pivot table to complete some probability questions. These are the same questions we saw in the lecture, so try to solve these using Excel only.
+
+**Marginal probabilities**
+
+a.  What is the probability that a randomly selected business made a profit?
+b.  What is the probability that a randomly selected business has an online store?
+
+**Joint probabilities**
+
+c.  What is the probability that a randomly selected business made a profit AND has an online store?
+d.  What is the probability that a randomly selected business made no profit AND does not have an online store?
+
+**Conditional probabilities (column-wise)**
+
+e.  What is the probability that a business made a profit, given that it has an online store?
+f.  What is the probability that a business made a profit, given that it does not have an online store?
+
+**Conditional probabilities (row-wise)**
+
+g.  What is the probability that a business has an online store, given that it made a profit?
+h.  What is the probability that a business has an online store, given that it made no profit?
+
+**Independence**
+
+i. Using conditional probabilities, check if making a profit and having an online store are independent events
+
+
+### Exercise 4
+
+We will now use the data analysis tool pack to generate descriptive statistics for numerical data. First, we need to enable the toolpack:
+
+#### Analysis ToolPak in Excel
+
+::: panel-tabset
+Follow the instructions below to enable the ToolKit (depending on your operating system)
+
+##### Windows
+
+1.  Click the **File** tab, click Options, and then click the **Add-Ins** category.
+
+2.  In the **Manage** box, select **Excel Add-ins** and then click **Go**.
+
+    If you're using Excel for Mac, in the file menu go to Tools \> Excel Add-ins.
+
+3.  In the **Add-Ins** box, check the **Analysis ToolPak** check box, and then click **OK**.
+
+    -   If **Analysis ToolPak** is not listed in the **Add-Ins available** box, click **Browse** to locate it.
+
+    -   If you are prompted that the Analysis ToolPak is not currently installed on your computer, click **Yes** to install it.
+
+##### macOS
+
+1.  Click the **Tools** menu, and then click **Excel Add-ins**.
+
+2.  In the **Add-Ins available** box, select the **Analysis ToolPak** check box, and then click **OK**.
+
+    a.  If Analysis ToolPak is not listed in the Add-Ins available box, click Browse to locate it.
+
+    b.  If you get a prompt that the Analysis ToolPak is not currently installed on your computer, click Yes to install it.
+
+    c.  Quit and restart Excel.
+
+    Now the Data Analysis command is available on the Data tab.
+:::
+
+If done correctly, when you switch to the **Data** tab on the ribbon, you will see the **Data Analysis** Module:
+
+<br>
+
+<center>![](images/Chapter 2/Toolpack.png)</center>
+
+<br>
+
+a. Now follow along with the teacher to obtain descriptive statistics for the variable `profit`.
+
+b. Filter the data for when `has_online_store` is "no". Copy the `profit` data under this condition to a new sheet.
+
+c. Repeat step c, except now change the filter to "yes".
+
+d. Using the data analysis tool pack, obtain descriptive statistics for profit under these two filters.
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_07.png)</center>
+
+:::
+
+e. Create a boxplot to visualise this relationship
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+<center>![](images/Chapter 2/workshop_pivot_08.png)</center>
+
+:::
+
+### Exercise 5
+
+Now it's your turn. Hint: reset your filter first.
+
+a. Obtain descriptive statistics for another numeric variable, e.g.:
+  - `year`
+  - `opertating_costs`
+  - `complaint_rate`
+  - `marketing_spend`
+  
+b. Then filter the data by `uses_ai`, for both "no" and "yes" categories, and obtain descriptive statistics.
+
+c. Create a visualisation for your data, e.g. a boxplot, histogram, etc.
+
+### Exercise 6
+
+In business analytics, we sometimes use a Normal distribution as a simple approximation for profit variation within a group.
+
+For this task, we will **assume** (as an approximation) that:
+
+$$
+X=(\text{profit} \mid \text{profit\_cat}=\text{Yes}) \sim N(\mu=178000,\ \sigma=113000)
+$$
+
+Note: for the questions below, solve using use Excel's `NORM.DIST()` and `NORM.INV()` functions.
+
+::: callout-note
+
+#### **The NORM.DIST() function in Excel**
+
+Excel’s `NORM.DIST()` function calculates probabilities from a Normal distribution.
+
+The function has the form:
+
+> NORM.DIST(x, mean, standard_dev, cumulative)
+
+- `x` is the value at which the distribution is evaluated  
+- `mean` is the mean of the Normal distribution ($\mu$)  
+- `standard_dev` is the standard deviation of the distribution ($\sigma$)  
+- `cumulative` is a logical value:
+  - `TRUE` returns the cumulative probability $P(X \le x)$
+  - `FALSE` returns the height of the Normal density at `x`
+  
+:::
+
+<br>
+
+:::  callout-note
+#### **The NORM.INV() function in Excel**
+
+Excel’s `NORM.INV()` function returns the value corresponding to a given cumulative probability from a Normal distribution.
+
+The function has the form:
+
+> NORM.INV(probability, mean, standard_dev)
+
+- `probability` is a value between 0 and 1  
+- `mean` is the mean of the Normal distribution ($\mu$)  
+- `standard_dev` is the standard deviation of the distribution ($\sigma$)
+
+`NORM.INV()` is used to find **cut-off values** or **percentiles**, such as the top 5% or bottom 1.5% of observations.
+
+:::
+
+<br>
+
+a. For a profitable business, what is the probability that profit is less than \$20,000?
+
+$$
+P(X < 20000)
+$$
+
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+```{r, echo=TRUE, eval=FALSE}
+=NORM.DIST(200000, 178000, 113000, TRUE)
+```
+
+:::
+
+b. For a profitable business, what is the probability that profit is more than $200,000?  
+That is:
+
+$$
+P(X > 200000)=1-P(X \le200000)
+$$
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+```{r, echo=TRUE, eval=FALSE}
+=1 - NORM.DIST(200000, 178000, 113000, TRUE)
+```
+
+:::
+
+c. For a profitable business, what is the probability that profit is between \$50,000 and \$120,000?
+
+$$
+P(50000 < X \le 120000) = P(X \le 120000) - P(X \le 50000)
+$$
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+```{r, echo=TRUE, eval=FALSE}
+=NORM.DIST(120000, 178000, 113000, TRUE) - NORM.DIST(50000, 178000, 113000, TRUE)
+```
+
+:::
+
+d. Find the cutoff value $c$ for the top 5% of profits among profitable businesses:
+
+$$
+P(X \le c)=0.95
+$$
+
+::: {.callout-note collapse="true"}
+
+#### Check Answer
+
+```{r, echo=TRUE, eval=FALSE}
+=NORM.INV(0.95, 178000, 113000)
+```
+
+:::
+
+
 
 
