@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.10.18" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1  Data and variables – Introduction to Statistics</title>
+<title>1&nbsp; Data and variables – Introduction to Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -30,7 +28,29 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f07248834697d125d844cdaf4174b45d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a64f2b92d8b4b45ab5f5d9261e8b8c9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f07248834697d125d844cdaf4174b45d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -58,7 +78,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/font-awesome-6.7.2/js/script.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -90,136 +109,11 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="include/webex.css" />
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="include/webex.css">
 </head>
 
-<body>
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" role="link"
-        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="/">
-      Introduction to Statistics
-      </a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class='chapter-number'>1</span>  <span class='chapter-title'>Data and variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>Descriptive Statistics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>3</span>  <span class='chapter-title'>Thinking with Probability</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>4</span>  <span class='chapter-title'>Measurement and Error</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>5</span>  <span class='chapter-title'>Estimation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>6</span>  <span class='chapter-title'>Hypothesis Testing</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>7</span>  <span class='chapter-title'>Models of relationships between data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>8</span>  <span class='chapter-title'>Classification and Prediction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>9</span>  <span class='chapter-title'>Logistic Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/chapter12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to R</span></span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-<script id = "quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -383,9 +277,154 @@ window.Quarto = {
     }
   </script>
 
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and variables</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introduction to Statistics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Thinking with Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Measurement and Error</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Models of relationships between data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classification and Prediction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-statistics" id="toc-what-is-statistics" class="nav-link active" data-scroll-target="#what-is-statistics"><span class="header-section-number">1.1</span> What is Statistics?</a></li>
+  <li><a href="#why-statistics" id="toc-why-statistics" class="nav-link" data-scroll-target="#why-statistics"><span class="header-section-number">1.2</span> Why Statistics?</a></li>
+  <li><a href="#modern-statistics" id="toc-modern-statistics" class="nav-link" data-scroll-target="#modern-statistics"><span class="header-section-number">1.3</span> Modern Statistics</a></li>
+  <li><a href="#where-does-data-come-from" id="toc-where-does-data-come-from" class="nav-link" data-scroll-target="#where-does-data-come-from"><span class="header-section-number">1.4</span> Where does data come from?</a>
+  <ul class="collapse">
+  <li><a href="#primary-data" id="toc-primary-data" class="nav-link" data-scroll-target="#primary-data"><span class="header-section-number">1.4.1</span> Primary Data</a></li>
+  <li><a href="#secondary-data" id="toc-secondary-data" class="nav-link" data-scroll-target="#secondary-data"><span class="header-section-number">1.4.2</span> Secondary Data</a></li>
+  <li><a href="#common-sources-of-data" id="toc-common-sources-of-data" class="nav-link" data-scroll-target="#common-sources-of-data"><span class="header-section-number">1.4.3</span> Common sources of data</a></li>
+  </ul></li>
+  <li><a href="#what-do-we-do-with-data" id="toc-what-do-we-do-with-data" class="nav-link" data-scroll-target="#what-do-we-do-with-data"><span class="header-section-number">1.5</span> What do we do with data?</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">1.6</span> Variables</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-variable" id="toc-what-is-a-variable" class="nav-link" data-scroll-target="#what-is-a-variable"><span class="header-section-number">1.6.1</span> What is a variable?</a></li>
+  <li><a href="#variation-between-and-within-people" id="toc-variation-between-and-within-people" class="nav-link" data-scroll-target="#variation-between-and-within-people"><span class="header-section-number">1.6.2</span> Variation between and within people</a></li>
+  <li><a href="#levels-of-measurement" id="toc-levels-of-measurement" class="nav-link" data-scroll-target="#levels-of-measurement"><span class="header-section-number">1.6.3</span> Levels of measurement</a></li>
+  <li><a href="#comparing-the-four-levels" id="toc-comparing-the-four-levels" class="nav-link" data-scroll-target="#comparing-the-four-levels"><span class="header-section-number">1.6.4</span> Comparing the four levels</a></li>
+  </ul></li>
+  <li><a href="#cooking" id="toc-cooking" class="nav-link" data-scroll-target="#cooking"><span class="header-section-number">1.7</span> Cooking</a>
+  <ul class="collapse">
+  <li><a href="#the-ingredients-variables" id="toc-the-ingredients-variables" class="nav-link" data-scroll-target="#the-ingredients-variables"><span class="header-section-number">1.7.1</span> The Ingredients: Variables</a></li>
+  </ul></li>
+  <li><a href="#explanatory-and-outcome-variables" id="toc-explanatory-and-outcome-variables" class="nav-link" data-scroll-target="#explanatory-and-outcome-variables"><span class="header-section-number">1.8</span> Explanatory and outcome variables</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>  <span class="chapter-title">Data and variables</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and variables</span></h1>
 </div>
 
 
@@ -401,43 +440,9 @@ window.Quarto = {
 
 </header>
 
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#what-is-statistics" id="toc-what-is-statistics"><span class="header-section-number">1.1</span> What is Statistics?</a></li>
-  <li><a href="#why-statistics" id="toc-why-statistics"><span class="header-section-number">1.2</span> Why Statistics?</a></li>
-  <li><a href="#modern-statistics" id="toc-modern-statistics"><span class="header-section-number">1.3</span> Modern Statistics</a></li>
-  <li><a href="#where-does-data-come-from" id="toc-where-does-data-come-from"><span class="header-section-number">1.4</span> Where does data come from?</a>
-  <ul>
-  <li><a href="#primary-data" id="toc-primary-data"><span class="header-section-number">1.4.1</span> Primary Data</a></li>
-  <li><a href="#secondary-data" id="toc-secondary-data"><span class="header-section-number">1.4.2</span> Secondary Data</a></li>
-  <li><a href="#common-sources-of-data" id="toc-common-sources-of-data"><span class="header-section-number">1.4.3</span> Common sources of data</a></li>
-  </ul></li>
-  <li><a href="#what-do-we-do-with-data" id="toc-what-do-we-do-with-data"><span class="header-section-number">1.5</span> What do we do with data?</a></li>
-  <li><a href="#variables" id="toc-variables"><span class="header-section-number">1.6</span> Variables</a>
-  <ul>
-  <li><a href="#what-is-a-variable" id="toc-what-is-a-variable"><span class="header-section-number">1.6.1</span> What is a variable?</a></li>
-  <li><a href="#variation-between-and-within-people" id="toc-variation-between-and-within-people"><span class="header-section-number">1.6.2</span> Variation between and within people</a></li>
-  <li><a href="#levels-of-measurement" id="toc-levels-of-measurement"><span class="header-section-number">1.6.3</span> Levels of measurement</a></li>
-  <li><a href="#comparing-the-four-levels" id="toc-comparing-the-four-levels"><span class="header-section-number">1.6.4</span> Comparing the four levels</a></li>
-  </ul></li>
-  <li><a href="#cooking" id="toc-cooking"><span class="header-section-number">1.7</span> Cooking</a>
-  <ul>
-  <li><a href="#the-ingredients-variables" id="toc-the-ingredients-variables"><span class="header-section-number">1.7.1</span> The Ingredients: Variables</a></li>
-  </ul></li>
-  <li><a href="#explanatory-and-outcome-variables" id="toc-explanatory-and-outcome-variables"><span class="header-section-number">1.8</span> Explanatory and outcome variables</a></li>
-  <li><a href="#workshop-exercises" id="toc-workshop-exercises"><span class="header-section-number">1.9</span> Workshop Exercises</a>
-  <ul>
-  <li><a href="#background" id="toc-background"><span class="header-section-number">1.9.1</span> Background</a></li>
-  <li><a href="#the-data" id="toc-the-data"><span class="header-section-number">1.9.2</span> The Data</a></li>
-  <li><a href="#your-task" id="toc-your-task"><span class="header-section-number">1.9.3</span> Your Task</a></li>
-  <li><a href="#exploring-your-business-dataset" id="toc-exploring-your-business-dataset"><span class="header-section-number">1.9.4</span> Exploring your business dataset</a></li>
-  </ul></li>
-  </ul>
-</nav>
+
 <section id="what-is-statistics" class="level2" data-number="1.1">
-<h2 data-number="1.1"><span class="header-section-number">1.1</span> What is Statistics?</h2>
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-statistics"><span class="header-section-number">1.1</span> What is Statistics?</h2>
 <p>For many people, the first things that come to mind are numbers, formulas, calculations, tables and complicated-looking graphs. You might think of averages, percentages, opinion polls or sporting records. Some people may remember a mathematics class—and perhaps not particularly fondly.</p>
 <p>These are all connected to statistics, but they do not capture what statistics is really about. Statistics is not simply the calculation of numbers. It is the process of using data to answer questions, learn about the world and make decisions when we do not have complete information.</p>
 <p>For example:</p>
@@ -449,14 +454,14 @@ window.Quarto = {
 <li>What is likely to happen in the future?</li>
 </ul>
 <p>The calculations help us investigate these questions, but they are not the final objective. The objective is to turn data into evidence—and evidence into informed decisions. So, throughout this unit, I do not want you to think of statistics as a collection of formulas to memorise. Instead, think of statistics as a way of reasoning:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>How can we use the information we have to make the best possible decision, while recognising that we can never be completely certain?</p>
 </blockquote>
 </section>
 <section id="why-statistics" class="level2" data-number="1.2">
-<h2 data-number="1.2"><span class="header-section-number">1.2</span> Why Statistics?</h2>
+<h2 data-number="1.2" class="anchored" data-anchor-id="why-statistics"><span class="header-section-number">1.2</span> Why Statistics?</h2>
 <p>One of the first questions I like to ask when I take on a new unit is:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p><em>Why this unit</em>?</p>
 </blockquote>
 <p>In this case … why is statistics a core part of your degree?</p>
@@ -465,7 +470,7 @@ window.Quarto = {
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Tip</span>The NASA Challenger disaster
@@ -474,28 +479,28 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>On January 28, 1986, the space shuttle <strong>Challenger</strong> broke apart just 73 seconds after liftoff, killing all seven astronauts on board. The tragedy remains one of the most devastating examples of how misunderstanding data and poor statistical reasoning can have fatal consequences.</p>
 <center>
-<img src="https://taylorsciencegeeks.weebly.com/uploads/5/9/2/0/59201005/636772080.gif" class="img-fluid" />
+<img src="https://taylorsciencegeeks.weebly.com/uploads/5/9/2/0/59201005/636772080.gif" class="img-fluid">
 </center>
 <p><br></p>
 <p>Prior to the launch, engineers from Morton Thiokol, the contractor responsible for the shuttle’s O-ring seals, were concerned about the effects of cold temperature on the O-rings’ ability to prevent hot gases from escaping during launch. They had data from previous shuttle launches showing the number of O-ring failures (or “erosions”) and the temperature at launch.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="chapter1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="chapter1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Unfortunately, when Thiokol engineers presented their findings to NASA, the data were plotted incorrectly. They graphed the number of O-ring failures only for the launches that had experienced a failure—completely omitting all the launches where there were <em>no</em> failures. This meant that the plot showed no clear pattern, appearing to suggest that O-ring performance was random and unrelated to temperature. If the engineers had instead plotted all launches—including those with zero O-ring problems—against temperature (see plot below), the relationship would have been obvious:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>as the temperature dropped, the probability of O-ring failure increased sharply.</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="chapter1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="chapter1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -506,7 +511,7 @@ window.Quarto = {
 </div>
 </div>
 <p>So I come back to the question:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Why statistics?</p>
 </blockquote>
 <p>Not everyone here is going to work at NASA or be in a role where your decisions could cost lives.</p>
@@ -514,7 +519,7 @@ window.Quarto = {
 <p>Statistics helps you avoid that. It teaches you not just how to calculate but how to think: how to challenge claims, test assumptions, and make sense of messy real-world data. That’s why this unit matters — not just for your degree, but for your ability to make smarter, more informed decisions, wherever your career takes you.</p>
 </section>
 <section id="modern-statistics" class="level2" data-number="1.3">
-<h2 data-number="1.3"><span class="header-section-number">1.3</span> Modern Statistics</h2>
+<h2 data-number="1.3" class="anchored" data-anchor-id="modern-statistics"><span class="header-section-number">1.3</span> Modern Statistics</h2>
 <p>In the past, learning statistics often had a strong focus on numbers, formulas, calculations and mathematical proofs. And whilst these foundations are still important, modern statistics is about much more than performing calculations. Modern statistics focuses on using data and analytics to answer questions, understand uncertainty and make better decisions. In particular, modern statistics has a large focus on making decisions with data. For example:</p>
 <ul>
 <li>What Data do we need?</li>
@@ -523,13 +528,13 @@ window.Quarto = {
 <li>What conclusions can we make with the Data?</li>
 </ul>
 <p>Given this focus on data, we should then ask the question:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What is data?</p>
 </blockquote>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Note</span>Data, cases and variables
@@ -552,7 +557,7 @@ window.Quarto = {
 </ul>
 <p>When we analyse data, we need to begin by having it in a tabular format. A good data table will have the information organised where each row represents one case, and each column is one variable.</p>
 <center>
-<img src="images/chapter1/01_table.jpg" class="img-fluid" />
+<img src="images/chapter1/01_table.jpg" class="img-fluid">
 </center>
 <p><br></p>
 <p>In the image above, each student is a case, and they are represented by a single row. The columns, Degree, Age, Attendance and Assessment Score are specific to each case. For example, we can say that for case 1, the student is:</p>
@@ -564,9 +569,9 @@ window.Quarto = {
 </ul>
 </section>
 <section id="where-does-data-come-from" class="level2" data-number="1.4">
-<h2 data-number="1.4"><span class="header-section-number">1.4</span> Where does data come from?</h2>
+<h2 data-number="1.4" class="anchored" data-anchor-id="where-does-data-come-from"><span class="header-section-number">1.4</span> Where does data come from?</h2>
 <section id="primary-data" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1"><span class="header-section-number">1.4.1</span> Primary Data</h3>
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="primary-data"><span class="header-section-number">1.4.1</span> Primary Data</h3>
 <p>Data can come from many different sources. For example a researcher</p>
 <ul>
 <li>might conduct a survey to understand people’s attitudes towards public transport</li>
@@ -575,31 +580,31 @@ window.Quarto = {
 <p>In these two examples, the data collected would be considered <strong>primary data</strong> because the researcher is directly involved in collecting it.</p>
 </section>
 <section id="secondary-data" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2"><span class="header-section-number">1.4.2</span> Secondary Data</h3>
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="secondary-data"><span class="header-section-number">1.4.2</span> Secondary Data</h3>
 <p>Other data already exist because they were originally collected for another purpose. A researcher might use government census data, hospital records, company sales data or information from an existing database. This is often called secondary data.</p>
 </section>
 <section id="common-sources-of-data" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3"><span class="header-section-number">1.4.3</span> Common sources of data</h3>
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="common-sources-of-data"><span class="header-section-number">1.4.3</span> Common sources of data</h3>
 <p>Common sources of data include:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="vertbhmgsj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vertbhmgsj table {
+<div id="zgevarpact" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zgevarpact table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vertbhmgsj thead, #vertbhmgsj tbody, #vertbhmgsj tfoot, #vertbhmgsj tr, #vertbhmgsj td, #vertbhmgsj th {
+#zgevarpact thead, #zgevarpact tbody, #zgevarpact tfoot, #zgevarpact tr, #zgevarpact td, #zgevarpact th {
   border-style: none;
 }
 
-#vertbhmgsj p {
+#zgevarpact p {
   margin: 0;
   padding: 0;
 }
 
-#vertbhmgsj .gt_table {
+#zgevarpact .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -625,12 +630,12 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_caption {
+#zgevarpact .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vertbhmgsj .gt_title {
+#zgevarpact .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -642,7 +647,7 @@ window.Quarto = {
   border-bottom-width: 0;
 }
 
-#vertbhmgsj .gt_subtitle {
+#zgevarpact .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -654,7 +659,7 @@ window.Quarto = {
   border-top-width: 0;
 }
 
-#vertbhmgsj .gt_heading {
+#zgevarpact .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -666,13 +671,13 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_bottom_border {
+#zgevarpact .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_col_headings {
+#zgevarpact .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -687,7 +692,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_col_heading {
+#zgevarpact .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -707,7 +712,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#vertbhmgsj .gt_column_spanner_outer {
+#zgevarpact .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -719,15 +724,15 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#vertbhmgsj .gt_column_spanner_outer:first-child {
+#zgevarpact .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vertbhmgsj .gt_column_spanner_outer:last-child {
+#zgevarpact .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vertbhmgsj .gt_column_spanner {
+#zgevarpact .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -739,11 +744,11 @@ window.Quarto = {
   width: 100%;
 }
 
-#vertbhmgsj .gt_spanner_row {
+#zgevarpact .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vertbhmgsj .gt_group_heading {
+#zgevarpact .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -769,7 +774,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#vertbhmgsj .gt_empty_group_heading {
+#zgevarpact .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -784,15 +789,15 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#vertbhmgsj .gt_from_md > :first-child {
+#zgevarpact .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vertbhmgsj .gt_from_md > :last-child {
+#zgevarpact .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vertbhmgsj .gt_row {
+#zgevarpact .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -811,7 +816,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#vertbhmgsj .gt_stub {
+#zgevarpact .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -824,7 +829,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#vertbhmgsj .gt_stub_row_group {
+#zgevarpact .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -838,15 +843,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#vertbhmgsj .gt_row_group_first td {
+#zgevarpact .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vertbhmgsj .gt_row_group_first th {
+#zgevarpact .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vertbhmgsj .gt_summary_row {
+#zgevarpact .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -856,16 +861,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#vertbhmgsj .gt_first_summary_row {
+#zgevarpact .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_first_summary_row.thick {
+#zgevarpact .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vertbhmgsj .gt_last_summary_row {
+#zgevarpact .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -875,7 +880,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_grand_summary_row {
+#zgevarpact .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -885,7 +890,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#vertbhmgsj .gt_first_grand_summary_row {
+#zgevarpact .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -895,7 +900,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_last_grand_summary_row_top {
+#zgevarpact .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -905,11 +910,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_striped {
+#zgevarpact .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vertbhmgsj .gt_table_body {
+#zgevarpact .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -918,7 +923,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_footnotes {
+#zgevarpact .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -932,7 +937,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_footnote {
+#zgevarpact .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -941,7 +946,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#vertbhmgsj .gt_sourcenotes {
+#zgevarpact .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -955,7 +960,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#vertbhmgsj .gt_sourcenote {
+#zgevarpact .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -963,77 +968,77 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#vertbhmgsj .gt_left {
+#zgevarpact .gt_left {
   text-align: left;
 }
 
-#vertbhmgsj .gt_center {
+#zgevarpact .gt_center {
   text-align: center;
 }
 
-#vertbhmgsj .gt_right {
+#zgevarpact .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vertbhmgsj .gt_font_normal {
+#zgevarpact .gt_font_normal {
   font-weight: normal;
 }
 
-#vertbhmgsj .gt_font_bold {
+#zgevarpact .gt_font_bold {
   font-weight: bold;
 }
 
-#vertbhmgsj .gt_font_italic {
+#zgevarpact .gt_font_italic {
   font-style: italic;
 }
 
-#vertbhmgsj .gt_super {
+#zgevarpact .gt_super {
   font-size: 65%;
 }
 
-#vertbhmgsj .gt_footnote_marks {
+#zgevarpact .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vertbhmgsj .gt_asterisk {
+#zgevarpact .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vertbhmgsj .gt_indent_1 {
+#zgevarpact .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vertbhmgsj .gt_indent_2 {
+#zgevarpact .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vertbhmgsj .gt_indent_3 {
+#zgevarpact .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vertbhmgsj .gt_indent_4 {
+#zgevarpact .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vertbhmgsj .gt_indent_5 {
+#zgevarpact .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vertbhmgsj .katex-display {
+#zgevarpact .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vertbhmgsj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zgevarpact div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Type</th>
@@ -1079,28 +1084,28 @@ window.Quarto = {
 </section>
 </section>
 <section id="what-do-we-do-with-data" class="level2" data-number="1.5">
-<h2 data-number="1.5"><span class="header-section-number">1.5</span> What do we do with data?</h2>
+<h2 data-number="1.5" class="anchored" data-anchor-id="what-do-we-do-with-data"><span class="header-section-number">1.5</span> What do we do with data?</h2>
 <p>Data allow us to learn about the world by turning observations into useful information. We can begin by describing what has been observed. Tables, graphs and summary measures can help us identify typical values, understand how much observations vary and recognise unusual cases. For example, a business might use its sales data to determine which products sell most frequently, calculate average customer spending and identify periods of unusually high or low demand.</p>
 <center>
-<img src="images/chapter1/02_business%20dashboard.png" class="img-fluid" />
+<img src="images/chapter1/02_business dashboard.png" class="img-fluid">
 </center>
 <p><br></p>
 <p>We can also use data to compare groups and investigate relationships between variables. A university might compare assessment results across different teaching methods, while a business might examine whether advertising expenditure is related to sales. These analyses can reveal important patterns, although an observed relationship does not necessarily mean that one variable causes the other.</p>
 <p>Data can also help us make predictions. Patterns observed in existing data can be used to estimate an unknown or future outcome. A retailer might predict future demand, a bank might estimate the likelihood that a customer will default on a loan, or a hospital might predict whether a patient is at risk of readmission. Predictions will rarely be perfectly accurate, so it is also important to describe the uncertainty associated with them.</p>
 <center>
-<img src="images/chapter1/03_forecasting.png" class="img-fluid" />
+<img src="images/chapter1/03_forecasting.png" class="img-fluid">
 </center>
 <p><br></p>
 <p>Finally, data allow us to draw conclusions beyond the observations immediately available to us. It is often impractical to collect information from every customer, resident or patient. Instead, we collect data from a sample and use statistical inference to learn about the wider population. This may involve estimating an unknown population value or testing whether the available evidence supports a particular claim.</p>
 <p>These activities ultimately support better decision-making. Data do not make decisions by themselves, and a large dataset does not automatically produce a reliable conclusion. We must still consider how the data were collected, whether they are representative, whether the measurements are trustworthy and whether alternative explanations are possible. Statistics provides the tools needed to turn data into evidence while recognising the uncertainty and limitations that remain.</p>
 </section>
 <section id="variables" class="level2" data-number="1.6">
-<h2 data-number="1.6"><span class="header-section-number">1.6</span> Variables</h2>
+<h2 data-number="1.6" class="anchored" data-anchor-id="variables"><span class="header-section-number">1.6</span> Variables</h2>
 <section id="what-is-a-variable" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1"><span class="header-section-number">1.6.1</span> What is a variable?</h3>
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="what-is-a-variable"><span class="header-section-number">1.6.1</span> What is a variable?</h3>
 <p>A variable is a characteristic or measurement that can take different values across observations.</p>
 <p>The observations might be people, businesses, products, countries or points in time. For example, in a dataset containing information about students, each row might represent one student and each column might represent a variable.</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Student</th>
@@ -1140,7 +1145,7 @@ window.Quarto = {
 <p>They are called variables because their values can vary.</p>
 </section>
 <section id="variation-between-and-within-people" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2"><span class="header-section-number">1.6.2</span> Variation between and within people</h3>
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="variation-between-and-within-people"><span class="header-section-number">1.6.2</span> Variation between and within people</h3>
 <p>The amount of studying and the test score can vary from one student to another. One student might study for two hours, while another might study for six hours. Their test scores may also differ.</p>
 <p>Variables can also change for the same person over time. A student might study for five hours for one test but only two hours for another. The same student may obtain different scores across different assessments.</p>
 <p>Therefore, variation can occur:</p>
@@ -1149,7 +1154,7 @@ window.Quarto = {
 <li>within a person, because the same student’s value may change over time.</li>
 </ul>
 <p>If students are observed on several occasions, the dataset might look like this:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Student</th>
@@ -1188,7 +1193,7 @@ window.Quarto = {
 <p>In this dataset, each row represents a particular student completing a particular test. The same student can therefore appear in more than one row. Recognising what each row represents is important when interpreting a dataset.</p>
 </section>
 <section id="levels-of-measurement" class="level3" data-number="1.6.3">
-<h3 data-number="1.6.3"><span class="header-section-number">1.6.3</span> Levels of measurement</h3>
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="levels-of-measurement"><span class="header-section-number">1.6.3</span> Levels of measurement</h3>
 <p>Variables can be classified according to their level of measurement. The four commonly used levels are:</p>
 <ol type="1">
 <li>nominal;</li>
@@ -1198,7 +1203,7 @@ window.Quarto = {
 </ol>
 <p>The level of measurement tells us what the recorded values mean and which comparisons are appropriate.</p>
 <section id="nominal-variables" class="level4" data-number="1.6.3.1">
-<h4 data-number="1.6.3.1"><span class="header-section-number">1.6.3.1</span> Nominal variables</h4>
+<h4 data-number="1.6.3.1" class="anchored" data-anchor-id="nominal-variables"><span class="header-section-number">1.6.3.1</span> Nominal variables</h4>
 <p>A nominal variable places observations into categories that do not have a natural order. The values may be recorded using words or numerical codes, but they function only as labels.</p>
 <p>In the student scenario, nominal variables might include:</p>
 <ul>
@@ -1213,7 +1218,7 @@ window.Quarto = {
 <p>However, these numbers remain category labels. It would not make sense to calculate the average study method or claim that Tutor is three times Individual.</p>
 </section>
 <section id="ordinal-variables" class="level4" data-number="1.6.3.2">
-<h4 data-number="1.6.3.2"><span class="header-section-number">1.6.3.2</span> Ordinal variables</h4>
+<h4 data-number="1.6.3.2" class="anchored" data-anchor-id="ordinal-variables"><span class="header-section-number">1.6.3.2</span> Ordinal variables</h4>
 <p>An ordinal variable places observations into categories that have a meaningful order. However, the distance between consecutive categories is not necessarily equal.</p>
 <p>In the student scenario, students might report their level of preparation as:</p>
 <ul>
@@ -1234,13 +1239,13 @@ window.Quarto = {
 <p>Ordinal values allow us to compare order, but not necessarily the exact size of the differences between categories.</p>
 </section>
 <section id="interval-variables" class="level4" data-number="1.6.3.3">
-<h4 data-number="1.6.3.3"><span class="header-section-number">1.6.3.3</span> Interval variables</h4>
+<h4 data-number="1.6.3.3" class="anchored" data-anchor-id="interval-variables"><span class="header-section-number">1.6.3.3</span> Interval variables</h4>
 <p>An interval variable is numerical, ordered and measured using equal intervals. A difference of one unit has the same meaning throughout the scale. However, an interval variable does not have a true zero representing the complete absence of the characteristic.</p>
 <p>A standardised test score can sometimes be treated as an interval variable. For example, the difference between standardised scores of 50 and 60 is interpreted in the same way as the difference between 70 and 80.</p>
 <p>However, a score of zero does not necessarily mean that the student has no knowledge or ability. Consequently, it would not usually be meaningful to say that a student with a standardised score of 80 has twice the ability of a student with a score of 40.</p>
 </section>
 <section id="ratio-variables" class="level4" data-number="1.6.3.4">
-<h4 data-number="1.6.3.4"><span class="header-section-number">1.6.3.4</span> Ratio variables</h4>
+<h4 data-number="1.6.3.4" class="anchored" data-anchor-id="ratio-variables"><span class="header-section-number">1.6.3.4</span> Ratio variables</h4>
 <p>A ratio variable has all the properties of an interval variable, together with a meaningful true zero. A value of zero indicates the absence of the quantity being measured. This means that both differences and ratios can be interpreted meaningfully.</p>
 <p>In the student scenario, the amount of time spent studying is a ratio variable:</p>
 <ul>
@@ -1259,14 +1264,14 @@ window.Quarto = {
 </section>
 </section>
 <section id="comparing-the-four-levels" class="level3" data-number="1.6.4">
-<h3 data-number="1.6.4"><span class="header-section-number">1.6.4</span> Comparing the four levels</h3>
-<table class="caption-top">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="comparing-the-four-levels"><span class="header-section-number">1.6.4</span> Comparing the four levels</h3>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 24%" />
-<col style="width: 20%" />
-<col style="width: 13%" />
-<col style="width: 29%" />
+<col style="width: 11%">
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 29%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1324,8 +1329,8 @@ window.Quarto = {
 </section>
 </section>
 <section id="cooking" class="level2" data-number="1.7">
-<h2 data-number="1.7"><span class="header-section-number">1.7</span> Cooking</h2>
-<blockquote>
+<h2 data-number="1.7" class="anchored" data-anchor-id="cooking"><span class="header-section-number">1.7</span> Cooking</h2>
+<blockquote class="blockquote">
 <p>Statistics is a lot like cooking.</p>
 </blockquote>
 <p>Suppose I want to bake a cake for Mother’s Day.</p>
@@ -1336,12 +1341,12 @@ window.Quarto = {
 </ol>
 <p>Now imagine that instead of using an oven, I decided to use a deep fryer. Would I still get a cake? Probably not! The same goes for using a steamer, a blender, or a grill — each appliance is designed for a specific purpose and produces a different result.</p>
 <p>To make a good cake, I need both the right ingredients and the right tool. Using the wrong one can lead to an unexpected or flawed outcome.</p>
-<p><img src="images/chapter1/01-01-cake.png" class="img-fluid" /></p>
+<p><img src="images/chapter1/01-01-cake.png" class="img-fluid"></p>
 <p>The same principle applies in statistics. Our tools are the various statistical tests and models available to us. Each is suited to a particular type of problem or research question. Our ingredients are the data we have — their type, structure, and quality.</p>
-<p><img src="images/chapter1/01-02-cake-stats.png" class="img-fluid" /></p>
+<p><img src="images/chapter1/01-02-cake-stats.png" class="img-fluid"></p>
 <p>If we use the wrong statistical tool for the data at hand, our results may be misleading or invalid, just like trying to bake a cake in a deep fryer.</p>
 <section id="the-ingredients-variables" class="level3" data-number="1.7.1">
-<h3 data-number="1.7.1"><span class="header-section-number">1.7.1</span> The Ingredients: Variables</h3>
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="the-ingredients-variables"><span class="header-section-number">1.7.1</span> The Ingredients: Variables</h3>
 <p>In statistics, our ingredients are called <strong>variables</strong>. A variable is simply something that can vary — it can take on different values across people, objects, or situations. For example,</p>
 <ul>
 <li>If we’re studying athletes, variables might include height, training hours, or reaction time.</li>
@@ -1352,7 +1357,7 @@ window.Quarto = {
 </section>
 </section>
 <section id="explanatory-and-outcome-variables" class="level2" data-number="1.8">
-<h2 data-number="1.8"><span class="header-section-number">1.8</span> Explanatory and outcome variables</h2>
+<h2 data-number="1.8" class="anchored" data-anchor-id="explanatory-and-outcome-variables"><span class="header-section-number">1.8</span> Explanatory and outcome variables</h2>
 <p>When investigating a relationship, variables are often described according to the role they play in the research question.</p>
 <ul>
 <li><p>An <strong>outcome variable</strong> is the variable we want to understand, explain or predict. It represents the result of interest.</p></li>
@@ -1366,677 +1371,655 @@ window.Quarto = {
 <p>The explanatory variable is sometimes called the predictor, independent variable or input variable. The outcome variable may also be called the response, dependent variable or target variable.</p>
 <p>These labels describe the role of each variable in a particular analysis. They are not permanent characteristics of the variables themselves. The same variable may be an outcome in one research question and an explanatory variable in another.</p>
 <p>It is also important to remember that an association between an explanatory variable and an outcome variable does not necessarily establish that one causes the other. We will examine relationships, prediction and causation in more detail in later chapters.</p>
-</section>
-<section id="workshop-exercises" class="level2" data-number="1.9">
-<h2 data-number="1.9"><span class="header-section-number">1.9</span> Workshop Exercises</h2>
-<section id="background" class="level3" data-number="1.9.1">
-<h3 data-number="1.9.1"><span class="header-section-number">1.9.1</span> Background</h3>
-<p>You are working as a data analyst investigating business performance. Different teams have supplied information about 300 businesses across several Excel sheets. Your task is to bring this information together into one table. You will use the completed dataset in activities over the coming weeks.</p>
-</section>
-<section id="the-data" class="level3" data-number="1.9.2">
-<h3 data-number="1.9.2"><span class="header-section-number">1.9.2</span> The Data</h3>
-<p>There are 5 data sources that you will need to download and merge. Each business has a unique identifier, <code>business_id</code>, which connects its information across sheets. Businesses may appear in different row orders on different sheets.</p>
-<style>
-.download-table {
-  width: 100%;
-  max-width: 650px;
-  margin: 20px auto;
-  border-collapse: collapse;
-}
-.download-table th {
-  background: #243c59;
-  color: white;
-  padding: 12px 18px;
-  text-align: left;
-}
-.download-table td {
-  padding: 12px 18px;
-  border-bottom: 1px solid #dde3ea;
-  vertical-align: middle;
-}
-.download-table tbody tr:nth-child(even) {
-  background: #f3f6f9;
-}
-.download-table th:last-child,
-.download-table td:last-child {
-  text-align: left;
-}
-</style>
-<table class="download-table">
-<thead>
-<tr>
-<th>
-Dataset
-</th>
-<th>
-Download
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Technology businesses
-</td>
-<td>
-<div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-success" onclick="&#10;    async function downloadFile(event) {&#10;      event.preventDefault();&#10;      try {&#10;        const response = await fetch(&#39;data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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&#39;);&#10;        if (!response.ok) throw new Error(&#39;Network response failed&#39;);&#10;        const blob = await response.blob();&#10;        const blobUrl = window.URL.createObjectURL(blob);&#10;        const a = document.createElement(&#39;a&#39;);&#10;        a.href = blobUrl;&#10;        a.download = &#39;Tech.xlsx&#39;;&#10;        a.style.display = &#39;none&#39;;&#10;        document.body.appendChild(a);&#10;        a.dispatchEvent(new MouseEvent(&#39;click&#39;));&#10;        document.body.removeChild(a);&#10;        setTimeout(() =&gt; {&#10;          window.URL.revokeObjectURL(blobUrl);&#10;        }, 100);&#10;        return false;&#10;      } catch (error) {&#10;        console.error(&#39;Download failed:&#39;, error);&#10;        alert(&#39;Download failed. Please try again.&#39;);&#10;      }&#10;    }&#10;    downloadFile(event);&#10;  "><i class="fa fa-save"></i> Tech</button>
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-Financial information
-</td>
-<td>
-<div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-success" onclick="&#10;    async function downloadFile(event) {&#10;      event.preventDefault();&#10;      try {&#10;        const response = await fetch(&#39;data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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&#39;);&#10;        if (!response.ok) throw new Error(&#39;Network response failed&#39;);&#10;        const blob = await response.blob();&#10;        const blobUrl = window.URL.createObjectURL(blob);&#10;        const a = document.createElement(&#39;a&#39;);&#10;        a.href = blobUrl;&#10;        a.download = &#39;Finance.xlsx&#39;;&#10;        a.style.display = &#39;none&#39;;&#10;        document.body.appendChild(a);&#10;        a.dispatchEvent(new MouseEvent(&#39;click&#39;));&#10;        document.body.removeChild(a);&#10;        setTimeout(() =&gt; {&#10;          window.URL.revokeObjectURL(blobUrl);&#10;        }, 100);&#10;        return false;&#10;      } catch (error) {&#10;        console.error(&#39;Download failed:&#39;, error);&#10;        alert(&#39;Download failed. Please try again.&#39;);&#10;      }&#10;    }&#10;    downloadFile(event);&#10;  "><i class="fa fa-save"></i> Finance</button>
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-Hospitality businesses
-</td>
-<td>
-<div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-success" onclick="&#10;    async function downloadFile(event) {&#10;      event.preventDefault();&#10;      try {&#10;        const response = await fetch(&#39;data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,UEsDBBQAAAAIAMm1Tl3z/Uj9wwAAACkBAAAPAAAAeGwvd29ya2Jvb2sueG1sjc/BTgMhEAbgVyFzd4FqNrpZthcP9eobUHbokgJDGFrx7Y3V2Ku3yf8nf76Z9z1FccXKgbIBPSgQmB2tIZ8MXJp/eIb9Mvfpg+r5SHQWPcXMUzewtVYmKdltmCwPVDD3FD3VZBsPVE+SS0W78obYUpQ7pUaZbMjwvXdL+e8S2SY0cCAuodkY2ieIW/G2GtAg6hRWA+8vWulHf3SjGu2T1yP8cup/OOR9cPhK7pIwtx9PxWhboMxbKAxCLrO82+T97eULUEsDBBQAAAAIAMm1Tl1pNZYpLAIAANcOAAANAAAAeGwvc3R5bGVzLnhtbO1XS2/bMAz+K4buix9Jty6oW7QBDOzSS3vYVbFlRwAlGpLSOf31gyS/mtZdOuTQBPXFJEF+5EeZNn110wgInpjSHGVK4llEAiZzLLisUrI15bdLcnN91Sy12QF72DBmgkaA1MsmJRtj6mUY6nzDBNUzrJlsBJSoBDV6hqoKda0YLbQNExAmUfQ9FJRLYhHlVmTC6CDHrTQpSUbGwN9+FSlJoogEHnKFBUtJZEsMJ3zjPV/nGfa5bFSJckg6J53JcXwOniikJI67DFQwb1pRBdxgh9dFTEbmCKgCVa1TkmXJYp4sfrzCvFWcwhTi2nu/D+yvQ4BbwXeAA/QdWPgOcAB7r6kxTMmMAwSt/LirWUokStYjts7/DKoU3cXJxYfjNAIvfF3Vaq+Rq4ufHd4o/kj4WZQtssv38VvBdXKNqmCq72VMBqOVgJXGn43i1aYVDdZeWKMxKLxccFqhpNBm7iB60WXLGcCDHcPf5V7KphxNgZsX2YscoBU9VKv4RGPILsUYffG/8E055JkGiA8AoHUNu/utWDOVudF2Yc6aoRxrHGDQ7hyY0z9BCU6/BV5JwYZjo53BvoANz+3s5kwaprrzacoDa09Orfbkq/aj1/5H0fqRNR78dIhsUPFnlGZM5QjkPsdkj8nZ78Fb1E6TjfumfYhOu8udE6H4vAi9fT7zEx2fqedtfm7P2+kQCvsd88VGu7fP9vbA/tSk5N7WDi+3yvH2qp06/KJe/wVQSwMEFAAAAAgAybVOXfpcAVkDAwAA2g0AABMAAAB4bC90aGVtZS90aGVtZTEueG1svVfbcpswFPwVRu8NN3PzhGQSx24f0mmnyQ/IIECNEB5Jjp2/7yBuAozjNHbsB0tiz9lF57DC17f7nGiviHFc0BCYVwbQEI2KGNM0BFuRfPPB7c01nIsM5UijMEchWGRQfP/9DLR9TiifwxBkQmzmus6jDOWQXxUbRPc5SQqWQ8GvCpbqMYM7TNOc6JZhuHoOMQVt3iVBOaKClwsRYU/RAbLyWvxilj/8jS8I014hCcEO07jYPaO9ABqBXCwIC4EhP0DTb671NoqIiWAlcCU/TWAdEb9YMpCl6zbSWFr+zOwYJIKIMXDpl98uo0TAKEK0lqOCTcc1fKsBK6hqeCB74Jn2IEBhsMcMgXtvzfoBElUNZ+MbXQXLB6cfIFHV0BkF3BnWfWD3AySqGrqjgNnyzrOW/QCJygimL2O46/m+28BbTFKQHwfxgesa3kOD72C60mpVAip6jfcrSXCEZN/l8G/BVgUVsspQYKqJtw1KYFQ2KCR4zbD2iNNMSB44R/AdQMSPAvQBZ47puwKOUB8hbek6Bl3dDLk1uZh8JBNMyJN4I+iRS3G8IDheYULkREa1pdhkC8Iawh4wZbAb8zpVyrVNwUNggMlc0kEwFdWa6zVPPZyTbf6ziOumN1s7gHMORXfBcBSfaBnkLOWqhhJ3sg7PntDR0Q112CfqkHdyshDf/LCQ4KgQXSkPwVSD5SnhzGq75REkKC4LVifolfUsJQ5mU3dkfXZrTygxz2CMmrzGlJKpZuu68AxFVqR4/mElQTAhpNyqSxRZH9sBof2Ztiv5vebu/sssNoyLB8izCicvtecrVWgCw/kCGqvcmcvR6MM9REmCIjGx0k0fuaizHLz8WXQ5KbYCsacs3mlrsmV/YBwCxzMdA2gx5qIpgBZj1rXP+P2iW4dkk8HayXsPbYWX45ZTESvlDKX357Xidbo6y3H1ftTAtabs1pt+Ei9wPgbKuaT4R+B/1FMrqzz3sanqUOVNGq09Ic++kNF2Xfl1hjps2dJjm9cxORv8gWpWbv4BUEsDBBQAAAAIAMm1Tl0NHrnoZQAAAHMAAAAUAAAAeGwvc2hhcmVkU3RyaW5ncy54bWwFwVEKwyAMANCrSP5n3D7GkNqeRdq0CiYWkw2Pv/eWbXJzPxpauyR4+gCOZO9HlSvB187HB7Z1mVHV3OQmGmeCYnZHRN0LcVbfb5LJ7eyDs6nv40K9B+VDC5Fxw1cIb+RcBRyuf1BLAwQUAAAACADJtU5d+MaXMrULAAByXQAAGAAAAHhsL3dvcmtzaGVldHMvc2hlZXQxLnhtbJ1cXW/jyBH8KwSfkofI5FD80GK1h/MG+QAuwCEBksdAa9Nr4STRkLhrb3590PIMfWpXuZt+utO62mqWm109Mz398aen/S773h9P2+GwzstFkWf94Wa43R6+rvNv492fuvynTx+fPjwOx99O930/Zk/73eH04Wmd34/jw4erq9PNfb/fnBbDQ3942u/uhuN+M54Ww/Hr1enh2G9uz2b73VUoiuZqv9kecvmF53/997Z/PF18yk73w+Nfj9vbX7aH/rTOizyTr/4yDL/Jj/9+K/8kFg+bQ5/9+NfDbjuu8zLPxuHhl/5u/Nzvduv855Bnm5tx+73/dXPo1/mXYRyHvfw8z07jZuzX+d1x+F9/yLOrTx+vfvf9l59efPvL+bF+PWa3/d3m22785/D4t3779V6+vD7/lqcPN8PubHAz7LL9VujMs/3m6fzfx+3teL/OyzbP7re3t/3h/Gg3307jsP9P/NnLr3k2D9E8TOahnGFeRfNqhvnVy1OcH/vPm3EjH47DY3Y8g+SJl10ynjg4/01uBPNzmWendd7k2bjOT+Px/JPvn758O8lf9PTf7a18y/fn75qsrrHVj35zPCH8Z4zv9w+74Uffn7I/HP54YXd1fojfPUt4fhbhhD9LOH9Lq77luiiKCj7FM351xj/H+fdP7aKGT/CMLYsL8LJ42+vK43X1/JtL4PYSuh0NwqUriwb6HcHVBbhr3/Z76fF7SdmGDF4vAdvLRQm9XiK2m+5tr2uP1zVnGxJ4XWO2W+h3jdiujShpPH43jO2ygG43gO2w6KDXDWJ7ZXjderxuKdsl/MNft5ht/E62iO0Q3va78/jdUbZxJulgbGO2O8R2Vb7t9crj9YqzjV/JFWK7IrG9Qmy3y7f9lse0HRcU4Rv6ch0NNOEwX36OYJ27jRwoNDo8LynnAb+YyeKS9GYRsO8lYr0xokV+ucN3qpfqHZpcR4K5XMBX4nMEK9a7xvDcJZmCYqxjzUwWl6yXLGKgalpqX7pkU1CEdfySRoNL1hvmOVTOyvLcJZ2CYqzDVHedLC5Zr4noJ7RifWX47pJPQRHWV9h1JKDLBQR/jmDFeqgMz10SKijCuvqzTq5DEa1YxEAVrazs6JJRQWHWld5NrmMhJZ5DJbX0v3RJqaAY6+Q1hWJKPIdaatUAwaWlgiKcYy2NBr7CPII155bnLi2VnzLO8UsaiJaSJRzU0sqIl+BbelItVaoxuY60tCaRHsGK9dby3KWlgiKsL8myuZrFOtTS1sgvwaWlgsKs18R1vAglrEMtVSr92nOXlgqKsF7jCiZZBJciJbRa9xvVenBpqaAI6yTDIC2tWLw074p1l5YKirGOK5hk4cnqCavyi8W5S0kFhTlvSH5BSrpinHfv2W8JLiUVFOFcLWMm16GS1mRZmtDVrHipXFoqKMI6zi/RQOcX7HkEK9bVUv215y4tFRRjHdcvyUKxjj2HSqoq6deeu5RUUIRz/IpWeBsXr0ojWOd0Y1Va+TZyuZI2uH5JFpecB+Y7VFJrn65yKamgMOstzi8VXpUSz9+1Kq1cSioownqL80uycG6g41WpsbarXEoqKMI63oGJBrpqxDVAhZXUyOqVS0kFxVgnqZFs7ZLciPd2rdzo0lJBEdbJgQvSUpIZ8e6uUe1WLiUVFOG8Iy8pUVJcvyS02ms0OF+6lFRQmPMOv6TR4JLzjkRLBOu9RqPyWrqUVFCMdfySJovgeksT+pL1sjCS49IlpoIitONQjwY6weC0HsG6gDFS49IlpoJitJPzRSimFTthhGKqFjCvffedjFIxVdvfk+tITGtSrEewZt0MGJeaCorRjhd3yULTjtU0oVW0G5q0dKmpoAjtuPyKBp68HqGadKNuXLq0VFCEc1XcTY4TLSWct+8KdZeWCgpzviKhjrS0YrkRqqmqSF977lJTQTHWSbgQNcXHvAmtqnUjYmqXmgoKsl6STpdo4Du5q7GaGqzXLjUVFGa9ZP0X5RzWE1rte1mdIy4xFRRmnTQzRAPdhIEFKYJ1rBtvae0SU0ER1klDQ7K4ZL1jEQPFVLHy2neXmAqKsI73A6KBzjAkXrCYWvHiazWiWlqqA5PJ9XpOvV7jlamVYVxaKijMujrVnFzHDUckXqCaWie9tUtNBcVYJxmGnJdiNU1olWGMord2qamgCOsk1vF5KWEdqqnqH3vtuUtNBUVYJ6fUycLJOlRTa4XXuNRUUJh1ctQbDfSOI2muK96zC9O41FRQjHVcrScLXTliTUpoVcMYeb1xqamgMOtLvKyOBjrD4B2BCNaxbnnuUlNBEdbJiWmy0LFOIgaqqWpseu27S00FRVgnsY7VFL+lEazzuqFIjUtNBcVYJ7EO1bQjnXYJPe9Mo/E171I1XeK8Hg18PRkRrPccjROwxqWmgmKs41VSsgiuFV5Cq9M7Y8+xcampoDDrNckweG1KWMdnphbrLjUVFGGddAcki+DLjvjM1Or4dqmpoAjruPyKBr7NrwjWveqGmrYuNRUUYx1nmGShO2Ew6wmt9mGMvN661FRQmHXSHxANdIbBuTGCdawbatq61FRQhHXSH5AsdA2D1TSh1amGoUmtS00FRVjHGaad038UwXofxlCk1qWmgmKsk1gna1Oc1xNasW5lGJeaCoqwjiUpGqizauw3vgtjvaO+yzBcS8khe7LQ+YX4jlemVm50aamgMOfkpDoa+PqnI1ixrlT6tecuLRUUYx1rabLw9Hwl7Lw471xKKijCOa7Vo4GuX7AaRbDO6cZ+Y+dSUkExznERkCyCS48Set4KqXMpqaAI6zi7RANfTo9gnV8MJe1cSioowjrpD0gWvgtgCa3yi1Grdy4lFRRmnfQHRANf11cE6/xixbpLSQXFWMepMVkEX8TgE1OLdZeSCoqwTu454k5e8pbiM1NDjzqXlgqKsY6zerIIrnVG9y4t7XyXS6mWkvaAaODbg4lgvd9o7E93Li0VFGMdV40dXpdiz/GJqVEFrFxaKijMucq9yfFo4KtfIlh3lRp6tHJpqaAI5+SIPVno/IJzY0LPy+orl5YKirCOwyUaaNbxOxrBen1kRPrKpaWCYqzjMiBZOC9T415eY223cmmpoCDrgQyUiAa+/BLBMzuoVy4tFRRmPZDugGThO89IaLUDY8W6S0sFRVgnsd7MifV33TBdubRUUIR10tiQLHzn1AmtYt3y3aWlgsKsl7j4iga6b53EOtZSa1aDb1gD1dJAejKShd4NIKxDNbU61srCObCB6WlQ35CcTxbO4QERrXO7Nfeg8A1tEBjhnk1tSCZ6g51cCC+wqprs+wY3CAyzT7ozkoXvQCmhZ56eloVveIPAGPtkjkAycV2uTmB1D8+6jV/4xjcIDHPPruNHC1/LY0LrfRlrgkPhG+EgMMK9uqj44v4siZ3gSmPNyPeNcRAYYZ9cy48W+ngJJ/yEnju1pPCNchAYY59FfjuPfXxvxpqhUfjGOQgMs6/O+F/cR3LLsybUW9UPArz3jXQQGGGfHMNPJr5L1xN85rQe55AkOiUp1GSaBhyTRNnHc5KsjuXSOyiJay65rD+Z+BayE3wu+z7NpdOSglo/vLiPNZdkHjwvSVEDvPdpLp+YFMhR5WSiF7SM/ffNTHIOTaJTkwK5zpwsVOwT3/Ga1sqazrFJfG5SIAeWk4lvi3iCz6z1naOT6OykQC7YJgvfwIeE1v1LZuT7NJfPTwrkpupk4ptCOMHnTX0snSOU6AylQE4Bk4WueFjs4xurZuz4NJfPUQpks3sy8S1zJ/i8XqbSN0zpDMPskw3vZOE7mErouZrrG6h0hjH2ScWDRyqxRv4JPq9/r/QNVTrDMPtq9+jFfaS5bBM2oWdO4Ch9g5XOMMK+alh7cZ+0NjH/8S6yNZPTN1yppNOVAtkCTxZe9nF/E67X0qDvNOP6YfO1/8fm+HV7OGW7/m5c58WizbPj83Oc/38cHs7/V+fZ80jx9Om+39z2R/lU5dndMIzTh+eh2tP49E//B1BLAwQUAAAAAADJtU5dTuIQ+ygBAAAoAQAACwAAAF9yZWxzLy5yZWxz77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48UmVsYXRpb25zaGlwcyB4bWxucz0iaHR0cDovL3NjaGVtYXMub3BlbnhtbGZvcm1hdHMub3JnL3BhY2thZ2UvMjAwNi9yZWxhdGlvbnNoaXBzIj48UmVsYXRpb25zaGlwIFR5cGU9Imh0dHA6Ly9zY2hlbWFzLm9wZW54bWxmb3JtYXRzLm9yZy9vZmZpY2VEb2N1bWVudC8yMDA2L3JlbGF0aW9uc2hpcHMvb2ZmaWNlRG9jdW1lbnQiIFRhcmdldD0iL3hsL3dvcmtib29rLnhtbCIgSWQ9IlIwYWJiOWUyZDZhNjk0OTQ5IiAvPjwvUmVsYXRpb25zaGlwcz5QSwMEFAAAAAgAybVOXblxWOIRAQAA8gIAABoAAAB4bC9fcmVscy93b3JrYm9vay54bWwucmVsc7WSTU7DMBBGr2J5T2ynsZuipt2wYVt6AccZx1H9E9kupGdjwZG4AqIglCAWbLqZxTfS05tP8/76tt1PzqJniGkIvsGsoBiBV6EbfN/gc9Z3Nd7vtgewMg/BJzOMCU3O+tRgk/N4T0hSBpxMRRjBT87qEJ3MqQixJ6NUJ9kDKSkVJM4ZeMlEx8sI/yEGrQcFD0GdHfj8B5ikfLGQMDrK2ENuMJnsd1ZMzmL02DX4IKRmjFO+ritRbbTEiNxMKBtwsPS5Rl+TzayorPmK8baloq1KoW5plYyM0D3lOPj+d1vz1Uyv5EwLWat2XfOKcXpLvZcQT8kA5KXaT/x5AECet7dhlK10qwQVstJMXPXI4nN3H1BLAwQUAAAACADJtU5djYLZqRYBAABTAwAAEwAAAFtDb250ZW50X1R5cGVzXS54bWytk0FOwzAQRa8SeYtqpywQQkm7ALaABBewnEli1R5bnmlIz8aCI3EFVAdFgJAi1G48m/F7/y/m4+292o7eFQMksgFrsZalKABNaCx2tdhzu7oW2031cohAxegdUi165nijFJkevCYZIuDoXRuS10wypE5FbXa6A3VZllfKBGRAXvGRITbVHbR677i4Hxlw0o7eieJ22juqaqFjdNZotgHVgM0vySq0rTXQBLP3gCwpJtAN9QDsncxTem3xIoPVn84Ejv4n/WolE7i8Q72NNCseB0jJNlA86cQP2kMt1OgU8cEByTM3zNAlNffgYXrXJwfImMWyvU7QPHOy2J2983f2UpDXkHb5I6k8Tu//M8zMn4OofCKbT1BLAQIUAxQAAAAIAMm1Tl3z/Uj9wwAAACkBAAAPAAAAAAAAAAAAAACkgQAAAAB4bC93b3JrYm9vay54bWxQSwECFAMUAAAACADJtU5daTWWKSwCAADXDgAADQAAAAAAAAAAAAAApIHwAAAAeGwvc3R5bGVzLnhtbFBLAQIUAxQAAAAIAMm1Tl36XAFZAwMAANoNAAATAAAAAAAAAAAAAACkgUcDAAB4bC90aGVtZS90aGVtZTEueG1sUEsBAhQDFAAAAAgAybVOXQ0euehlAAAAcwAAABQAAAAAAAAAAAAAAKSBewYAAHhsL3NoYXJlZFN0cmluZ3MueG1sUEsBAhQDFAAAAAgAybVOXfjGlzK1CwAAcl0AABgAAAAAAAAAAAAAAKSBEgcAAHhsL3dvcmtzaGVldHMvc2hlZXQxLnhtbFBLAQIUAxQAAAAAAMm1Tl1O4hD7KAEAACgBAAALAAAAAAAAAAAAAACkgf0SAABfcmVscy8ucmVsc1BLAQIUAxQAAAAIAMm1Tl25cVjiEQEAAPICAAAaAAAAAAAAAAAAAACkgU4UAAB4bC9fcmVscy93b3JrYm9vay54bWwucmVsc1BLAQIUAxQAAAAIAMm1Tl2NgtmpFgEAAFMDAAATAAAAAAAAAAAAAACkgZcVAABbQ29udGVudF9UeXBlc10ueG1sUEsFBgAAAAAIAAgAAwIAAN4WAAAAAA==&#39;);&#10;        if (!response.ok) throw new Error(&#39;Network response failed&#39;);&#10;        const blob = await response.blob();&#10;        const blobUrl = window.URL.createObjectURL(blob);&#10;        const a = document.createElement(&#39;a&#39;);&#10;        a.href = blobUrl;&#10;        a.download = &#39;Hospitality.xlsx&#39;;&#10;        a.style.display = &#39;none&#39;;&#10;        document.body.appendChild(a);&#10;        a.dispatchEvent(new MouseEvent(&#39;click&#39;));&#10;        document.body.removeChild(a);&#10;        setTimeout(() =&gt; {&#10;          window.URL.revokeObjectURL(blobUrl);&#10;        }, 100);&#10;        return false;&#10;      } catch (error) {&#10;        console.error(&#39;Download failed:&#39;, error);&#10;        alert(&#39;Download failed. Please try again.&#39;);&#10;      }&#10;    }&#10;    downloadFile(event);&#10;  "><i class="fa fa-save"></i> Hospitality</button>
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-Marketing and technology information
-</td>
-<td>
-<div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-success" onclick="&#10;    async function downloadFile(event) {&#10;      event.preventDefault();&#10;      try {&#10;        const response = await fetch(&#39;data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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&#39;);&#10;        if (!response.ok) throw new Error(&#39;Network response failed&#39;);&#10;        const blob = await response.blob();&#10;        const blobUrl = window.URL.createObjectURL(blob);&#10;        const a = document.createElement(&#39;a&#39;);&#10;        a.href = blobUrl;&#10;        a.download = &#39;Marketing_and_technology.xlsx&#39;;&#10;        a.style.display = &#39;none&#39;;&#10;        document.body.appendChild(a);&#10;        a.dispatchEvent(new MouseEvent(&#39;click&#39;));&#10;        document.body.removeChild(a);&#10;        setTimeout(() =&gt; {&#10;          window.URL.revokeObjectURL(blobUrl);&#10;        }, 100);&#10;        return false;&#10;      } catch (error) {&#10;        console.error(&#39;Download failed:&#39;, error);&#10;        alert(&#39;Download failed. Please try again.&#39;);&#10;      }&#10;    }&#10;    downloadFile(event);&#10;  "><i class="fa fa-save"></i> Marketing</button>
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-Retail businesses
-</td>
-<td>
-<div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-success" onclick="&#10;    async function downloadFile(event) {&#10;      event.preventDefault();&#10;      try {&#10;        const response = await fetch(&#39;data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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&#39;);&#10;        if (!response.ok) throw new Error(&#39;Network response failed&#39;);&#10;        const blob = await response.blob();&#10;        const blobUrl = window.URL.createObjectURL(blob);&#10;        const a = document.createElement(&#39;a&#39;);&#10;        a.href = blobUrl;&#10;        a.download = &#39;Retail.xlsx&#39;;&#10;        a.style.display = &#39;none&#39;;&#10;        document.body.appendChild(a);&#10;        a.dispatchEvent(new MouseEvent(&#39;click&#39;));&#10;        document.body.removeChild(a);&#10;        setTimeout(() =&gt; {&#10;          window.URL.revokeObjectURL(blobUrl);&#10;        }, 100);&#10;        return false;&#10;      } catch (error) {&#10;        console.error(&#39;Download failed:&#39;, error);&#10;        alert(&#39;Download failed. Please try again.&#39;);&#10;      }&#10;    }&#10;    downloadFile(event);&#10;  "><i class="fa fa-save"></i> Retail</button>
-</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="your-task" class="level3" data-number="1.9.3">
-<h3 data-number="1.9.3"><span class="header-section-number">1.9.3</span> Your Task</h3>
-<p>Create a workbook called Combined data, containing one table with one row per business and one column per variable.</p>
-<ol type="1">
-<li><strong>Inspect the seperate workbooks.</strong> Identify the column headings, the information recorded and the number of businesses in each sheet.</li>
-<li><strong>Combine the business profiles.</strong> Copy the records from Retail, Hospitality and Tech into your new workbook, using one header row. Add a Sector column to identify each business’s industry.</li>
-<li><strong>Match the remaining information.</strong> Use <code>business_id</code> to bring across the corresponding information from Finance and Marketing and technology. Use an Excel lookup function, such as VLOOKUP, to match records.</li>
-<li><strong>Format the completed table.</strong> Convert the combined data into an Excel Table. Use clear column headings and appropriate number formats. Retain the units supplied and ensure that negative profits are displayed correctly.</li>
-<li><strong>Check your work.</strong> Confirm that your table contains:
-<ul>
-<li>300 businesses and 12 columns.</li>
-<li>One unique business_id per row, with no duplicates.</li>
-<li>No blank cells or lookup errors.</li>
-<li>Correctly matched information for at least three businesses, checked against the original sheets.</li>
-</ul></li>
-</ol>
-</section>
-<section id="exploring-your-business-dataset" class="level3" data-number="1.9.4">
-<h3 data-number="1.9.4"><span class="header-section-number">1.9.4</span> Exploring your business dataset</h3>
-<p>Complete these questions after combining the five datasets in Excel.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Question 1: What does the table represent?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="a">
-<li><p>What does one row in your completed table represent?</p></li>
-<li><p>How many observations and variables does your table contain?</p></li>
-<li><p>What is the purpose of <code>business_id</code>? Would calculating the average business ID be meaningful?</p></li>
-<li><p>Explain how a duplicated business could affect your analysis.</p></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="a">
-<li><p>Each row represents one business.</p></li>
-<li><p>There are <strong>300 observations</strong> and <strong>12 columns</strong>, including the business identifier.</p></li>
-<li><p><code>business_id</code> uniquely identifies each business and allows its records to be matched across files. Its digits are labels, so calculating their average would have no meaningful interpretation.</p></li>
-<li><p>A duplicated business would be counted more than once. This could distort counts, percentages and averages by giving that business extra weight.</p></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Question 2: What kinds of variables do we have?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Classify each variable below as <strong>categorical</strong> or <strong>numerical</strong>, and identify its <strong>level of measurement</strong>.</p>
-<ul>
-<li>Sector</li>
-<li>Brand recognition</li>
-<li>Has online store</li>
-<li>Years in business</li>
-<li>Number of employees</li>
-</ul>
-<p>Explain why coding brand recognition as Low = 1 and High = 2 would not make it a numerical measurement.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Type</th>
-<th>Level of measurement</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sector</td>
-<td>Categorical</td>
-<td>Nominal</td>
-</tr>
-<tr class="even">
-<td>Brand recognition</td>
-<td>Categorical</td>
-<td>Ordinal</td>
-</tr>
-<tr class="odd">
-<td>Has online store</td>
-<td>Categorical</td>
-<td>Nominal</td>
-</tr>
-<tr class="even">
-<td>Years in business</td>
-<td>Numerical</td>
-<td>Ratio</td>
-</tr>
-<tr class="odd">
-<td>Number of employees</td>
-<td>Numerical</td>
-<td>Ratio</td>
-</tr>
-</tbody>
-</table>
-<p>Sector and online store status have categories without a natural ranking. Brand recognition has ordered categories: Low comes before High.</p>
-<p>Years in business and employee count have meaningful zeros. For example, 40 employees is twice as many as 20 employees.</p>
-<p>Coding Low = 1 and High = 2 only assigns numbers to category labels. It does not establish that High represents twice as much brand recognition as Low.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Question 3: Where did the data come from?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Imagine that these records came from a business association’s existing database.</p>
-<ol type="a">
-<li><p>Would using these records for your project be an example of primary or secondary data?</p></li>
-<li><p>Identify three questions you would ask the association before analysing the data.</p></li>
-<li><p>Would having records for 300 businesses automatically allow you to draw conclusions about all businesses in Australia? Explain.</p></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Suggested solution
-</div>
-<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="a">
-<li><p>These would be <strong>secondary data</strong>, because you are using existing records rather than collecting the information yourself.</p></li>
-<li><p>Useful questions include:</p></li>
-</ol>
-<ul>
-<li>How were the businesses selected?</li>
-<li>When were the measurements recorded?</li>
-<li>How were profit, complaint rate and brand recognition defined and measured?</li>
-<li>Do all financial figures refer to the same time period?</li>
-<li>Were any businesses excluded?</li>
-</ul>
-<ol start="3" type="a">
-<li>No. The number of businesses alone does not establish whether they represent Australian businesses generally. For example, association members may differ from non-members, and the dataset contains only three industry sectors.</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Question 4: Turn an idea into a statistical question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A business adviser asks:</p>
-<blockquote>
-<p>“Does having an online store make a difference?”</p>
-</blockquote>
-<ol type="a">
-<li><p>Rewrite this as a clear statistical question that could be investigated using your dataset.</p></li>
-<li><p>Identify the outcome variable and explanatory variable.</p></li>
-<li><p>Describe a table or graph that could help investigate your question.</p></li>
-<li><p>Would describing the 300 businesses and drawing a conclusion about a wider population be the same task?</p></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Suggested solution
-</div>
-<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>One suitable question is:</p>
-<blockquote>
-<p>“Do businesses with an online store have a higher average profit than businesses without an online store?”</p>
-</blockquote>
-<ul>
-<li><strong>Outcome variable:</strong> Profit.</li>
-<li><strong>Explanatory variable:</strong> Online store status.</li>
-<li><strong>Possible display:</strong> A table comparing the number of businesses and average profit in the two groups, or a graph comparing their profit distributions.</li>
-</ul>
-<p>Describing these 300 businesses is <strong>descriptive analysis</strong>. Drawing conclusions about a wider population involves <strong>statistical inference</strong> and requires considering how the businesses were selected and the uncertainty in the results.</p>
-<p>Other questions are possible, provided the outcome and comparison are clearly defined.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Question 5: Plan your own investigation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Choose a question that a business owner, industry association or government agency might want to answer using this dataset.</p>
-<p>Your question must involve at least two variables.</p>
-<p>Write a short investigation plan that includes:</p>
-<ol type="a">
-<li><p>Your statistical question.</p></li>
-<li><p>The outcome variable and explanatory variable or variables.</p></li>
-<li><p>A table, graph or comparison you would use.</p></li>
-<li><p>A decision that your findings could help inform.</p></li>
-<li><p>One additional variable you would like to collect, and why it would be useful.</p></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Example solution
-</div>
-<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Question:</strong> Is marketing expenditure associated with brand recognition?</p>
-<p><strong>Outcome variable:</strong> Brand recognition.</p>
-<p><strong>Explanatory variable:</strong> Marketing expenditure.</p>
-<p><strong>Possible comparison:</strong> Compare marketing expenditure between businesses with Low and High brand recognition.</p>
-<p><strong>Decision:</strong> The findings could help a business decide whether to investigate its marketing strategy further.</p>
-<p><strong>Additional variable:</strong> Type of marketing activity. Businesses spending similar amounts may use very different advertising channels.</p>
-<p>Many answers are valid. A strong investigation plan uses available variables, proposes a suitable comparison and explains how the findings could inform a decision.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Question 6: What could we conclude?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Suppose an analysis finds that businesses using AI tools have a higher average profit.</p>
-<p>A manager concludes:</p>
-<blockquote>
-<p>“Every business should adopt AI tools because AI increases profit.”</p>
-</blockquote>
-<ol type="a">
-<li><p>Explain why this conclusion goes beyond the evidence described.</p></li>
-<li><p>Identify two other variables in the dataset that might help explain the difference in profit.</p></li>
-<li><p>Suggest a follow-up question that could be investigated using the existing data.</p></li>
-<li><p>What additional evidence would strengthen the claim that adopting AI improves profit?</p></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class='callout-icon'></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Suggested solution
-</div>
-<div class='callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end'><i class='callout-toggle'></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="a">
-<li><p>A difference in average profit shows an <strong>association</strong>, but does not establish that AI caused the difference. More profitable businesses might be better able to afford AI tools, or the groups might differ in other ways.</p></li>
-<li><p>Possible explanations include industry sector, employee count, years in business and marketing expenditure.</p></li>
-<li><p>One follow-up question is:</p></li>
-</ol>
-<blockquote>
-<p>“Within each industry sector, do businesses using AI tools have higher average profit than businesses that do not?”</p>
-</blockquote>
-<p>This would help assess whether the overall difference reflects the mixture of sectors in each group.</p>
-<ol start="4" type="a">
-<li>Stronger evidence could come from a study that randomly assigns suitable businesses to adopt AI tools or continue their existing practices, then measures subsequent profit. Recording profit before adoption would also help establish how performance changed.</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Introduction to Statistics</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Introduction to Statistics</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uZXh0"><span class="chapter-number">2</span>  <span class="chapter-title">Descriptive Statistics</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1wcmV2">Preface</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1sUHJlZmFjZQ==">Preface</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyMS5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4xPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkRhdGEtYW5kLXZhcmlhYmxlczwvc3Bhbj4="><span class="chapter-number">1</span>  <span class="chapter-title">Data and variables</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyMi5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4yPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkRlc2NyaXB0aXZlLVN0YXRpc3RpY3M8L3NwYW4+"><span class="chapter-number">2</span>  <span class="chapter-title">Descriptive Statistics</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyMy5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4zPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPlRoaW5raW5nLXdpdGgtUHJvYmFiaWxpdHk8L3NwYW4+"><span class="chapter-number">3</span>  <span class="chapter-title">Thinking with Probability</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyNC5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz40PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPk1lYXN1cmVtZW50LWFuZC1FcnJvcjwvc3Bhbj4="><span class="chapter-number">4</span>  <span class="chapter-title">Measurement and Error</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyNS5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz41PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkVzdGltYXRpb248L3NwYW4+"><span class="chapter-number">5</span>  <span class="chapter-title">Estimation</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyNi5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz42PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkh5cG90aGVzaXMtVGVzdGluZzwvc3Bhbj4="><span class="chapter-number">6</span>  <span class="chapter-title">Hypothesis Testing</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyOS5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz43PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPk1vZGVscy1vZi1yZWxhdGlvbnNoaXBzLWJldHdlZW4tZGF0YTwvc3Bhbj4="><span class="chapter-number">7</span>  <span class="chapter-title">Models of relationships between data</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyMTAuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+ODwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5DbGFzc2lmaWNhdGlvbi1hbmQtUHJlZGljdGlvbjwvc3Bhbj4="><span class="chapter-number">8</span>  <span class="chapter-title">Classification and Prediction</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyMTEuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+OTwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5Mb2dpc3RpYy1SZWdyZXNzaW9uPC9zcGFuPg=="><span class="chapter-number">9</span>  <span class="chapter-title">Logistic Regression</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jaGFwdGVyMTIuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+MTA8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+SW50cm9kdWN0aW9uLXRvLVI8L3NwYW4+"><span class="chapter-number">10</span>  <span class="chapter-title">Introduction to R</span></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLTxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+MTwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5EYXRhLWFuZC12YXJpYWJsZXM8L3NwYW4+"><span class="chapter-number">1</span>  <span class="chapter-title">Data and variables</span></span></p>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ=="><span class="chapter-number">1</span>  <span class="chapter-title">Data and variables</span> – Introduction to Statistics</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU="><span class="chapter-number">1</span>  <span class="chapter-title">Data and variables</span> – Introduction to Statistics</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl"><span class="chapter-number">1</span>  <span class="chapter-title">Data and variables</span> – Introduction to Statistics</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Introduction to Statistics</span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span></p>
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
-</div>
-</section>
+<!-- ## Workshop Exercises -->
+<!-- ### Background -->
+<!-- You are working as a data analyst investigating business performance. Different teams have supplied information about 300 businesses across several Excel sheets. Your task is to bring this information together into one table. You will use the completed dataset in activities over the coming weeks. -->
+<!-- ### The Data -->
+<!-- There are 5 data sources that you will need to download and merge. Each business has a unique identifier, `business_id`, which connects its information across sheets. Businesses may appear in different row orders on different sheets. -->
+<!-- ```{r setup-downloads, include=FALSE} -->
+<!-- library(downloadthis) -->
+<!-- ``` -->
+<!-- <style> -->
+<!-- .download-table { -->
+<!--   width: 100%; -->
+<!--   max-width: 650px; -->
+<!--   margin: 20px auto; -->
+<!--   border-collapse: collapse; -->
+<!-- } -->
+<!-- .download-table th { -->
+<!--   background: #243c59; -->
+<!--   color: white; -->
+<!--   padding: 12px 18px; -->
+<!--   text-align: left; -->
+<!-- } -->
+<!-- .download-table td { -->
+<!--   padding: 12px 18px; -->
+<!--   border-bottom: 1px solid #dde3ea; -->
+<!--   vertical-align: middle; -->
+<!-- } -->
+<!-- .download-table tbody tr:nth-child(even) { -->
+<!--   background: #f3f6f9; -->
+<!-- } -->
+<!-- .download-table th:last-child, -->
+<!-- .download-table td:last-child { -->
+<!--   text-align: left; -->
+<!-- } -->
+<!-- </style> -->
+<!-- <table class="download-table"> -->
+<!-- <thead> -->
+<!-- <tr> -->
+<!-- <th>Dataset</th> -->
+<!-- <th>Download</th> -->
+<!-- </tr> -->
+<!-- </thead> -->
+<!-- <tbody> -->
+<!-- <tr> -->
+<!-- <td>Technology businesses</td> -->
+<!-- <td> -->
+<!-- ```{r download-tech, echo=FALSE} -->
+<!-- download_file( -->
+<!--   path = "data/Tech.xlsx", -->
+<!--   button_label = "Tech", -->
+<!--   button_type = "success" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- </td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!-- <td>Financial information</td> -->
+<!-- <td> -->
+<!-- ```{r download-finance, echo=FALSE} -->
+<!-- download_file( -->
+<!--   path = "data/Finance.xlsx", -->
+<!--   button_label = "Finance", -->
+<!--   button_type = "success" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- </td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!-- <td>Hospitality businesses</td> -->
+<!-- <td> -->
+<!-- ```{r download-hospitality, echo=FALSE} -->
+<!-- download_file( -->
+<!--   path = "data/Hospitality.xlsx", -->
+<!--   button_label = "Hospitality", -->
+<!--   button_type = "success" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- </td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!-- <td>Marketing and technology information</td> -->
+<!-- <td> -->
+<!-- ```{r download-marketing, echo=FALSE} -->
+<!-- download_file( -->
+<!--   path = "data/Marketing_and_technology.xlsx", -->
+<!--   button_label = "Marketing", -->
+<!--   button_type = "success" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- </td> -->
+<!-- </tr> -->
+<!-- <tr> -->
+<!-- <td>Retail businesses</td> -->
+<!-- <td> -->
+<!-- ```{r download-retail, echo=FALSE} -->
+<!-- download_file( -->
+<!--   path = "data/Retail.xlsx", -->
+<!--   button_label = "Retail", -->
+<!--   button_type = "success" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- </td> -->
+<!-- </tr> -->
+<!-- </tbody> -->
+<!-- </table> -->
+<!-- ### Your Task -->
+<!-- Create a workbook called Combined data, containing one table with one row per business and one column per variable. -->
+<!-- 1. **Inspect the seperate workbooks.** Identify the column headings, the information recorded and the number of businesses in each sheet. -->
+<!-- 2. **Combine the business profiles.** Copy the records from Retail, Hospitality and Tech into your new workbook, using one header row. Add a Sector column to identify each business’s industry. -->
+<!-- 3. **Match the remaining information.** Use `business_id` to bring across the corresponding information from Finance and Marketing and technology. Use an Excel lookup function, such as VLOOKUP, to match records. -->
+<!-- 4. **Format the completed table.** Convert the combined data into an Excel Table. Use clear column headings and appropriate number formats. Retain the units supplied and ensure that negative profits are displayed correctly. -->
+<!-- 5. **Check your work.** Confirm that your table contains: -->
+<!--     - 300 businesses and 12 columns. -->
+<!--     - One unique business_id per row, with no duplicates. -->
+<!--     - No blank cells or lookup errors. -->
+<!--     - Correctly matched information for at least three businesses, checked against the original sheets. -->
+<!-- ### Exploring your business dataset -->
+<!-- Complete these questions after combining the five datasets in Excel. -->
+<!-- ::: {.callout-note} -->
+<!-- ## Question 1: What does the table represent? -->
+<!-- a. What does one row in your completed table represent? -->
+<!-- b. How many observations and variables does your table contain? -->
+<!-- c. What is the purpose of `business_id`? Would calculating the average business ID be meaningful? -->
+<!-- d. Explain how a duplicated business could affect your analysis. -->
+<!-- ::: -->
+<!-- ::: {.callout-tip collapse="true"} -->
+<!-- ## Solution -->
+<!-- a. Each row represents one business. -->
+<!-- b. There are **300 observations** and **12 columns**, including the business identifier. -->
+<!-- c. `business_id` uniquely identifies each business and allows its records to be matched across files. Its digits are labels, so calculating their average would have no meaningful interpretation. -->
+<!-- d. A duplicated business would be counted more than once. This could distort counts, percentages and averages by giving that business extra weight. -->
+<!-- ::: -->
+<!-- ::: {.callout-note} -->
+<!-- ## Question 2: What kinds of variables do we have? -->
+<!-- Classify each variable below as **categorical** or **numerical**, and identify its **level of measurement**. -->
+<!-- - Sector -->
+<!-- - Brand recognition -->
+<!-- - Has online store -->
+<!-- - Years in business -->
+<!-- - Number of employees -->
+<!-- Explain why coding brand recognition as Low = 1 and High = 2 would not make it a numerical measurement. -->
+<!-- ::: -->
+<!-- ::: {.callout-tip collapse="true"} -->
+<!-- ## Solution -->
+<!-- | Variable | Type | Level of measurement | -->
+<!-- |---|---|---| -->
+<!-- | Sector | Categorical | Nominal | -->
+<!-- | Brand recognition | Categorical | Ordinal | -->
+<!-- | Has online store | Categorical | Nominal | -->
+<!-- | Years in business | Numerical | Ratio | -->
+<!-- | Number of employees | Numerical | Ratio | -->
+<!-- Sector and online store status have categories without a natural ranking. Brand recognition has ordered categories: Low comes before High. -->
+<!-- Years in business and employee count have meaningful zeros. For example, 40 employees is twice as many as 20 employees. -->
+<!-- Coding Low = 1 and High = 2 only assigns numbers to category labels. It does not establish that High represents twice as much brand recognition as Low. -->
+<!-- ::: -->
+<!-- ::: {.callout-note} -->
+<!-- ## Question 3: Where did the data come from? -->
+<!-- Imagine that these records came from a business association's existing database. -->
+<!-- a. Would using these records for your project be an example of primary or secondary data? -->
+<!-- b. Identify three questions you would ask the association before analysing the data. -->
+<!-- c. Would having records for 300 businesses automatically allow you to draw conclusions about all businesses in Australia? Explain. -->
+<!-- ::: -->
+<!-- ::: {.callout-tip collapse="true"} -->
+<!-- ## Suggested solution -->
+<!-- a. These would be **secondary data**, because you are using existing records rather than collecting the information yourself. -->
+<!-- b. Useful questions include: -->
+<!-- - How were the businesses selected? -->
+<!-- - When were the measurements recorded? -->
+<!-- - How were profit, complaint rate and brand recognition defined and measured? -->
+<!-- - Do all financial figures refer to the same time period? -->
+<!-- - Were any businesses excluded? -->
+<!-- c. No. The number of businesses alone does not establish whether they represent Australian businesses generally. For example, association members may differ from non-members, and the dataset contains only three industry sectors. -->
+<!-- ::: -->
+<!-- ::: {.callout-note} -->
+<!-- ## Question 4: Turn an idea into a statistical question -->
+<!-- A business adviser asks: -->
+<!-- > "Does having an online store make a difference?" -->
+<!-- a. Rewrite this as a clear statistical question that could be investigated using your dataset. -->
+<!-- b. Identify the outcome variable and explanatory variable. -->
+<!-- c. Describe a table or graph that could help investigate your question. -->
+<!-- d. Would describing the 300 businesses and drawing a conclusion about a wider population be the same task? -->
+<!-- ::: -->
+<!-- ::: {.callout-tip collapse="true"} -->
+<!-- ## Suggested solution -->
+<!-- One suitable question is: -->
+<!-- > "Do businesses with an online store have a higher average profit than businesses without an online store?" -->
+<!-- - **Outcome variable:** Profit. -->
+<!-- - **Explanatory variable:** Online store status. -->
+<!-- - **Possible display:** A table comparing the number of businesses and average profit in the two groups, or a graph comparing their profit distributions. -->
+<!-- Describing these 300 businesses is **descriptive analysis**. Drawing conclusions about a wider population involves **statistical inference** and requires considering how the businesses were selected and the uncertainty in the results. -->
+<!-- Other questions are possible, provided the outcome and comparison are clearly defined. -->
+<!-- ::: -->
+<!-- ::: {.callout-note} -->
+<!-- ## Question 5: Plan your own investigation -->
+<!-- Choose a question that a business owner, industry association or government agency might want to answer using this dataset. -->
+<!-- Your question must involve at least two variables. -->
+<!-- Write a short investigation plan that includes: -->
+<!-- a. Your statistical question. -->
+<!-- b. The outcome variable and explanatory variable or variables. -->
+<!-- c. A table, graph or comparison you would use. -->
+<!-- d. A decision that your findings could help inform. -->
+<!-- e. One additional variable you would like to collect, and why it would be useful. -->
+<!-- ::: -->
+<!-- ::: {.callout-tip collapse="true"} -->
+<!-- ## Example solution -->
+<!-- **Question:** Is marketing expenditure associated with brand recognition? -->
+<!-- **Outcome variable:** Brand recognition. -->
+<!-- **Explanatory variable:** Marketing expenditure. -->
+<!-- **Possible comparison:** Compare marketing expenditure between businesses with Low and High brand recognition. -->
+<!-- **Decision:** The findings could help a business decide whether to investigate its marketing strategy further. -->
+<!-- **Additional variable:** Type of marketing activity. Businesses spending similar amounts may use very different advertising channels. -->
+<!-- Many answers are valid. A strong investigation plan uses available variables, proposes a suitable comparison and explains how the findings could inform a decision. -->
+<!-- ::: -->
+<!-- ::: {.callout-note} -->
+<!-- ## Question 6: What could we conclude? -->
+<!-- Suppose an analysis finds that businesses using AI tools have a higher average profit. -->
+<!-- A manager concludes: -->
+<!-- > "Every business should adopt AI tools because AI increases profit." -->
+<!-- a. Explain why this conclusion goes beyond the evidence described. -->
+<!-- b. Identify two other variables in the dataset that might help explain the difference in profit. -->
+<!-- c. Suggest a follow-up question that could be investigated using the existing data. -->
+<!-- d. What additional evidence would strengthen the claim that adopting AI improves profit? -->
+<!-- ::: -->
+<!-- ::: {.callout-tip collapse="true"} -->
+<!-- ## Suggested solution -->
+<!-- a. A difference in average profit shows an **association**, but does not establish that AI caused the difference. More profitable businesses might be better able to afford AI tools, or the groups might differ in other ways. -->
+<!-- b. Possible explanations include industry sector, employee count, years in business and marketing expenditure. -->
+<!-- c. One follow-up question is: -->
+<!-- > "Within each industry sector, do businesses using AI tools have higher average profit than businesses that do not?" -->
+<!-- This would help assess whether the overall difference reflects the mixture of sectors in each group. -->
+<!-- d. Stronger evidence could come from a study that randomly assigns suitable businesses to adopt AI tools or continue their existing practices, then measures subsequent profit. Recording profit before adoption would also help establish how performance changed. -->
+<!-- ::: -->
+
+
 </section>
 
 </main> <!-- /main -->
-<script>
-
-/* update total correct if #webex-total_correct exists */
-update_total_correct = function() {
-  console.log("webex: update total_correct");
-
-  var t = document.getElementsByClassName("webex-total_correct");
-  for (var i = 0; i < t.length; i++) {
-    p = t[i].parentElement;
-    var correct = p.getElementsByClassName("webex-correct").length;
-    var solvemes = p.getElementsByClassName("webex-solveme").length;
-    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
-    var selects = p.getElementsByClassName("webex-select").length;
-
-    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
-  }
-}
-
-/* webex-solution button toggling function */
-b_func = function() {
-  console.log("webex: toggle hide");
-
-  var cl = this.parentElement.classList;
-  if (cl.contains('open')) {
-    cl.remove("open");
-  } else {
-    cl.add("open");
-  }
-}
-
-/* check answers */
-check_func = function() {
-  console.log("webex: check answers");
-
-  var cl = this.parentElement.classList;
-  if (cl.contains('unchecked')) {
-    cl.remove("unchecked");
-    this.innerHTML = "Hide Answers";
-  } else {
-    cl.add("unchecked");
-    this.innerHTML = "Show Answers";
-  }
-}
-
-/* function for checking solveme answers */
-solveme_func = function(e) {
-  console.log("webex: check solveme");
-
-  var real_answers = JSON.parse(this.dataset.answer);
-  var my_answer = this.value;
-  var cl = this.classList;
-  if (cl.contains("ignorecase")) {
-    my_answer = my_answer.toLowerCase();
-  }
-  if (cl.contains("nospaces")) {
-    my_answer = my_answer.replace(/ /g, "")
-  }
-
-  if (my_answer == "") {
-    cl.remove("webex-correct");
-    cl.remove("webex-incorrect");
-  } else if (real_answers.includes(my_answer)) {
-    cl.add("webex-correct");
-    cl.remove("webex-incorrect");
-  } else {
-    cl.add("webex-incorrect");
-    cl.remove("webex-correct");
-  }
-
-  // match numeric answers within a specified tolerance
-  if(this.dataset.tol > 0){
-    var tol = JSON.parse(this.dataset.tol);
-    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
-    if (matches.reduce((a, b) => a + b, 0) > 0) {
-      cl.add("webex-correct");
-    } else {
-      cl.remove("webex-correct");
-    }
-  }
-
-  // added regex bit
-  if (cl.contains("regex")){
-    answer_regex = RegExp(real_answers.join("|"))
-    if (answer_regex.test(my_answer)) {
-      cl.add("webex-correct");
-    }
-  }
-
-  update_total_correct();
-}
-
-/* function for checking select answers */
-select_func = function(e) {
-  console.log("webex: check select");
-
-  var cl = this.classList
-
-  /* add style */
-  cl.remove("webex-incorrect");
-  cl.remove("webex-correct");
-  if (this.value == "answer") {
-    cl.add("webex-correct");
-  } else if (this.value != "blank") {
-    cl.add("webex-incorrect");
-  }
-
-  update_total_correct();
-}
-
-/* function for checking radiogroups answers */
-radiogroups_func = function(e) {
-  console.log("webex: check radiogroups");
-
-  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
-  var cl = checked_button.parentElement.classList;
-  var labels = checked_button.parentElement.parentElement.children;
-
-  /* get rid of styles */
-  for (i = 0; i < labels.length; i++) {
-    labels[i].classList.remove("webex-incorrect");
-    labels[i].classList.remove("webex-correct");
-  }
-
-  /* add style */
-  if (checked_button.value == "answer") {
-    cl.add("webex-correct");
-  } else {
-    cl.add("webex-incorrect");
-  }
-
-  update_total_correct();
-}
-
-window.onload = function() {
-  console.log("webex onload");
-  /* set up solution buttons */
-  var buttons = document.getElementsByTagName("button");
-
-  for (var i = 0; i < buttons.length; i++) {
-    if (buttons[i].parentElement.classList.contains('webex-solution')) {
-      buttons[i].onclick = b_func;
-    }
-  }
-
-  var check_sections = document.getElementsByClassName("webex-check");
-  console.log("check:", check_sections.length);
-  for (var i = 0; i < check_sections.length; i++) {
-    check_sections[i].classList.add("unchecked");
-
-    let btn = document.createElement("button");
-    btn.innerHTML = "Show Answers";
-    btn.classList.add("webex-check-button");
-    btn.onclick = check_func;
-    check_sections[i].appendChild(btn);
-
-    let spn = document.createElement("span");
-    spn.classList.add("webex-total_correct");
-    check_sections[i].appendChild(spn);
-  }
-
-  /* set up webex-solveme inputs */
-  var solveme = document.getElementsByClassName("webex-solveme");
-
-  for (var i = 0; i < solveme.length; i++) {
-    /* make sure input boxes don't auto-anything */
-    solveme[i].setAttribute("autocomplete","off");
-    solveme[i].setAttribute("autocorrect", "off");
-    solveme[i].setAttribute("autocapitalize", "off");
-    solveme[i].setAttribute("spellcheck", "false");
-    solveme[i].value = "";
-
-    /* adjust answer for ignorecase or nospaces */
-    var cl = solveme[i].classList;
-    var real_answer = solveme[i].dataset.answer;
-    if (cl.contains("ignorecase")) {
-      real_answer = real_answer.toLowerCase();
-    }
-    if (cl.contains("nospaces")) {
-      real_answer = real_answer.replace(/ /g, "");
-    }
-    solveme[i].dataset.answer = real_answer;
-
-    /* attach checking function */
-    solveme[i].onkeyup = solveme_func;
-    solveme[i].onchange = solveme_func;
-
-    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
-  }
-
-  /* set up radiogroups */
-  var radiogroups = document.getElementsByClassName("webex-radiogroup");
-  for (var i = 0; i < radiogroups.length; i++) {
-    radiogroups[i].onchange = radiogroups_func;
-  }
-
-  /* set up selects */
-  var selects = document.getElementsByClassName("webex-select");
-  for (var i = 0; i < selects.length; i++) {
-    selects[i].onchange = select_func;
-    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
-  }
-
-  update_total_correct();
-}
-
-</script>
-<script id = "quarto-html-after-body" type="application/javascript">
+<script>
+
+
+
+/* update total correct if #webex-total_correct exists */
+
+update_total_correct = function() {
+
+  console.log("webex: update total_correct");
+
+
+
+  var t = document.getElementsByClassName("webex-total_correct");
+
+  for (var i = 0; i < t.length; i++) {
+
+    p = t[i].parentElement;
+
+    var correct = p.getElementsByClassName("webex-correct").length;
+
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
+    var selects = p.getElementsByClassName("webex-select").length;
+
+
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
+  }
+
+}
+
+
+
+/* webex-solution button toggling function */
+
+b_func = function() {
+
+  console.log("webex: toggle hide");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('open')) {
+
+    cl.remove("open");
+
+  } else {
+
+    cl.add("open");
+
+  }
+
+}
+
+
+
+/* check answers */
+
+check_func = function() {
+
+  console.log("webex: check answers");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('unchecked')) {
+
+    cl.remove("unchecked");
+
+    this.innerHTML = "Hide Answers";
+
+  } else {
+
+    cl.add("unchecked");
+
+    this.innerHTML = "Show Answers";
+
+  }
+
+}
+
+
+
+/* function for checking solveme answers */
+
+solveme_func = function(e) {
+
+  console.log("webex: check solveme");
+
+
+
+  var real_answers = JSON.parse(this.dataset.answer);
+
+  var my_answer = this.value;
+
+  var cl = this.classList;
+
+  if (cl.contains("ignorecase")) {
+
+    my_answer = my_answer.toLowerCase();
+
+  }
+
+  if (cl.contains("nospaces")) {
+
+    my_answer = my_answer.replace(/ /g, "")
+
+  }
+
+
+
+  if (my_answer == "") {
+
+    cl.remove("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else if (real_answers.includes(my_answer)) {
+
+    cl.add("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+    cl.remove("webex-correct");
+
+  }
+
+
+
+  // match numeric answers within a specified tolerance
+
+  if(this.dataset.tol > 0){
+
+    var tol = JSON.parse(this.dataset.tol);
+
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+
+      cl.add("webex-correct");
+
+    } else {
+
+      cl.remove("webex-correct");
+
+    }
+
+  }
+
+
+
+  // added regex bit
+
+  if (cl.contains("regex")){
+
+    answer_regex = RegExp(real_answers.join("|"))
+
+    if (answer_regex.test(my_answer)) {
+
+      cl.add("webex-correct");
+
+    }
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking select answers */
+
+select_func = function(e) {
+
+  console.log("webex: check select");
+
+
+
+  var cl = this.classList
+
+
+
+  /* add style */
+
+  cl.remove("webex-incorrect");
+
+  cl.remove("webex-correct");
+
+  if (this.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else if (this.value != "blank") {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking radiogroups answers */
+
+radiogroups_func = function(e) {
+
+  console.log("webex: check radiogroups");
+
+
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
+  var cl = checked_button.parentElement.classList;
+
+  var labels = checked_button.parentElement.parentElement.children;
+
+
+
+  /* get rid of styles */
+
+  for (i = 0; i < labels.length; i++) {
+
+    labels[i].classList.remove("webex-incorrect");
+
+    labels[i].classList.remove("webex-correct");
+
+  }
+
+
+
+  /* add style */
+
+  if (checked_button.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+window.onload = function() {
+
+  console.log("webex onload");
+
+  /* set up solution buttons */
+
+  var buttons = document.getElementsByTagName("button");
+
+
+
+  for (var i = 0; i < buttons.length; i++) {
+
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
+      buttons[i].onclick = b_func;
+
+    }
+
+  }
+
+
+
+  var check_sections = document.getElementsByClassName("webex-check");
+
+  console.log("check:", check_sections.length);
+
+  for (var i = 0; i < check_sections.length; i++) {
+
+    check_sections[i].classList.add("unchecked");
+
+
+
+    let btn = document.createElement("button");
+
+    btn.innerHTML = "Show Answers";
+
+    btn.classList.add("webex-check-button");
+
+    btn.onclick = check_func;
+
+    check_sections[i].appendChild(btn);
+
+
+
+    let spn = document.createElement("span");
+
+    spn.classList.add("webex-total_correct");
+
+    check_sections[i].appendChild(spn);
+
+  }
+
+
+
+  /* set up webex-solveme inputs */
+
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+
+
+  for (var i = 0; i < solveme.length; i++) {
+
+    /* make sure input boxes don't auto-anything */
+
+    solveme[i].setAttribute("autocomplete","off");
+
+    solveme[i].setAttribute("autocorrect", "off");
+
+    solveme[i].setAttribute("autocapitalize", "off");
+
+    solveme[i].setAttribute("spellcheck", "false");
+
+    solveme[i].value = "";
+
+
+
+    /* adjust answer for ignorecase or nospaces */
+
+    var cl = solveme[i].classList;
+
+    var real_answer = solveme[i].dataset.answer;
+
+    if (cl.contains("ignorecase")) {
+
+      real_answer = real_answer.toLowerCase();
+
+    }
+
+    if (cl.contains("nospaces")) {
+
+      real_answer = real_answer.replace(/ /g, "");
+
+    }
+
+    solveme[i].dataset.answer = real_answer;
+
+
+
+    /* attach checking function */
+
+    solveme[i].onkeyup = solveme_func;
+
+    solveme[i].onchange = solveme_func;
+
+
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  /* set up radiogroups */
+
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
+  for (var i = 0; i < radiogroups.length; i++) {
+
+    radiogroups[i].onchange = radiogroups_func;
+
+  }
+
+
+
+  /* set up selects */
+
+  var selects = document.getElementsByClassName("webex-select");
+
+  for (var i = 0; i < selects.length; i++) {
+
+    selects[i].onchange = select_func;
+
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2451,18 +2434,19 @@ window.onload = function() {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a  href="/index.html" class="pagination-link" aria-label="Preface">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a  href="/chapter2.html" class="pagination-link" aria-label="Descriptive Statistics">
-        <span class="nav-page-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>Descriptive Statistics</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter2.html" class="pagination-link" aria-label="Descriptive Statistics">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 
-</body>
 
-</html>
+
+
+</body></html>
