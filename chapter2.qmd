@@ -909,5 +909,20 @@ If we repeated this for warehouse workers as well:
 
 <center>![](images/Chapter%202/16.-StandardZ2.png)</center>
 
+## Workshp Exercises
+
+In the previous chapter we merged together several data sets to create a single workbook. We will use this data for the exercises in this chapter. If you did not save your combined data file, you can download it again here:
+
+<br><center>
+```{r, echo=FALSE, message=FALSE}
+library(downloadthis)
+download_file(
+  path = "data/Business Profits.xlsx",
+  button_label = "Combined Data",
+  button_type = "success"
+)
+```
+</center>
+<br>
 
 

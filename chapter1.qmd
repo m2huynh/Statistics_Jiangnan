@@ -437,11 +437,333 @@ These labels describe the role of each variable in a particular analysis. They a
 
 It is also important to remember that an association between an explanatory variable and an outcome variable does not necessarily establish that one causes the other. We will examine relationships, prediction and causation in more detail in later chapters.
 
+## Workshop Exercises
+
+### Background
+
+You are working as a data analyst investigating business performance. Different teams have supplied information about 300 businesses across several Excel sheets. Your task is to bring this information together into one table. You will use the completed dataset in activities over the coming weeks.
+
+### The Data
+
+There are 5 data sources that you will need to download and merge. Each business has a unique identifier, `business_id`, which connects its information across sheets. Businesses may appear in different row orders on different sheets.
+
+```{r setup-downloads, include=FALSE}
+library(downloadthis)
+```
+
+<style>
+.download-table {
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+.download-table th {
+  background: #243c59;
+  color: white;
+  padding: 12px 18px;
+  text-align: left;
+}
+.download-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid #dde3ea;
+  vertical-align: middle;
+}
+.download-table tbody tr:nth-child(even) {
+  background: #f3f6f9;
+}
+.download-table th:last-child,
+.download-table td:last-child {
+  text-align: left;
+}
+</style>
+
+<table class="download-table">
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technology businesses</td>
+<td>
+
+```{r download-tech, echo=FALSE}
+download_file(
+  path = "data/Tech.xlsx",
+  button_label = "Tech",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>Financial information</td>
+<td>
+
+```{r download-finance, echo=FALSE}
+download_file(
+  path = "data/Finance.xlsx",
+  button_label = "Finance",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>Hospitality businesses</td>
+<td>
+
+```{r download-hospitality, echo=FALSE}
+download_file(
+  path = "data/Hospitality.xlsx",
+  button_label = "Hospitality",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>Marketing and technology information</td>
+<td>
+
+```{r download-marketing, echo=FALSE}
+download_file(
+  path = "data/Marketing_and_technology.xlsx",
+  button_label = "Marketing",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>Retail businesses</td>
+<td>
+
+```{r download-retail, echo=FALSE}
+download_file(
+  path = "data/Retail.xlsx",
+  button_label = "Retail",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+</tbody>
+</table>
+
+### Your Task
+
+Create a workbook called Combined data, containing one table with one row per business and one column per variable.
+
+1. **Inspect the seperate workbooks.** Identify the column headings, the information recorded and the number of businesses in each sheet.
+2. **Combine the business profiles.** Copy the records from Retail, Hospitality and Tech into your new workbook, using one header row. Add a Sector column to identify each business’s industry.
+3. **Match the remaining information.** Use `business_id` to bring across the corresponding information from Finance and Marketing and technology. Use an Excel lookup function, such as VLOOKUP, to match records.
+4. **Format the completed table.** Convert the combined data into an Excel Table. Use clear column headings and appropriate number formats. Retain the units supplied and ensure that negative profits are displayed correctly.
+5. **Check your work.** Confirm that your table contains:
+    - 300 businesses and 12 columns.
+    - One unique business_id per row, with no duplicates.
+    - No blank cells or lookup errors.
+    - Correctly matched information for at least three businesses, checked against the original sheets.
 
 
+### Exploring your business dataset
 
+Complete these questions after combining the five datasets in Excel.
 
+::: {.callout-note}
+## Question 1: What does the table represent?
 
+a. What does one row in your completed table represent?
 
+b. How many observations and variables does your table contain?
+
+c. What is the purpose of `business_id`? Would calculating the average business ID be meaningful?
+
+d. Explain how a duplicated business could affect your analysis.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+a. Each row represents one business.
+
+b. There are **300 observations** and **12 columns**, including the business identifier.
+
+c. `business_id` uniquely identifies each business and allows its records to be matched across files. Its digits are labels, so calculating their average would have no meaningful interpretation.
+
+d. A duplicated business would be counted more than once. This could distort counts, percentages and averages by giving that business extra weight.
+:::
+
+::: {.callout-note}
+## Question 2: What kinds of variables do we have?
+
+Classify each variable below as **categorical** or **numerical**, and identify its **level of measurement**.
+
+- Sector
+- Brand recognition
+- Has online store
+- Years in business
+- Number of employees
+
+Explain why coding brand recognition as Low = 1 and High = 2 would not make it a numerical measurement.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+| Variable | Type | Level of measurement |
+|---|---|---|
+| Sector | Categorical | Nominal |
+| Brand recognition | Categorical | Ordinal |
+| Has online store | Categorical | Nominal |
+| Years in business | Numerical | Ratio |
+| Number of employees | Numerical | Ratio |
+
+Sector and online store status have categories without a natural ranking. Brand recognition has ordered categories: Low comes before High.
+
+Years in business and employee count have meaningful zeros. For example, 40 employees is twice as many as 20 employees.
+
+Coding Low = 1 and High = 2 only assigns numbers to category labels. It does not establish that High represents twice as much brand recognition as Low.
+:::
+
+::: {.callout-note}
+## Question 3: Where did the data come from?
+
+Imagine that these records came from a business association's existing database.
+
+a. Would using these records for your project be an example of primary or secondary data?
+
+b. Identify three questions you would ask the association before analysing the data.
+
+c. Would having records for 300 businesses automatically allow you to draw conclusions about all businesses in Australia? Explain.
+:::
+
+::: {.callout-tip collapse="true"}
+## Suggested solution
+
+a. These would be **secondary data**, because you are using existing records rather than collecting the information yourself.
+
+b. Useful questions include:
+
+- How were the businesses selected?
+- When were the measurements recorded?
+- How were profit, complaint rate and brand recognition defined and measured?
+- Do all financial figures refer to the same time period?
+- Were any businesses excluded?
+
+c. No. The number of businesses alone does not establish whether they represent Australian businesses generally. For example, association members may differ from non-members, and the dataset contains only three industry sectors.
+:::
+
+::: {.callout-note}
+## Question 4: Turn an idea into a statistical question
+
+A business adviser asks:
+
+> "Does having an online store make a difference?"
+
+a. Rewrite this as a clear statistical question that could be investigated using your dataset.
+
+b. Identify the outcome variable and explanatory variable.
+
+c. Describe a table or graph that could help investigate your question.
+
+d. Would describing the 300 businesses and drawing a conclusion about a wider population be the same task?
+:::
+
+::: {.callout-tip collapse="true"}
+## Suggested solution
+
+One suitable question is:
+
+> "Do businesses with an online store have a higher average profit than businesses without an online store?"
+
+- **Outcome variable:** Profit.
+- **Explanatory variable:** Online store status.
+- **Possible display:** A table comparing the number of businesses and average profit in the two groups, or a graph comparing their profit distributions.
+
+Describing these 300 businesses is **descriptive analysis**. Drawing conclusions about a wider population involves **statistical inference** and requires considering how the businesses were selected and the uncertainty in the results.
+
+Other questions are possible, provided the outcome and comparison are clearly defined.
+:::
+
+::: {.callout-note}
+## Question 5: Plan your own investigation
+
+Choose a question that a business owner, industry association or government agency might want to answer using this dataset.
+
+Your question must involve at least two variables.
+
+Write a short investigation plan that includes:
+
+a. Your statistical question.
+
+b. The outcome variable and explanatory variable or variables.
+
+c. A table, graph or comparison you would use.
+
+d. A decision that your findings could help inform.
+
+e. One additional variable you would like to collect, and why it would be useful.
+:::
+
+::: {.callout-tip collapse="true"}
+## Example solution
+
+**Question:** Is marketing expenditure associated with brand recognition?
+
+**Outcome variable:** Brand recognition.
+
+**Explanatory variable:** Marketing expenditure.
+
+**Possible comparison:** Compare marketing expenditure between businesses with Low and High brand recognition.
+
+**Decision:** The findings could help a business decide whether to investigate its marketing strategy further.
+
+**Additional variable:** Type of marketing activity. Businesses spending similar amounts may use very different advertising channels.
+
+Many answers are valid. A strong investigation plan uses available variables, proposes a suitable comparison and explains how the findings could inform a decision.
+:::
+
+::: {.callout-note}
+## Question 6: What could we conclude?
+
+Suppose an analysis finds that businesses using AI tools have a higher average profit.
+
+A manager concludes:
+
+> "Every business should adopt AI tools because AI increases profit."
+
+a. Explain why this conclusion goes beyond the evidence described.
+
+b. Identify two other variables in the dataset that might help explain the difference in profit.
+
+c. Suggest a follow-up question that could be investigated using the existing data.
+
+d. What additional evidence would strengthen the claim that adopting AI improves profit?
+:::
+
+::: {.callout-tip collapse="true"}
+## Suggested solution
+
+a. A difference in average profit shows an **association**, but does not establish that AI caused the difference. More profitable businesses might be better able to afford AI tools, or the groups might differ in other ways.
+
+b. Possible explanations include industry sector, employee count, years in business and marketing expenditure.
+
+c. One follow-up question is:
+
+> "Within each industry sector, do businesses using AI tools have higher average profit than businesses that do not?"
+
+This would help assess whether the overall difference reflects the mixture of sectors in each group.
+
+d. Stronger evidence could come from a study that randomly assigns suitable businesses to adopt AI tools or continue their existing practices, then measures subsequent profit. Recording profit before adoption would also help establish how performance changed.
+:::
 
 
