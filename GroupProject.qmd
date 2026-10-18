@@ -1,0 +1,135 @@
+## Group Data Analysis Presentation {.unnumbered}
+
+```{r}
+#| label: presentation-download-setup
+#| include: false
+
+library(downloadthis)
+library(knitr)
+library(tidyverse)
+```
+
+## Introduction {.unnumbered}
+
+The ability to work confidently with data is increasingly important in almost every profession. Organisations use data to understand what has happened, identify patterns, compare groups, evaluate decisions and make predictions about the future. However, working with data involves more than calculating statistics. It also requires you to ask sensible questions, select appropriate methods, interpret results carefully and communicate your findings clearly to others.
+
+This group presentation gives you an opportunity to bring together the skills developed throughout this course. Your group will investigate a dataset, address a research question and communicate the results through a short presentation. You should use a combination of numerical summaries, tables, visualisations and inferential statistical methods to develop a clear and evidence-based answer.
+
+### Forming a group and selecting a topic {.unnumbered}
+
+First, form a group of **four or five students**. Once your group has been formed, select one of the 21 topics listed below. Each topic is accompanied by a dataset containing one main outcome variable and a range of possible explanatory variables.
+
+Once you have decided who is in your group, fill out this form:
+
+[Group Project Form](https://docs.google.com/spreadsheets/d/19hkKKvoNZ7KjxoOL8yVr6g6qFEe3a23i-gDnttqcRpo/edit?gid=0#gid=0)
+
+You do not need to examine every variable in the dataset. Instead, identify the variables that are most relevant to your research question and use these to develop a focused analysis.
+
+```{=html}
+<style>
+.topic-download-table {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+.topic-download-table th {
+  background: #243c59;
+  color: white;
+  padding: 12px 14px;
+  text-align: left;
+}
+.topic-download-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #dde3ea;
+  vertical-align: middle;
+}
+.topic-download-table tbody tr:nth-child(even) {
+  background: #f3f6f9;
+}
+.topic-download-table th:first-child,
+.topic-download-table td:first-child {
+  width: 6%;
+  text-align: center;
+}
+.topic-download-table th:nth-child(2),
+.topic-download-table td:nth-child(2) {
+  width: 17%;
+}
+.topic-download-table th:nth-child(3),
+.topic-download-table td:nth-child(3) {
+  width: 19%;
+}
+.topic-download-table th:nth-child(4),
+.topic-download-table td:nth-child(4) {
+  width: 43%;
+}
+.topic-download-table th:last-child,
+.topic-download-table td:last-child {
+  width: 15%;
+  text-align: left;
+}
+</style>
+```
+
+
+```{r}
+#| label: topic-table
+#| echo: false
+
+topics <- tibble::tribble(
+  ~Topic, ~Area, ~Investigation, ~`Research question`, ~file,
+  1, "Business", "Daily retail sales", "Which store, promotion and local conditions are associated with daily sales revenue?", "01_retail_sales.xlsx",
+  2, "Business", "Customer-service satisfaction", "Which features of a service interaction are associated with the customer's satisfaction score?", "02_customer_service_satisfaction.xlsx",
+  3, "Business", "Employee productivity", "Which work arrangements and employee characteristics are associated with monthly productivity?", "03_employee_productivity.xlsx",
+  4, "Engineering and technology", "Laptop battery runtime", "Which device settings, workloads and hardware characteristics are associated with battery runtime?", "04_laptop_battery_runtime.xlsx",
+  5, "Engineering and technology", "3D-printed component strength", "Which printing choices and environmental conditions are associated with tensile strength?", "05_3d_printed_part_strength.xlsx",
+  6, "Engineering and technology", "Webpage load time", "Which page, server and user conditions are associated with webpage load time?", "06_webpage_load_time.xlsx",
+  7, "Medical and health", "Blood-pressure improvement", "Which treatment and patient characteristics are associated with the reduction in systolic blood pressure?", "07_blood_pressure_improvement.xlsx",
+  8, "Medical and health", "Hospital length of stay", "Which patient, procedure and hospital factors are associated with length of stay following surgery?", "08_hospital_length_of_stay.xlsx",
+  9, "Medical and health", "Physiotherapy outcomes", "Which treatment and patient characteristics are associated with improvement in pain?", "09_physiotherapy_pain_improvement.xlsx",
+  10, "Sport", "5 km race performance", "Which training, runner and race-day characteristics are associated with 5 km finishing time?", "10_5km_race_time.xlsx",
+  11, "Sport", "Basketball free-throw accuracy", "Which preparation, fatigue and testing conditions are associated with free-throw percentage?", "11_basketball_free_throw_accuracy.xlsx",
+  12, "Sport", "Football sprint distance", "Which player and match conditions are associated with total high-speed sprint distance?", "12_football_sprint_distance.xlsx",
+  13, "Environment", "Nitrate levels in rivers", "Which catchment, weather and water conditions are associated with nitrate concentration?", "13_river_nitrate_levels.xlsx",
+  14, "Environment", "Urban air pollution", "Which traffic, weather and location conditions are associated with PM2.5 concentration?", "14_urban_air_pollution.xlsx",
+  15, "Environment", "Household water use", "Which household, property and weather characteristics are associated with daily water consumption?", "15_household_water_use.xlsx",
+  16, "Psychology", "Perceived stress", "Which lifestyle, work and social factors are associated with perceived stress?", "16_perceived_stress.xlsx",
+  17, "Psychology", "Short-term memory", "Which preparation and testing conditions are associated with the number of words recalled?", "17_short_term_memory.xlsx",
+  18, "Psychology", "Procrastination", "Which task, environmental and personal factors are associated with procrastination?", "18_procrastination.xlsx",
+  19, "Society and public services", "University exam performance", "Which study, attendance and student circumstances are associated with final exam performance?", "19_university_exam_performance.xlsx",
+  20, "Society and public services", "Commuter journey time", "Which trip, transport and daily conditions are associated with door-to-door commuting time?", "20_commuter_journey_time.xlsx",
+  21, "Society and public services", "Public-library program attendance", "Which program, promotion and scheduling characteristics are associated with attendance?", "21_library_program_attendance.xlsx"
+)
+
+topics |>
+  mutate(
+    Download = map_chr(file, \(f) as.character(
+      download_file(
+        path = file.path("data", f),
+        output_name = tools::file_path_sans_ext(f),
+        button_label = "Download",
+        button_type = "success",
+        has_icon = FALSE
+      )
+    ))
+  ) |>
+  dplyr::select(-file) |>
+  kable(format = "html", escape = FALSE,
+        table.attr = 'class="topic-download-table"')
+```
+
+### Preparing an effective presentation {.unnumbered}
+
+A strong presentation is selective. Avoid filling slides with every calculation or output that your group produced. Instead, include the evidence that is most useful for answering the research question.
+
+When preparing your slides:
+
+-   use graphs and tables that can be understood quickly;
+-   explain results in the context of the scenario rather than only reporting numbers;
+-   distinguish between statistical significance and practical importance;
+-   avoid claiming that an association proves causation;
+-   ensure that your conclusions match the statistical evidence; and
+-   rehearse as a group so that the presentation is coherent and remains within the time limit.
+
+The aim is not simply to demonstrate that your group can calculate statistics. The aim is to show that you can use statistics to investigate a meaningful question and communicate what you have learned.

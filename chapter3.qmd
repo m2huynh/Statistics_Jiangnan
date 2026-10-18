@@ -1209,3 +1209,102 @@ Across all of these examples, the main lesson is that probability is not just ab
 -   Are we treating rare events as impossible, or merely as unlikely?
 
 Probability helps us slow down, define the situation carefully, and reason with uncertainty rather than simply relying on intuition.
+
+## Workshop Exercises
+
+Let's begin by playing 10 rounds of the Monty Hall game that we learnt about during today's class.
+
+```{=html}
+<iframe
+  src="interactive/montyhall.html"
+  width="100%"
+  height="760"
+  style="border: none;"
+></iframe>
+```
+
+How did you go? Did you win more by switching or by staying? It's hard to know which is better with only 10 games, so we're now build a simulator in Excel.
+
+**A**. Open a blank workbook and type the following column headers in row 1, cells A1 to G1:
+
+  - Game
+  - Car door
+  - Your pick
+  - Host open
+  - Switch to
+  - Stay wins
+  - Switch wins
+
+**B**. Number the games by entering this formula in cell A2:
+
+```{r, echo=TRUE, eval=FALSE}
+=ROW() - 1
+```
+
+This gives each game an ID (1, 2, 3, ...) based on its row number, so you can count how many games you have run.
+
+**C**. Randomly place the car behind a door by entering this formula in cell B2:
+
+```{r, echo=TRUE, eval=FALSE}
+=RANDBETWEEN(1,3)
+```
+
+ This picks a whole number from 1 to 3. Excel recalculates it every time you press **F9**, so you get a fresh game on demand.
+ 
+**D**. Randomly choose the contestant's door by entering the same formula in cell C2.
+
+```{r, echo=TRUE, eval=FALSE}
+=RANDBETWEEN(1,3)
+```
+
+This is independent of the car's location, so the contestant is just guessing.
+
+**E**. Make the host open a door by entering this formula in cell D2.
+
+
+```{r, echo=TRUE, eval=FALSE}
+=IF(B2=C2, MOD(B2+RANDBETWEEN(0,1),3)+1, 6-B2-C2)
+```
+
+The host knows where the car is, so they never open it, and they never open the contestant's door.
+
+    If the contestant picked the car (`B2=C2`), both other doors hide goats, so the host picks one at random. `MOD(B2+RANDBETWEEN(0,1),3)+1` returns one of the two other doors. If the contestant picked a goat, the host has only one legal door. The door numbers add up to 1+2+3 = 6, so `6-B2-C2` is the one door that is neither the car nor the contestant's pick.
+
+**F**. Work out which door the contestant would switch to by entering this formula in cell E2.
+
+
+```{r, echo=TRUE, eval=FALSE}
+=6-C2-D2
+```
+
+Switching means moving to the one door that is neither the original pick nor the door the host opened. The same "sum to 6" trick finds it.
+
+**G**. Record whether each strategy wins by entering these formulas in F2 and G2.
+
+
+```{r, echo=TRUE, eval=FALSE}
+F2: =--(C2=B2)
+G2: =--(E2=B2)
+```
+
+  `C2=B2` checks whether the original pick was the car (staying wins). `E2=B2` checks whether the switched door has the car (switching wins). The double negative `--` turns TRUE/FALSE into 1/0 so the results can be averaged.
+  
+**H**. Select cells A2 to G2 and drag the fill handle (the small square at the bottom-right corner) down to row 1001.
+
+    This gives you 1000 simulated games. Every row has its own random car and pick, so each row is an independent game.
+    
+**I**. Add the summary calculations in two empty cells, for example I1 and I2.
+
+```{r, echo=TRUE, eval=FALSE}
+I1: =AVERAGE(F2:F1001)
+I2: =AVERAGE(G2:G1001)
+```
+
+These are the proportions of games won by staying and by switching. In R this is `mean(stay_wins)` and `mean(switch_wins)`. You should see about 0.33 for staying and 0.67 for switching.
+
+**J**. Press **F9** several times to rerun the whole simulation.
+
+    The win rates will wobble slightly each time but stay close to 1/3 and 2/3. This shows that the advantage of switching is real and not a fluke of one run.
+
+
+

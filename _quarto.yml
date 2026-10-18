@@ -33,6 +33,7 @@ book:
     - chapter10.qmd
     - chapter11.qmd
     - chapter12.qmd
+    - GroupProject.qmd
     
 format:
   html:
