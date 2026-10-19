@@ -14,7 +14,17 @@
     "href": "chapter1.html",
     "title": "1  Data and variables",
     "section": "",
-    "text": "1.1 What is Statistics?\nFor many people, the first things that come to mind are numbers, formulas, calculations, tables and complicated-looking graphs. You might think of averages, percentages, opinion polls or sporting records. Some people may remember a mathematics class—and perhaps not particularly fondly.\nThese are all connected to statistics, but they do not capture what statistics is really about. Statistics is not simply the calculation of numbers. It is the process of using data to answer questions, learn about the world and make decisions when we do not have complete information.\nFor example:\nThe calculations help us investigate these questions, but they are not the final objective. The objective is to turn data into evidence—and evidence into informed decisions. So, throughout this unit, I do not want you to think of statistics as a collection of formulas to memorise. Instead, think of statistics as a way of reasoning:",
+    "text": "Downwload slides here",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data and variables</span>"
+    ]
+  },
+  {
+    "objectID": "chapter1.html#downwload-slides-here",
+    "href": "chapter1.html#downwload-slides-here",
+    "title": "1  Data and variables",
+    "section": "",
+    "text": "Session 1",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data and variables</span>"
     ]
@@ -23,8 +33,8 @@
     "objectID": "chapter1.html#what-is-statistics",
     "href": "chapter1.html#what-is-statistics",
     "title": "1  Data and variables",
-    "section": "",
-    "text": "Is a new advertising campaign increasing sales?\nWhich customers are most likely to stop using a service?\nDoes a new medical treatment work?\nIs a change in customer satisfaction meaningful, or could it simply be random variation?\nWhat is likely to happen in the future?\n\n\n\nHow can we use the information we have to make the best possible decision, while recognising that we can never be completely certain?",
+    "section": "1.1 What is Statistics?",
+    "text": "1.1 What is Statistics?\nFor many people, the first things that come to mind are numbers, formulas, calculations, tables and complicated-looking graphs. You might think of averages, percentages, opinion polls or sporting records. Some people may remember a mathematics class—and perhaps not particularly fondly.\nThese are all connected to statistics, but they do not capture what statistics is really about. Statistics is not simply the calculation of numbers. It is the process of using data to answer questions, learn about the world and make decisions when we do not have complete information.\nFor example:\n\nIs a new advertising campaign increasing sales?\nWhich customers are most likely to stop using a service?\nDoes a new medical treatment work?\nIs a change in customer satisfaction meaningful, or could it simply be random variation?\nWhat is likely to happen in the future?\n\nThe calculations help us investigate these questions, but they are not the final objective. The objective is to turn data into evidence—and evidence into informed decisions. So, throughout this unit, I do not want you to think of statistics as a collection of formulas to memorise. Instead, think of statistics as a way of reasoning:\n\nHow can we use the information we have to make the best possible decision, while recognising that we can never be completely certain?",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data and variables</span>"
     ]
@@ -972,21 +982,21 @@
   {
     "objectID": "GroupProject.html",
     "href": "GroupProject.html",
-    "title": "11  Group Data Analysis Presentation",
+    "title": "Group Data Analysis Presentation",
     "section": "",
     "text": "Introduction\nThe ability to work confidently with data is increasingly important in almost every profession. Organisations use data to understand what has happened, identify patterns, compare groups, evaluate decisions and make predictions about the future. However, working with data involves more than calculating statistics. It also requires you to ask sensible questions, select appropriate methods, interpret results carefully and communicate your findings clearly to others.\nThis group presentation gives you an opportunity to bring together the skills developed throughout this course. Your group will investigate a dataset, address a research question and communicate the results through a short presentation. You should use a combination of numerical summaries, tables, visualisations and inferential statistical methods to develop a clear and evidence-based answer.",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Group Data Analysis Presentation</span>"
+      "Group Data Analysis Presentation"
     ]
   },
   {
     "objectID": "GroupProject.html#introduction",
     "href": "GroupProject.html#introduction",
-    "title": "11  Group Data Analysis Presentation",
+    "title": "Group Data Analysis Presentation",
     "section": "",
     "text": "Forming a group and selecting a topic\nFirst, form a group of four or five students. Once your group has been formed, select one of the 21 topics listed below. Each topic is accompanied by a dataset containing one main outcome variable and a range of possible explanatory variables.\nOnce you have decided who is in your group, fill out this form:\nGroup Project Form\nYou do not need to examine every variable in the dataset. Instead, identify the variables that are most relevant to your research question and use these to develop a focused analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTopic\nArea\nInvestigation\nResearch question\nDownload\n\n\n\n\n1\nBusiness\nDaily retail sales\nWhich store, promotion and local conditions are associated with daily sales revenue?\n\n Download\n\n\n\n2\nBusiness\nCustomer-service satisfaction\nWhich features of a service interaction are associated with the customer's satisfaction score?\n\n Download\n\n\n\n3\nBusiness\nEmployee productivity\nWhich work arrangements and employee characteristics are associated with monthly productivity?\n\n Download\n\n\n\n4\nEngineering and technology\nLaptop battery runtime\nWhich device settings, workloads and hardware characteristics are associated with battery runtime?\n\n Download\n\n\n\n5\nEngineering and technology\n3D-printed component strength\nWhich printing choices and environmental conditions are associated with tensile strength?\n\n Download\n\n\n\n6\nEngineering and technology\nWebpage load time\nWhich page, server and user conditions are associated with webpage load time?\n\n Download\n\n\n\n7\nMedical and health\nBlood-pressure improvement\nWhich treatment and patient characteristics are associated with the reduction in systolic blood pressure?\n\n Download\n\n\n\n8\nMedical and health\nHospital length of stay\nWhich patient, procedure and hospital factors are associated with length of stay following surgery?\n\n Download\n\n\n\n9\nMedical and health\nPhysiotherapy outcomes\nWhich treatment and patient characteristics are associated with improvement in pain?\n\n Download\n\n\n\n10\nSport\n5 km race performance\nWhich training, runner and race-day characteristics are associated with 5 km finishing time?\n\n Download\n\n\n\n11\nSport\nBasketball free-throw accuracy\nWhich preparation, fatigue and testing conditions are associated with free-throw percentage?\n\n Download\n\n\n\n12\nSport\nFootball sprint distance\nWhich player and match conditions are associated with total high-speed sprint distance?\n\n Download\n\n\n\n13\nEnvironment\nNitrate levels in rivers\nWhich catchment, weather and water conditions are associated with nitrate concentration?\n\n Download\n\n\n\n14\nEnvironment\nUrban air pollution\nWhich traffic, weather and location conditions are associated with PM2.5 concentration?\n\n Download\n\n\n\n15\nEnvironment\nHousehold water use\nWhich household, property and weather characteristics are associated with daily water consumption?\n\n Download\n\n\n\n16\nPsychology\nPerceived stress\nWhich lifestyle, work and social factors are associated with perceived stress?\n\n Download\n\n\n\n17\nPsychology\nShort-term memory\nWhich preparation and testing conditions are associated with the number of words recalled?\n\n Download\n\n\n\n18\nPsychology\nProcrastination\nWhich task, environmental and personal factors are associated with procrastination?\n\n Download\n\n\n\n19\nSociety and public services\nUniversity exam performance\nWhich study, attendance and student circumstances are associated with final exam performance?\n\n Download\n\n\n\n20\nSociety and public services\nCommuter journey time\nWhich trip, transport and daily conditions are associated with door-to-door commuting time?\n\n Download\n\n\n\n21\nSociety and public services\nPublic-library program attendance\nWhich program, promotion and scheduling characteristics are associated with attendance?\n\n Download\n\n\n\n\n\n\n\n\nPreparing an effective presentation\nA strong presentation is selective. Avoid filling slides with every calculation or output that your group produced. Instead, include the evidence that is most useful for answering the research question.\nWhen preparing your slides:\n\nuse graphs and tables that can be understood quickly;\nexplain results in the context of the scenario rather than only reporting numbers;\ndistinguish between statistical significance and practical importance;\navoid claiming that an association proves causation;\nensure that your conclusions match the statistical evidence; and\nrehearse as a group so that the presentation is coherent and remains within the time limit.\n\nThe aim is not simply to demonstrate that your group can calculate statistics. The aim is to show that you can use statistics to investigate a meaningful question and communicate what you have learned.",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Group Data Analysis Presentation</span>"
+      "Group Data Analysis Presentation"
     ]
   }
 ]

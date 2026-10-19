@@ -12,8 +12,20 @@ execute:
 ```{r}
 library(tidyverse)
 library(gt)
+library(downloadthis)
 ```
 
+## Downwload slides here {.unnumbered}
+
+<center>
+```{r}
+download_file(
+  path = "Condensed Slides/Chapter 01.pdf",
+  button_label = "Session 1",
+  button_type = "success"
+)
+```
+</center>
 
 ## What is Statistics?
 
