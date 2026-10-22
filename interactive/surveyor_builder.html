@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Surveyor Builder: Sampling Town</title>
+<style>
+  :root{
+    --bg:#fff7c9;
+    --panel:#fffdf0;
+    --ink:#1f2933;
+    --muted:#5f6b7a;
+    --line:#dccb73;
+    --accent:#2563eb;
+    --accent2:#16a34a;
+    --danger:#dc2626;
+    --house:#7c3aed;
+    --road:#545454;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:transparent;
+    color:var(--ink);
+  }
+  .app{
+    width:min(1100px,100%);
+    margin:0 auto;
+    background:linear-gradient(180deg,#fff9c7,#fff4a9);
+    border:1px solid #d9ca77;
+    border-radius:18px;
+    padding:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,.10);
+    min-height:720px;
+  }
+  h1,h2,h3,p{margin:0;}
+  .topline{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px;}
+  .title h1{font-size:22px;margin-bottom:4px;}
+  .title p{font-size:14px;color:var(--muted);max-width:760px;line-height:1.4;}
+  .pill{
+    background:#fffef2;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;white-space:nowrap;
+  }
+  .screen{display:none;}
+  .screen.active{display:block;}
+  .builder-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin-top:12px;}
+  .card{
+    background:rgba(255,255,255,.70);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px;
+  }
+  .stat-row{
+    display:grid;
+    grid-template-columns:125px 1fr 52px;
+    gap:10px;
+    align-items:center;
+    padding:11px 0;
+    border-bottom:1px dashed rgba(80,70,20,.20);
+  }
+  .stat-row:last-child{border-bottom:none;}
+  .stat-name{font-weight:750;}
+  .stat-desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.25;}
+  input[type=range]{width:100%;accent-color:var(--accent);}
+  .stat-value{font-weight:800;font-size:20px;text-align:center;}
+  .points{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:10px;}
+  .points strong{font-size:28px;}
+  .meter{height:12px;background:#eee7b7;border-radius:999px;overflow:hidden;border:1px solid #d3c571;}
+  .meter > div{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#2563eb);transition:width .2s;}
+  button{
+    border:1px solid #9aa4b2;
+    background:white;
+    color:#111827;
+    border-radius:10px;
+    padding:9px 13px;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:0 1px 2px rgba(0,0,0,.08);
+  }
+  button.primary{background:#111827;color:white;border-color:#111827;font-weight:750;}
+  button:disabled{opacity:.45;cursor:not-allowed;}
+  .big-btn{font-size:17px;padding:12px 18px;width:100%;margin-top:12px;}
+  .tiny{font-size:12px;color:var(--muted);line-height:1.35;}
+  .trait-list{display:grid;gap:8px;margin-top:10px;}
+  .trait{padding:9px 10px;border-radius:10px;background:#fffef6;border:1px solid #eee2a8;font-size:13px;line-height:1.25;}
+  .trait b{display:block;margin-bottom:2px;}
+
+  .town-layout{display:grid;grid-template-columns:1fr;gap:8px;align-items:start;}
+  .town-card{padding:12px;position:relative;overflow:hidden;}
+  .town-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;}
+  .town-head h2{font-size:18px;}
+  .town{
+    position:relative;
+    height:420px;
+    border-radius:14px;
+    overflow:hidden;
+    background:linear-gradient(#bde7ff 0 35%, #b7e8a1 35% 100%);
+    border:1px solid #9bb77a;
+  }
+  .road{position:absolute;background:var(--road);opacity:.9;}
+  .road.r1{left:-20px;right:-20px;height:34px;top:235px;transform:rotate(-3deg);}
+  .road.r2{top:145px;bottom:-20px;width:30px;left:205px;transform:rotate(5deg);}
+  .lake{position:absolute;width:116px;height:70px;border-radius:50%;background:#60a5fa;left:18px;top:44px;box-shadow:inset 0 4px 12px rgba(0,0,0,.16);}
+  .park{position:absolute;width:130px;height:88px;border-radius:24px;background:#66c26e;right:26px;top:58px;opacity:.8;}
+  .house{
+    position:absolute;
+    width:12px;height:11px;
+    transform:translate(-50%,-50%);
+  }
+  .house::before{
+    content:"";position:absolute;left:1px;top:4px;width:10px;height:7px;background:#fff3d2;border:1px solid rgba(0,0,0,.25);
+  }
+  .house::after{
+    content:"";position:absolute;left:0;top:0;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #a63c2f;
+  }
+  .house.sampled{filter:drop-shadow(0 0 5px #f97316) drop-shadow(0 0 2px #f97316);transform:translate(-50%,-50%) scale(1.45);z-index:6;}
+  .house.missed{opacity:.35;}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+  .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;}
+  .summary{
+    background:#fffef6;border:1px solid #e4d58d;border-radius:12px;padding:9px 10px;min-height:56px;
+  }
+  .summary .label{font-size:12px;color:#45515f;}
+  .summary .value{font-size:19px;font-weight:850;margin-top:2px;}
+  .summary .smallvalue{font-size:14px;font-weight:700;margin-top:3px;}
+  .output-card{min-height:0;}
+  .sample-area{background:#fffef8;border:1px solid #e5d992;border-radius:12px;padding:12px;margin-top:10px;}
+  .sample-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:10px;}
+  .sample-head h3{font-size:16px;}
+  .houses-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;min-height:115px;}
+  .sample-house{
+    position:relative;
+    min-height:66px;
+    border:1px solid #eadf9d;
+    border-radius:12px;
+    background:linear-gradient(#ffffff,#fff8d8);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    animation:pop .22s ease-out both;
+  }
+  @keyframes pop{from{transform:scale(.92);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .mini-house{width:28px;height:23px;position:relative;margin-bottom:4px;}
+  .mini-house::before{content:"";position:absolute;left:3px;top:9px;width:22px;height:14px;background:#fff3d2;border:1px solid #555;border-radius:2px;}
+  .mini-house::after{content:"";position:absolute;left:0;top:0;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:13px solid #a63c2f;}
+  .income{font-weight:800;font-size:13px;}
+  .truth-tag{font-size:10px;color:#6b7280;}
+  .bar-wrap{height:108px;border-left:1px solid #8c8360;border-bottom:1px solid #8c8360;margin-top:14px;position:relative;background:linear-gradient(to top,rgba(255,255,255,.45),rgba(255,255,255,0));}
+  .bar{position:absolute;bottom:0;width:28px;background:#4b5563;border-radius:5px 5px 0 0;transition:height .4s;}
+  .axis-label{font-size:12px;color:#495161;margin-top:5px;}
+  .note{margin-top:10px;padding:10px;border-radius:12px;background:#fff3cd;border:1px solid #dfcc75;font-size:13px;line-height:1.35;color:#38321a;}
+  .result-line{font-size:15px;line-height:1.4;margin-top:8px;}
+  .result-line b{font-weight:850;}
+
+  .copy-box{
+    margin-top:12px;
+    border:1px solid #d6c674;
+    border-radius:12px;
+    background:#fffef2;
+    overflow:hidden;
+    display:none;
+  }
+  .copy-box.active{display:block;}
+  .copy-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    padding:9px 10px;
+    background:#f8edb7;
+    border-bottom:1px solid #d6c674;
+  }
+  .copy-head h3{font-size:14px;margin:0;}
+  .copy-head button{padding:6px 10px;font-size:12px;}
+  .code-output{
+    margin:0;
+    padding:10px;
+    max-height:92px;
+    overflow:auto;
+    background:#1f2933;
+    color:#f9fafb;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+    font-size:12px;
+    line-height:1.4;
+    white-space:pre-wrap;
+    word-break:break-word;
+  }
+  .copy-status{font-size:12px;color:#166534;margin-left:8px;}
+  .hidden{display:none;}
+  @media (max-width:900px){
+    .builder-grid,.town-layout{grid-template-columns:1fr;}
+    .town-card{order:1}.output-card{order:2}
+    .summary-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+
+  /* Compact Quarto embed layout */
+  .app{max-width:1000px;padding:10px;border-radius:14px;min-height:0;box-shadow:0 4px 14px rgba(0,0,0,.08);}
+  .topline{margin-bottom:7px;gap:8px;}
+  .title h1{font-size:18px;margin-bottom:2px;}
+  .title p{font-size:12px;line-height:1.25;max-width:720px;}
+  .pill{padding:5px 9px;font-size:12px;}
+  .builder-grid{grid-template-columns:1.15fr .85fr;gap:8px;margin-top:8px;}
+  .card{padding:9px;border-radius:12px;}
+  .stat-row{grid-template-columns:105px 1fr 38px;gap:7px;padding:5px 0;}
+  .stat-name{font-size:13px;}
+  .stat-desc{font-size:10.5px;line-height:1.15;margin-top:1px;}
+  .stat-value{font-size:16px;}
+  .points{margin-bottom:5px;}
+  .points strong{font-size:22px;}
+  .meter{height:8px;}
+  button{padding:6px 10px;font-size:12px;border-radius:8px;}
+  .big-btn{font-size:14px;padding:9px 12px;margin-top:8px;}
+  .tiny{font-size:10.5px;line-height:1.22;}
+  .trait-list{gap:5px;margin-top:6px;}
+  .trait{padding:6px 7px;border-radius:8px;font-size:11px;line-height:1.15;}
+  .trait b{margin-bottom:1px;}
+
+  .town-layout{grid-template-columns:1fr;gap:8px;}
+  .town-card{padding:8px;}
+  .town-head{margin-bottom:5px;}
+  .town-head h2{font-size:15px;}
+  .town{height:282px;border-radius:11px;}
+  .road.r1{height:25px;top:158px;}
+  .road.r2{width:23px;left:162px;top:100px;}
+  .lake{width:82px;height:50px;left:14px;top:30px;}
+  .park{width:92px;height:62px;right:18px;top:40px;}
+  .house{width:9px;height:8px;}
+  .house::before{left:1px;top:3px;width:7px;height:5px;}
+  .house::after{border-left-width:4.5px;border-right-width:4.5px;border-bottom-width:5px;}
+  .house.sampled{transform:translate(-50%,-50%) scale(1.35);}
+
+  .summary-grid{grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:5px;}
+  .summary{padding:5px 6px;border-radius:9px;min-height:40px;}
+  .summary .label{font-size:10px;line-height:1.1;}
+  .summary .value{font-size:14px;margin-top:1px;}
+  .summary .smallvalue{font-size:11.5px;margin-top:1px;}
+  .output-card{min-height:0;}
+  .sample-area{padding:7px;margin-top:5px;border-radius:10px;}
+  .sample-head{margin-bottom:5px;gap:6px;}
+  .sample-head h3{font-size:13px;}
+  .houses-grid{grid-template-columns:repeat(10,1fr);gap:4px;min-height:0;}
+  .sample-house{min-height:41px;border-radius:8px;gap:1px;padding:2px;}
+  .mini-house{width:17px;height:14px;margin-bottom:1px;}
+  .mini-house::before{left:2px;top:6px;width:13px;height:8px;}
+  .mini-house::after{border-left-width:8.5px;border-right-width:8.5px;border-bottom-width:8px;}
+  .income{font-size:9.5px;line-height:1.05;}
+  .truth-tag{display:none;}
+  .note{margin-top:5px;padding:6px;border-radius:9px;font-size:11px;line-height:1.22;}
+  .result-line{font-size:12px;line-height:1.25;margin-top:5px;}
+  .copy-box{margin-top:6px;border-radius:9px;}
+  .copy-head{padding:5px 7px;}
+  .copy-head h3{font-size:12px;}
+  .copy-head button{padding:4px 7px;font-size:10.5px;}
+  .code-output{padding:7px;max-height:58px;font-size:10.5px;line-height:1.25;}
+  .copy-status{font-size:10.5px;}
+  @media (max-width:900px){.town-layout{grid-template-columns:1fr}.houses-grid{grid-template-columns:repeat(6,1fr)}}
+
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <section id="builderScreen" class="screen active">
+    <div class="topline">
+      <div class="title">
+        <h1>Build your ABS field surveyor</h1>
+        <p>Allocate up to 10 skill points. Your choices affect how many households you can reach, how accurately income is recorded, and how representative your sample is.</p>
+      </div>
+      <div class="pill">Total points: <b><span id="pointsUsed">0</span>/10</b></div>
+    </div>
+
+    <div class="builder-grid">
+      <div class="card">
+        <div class="points">
+          <div>
+            <div class="tiny">Points remaining</div>
+            <strong id="pointsRemaining">10</strong>
+          </div>
+          <div style="flex:1">
+            <div class="meter"><div id="pointMeter"></div></div>
+          </div>
+        </div>
+
+        <div id="statControls"></div>
+        <button class="primary big-btn" id="buildBtn">Build surveyor</button>
+      </div>
+
+      <div class="card">
+        <h2 style="font-size:18px;margin-bottom:6px;">What the stats do</h2>
+        <p class="tiny">The town has about 10,000 households, but your surveyor can only collect a small sample. This is about estimation under practical limits.</p>
+        <div class="trait-list">
+          <div class="trait"><b>Charm</b>Improves response rate. More households agree to answer.</div>
+          <div class="trait"><b>Intelligence</b>Reduces measurement error when income is recorded.</div>
+          <div class="trait"><b>Efficiency</b>Lets you visit more households, up to a maximum of 30.</div>
+          <div class="trait"><b>Local knowledge</b>Reduces sampling bias by reaching more parts of town.</div>
+          <div class="trait"><b>Persistence</b>Helps follow up hard-to-reach households.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="surveyScreen" class="screen">
+    <div class="topline">
+      <div class="title">
+        <h1>Surveyor in Sampling Town</h1>
+        <p>Try to estimate the town's average weekly household income. The true population contains 10,000 households, but you only get one sample.</p>
+      </div>
+      <div class="controls">
+        <button id="backBtn">Rebuild</button>
+        <button id="sampleBtn" class="primary">Take sample</button>
+      </div>
+    </div>
+
+    <div class="town-layout">
+      <div id="town" style="display:none;"></div>
+
+      <div class="card output-card">
+        <div class="summary-grid">
+          <div class="summary"><div class="label">Households sampled</div><div class="value" id="sampleSizeOut">0</div></div>
+          <div class="summary"><div class="label">Estimated mean income</div><div class="value" id="estimateOut">-</div></div>
+          <div class="summary"><div class="label">Estimated SE</div><div class="value" id="seOut">-</div></div>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary"><div class="label">Response rate</div><div class="value" id="responseOut">-</div></div>
+          <div class="summary"><div class="label">Coverage quality</div><div class="value" id="coverageOut">-</div></div>
+        </div>
+
+        <div class="sample-area">
+          <div class="sample-head">
+            <h3>Sampled households</h3>
+            <span class="tiny" id="sampleNote">Click “Take sample” to collect your one sample.</span>
+          </div>
+          <div class="houses-grid" id="sampleGrid"></div>
+          <div class="result-line" id="resultText"></div>
+
+          <div class="copy-box" id="copyBox">
+            <div class="copy-head">
+              <h3>Copy your sample into R</h3>
+              <div>
+                <span class="copy-status" id="copyStatus"></span>
+                <button id="copySampleBtn" type="button">Copy</button>
+              </div>
+            </div>
+            <pre class="code-output" id="rCodeOut">my_sample &lt;- c()</pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const stats = [
+    {key:'charm', label:'Charm', desc:'More people answer the survey.'},
+    {key:'intelligence', label:'Intelligence', desc:'Cleaner questions and fewer recording mistakes.'},
+    {key:'efficiency', label:'Efficiency', desc:'You can visit more households.'},
+    {key:'y', label:'Local knowledge', desc:'Better coverage across neighbourhoods.'},
+    {key:'z', label:'Persistence', desc:'More follow-up with hard-to-reach households.'}
+  ];
+  const values = {charm:0,intelligence:0,efficiency:0,y:0,z:0};
+  const maxPoints = 10;
+  const populationN = 10000;
+  let population = [];
+  let visibleHouses = [];
+
+  const $ = id => document.getElementById(id);
+  const money = x => '$' + Math.round(x).toLocaleString();
+  const pct = x => Math.round(x*100) + '%';
+  const clamp = (x,a,b)=>Math.max(a,Math.min(b,x));
+
+  function randn(){
+    let u=0,v=0;
+    while(u===0) u=Math.random();
+    while(v===0) v=Math.random();
+    return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+  }
+  function lognormal(mean, sd){
+    const sigma2 = Math.log(1 + (sd*sd)/(mean*mean));
+    const sigma = Math.sqrt(sigma2);
+    const mu = Math.log(mean) - sigma2/2;
+    return Math.exp(mu + sigma*randn());
+  }
+  function generatePopulation(){
+    population = [];
+    const regions = [
+      {name:'North Hill', prop:.18, mean:1750, sd:520, x:[250,400], y:[35,145]},
+      {name:'West Flats', prop:.24, mean:930, sd:300, x:[25,180], y:[170,380]},
+      {name:'Central', prop:.28, mean:1250, sd:360, x:[170,285], y:[145,340]},
+      {name:'East Gardens', prop:.20, mean:1500, sd:420, x:[285,405], y:[160,370]},
+      {name:'Outer South', prop:.10, mean:790, sd:260, x:[70,390], y:[335,405]}
+    ];
+    for(let i=0;i<populationN;i++){
+      let r = Math.random(), cum = 0, reg = regions[0];
+      for(const rr of regions){ cum += rr.prop; if(r <= cum){ reg = rr; break; } }
+      let income = Math.max(250, Math.min(4200, lognormal(reg.mean, reg.sd)));
+      population.push({id:i, region:reg.name, income, x:reg.x[0]+Math.random()*(reg.x[1]-reg.x[0]), y:reg.y[0]+Math.random()*(reg.y[1]-reg.y[0])});
+    }
+    visibleHouses = [];
+    for(let i=0;i<230;i++) visibleHouses.push(population[Math.floor(Math.random()*population.length)]);
+  }
+
+  function renderStatControls(){
+    const wrap = $('statControls');
+    wrap.innerHTML = '';
+    stats.forEach(s=>{
+      const row = document.createElement('div');
+      row.className = 'stat-row';
+      row.innerHTML = `
+        <div><div class="stat-name">${s.label}</div><div class="stat-desc">${s.desc}</div></div>
+        <input type="range" min="0" max="10" value="0" id="stat_${s.key}">
+        <div class="stat-value" id="val_${s.key}">0</div>`;
+      wrap.appendChild(row);
+      row.querySelector('input').addEventListener('input', e=>{
+        const old = values[s.key];
+        let proposed = +e.target.value;
+        const others = totalPoints() - old;
+        if(others + proposed > maxPoints) proposed = maxPoints - others;
+        values[s.key] = proposed;
+        e.target.value = proposed;
+        updatePointUI();
+      });
+    });
+    updatePointUI();
+  }
+  function totalPoints(){return Object.values(values).reduce((a,b)=>a+b,0);}
+  function updatePointUI(){
+    const used = totalPoints();
+    $('pointsUsed').textContent = used;
+    $('pointsRemaining').textContent = maxPoints - used;
+    $('pointMeter').style.width = (used/maxPoints*100)+'%';
+    stats.forEach(s=>{
+      $('val_'+s.key).textContent = values[s.key];
+      const input = $('stat_'+s.key);
+      if(input) input.value = values[s.key];
+    });
+  }
+
+  function renderTown(sampleIds=[]){
+    const town = $('town');
+    town.querySelectorAll('.house').forEach(h=>h.remove());
+    const sampleSet = new Set(sampleIds);
+    visibleHouses.forEach(h=>{
+      const div = document.createElement('div');
+      div.className = 'house' + (sampleSet.has(h.id) ? ' sampled' : '');
+      div.style.left = h.x + 'px';
+      div.style.top = h.y + 'px';
+      div.title = 'Household';
+      town.appendChild(div);
+    });
+  }
+
+  function buildSurveyor(){
+    $('builderScreen').classList.remove('active');
+    $('surveyScreen').classList.add('active');
+    $('sampleBtn').disabled = false;
+    $('sampleBtn').textContent = 'Take sample';
+    $('sampleGrid').innerHTML = '';
+    $('resultText').textContent = '';
+    $('rCodeOut').textContent = 'my_sample <- c()';
+    $('copyBox').classList.remove('active');
+    $('copyStatus').textContent = '';
+    $('sampleNote').textContent = 'Click “Take sample” to collect your one sample.';
+    $('sampleSizeOut').textContent = '0';
+    $('estimateOut').textContent = '-';
+    $('seOut').textContent = '-';
+    $('responseOut').textContent = '-';
+    $('coverageOut').textContent = '-';
+    renderTown([]);
+  }
+
+  function sampleHouseholds(){
+    const sampleCap = Math.min(30, 10 + Math.round(values.efficiency * 2));
+    const responseRate = clamp(0.50 + values.charm*0.035 + values.z*0.025, 0.45, 0.95);
+    const targetVisits = Math.ceil(sampleCap / responseRate);
+    const coverage = clamp(0.35 + values.y*0.06 + values.z*0.025, 0.25, 0.98);
+    const measurementNoise = Math.max(25, 260 - values.intelligence*21 - values.charm*4);
+
+    let frame;
+    if(Math.random() < coverage){
+      frame = population;
+    } else {
+      // biased frame: easier-to-reach central and higher income areas are over-sampled
+      frame = population.filter(d => d.region === 'Central' || d.region === 'North Hill' || Math.random()<0.12);
+    }
+
+    let selected = [];
+    let attempts = 0;
+    while(selected.length < sampleCap && attempts < targetVisits*3){
+      attempts++;
+      const h = frame[Math.floor(Math.random()*frame.length)];
+      if(selected.some(x=>x.id===h.id)) continue;
+      const answers = Math.random() < responseRate;
+      if(answers){
+        const observed = Math.max(0, h.income + randn()*measurementNoise);
+        selected.push({...h, observed});
+      }
+    }
+    // Fill if unlucky, but keep effect of weak charm by sometimes remaining smaller
+    while(selected.length < Math.max(6, Math.floor(sampleCap*0.65))){
+      const h = frame[Math.floor(Math.random()*frame.length)];
+      if(!selected.some(x=>x.id===h.id)) selected.push({...h, observed:Math.max(0,h.income + randn()*measurementNoise)});
+    }
+
+    const observedMean = selected.reduce((a,d)=>a+d.observed,0)/selected.length;
+    const sd = Math.sqrt(selected.reduce((a,d)=>a+(d.observed-observedMean)**2,0)/(selected.length-1));
+    const se = sd / Math.sqrt(selected.length);
+
+    $('sampleSizeOut').textContent = selected.length;
+    $('estimateOut').textContent = money(observedMean);
+    $('seOut').textContent = money(se);
+    $('responseOut').textContent = pct(responseRate);
+    $('coverageOut').textContent = pct(coverage);
+    $('sampleNote').textContent = `${selected.length} households answered. Values shown are recorded weekly incomes.`;
+
+    renderTown(selected.map(d=>d.id));
+    renderSampleGrid(selected);
+
+
+    const rValues = selected.map(d => Math.round(d.observed));
+    $('rCodeOut').textContent = 'my_sample <- c(' + rValues.join(', ') + ')';
+    $('copyBox').classList.add('active');
+    $('copyStatus').textContent = '';
+
+    $('resultText').innerHTML = `Your estimate is <b>${money(observedMean)}</b>. The estimated standard error from this sample is <b>${money(se)}</b>. You only get one sample, so think carefully about what this estimate can and cannot tell you.`;
+    const sampleBtn = $('sampleBtn');
+    sampleBtn.disabled = true;
+    sampleBtn.textContent = 'Sample taken';
+  }
+
+  function renderSampleGrid(selected){
+    const grid = $('sampleGrid');
+    grid.innerHTML = '';
+    selected.forEach((d,i)=>{
+      const card = document.createElement('div');
+      card.className = 'sample-house';
+      card.style.animationDelay = Math.min(i*25,450)+'ms';
+      card.innerHTML = `<div class="mini-house"></div><div class="income">${money(d.observed)}</div><div class="truth-tag">${d.region}</div>`;
+      grid.appendChild(card);
+    });
+  }
+
+
+
+  async function copySampleCode(){
+    const text = $('rCodeOut').textContent;
+    try{
+      await navigator.clipboard.writeText(text);
+      $('copyStatus').textContent = 'Copied';
+    } catch(err){
+      const range = document.createRange();
+      range.selectNodeContents($('rCodeOut'));
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      $('copyStatus').textContent = 'Select and copy';
+    }
+    setTimeout(()=>{$('copyStatus').textContent='';}, 1800);
+  }
+
+  $('buildBtn').addEventListener('click', buildSurveyor);
+  $('backBtn').addEventListener('click', ()=>{
+    $('surveyScreen').classList.remove('active');
+    $('builderScreen').classList.add('active');
+  });
+  $('sampleBtn').addEventListener('click', sampleHouseholds);
+  $('copySampleBtn').addEventListener('click', copySampleCode);
+
+  generatePopulation();
+  renderStatControls();
+  renderTown([]);
+})();
+</script>
+</body>
+</html>
