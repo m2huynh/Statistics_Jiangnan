@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini Stack Game</title>
+  <style>
+    :root {
+      --bg1: #141e30;
+      --bg2: #243b55;
+      --panel: rgba(255,255,255,.12);
+      --text: #fff;
+      --muted: rgba(255,255,255,.75);
+      --accent: #ffd166;
+      --danger: #ff6b6b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow: hidden;
+      user-select: none;
+    }
+
+    #game {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      cursor: pointer;
+    }
+
+    .hud {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--panel);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      padding: 14px 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .score {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .label {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .instructions {
+      max-width: 300px;
+      text-align: right;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,.28);
+      z-index: 4;
+      padding: 24px;
+    }
+
+    .modal {
+      width: min(440px, 100%);
+      background: rgba(20, 28, 44, .88);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 24px;
+      padding: 26px;
+      text-align: center;
+      box-shadow: 0 28px 70px rgba(0,0,0,.42);
+      backdrop-filter: blur(14px);
+    }
+
+    .modal h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+    }
+
+    .modal p {
+      color: var(--muted);
+      margin: 8px 0;
+      line-height: 1.45;
+    }
+
+    button {
+      margin-top: 18px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #172033;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(0,0,0,.24);
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px); }
+
+    .choice-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0 4px;
+    }
+
+    .choice-btn {
+      margin: 0;
+      border: 2px solid rgba(255,255,255,.28);
+      border-radius: 16px;
+      padding: 16px 12px;
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      box-shadow: none;
+    }
+
+    .choice-btn.selected {
+      border-color: var(--accent);
+      background: rgba(255,209,102,.2);
+      color: var(--accent);
+    }
+
+    #startBtn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .distraction-panel {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(520px, calc(100vw - 36px));
+      min-height: 48px;
+      font-size: 24px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 8px 14px;
+      border: 3px solid #22c55e;
+      border-radius: 16px;
+      background: rgba(0,0,0,.38);
+      color: #42f57b;
+      font-weight: 900;
+      letter-spacing: .02em;
+      box-shadow: 0 18px 42px rgba(0,0,0,.28);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 700px) {
+      .instructions { display: none; }
+      .score { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div class="distraction-panel hidden" id="distractionPanel">小心！干扰消息来了！</div>
+
+  <div class="hud hidden" id="hud">
+    <div class="card">
+      <div class="score" id="score">0</div>
+      <div class="label" id="streak">Perfect streak: 0</div>
+      <div class="label" id="gems">Gems: 0</div>
+    </div>
+    <div class="card instructions">
+      Click, tap, or press Space to place the moving block. Match the block below as closely as possible.
+    </div>
+  </div>
+
+  <div class="overlay" id="startScreen">
+    <div class="modal">
+      <h1>Stack Game</h1>
+      <p>Choose a group, then press Start.</p>
+      <div class="choice-row" aria-label="Choose group">
+        <button class="choice-btn" id="controlBtn" type="button">Control</button>
+        <button class="choice-btn" id="distractionBtn" type="button">Distraction</button>
+      </div>
+      <p id="groupHint">Control is the standard game. Distraction shows a new message after every stack.</p>
+      <button id="startBtn" disabled>Start</button>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="gameOverScreen">
+    <div class="modal">
+      <h1>Well done!</h1>
+      <p id="finalScore">Your score is: 0</p>
+      <button id="restartBtn">Return to beginning</button>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const streakEl = document.getElementById('streak');
+    const gemsEl = document.getElementById('gems');
+    const hud = document.getElementById('hud');
+    const startScreen = document.getElementById('startScreen');
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    const finalScore = document.getElementById('finalScore');
+    const controlBtn = document.getElementById('controlBtn');
+    const distractionBtn = document.getElementById('distractionBtn');
+    const startBtn = document.getElementById('startBtn');
+    const distractionPanel = document.getElementById('distractionPanel');
+
+    const BLOCK_H = 26;
+    const PERFECT_TOLERANCE = 7;
+    const GROW_AFTER_STREAK = 5;
+    const MAX_BLOCK_WIDTH = 230;
+    const BASE_SPEED = 440;
+    const SPEED_UP_EVERY_STACKS = 5;
+    const SPEED_INCREASE_PER_LEVEL = 0.08;
+    const MAX_SPEED = 1400;
+
+    let dpr = window.devicePixelRatio || 1;
+    let w = 0;
+    let h = 0;
+    let blocks = [];
+    let active = null;
+    let cameraY = 0;
+    let targetCameraY = 0;
+    let score = 0;
+    let gems = 0;
+    let perfectStreak = 0;
+    let playing = false;
+    let ended = false;
+    let lastTime = 0;
+    let selectedCondition = null;
+    let unusedDistractions = [];
+
+    const distractionMessages = [
+      "快接电话！你女朋友打来了！",
+      "完了！你忘记写作业了！",
+      "聚会已经开始了，你还在这里叠方块？",
+      "你的外卖到了！骑手正在楼下喊你！",
+      "老师说：这道题考试必考！",
+      "你的小组成员：你那部分做完了吗？",
+      "奶茶第二杯半价！快找个人拼单！",
+      "糟糕！作业截止时间是今晚，不是明晚！",
+      "妈妈：你怎么还不回我消息？",
+      "你的快递被放进了最远的快递柜！",
+      "宿舍群：谁把我的泡面吃了？",
+      "校园网：连接已断开。惊不惊喜？",
+      "手机电量只剩百分之一！充电器呢？",
+      "你刚才是不是忘记点保存了？",
+      "你的闹钟：别玩了！早八要迟到了！",
+      "朋友：出来吃火锅，就差你了！",
+      "有人在群里发红包！再慢就没了！",
+      "你喜欢的人发消息了：在吗？",
+      "老师：接下来随机点名回答问题。",
+      "你的耳机突然大声播放了土味情歌！",
+      "室友：你是不是又拿错我的拖鞋了？",
+      "今天周五？不对，今天才周一！",
+      "你忘了关洗衣机，衣服还在里面！",
+      "朋友：你刚刚发的消息是不是发错群了？",
+      "你的猫：键盘不错，现在归我了。",
+      "食堂最后一份糖醋排骨要被抢走了！",
+      "你订的高铁还有十分钟就开了！",
+      "老师突然站在你身后：好玩吗？",
+      "你的购物车：再不付款就恢复原价了！",
+      "别回头！后面有人在看你的分数！",
+      "你刚才叫外卖，是不是忘记选餐具了？",
+      "群消息九十九条：他们是不是在聊你？",
+      "明天要交报告？你连标题都还没写！",
+      "你的视频会议麦克风好像一直没关！",
+      "奶茶到了，但是吸管不见了！",
+      "朋友：聚会都快结束了，你到哪儿了？"
+    ];
+    const distractionColors = ['#42f57b', '#ffd166', '#ff8fcd', '#6ee7ff', '#ff9478', '#c4a7ff'];
+    const distractionSizes = [20, 24, 28, 32, 38];
+    let distractionStyleTimer = 0;
+
+    function randomizeDistractionStyle() {
+      const colors = distractionColors.filter(color => color !== distractionPanel.dataset.color);
+      const sizes = distractionSizes.filter(size => String(size) !== distractionPanel.dataset.size);
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const size = sizes[Math.floor(Math.random() * sizes.length)];
+      distractionPanel.dataset.color = color;
+      distractionPanel.dataset.size = String(size);
+      distractionPanel.style.color = color;
+      distractionPanel.style.borderColor = color;
+      // Fit the larger styles on narrow phones while retaining obvious variation.
+      distractionPanel.style.fontSize = Math.min(size, Math.max(20, w * 0.075)) + 'px';
+      distractionPanel.style.textShadow = `0 2px 10px ${color}80`;
+      distractionStyleTimer = 1.4 + Math.random() * 1.8;
+    }
+
+    function updateDistraction(dt) {
+      if (!playing || selectedCondition !== 'distraction' || !blocks.length) return;
+      distractionStyleTimer -= dt;
+      if (distractionStyleTimer <= 0) randomizeDistractionStyle();
+
+      // Use the same world-to-screen camera offset as the tower's base.
+      const base = blocks[0];
+      const desiredY = base.y + cameraY + BLOCK_H + 10;
+      // Keep the message visible once the base scrolls below the viewport.
+      const maxY = Math.max(8, h - distractionPanel.offsetHeight - 10);
+      const y = Math.max(8, Math.min(desiredY, maxY));
+      const halfWidth = distractionPanel.offsetWidth / 2;
+      const x = Math.max(halfWidth + 8, Math.min(base.x + base.width / 2, w - halfWidth - 8));
+      distractionPanel.style.left = x + 'px';
+      distractionPanel.style.top = y + 'px';
+    }
+
+    function chooseCondition(condition) {
+      selectedCondition = condition;
+      controlBtn.classList.toggle('selected', condition === 'control');
+      distractionBtn.classList.toggle('selected', condition === 'distraction');
+      startBtn.disabled = false;
+    }
+
+    function shuffleMessages() {
+      unusedDistractions = [...distractionMessages];
+      for (let i = unusedDistractions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [unusedDistractions[i], unusedDistractions[j]] = [unusedDistractions[j], unusedDistractions[i]];
+      }
+    }
+
+    function showNextDistraction() {
+      if (selectedCondition !== 'distraction') return;
+      if (unusedDistractions.length === 0) shuffleMessages();
+      distractionPanel.textContent = unusedDistractions.pop();
+      if (Math.random() < 0.65) randomizeDistractionStyle();
+    }
+
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function blockColor(i) {
+      const hue = (205 + i * 19) % 360;
+      return `hsl(${hue} 76% 58%)`;
+    }
+
+    function resetGame() {
+      score = 0;
+      gems = 0;
+      perfectStreak = 0;
+      ended = false;
+      playing = true;
+      cameraY = 0;
+      targetCameraY = 0;
+      shuffleMessages();
+      hud.classList.remove('hidden');
+
+      if (selectedCondition === 'distraction') {
+        distractionPanel.classList.remove('hidden');
+        showNextDistraction();
+        randomizeDistractionStyle();
+      } else {
+        distractionPanel.classList.add('hidden');
+      }
+
+      const baseWidth = Math.min(MAX_BLOCK_WIDTH, w * 0.58);
+      const baseY = h - (selectedCondition === 'distraction' ? Math.min(200, h * 0.35) : 95);
+      blocks = [{ x: w / 2 - baseWidth / 2, y: baseY, width: baseWidth, color: blockColor(0) }];
+      createActiveBlock();
+      updateHud();
+      updateDistraction(0);
+    }
+
+    function createActiveBlock() {
+      const top = blocks[blocks.length - 1];
+      const width = top.width;
+      const direction = Math.random() > 0.5 ? 1 : -1;
+      const startX = direction === 1 ? -width - 30 : w + 30;
+      const y = top.y - BLOCK_H;
+      const speedLevel = Math.floor(score / SPEED_UP_EVERY_STACKS);
+      const speed = Math.min(MAX_SPEED, BASE_SPEED * (1 + speedLevel * SPEED_INCREASE_PER_LEVEL));
+
+      active = {
+        x: startX,
+        y,
+        width,
+        dir: direction,
+        speed,
+        color: blockColor(blocks.length)
+      };
+
+      targetCameraY = Math.max(0, (blocks.length - 7) * BLOCK_H);
+    }
+
+    function placeBlock() {
+      if (!playing || ended || !active) return;
+
+      const previous = blocks[blocks.length - 1];
+      const left = Math.max(active.x, previous.x);
+      const right = Math.min(active.x + active.width, previous.x + previous.width);
+      let overlap = right - left;
+      const offset = Math.abs(active.x - previous.x);
+      let newX = left;
+
+      if (overlap <= 0) {
+        endGame();
+        return;
+      }
+
+      if (offset <= PERFECT_TOLERANCE) {
+        perfectStreak += 1;
+        newX = previous.x;
+        overlap = previous.width;
+
+        if (perfectStreak >= GROW_AFTER_STREAK) {
+          const growth = Math.min(12, MAX_BLOCK_WIDTH - overlap);
+          overlap += growth;
+          newX -= growth / 2;
+        }
+
+        if (perfectStreak >= 3) gems += 1;
+        flashText('Perfect!');
+      } else {
+        perfectStreak = 0;
+      }
+
+      blocks.push({ x: newX, y: active.y, width: overlap, color: active.color });
+      score += 1;
+      showNextDistraction();
+      updateHud();
+      createActiveBlock();
+    }
+
+    let floatingText = null;
+    function flashText(text) {
+      floatingText = { text, life: 0.75 };
+    }
+
+    function endGame() {
+      playing = false;
+      ended = true;
+      active = null;
+      finalScore.textContent = `Your score is: ${score}`;
+      distractionPanel.classList.add('hidden');
+      hud.classList.add('hidden');
+      gameOverScreen.classList.remove('hidden');
+    }
+
+    function returnToStartScreen() {
+      gameOverScreen.classList.add('hidden');
+      distractionPanel.classList.add('hidden');
+      hud.classList.add('hidden');
+      startScreen.classList.remove('hidden');
+      selectedCondition = null;
+      controlBtn.classList.remove('selected');
+      distractionBtn.classList.remove('selected');
+      startBtn.disabled = true;
+      distractionPanel.textContent = '小心！干扰消息来了！';
+    }
+
+    function updateHud() {
+      scoreEl.textContent = score;
+      streakEl.textContent = `Perfect streak: ${perfectStreak}`;
+      gemsEl.textContent = `Gems: ${gems}`;
+    }
+
+    function drawBlock(b, shadow = true) {
+      const y = b.y + cameraY;
+      const radius = 6;
+      ctx.save();
+      if (shadow) {
+        ctx.shadowColor = 'rgba(0,0,0,.25)';
+        ctx.shadowBlur = 12;
+        ctx.shadowOffsetY = 7;
+      }
+      ctx.fillStyle = b.color;
+      roundRect(ctx, b.x, y, b.width, BLOCK_H, radius);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.16)';
+      roundRect(ctx, b.x + 4, y + 4, Math.max(0, b.width - 8), 6, 3);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function roundRect(ctx, x, y, width, height, radius) {
+      const r = Math.min(radius, width / 2, height / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + width, y, x + width, y + height, r);
+      ctx.arcTo(x + width, y + height, x, y + height, r);
+      ctx.arcTo(x, y + height, x, y, r);
+      ctx.arcTo(x, y, x + width, y, r);
+      ctx.closePath();
+    }
+
+    function drawBackground() {
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(255,255,255,.055)';
+      for (let i = 0; i < 26; i++) {
+        const x = (i * 97 + (performance.now() * 0.012)) % (w + 120) - 60;
+        const y = (i * 151) % h;
+        ctx.beginPath();
+        ctx.arc(x, y, 2 + (i % 4), 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function drawFloatingText(dt) {
+      if (!floatingText) return;
+      floatingText.life -= dt;
+      if (floatingText.life <= 0) {
+        floatingText = null;
+        return;
+      }
+      const alpha = Math.max(0, floatingText.life / 0.75);
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.font = '800 28px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#ffd166';
+      ctx.fillText(floatingText.text, w / 2, h * 0.26 - (1 - alpha) * 35);
+      ctx.restore();
+    }
+
+    function loop(time) {
+      const dt = Math.min(0.033, (time - lastTime) / 1000 || 0);
+      lastTime = time;
+
+      if (playing && active) {
+        active.x += active.dir * active.speed * dt;
+        if (active.dir === 1 && active.x > w + 40) active.x = -active.width - 40;
+        if (active.dir === -1 && active.x + active.width < -40) active.x = w + 40;
+      }
+
+      cameraY += (targetCameraY - cameraY) * 0.1;
+      drawBackground();
+
+      for (const block of blocks) drawBlock(block);
+      if (active) drawBlock(active);
+
+      updateDistraction(dt);
+      drawFloatingText(dt);
+      requestAnimationFrame(loop);
+    }
+
+    function handleAction(e) {
+      if (e) e.preventDefault();
+      if (startScreen && !startScreen.classList.contains('hidden')) return;
+      if (gameOverScreen && !gameOverScreen.classList.contains('hidden')) return;
+      placeBlock();
+    }
+
+    controlBtn.addEventListener('click', () => chooseCondition('control'));
+    distractionBtn.addEventListener('click', () => chooseCondition('distraction'));
+
+    startBtn.addEventListener('click', () => {
+      if (!selectedCondition) return;
+      startScreen.classList.add('hidden');
+      resetGame();
+    });
+
+    document.getElementById('restartBtn').addEventListener('click', returnToStartScreen);
+
+    window.addEventListener('resize', resize);
+    canvas.addEventListener('pointerdown', handleAction);
+    window.addEventListener('keydown', (e) => {
+      if (!startScreen.classList.contains('hidden')) {
+        if (e.key === '1' || e.key.toLowerCase() === 'c') chooseCondition('control');
+        if (e.key === '2' || e.key.toLowerCase() === 'd') chooseCondition('distraction');
+      }
+
+      if (e.code === 'Space' || e.code === 'Enter') {
+        if (!startScreen.classList.contains('hidden')) {
+          if (!selectedCondition) return;
+          startScreen.classList.add('hidden');
+          resetGame();
+        } else if (!gameOverScreen.classList.contains('hidden')) {
+          returnToStartScreen();
+        } else {
+          placeBlock();
+        }
+      }
+    });
+
+    resize();
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>

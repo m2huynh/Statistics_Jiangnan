@@ -1185,3 +1185,151 @@ A better interpretation is:
 
 The difference between these statements may seem subtle, but it is central to careful statistical thinking.
 
+## Workshop Exercises
+
+Suppose a researcher wants to investigate the effect of 'distractions' on performance. We will begin with a short experiment. The teacher will split you into two groups: (1) Control - no distraction and (2) Distraction.
+
+Both groups will perform a similar concentration test (see the app below). Watch the demonstration from the teacher first before you begin.
+
+```{=html}
+<iframe 
+  src="interactive/stack_game_JNU.html"
+  width="100%" 
+  height="500"
+  style="border: none;"
+></iframe>
+```
+
+If you were to have a second (or third, or fourth, etc) attempt how might this bias the results?
+
+::: {.callout-note collapse=true}
+
+### Click to show
+
+**Practice Effects**. Through repeated trials you learn how the test works, i.e. practice effects. Those in the dis tractor group may even learn to ignore the distractions.
+
+:::
+
+Suppose the conducted this test with 100 students, and the results were as follows:
+
+<table style="border-collapse: collapse; text-align: center;">
+  <thead>
+    <tr style="background-color: #243c59; color: white;">
+      <th style="padding: 10px 20px;">Group</th>
+      <th style="padding: 10px 20px;">n</th>
+      <th style="padding: 10px 20px;">Mean</th>
+      <th style="padding: 10px 20px;">SD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px 20px; text-align: left;">Control</td>
+      <td>55</td>
+      <td>24</td>
+      <td>3</td>
+    </tr>
+    <tr style="background-color: #f3f6f9;">
+      <td style="padding: 10px 20px; text-align: left;">Distraction</td>
+      <td>45</td>
+      <td>15</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+1. State the null and alternative hypotheses for this scenario
+2. If the critical t-value = 1.99, determine if there is a significant difference between the control and distraction groups with regards to performance score (let $\alpha=0.05$). Solve using both the critical value method and the confidence interval method.
+
+Note:
+
+$$
+SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}};
+$$
+
+$$
+t = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{SE};
+$$
+
+$$
+CI=(\bar{x}_1 - \bar{x}_2) \pm t^* \times SE
+$$
+
+Now we will use Excel to perform some t-tests.
+
+### Tasks - Two Sample t-test
+
+1. Download the Combined Data (business profits2) - this is the same as the one we used last time but has 1 more variable.
+
+<br><center>
+```{r, echo=FALSE, message=FALSE}
+library(downloadthis)
+download_file(
+  path = "data/Business Profits2.xlsx",
+  button_label = "Combined Data2",
+  button_type = "success"
+)
+```
+</center>
+<br>
+
+2. Follow along with the teacher who will show you how to perform a two-sample t-test with:
+  - outcome: profit, explanatory: has_online_store
+  - outcome: profit, explanatory: received_grant
+  
+3. Now it is your turn, perform a two sample t-test for:
+  - outcome: profit, explanatory: brand_recognition
+  - outcome: profit, explanatory: size
+
+### Tasks - Paired t-test
+
+Suppose a group of 30 low performing students were recruited for a 1 year special training program. These students typically have been disengaged from learning and generally perform poorly on tests and exams.
+
+<center>
+
+```{r}
+#| echo: false
+
+knitr::include_graphics("images/students - class.png")
+
+```
+
+</center>
+
+<br>
+
+The researchers measured all students academic performance across 4 subjects before the special training program started:
+
+- English (Time 0)
+- Mathematics (Time 0)
+- Science (Time 0)
+- Arts (Time 0)
+
+Then each student took a follow up test in these 4 subjects 1 year later (after the special training program finished):
+
+- English (Time 1)
+- Mathematics (Time 1)
+- Science (Time 1)
+- Arts (Time 1)
+
+1. Begin by downloading the data for this scenario:
+
+<br><center>
+```{r, echo=FALSE, message=FALSE}
+library(downloadthis)
+download_file(
+  path = "data/student_class.xlsx",
+  button_label = "student_special_training",
+  button_type = "success"
+)
+```
+</center>
+<br>
+
+2. Follow along with the teacher who will show you how to perform a paired t-test in Excel. Specifically, we will see if English and Math scores have improved for these students after completing this program.
+
+3. Now it's your turn. Perform a paired-test for Science and Arts.
+
+4. Why did we use a paired t-test and not a two-sample t-test here?
+
+5. What recommendations would you make about this special training program?
+
