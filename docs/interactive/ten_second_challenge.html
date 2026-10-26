@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>10-second timing challenge</title>
+<style>
+  :root {
+    --bg: #f7f7fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --good: #047857;
+    --early: #b45309;
+    --late: #b91c1c;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .app {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+
+  h1 {
+    margin: 0 0 6px 0;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    line-height: 1.1;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .target {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-weight: 700;
+    white-space: nowrap;
+    background: #f9fafb;
+  }
+
+  .timer {
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    font-size: clamp(3.2rem, 12vw, 6.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 18px 0 10px 0;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: white;
+    background: var(--accent);
+  }
+
+  button:hover {
+    background: var(--accent-dark);
+  }
+
+  button.secondary {
+    color: var(--text);
+    background: #eef2ff;
+  }
+
+  button.secondary:hover {
+    background: #e0e7ff;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
+  .result {
+    text-align: center;
+    min-height: 38px;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .panel {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    background: #fcfcfd;
+    min-height: 120px;
+  }
+
+  .panel h2 {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.92rem;
+  }
+
+  th, td {
+    border-bottom: 1px solid var(--border);
+    padding: 6px 4px;
+    text-align: right;
+  }
+
+  th:first-child, td:first-child {
+    text-align: left;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-row:last-child {
+    border-bottom: 0;
+  }
+
+  .stat-label {
+    color: var(--muted);
+  }
+
+  .stat-value {
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hint {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .early { color: var(--early); }
+  .late { color: var(--late); }
+  .good { color: var(--good); }
+
+  @media (max-width: 720px) {
+    .top, .grid {
+      grid-template-columns: 1fr;
+    }
+    .target {
+      justify-self: start;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <div class="top">
+        <div>
+          <h1>10-second timing challenge</h1>
+          <p>Try to stop the timer exactly at 10.00 seconds. Your error is observed time minus target time.</p>
+        </div>
+        <div class="target">Target: 10.00s</div>
+      </div>
+
+      <div id="timer" class="timer">00.00</div>
+
+      <div class="controls">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="resetBtn" class="secondary">Reset</button>
+      </div>
+
+      <div id="result" class="result"></div>
+      <div class="hint">Complete several attempts, then compare your mean error and variation.</div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>Attempts</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Attempt</th>
+                <th>Time</th>
+                <th>Error</th>
+              </tr>
+            </thead>
+            <tbody id="attemptBody">
+              <tr><td colspan="3" style="text-align:center;color:#6b7280;">No attempts yet</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h2>Summary</h2>
+          <div class="stat-row">
+            <span class="stat-label">Attempts</span>
+            <span id="nStat" class="stat-value">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Mean time</span>
+            <span id="meanTimeStat" class="stat-value">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Mean error</span>
+            <span id="meanErrorStat" class="stat-value">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Best absolute error</span>
+            <span id="bestErrorStat" class="stat-value">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Standard deviation of times</span>
+            <span id="sdStat" class="stat-value">—</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script>
+  const target = 10.00;
+  let running = false;
+  let startTime = null;
+  let animationId = null;
+  let attempts = [];
+
+  const timerEl = document.getElementById('timer');
+  const startBtn = document.getElementById('startBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const resultEl = document.getElementById('result');
+  const attemptBody = document.getElementById('attemptBody');
+
+  const nStat = document.getElementById('nStat');
+  const meanTimeStat = document.getElementById('meanTimeStat');
+  const meanErrorStat = document.getElementById('meanErrorStat');
+  const bestErrorStat = document.getElementById('bestErrorStat');
+  const sdStat = document.getElementById('sdStat');
+
+  function elapsedSeconds() {
+    return (performance.now() - startTime) / 1000;
+  }
+
+  function formatTime(x) {
+    return x.toFixed(2) + 's';
+  }
+
+  function formatSigned(x) {
+    const sign = x > 0 ? '+' : '';
+    return sign + x.toFixed(2) + 's';
+  }
+
+  function updateTimer() {
+    if (!running) return;
+    timerEl.textContent = elapsedSeconds().toFixed(2).padStart(5, '0');
+    animationId = requestAnimationFrame(updateTimer);
+  }
+
+  function mean(values) {
+    return values.reduce((a, b) => a + b, 0) / values.length;
+  }
+
+  function sampleSd(values) {
+    if (values.length < 2) return null;
+    const m = mean(values);
+    const variance = values.reduce((sum, x) => sum + Math.pow(x - m, 2), 0) / (values.length - 1);
+    return Math.sqrt(variance);
+  }
+
+  function errorClass(error) {
+    if (Math.abs(error) <= 0.05) return 'good';
+    return error < 0 ? 'early' : 'late';
+  }
+
+  function renderAttempts() {
+    if (attempts.length === 0) {
+      attemptBody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:#6b7280;">No attempts yet</td></tr>';
+      return;
+    }
+
+    attemptBody.innerHTML = attempts.map((attempt, index) => {
+      const cls = errorClass(attempt.error);
+      return `<tr>
+        <td>${index + 1}</td>
+        <td>${formatTime(attempt.time)}</td>
+        <td class="${cls}">${formatSigned(attempt.error)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function renderStats() {
+    nStat.textContent = attempts.length;
+
+    if (attempts.length === 0) {
+      meanTimeStat.textContent = '—';
+      meanErrorStat.textContent = '—';
+      bestErrorStat.textContent = '—';
+      sdStat.textContent = '—';
+      return;
+    }
+
+    const times = attempts.map(d => d.time);
+    const errors = attempts.map(d => d.error);
+    const meanTime = mean(times);
+    const meanError = mean(errors);
+    const bestError = Math.min(...errors.map(Math.abs));
+    const sd = sampleSd(times);
+
+    meanTimeStat.textContent = formatTime(meanTime);
+    meanErrorStat.textContent = formatSigned(meanError);
+    meanErrorStat.className = 'stat-value ' + errorClass(meanError);
+    bestErrorStat.textContent = formatTime(bestError);
+    sdStat.textContent = sd === null ? '—' : formatTime(sd);
+  }
+
+  function startTimer() {
+    running = true;
+    startTime = performance.now();
+    resultEl.textContent = '';
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+    timerEl.textContent = '00.00';
+    animationId = requestAnimationFrame(updateTimer);
+  }
+
+  function stopTimer() {
+    if (!running) return;
+    running = false;
+    cancelAnimationFrame(animationId);
+
+    const time = elapsedSeconds();
+    const error = time - target;
+    attempts.push({ time, error });
+
+    timerEl.textContent = time.toFixed(2).padStart(5, '0');
+
+    const cls = errorClass(error);
+    const direction = error < 0 ? 'early' : 'late';
+    const message = Math.abs(error) <= 0.005
+      ? 'Exactly on target!'
+      : `${formatSigned(error)} (${direction})`;
+
+    resultEl.className = 'result ' + cls;
+    resultEl.textContent = message;
+
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+
+    renderAttempts();
+    renderStats();
+  }
+
+  function resetAll() {
+    running = false;
+    cancelAnimationFrame(animationId);
+    startTime = null;
+    attempts = [];
+    timerEl.textContent = '00.00';
+    resultEl.textContent = '';
+    resultEl.className = 'result';
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    renderAttempts();
+    renderStats();
+  }
+
+  startBtn.addEventListener('click', startTimer);
+  stopBtn.addEventListener('click', stopTimer);
+  resetBtn.addEventListener('click', resetAll);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+      event.preventDefault();
+      if (!running) {
+        startTimer();
+      } else {
+        stopTimer();
+      }
+    }
+  });
+</script>
+</body>
+</html>

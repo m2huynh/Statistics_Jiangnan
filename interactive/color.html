@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Colour Match Game</title>
+  <style>
+    :root {
+      --bg: #111827;
+      --panel: #1f2937;
+      --panel2: #273449;
+      --text: #f9fafb;
+      --muted: #cbd5e1;
+      --accent: #facc15;
+      --good: #22c55e;
+      --bad: #fb7185;
+      --line: rgba(255,255,255,.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(250,204,21,.16), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(34,197,94,.15), transparent 26%),
+        linear-gradient(135deg, #0f172a, #111827 45%, #1e293b);
+      overflow-x: hidden;
+      overflow-y: auto;
+      user-select: none;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      background: var(--accent);
+      color: #172033;
+      box-shadow: 0 12px 28px rgba(0,0,0,.28);
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px); }
+
+    .hidden { display: none !important; }
+
+    .wrap {
+      width: 100%;
+      max-width: 100vw;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: clamp(8px, 1.2vw, 12px);
+      padding: clamp(8px, 1.6vw, 16px);
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.72fr);
+      gap: clamp(8px, 1.2vw, 12px);
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .card {
+      background: rgba(31,41,55,.78);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 16px 42px rgba(0,0,0,.26);
+      backdrop-filter: blur(12px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(6px, 1vw, 10px);
+      padding: clamp(8px, 1.2vw, 12px);
+      min-width: 0;
+    }
+
+    .stat {
+      min-width: 0;
+      padding: 7px 8px;
+      background: rgba(255,255,255,.06);
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: clamp(18px, 3vw, 25px);
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .stat-label {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hint {
+      max-width: none;
+      padding: clamp(10px, 1.5vw, 14px);
+      color: var(--muted);
+      line-height: 1.35;
+      font-size: 14px;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: minmax(210px, 32%) minmax(0, 1fr);
+      gap: clamp(8px, 1.3vw, 12px);
+      min-height: 0;
+      min-width: 0;
+    }
+
+    .target-panel {
+      padding: clamp(10px, 1.4vw, 16px);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .target-title {
+      font-size: clamp(16px, 2.1vw, 20px);
+      font-weight: 900;
+      letter-spacing: .01em;
+    }
+
+    .target-swatch {
+      width: 100%;
+      max-height: 42vh;
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      border: 4px solid rgba(255,255,255,.22);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.18), 0 22px 50px rgba(0,0,0,.32);
+    }
+
+    .feedback {
+      min-height: 70px;
+      padding: clamp(10px, 1.3vw, 13px);
+      border-radius: 16px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      line-height: 1.4;
+      font-size: 15px;
+    }
+
+    .feedback strong { color: var(--text); }
+    .feedback.good strong { color: var(--good); }
+    .feedback.bad strong { color: var(--bad); }
+
+    .choices-panel {
+      position: relative;
+      padding: clamp(10px, 1.4vw, 16px);
+      min-height: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+    }
+
+    .choices-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .choices-title {
+      font-size: clamp(16px, 2.1vw, 20px);
+      font-weight: 900;
+    }
+
+    .choices-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-auto-rows: minmax(54px, 1fr);
+      gap: clamp(7px, 1vw, 11px);
+      align-items: center;
+      justify-items: center;
+    }
+
+    .swatch-btn {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      border-radius: clamp(10px, 1.8vw, 18px);
+      border: 3px solid rgba(255,255,255,.22);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.14), 0 10px 24px rgba(0,0,0,.18);
+      cursor: pointer;
+      transition: transform .08s ease, border-color .08s ease, box-shadow .08s ease;
+    }
+
+    .swatch-btn.distractor-sized {
+      outline: 1px solid rgba(255,255,255,.12);
+    }
+
+    .swatch-btn:hover {
+      transform: scale(1.025);
+      border-color: rgba(255,255,255,.65);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.16), 0 16px 32px rgba(0,0,0,.28);
+    }
+
+    .swatch-btn:active { transform: scale(.98); }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(2,6,23,.52);
+      z-index: 20;
+      padding: 24px;
+    }
+
+    .modal {
+      width: min(520px, 100%);
+      padding: 28px;
+      text-align: center;
+      background: rgba(15,23,42,.92);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 28px;
+      box-shadow: 0 28px 80px rgba(0,0,0,.48);
+      backdrop-filter: blur(16px);
+    }
+
+    .modal h1 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      letter-spacing: -.03em;
+    }
+
+    .modal p {
+      color: var(--muted);
+      line-height: 1.45;
+      margin: 9px 0;
+    }
+
+    .choice-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 18px 0 4px;
+    }
+
+    .condition-btn {
+      border-radius: 18px;
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      border: 2px solid rgba(255,255,255,.20);
+      box-shadow: none;
+      padding: 16px 12px;
+    }
+
+    .condition-btn.selected {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(250,204,21,.17);
+    }
+
+    #startBtn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .distractor {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(460px, calc(100% - 48px));
+      height: 120px;
+      overflow: hidden;
+      border: 3px solid #22c55e;
+      border-radius: 18px;
+      background: rgba(2,6,23,.84);
+      color: #4ade80;
+      z-index: 10;
+      box-shadow: 0 20px 44px rgba(0,0,0,.34);
+      pointer-events: none;
+    }
+
+    .distractor-stream {
+      padding: 8px 12px;
+      animation: scroll-up 10s linear infinite;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .distractor-stream div {
+      margin: 0 0 14px;
+      padding: 9px 10px;
+      border-radius: 12px;
+      background: rgba(34,197,94,.12);
+      font-size: 14px;
+    }
+
+    @keyframes scroll-up {
+      from { transform: translateY(110px); }
+      to { transform: translateY(-100%); }
+    }
+
+    @media (max-width: 900px) {
+      .topbar { grid-template-columns: 1fr; }
+      .hint { display: none; }
+      .main { grid-template-columns: minmax(180px, 30%) minmax(0, 1fr); }
+      .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-auto-rows: minmax(50px, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .wrap { overflow-y: auto; height: auto; min-height: 100vh; }
+      .main { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .stat-label { font-size: 10px; }
+      .target-panel { grid-template-rows: auto auto auto; }
+      .target-swatch { aspect-ratio: 2.4 / 1; max-height: 150px; }
+      .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-auto-rows: 58px; }
+      .choices-header { align-items: start; flex-direction: column; }
+      .distractor { position: absolute; width: calc(100% - 36px); left: 50%; top: 50%; margin: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 54px; }
+      .modal { padding: 20px; }
+      .modal h1 { font-size: 30px; }
+      .choice-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" aria-live="polite">
+    <div class="topbar">
+      <div class="stats card">
+        <div class="stat"><div class="stat-value" id="scoreEl">0</div><div class="stat-label">Points</div></div>
+        <div class="stat"><div class="stat-value" id="roundEl">0/20</div><div class="stat-label">Round</div></div>
+        <div class="stat"><div class="stat-value" id="streakEl">0</div><div class="stat-label">Streak</div></div>
+        <div class="stat"><div class="stat-value" id="timeEl">90</div><div class="stat-label">Seconds</div></div>
+      </div>
+      <div class="hint card">
+        Pick the square that matches the target colour. Correct answers gain 1 point, incorrect answers lose 1 point. Your final score also rewards speed.
+      </div>
+    </div>
+
+    <div class="main">
+      <section class="target-panel card">
+        <div class="target-title">Target colour</div>
+        <div id="targetSwatch" class="target-swatch"></div>
+        <div id="feedback" class="feedback">Choose the closest matching square.</div>
+      </section>
+
+      <section class="choices-panel card">
+        <div class="choices-header">
+          <div class="choices-title">Choose a match</div>
+          <div class="choices-subtitle" id="choicesSubtitle">The choices become harder each round.</div>
+        </div>
+        <div id="choiceGrid" class="grid"></div>
+        <div id="distractor" class="distractor hidden">
+          <div id="distractorStream" class="distractor-stream"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="startScreen" class="overlay">
+    <div class="modal">
+      <h1>Colour Match</h1>
+      <p>Choose the square that best matches the target colour.</p>
+      <p>Select a condition, then start the game.</p>
+      <div class="choice-row">
+        <button id="controlBtn" class="condition-btn" type="button">Control</button>
+        <button id="distractionBtn" class="condition-btn" type="button">Distraction</button>
+      </div>
+      <p id="conditionHint">Control uses same-sized options. Distraction uses varying option sizes.</p>
+      <button id="startBtn" disabled>Start game</button>
+    </div>
+  </div>
+
+  <div id="endScreen" class="overlay hidden">
+    <div class="modal">
+      <h1>Finished!</h1>
+      <p id="finalText">Your score was 0.</p>
+      <p id="finalDetails"></p>
+      <button id="restartBtn">Restart</button>
+    </div>
+  </div>
+
+  <script>
+    const targetSwatch = document.getElementById('targetSwatch');
+    const choiceGrid = document.getElementById('choiceGrid');
+    const feedback = document.getElementById('feedback');
+    const choicesSubtitle = document.getElementById('choicesSubtitle');
+    const scoreEl = document.getElementById('scoreEl');
+    const roundEl = document.getElementById('roundEl');
+    const streakEl = document.getElementById('streakEl');
+    const timeEl = document.getElementById('timeEl');
+    const startScreen = document.getElementById('startScreen');
+    const endScreen = document.getElementById('endScreen');
+    const finalText = document.getElementById('finalText');
+    const finalDetails = document.getElementById('finalDetails');
+    const controlBtn = document.getElementById('controlBtn');
+    const distractionBtn = document.getElementById('distractionBtn');
+    const startBtn = document.getElementById('startBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const distractor = document.getElementById('distractor');
+    const distractorStream = document.getElementById('distractorStream');
+
+    const totalRounds = 20;
+    const secondsTotal = 90;
+
+    let condition = null;
+    let target = null;
+    let options = [];
+    let bestIndex = 0;
+    let score = 0;
+    let round = 0;
+    let streak = 0;
+    let totalError = 0;
+    let answered = false;
+    let startedAt = 0;
+    let secondsLeft = secondsTotal;
+    let timer = null;
+
+    const messages = [
+      'New message: are you free tonight?', 'Battery low: 3% remaining', 'Group chat: 17 new messages',
+      'Assignment due soon', 'Someone tagged you in a photo', 'New email from your lecturer',
+      'Calendar reminder: tutorial starts soon', 'Your food delivery is nearby', 'A video starts autoplaying',
+      'Someone is calling you', 'Wi-Fi disconnected', 'Update available now', 'Check Moodle now',
+      'A friend says: guess what happened', 'Your screen time report is ready', 'Trending near you',
+      'A timer starts beeping', 'A loud keyboard nearby', 'Your headphones disconnect', 'Friend asks: want bubble tea?'
+    ];
+
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function clamp(x) { return Math.max(0, Math.min(255, x)); }
+
+    function rgb(c) { return `rgb(${c.r}, ${c.g}, ${c.b})`; }
+
+    function dist(a, b) {
+      return Math.sqrt((a.r-b.r)**2 + (a.g-b.g)**2 + (a.b-b.b)**2);
+    }
+
+    function randomColour() {
+      return { r: randInt(25, 230), g: randInt(25, 230), b: randInt(25, 230) };
+    }
+
+    function nearbyColour(base, spread) {
+      return {
+        r: clamp(base.r + randInt(-spread, spread)),
+        g: clamp(base.g + randInt(-spread, spread)),
+        b: clamp(base.b + randInt(-spread, spread))
+      };
+    }
+
+    function farColour(base, minDistance = 150) {
+      let candidate = randomColour();
+      let tries = 0;
+      while (dist(candidate, base) < minDistance && tries < 200) {
+        candidate = randomColour();
+        tries += 1;
+      }
+      return candidate;
+    }
+
+    function getRoundConfig(roundNumber) {
+      // Difficulty increases every 4 rounds for BOTH conditions.
+      // In the distraction condition, the same option counts are used,
+      // but the answer squares also change size from round to round.
+      if (roundNumber <= 4) {
+        return { total: 4, similar: 1, incorrect: 3, spread: 0, columns: 2, label: 'Rounds 1-4: 4 options. One obvious match and 3 clearly incorrect options.' };
+      }
+      if (roundNumber <= 8) {
+        return { total: 4, similar: 2, incorrect: 2, spread: 18, columns: 2, label: 'Rounds 5-8: 4 options. Two similar options and 2 clearly incorrect options.' };
+      }
+      if (roundNumber <= 12) {
+        return { total: 6, similar: 3, incorrect: 3, spread: 22, columns: 3, label: 'Rounds 9-12: 6 options. Three similar options and 3 clearly incorrect options.' };
+      }
+      if (roundNumber <= 16) {
+        return { total: 8, similar: 4, incorrect: 4, spread: 26, columns: 4, label: 'Rounds 13-16: 8 options. Four similar options and 4 clearly incorrect options.' };
+      }
+      return { total: 10, similar: 5, incorrect: 5, spread: 30, columns: 5, label: 'Rounds 17-20: 10 options. Five similar options and 5 clearly incorrect options.' };
+    }
+
+    function makeRoundOptions(base, config) {
+      const generated = [{ ...base }];
+
+      while (generated.length < config.similar) {
+        generated.push(nearbyColour(base, config.spread));
+      }
+
+      while (generated.length < config.total) {
+        generated.push(farColour(base));
+      }
+
+      return shuffle(generated);
+    }
+
+    function shuffle(arr) {
+      const out = [...arr];
+      for (let i = out.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [out[i], out[j]] = [out[j], out[i]];
+      }
+      return out;
+    }
+
+    function selectCondition(c) {
+      condition = c;
+      controlBtn.classList.toggle('selected', c === 'control');
+      distractionBtn.classList.toggle('selected', c === 'distraction');
+      startBtn.disabled = false;
+    }
+
+    function updateStats() {
+      scoreEl.textContent = score;
+      roundEl.textContent = `${round}/${totalRounds}`;
+      streakEl.textContent = streak;
+      timeEl.textContent = secondsLeft;
+    }
+
+    function setupDistractor() {
+      // No text distractor is shown. The distraction condition now works through
+      // irrelevant visual variation: answer squares change size across rounds.
+      distractor.classList.add('hidden');
+      distractorStream.innerHTML = '';
+    }
+
+    function positionDistractor() {
+      // Kept so existing resize/round-change calls remain harmless.
+      distractor.classList.add('hidden');
+    }
+
+    function startGame() {
+      score = 0;
+      round = 0;
+      streak = 0;
+      totalError = 0;
+      secondsLeft = secondsTotal;
+      startedAt = Date.now();
+      startScreen.classList.add('hidden');
+      endScreen.classList.add('hidden');
+      setupDistractor();
+      updateStats();
+      nextRound();
+      clearInterval(timer);
+      timer = setInterval(() => {
+        secondsLeft -= 1;
+        updateStats();
+        if (secondsLeft <= 0) endGame();
+      }, 1000);
+    }
+
+    function nextRound() {
+      if (round >= totalRounds) {
+        endGame();
+        return;
+      }
+      round += 1;
+      answered = false;
+      feedback.className = 'feedback';
+      feedback.textContent = 'Choose the square that matches the target colour.';
+      target = randomColour();
+      targetSwatch.style.background = rgb(target);
+
+      const config = getRoundConfig(round);
+      options = makeRoundOptions(target, config);
+      bestIndex = options.reduce((best, c, i) => dist(c, target) < dist(options[best], target) ? i : best, 0);
+      choicesSubtitle.textContent = condition === 'distraction'
+        ? `${config.label} The square sizes will also vary.`
+        : config.label;
+      choiceGrid.style.gridTemplateColumns = `repeat(${config.columns}, minmax(70px, 1fr))`;
+      renderChoices();
+      updateStats();
+      positionDistractor();
+    }
+
+    function distractorSizeFor(index, roundNumber) {
+      // The distraction condition adds irrelevant visual variation.
+      // Sizes rotate by round so the same position is not always large or small.
+      const sizes = [100, 82, 62, 92, 72, 55, 88, 68, 96, 60];
+      return sizes[(index * 3 + roundNumber * 2) % sizes.length];
+    }
+
+    function renderChoices() {
+      choiceGrid.innerHTML = '';
+      options.forEach((c, i) => {
+        const btn = document.createElement('div');
+        btn.className = 'swatch-btn';
+        btn.style.background = rgb(c);
+        if (condition === 'distraction') {
+          const size = distractorSizeFor(i, round);
+          btn.classList.add('distractor-sized');
+          btn.style.width = `${size}%`;
+          btn.style.height = `${size}%`;
+        } else {
+          btn.style.width = '100%';
+          btn.style.height = '100%';
+        }
+        btn.setAttribute('role', 'button');
+        btn.setAttribute('tabindex', '0');
+        btn.setAttribute('aria-label', `Colour option ${i + 1}`);
+        btn.addEventListener('click', () => choose(i));
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') choose(i);
+        });
+        choiceGrid.appendChild(btn);
+      });
+    }
+
+    function choose(i) {
+      if (answered) return;
+      answered = true;
+      const error = dist(options[i], target);
+      const bestError = dist(options[bestIndex], target);
+      totalError += error;
+      const chosenBest = i === bestIndex;
+      if (chosenBest) {
+        score += 1;
+        streak += 1;
+      } else {
+        score -= 1;
+        streak = 0;
+      }
+
+      [...choiceGrid.children].forEach((el, idx) => {
+        if (idx === bestIndex) el.style.borderColor = '#22c55e';
+        if (idx === i && idx !== bestIndex) el.style.borderColor = '#fb7185';
+        el.style.opacity = idx === i || idx === bestIndex ? '1' : '.35';
+      });
+
+      feedback.className = `feedback ${chosenBest ? 'good' : 'bad'}`;
+      feedback.innerHTML = chosenBest
+        ? `<strong>Correct!</strong><br>+1 point. Moving to the next colour...`
+        : `<strong>Incorrect.</strong><br>-1 point. The green outline shows the correct match.`;
+      updateStats();
+
+      window.setTimeout(() => {
+        nextRound();
+      }, 550);
+    }
+
+    function endGame() {
+      clearInterval(timer);
+      timer = null;
+      distractor.classList.add('hidden');
+      const attempted = Math.max(1, round - (answered ? 0 : 1));
+      const avgError = totalError / attempted;
+      const timeBonus = Math.max(0, secondsLeft);
+      const finalScore = Math.max(0, score * 100 + timeBonus);
+      finalText.textContent = `Final score: ${finalScore}`;
+      finalDetails.textContent = `Condition: ${condition === 'distraction' ? 'Distraction' : 'Control'}. Points: ${score}. Time bonus: ${timeBonus} seconds. Average colour error: ${avgError.toFixed(1)} across ${attempted} answered rounds.`;
+      endScreen.classList.remove('hidden');
+    }
+
+    function resetToStart() {
+      clearInterval(timer);
+      timer = null;
+      condition = null;
+      controlBtn.classList.remove('selected');
+      distractionBtn.classList.remove('selected');
+      startBtn.disabled = true;
+      distractor.classList.add('hidden');
+      endScreen.classList.add('hidden');
+      startScreen.classList.remove('hidden');
+    }
+
+    controlBtn.addEventListener('click', () => selectCondition('control'));
+    distractionBtn.addEventListener('click', () => selectCondition('distraction'));
+    startBtn.addEventListener('click', startGame);
+    restartBtn.addEventListener('click', resetToStart);
+    window.addEventListener('resize', positionDistractor);
+  </script>
+</body>
+</html>

@@ -1254,6 +1254,82 @@ $$
 CI=(\bar{x}_1 - \bar{x}_2) \pm t^* \times SE
 $$
 
+Here is an additional activity we can complete to remind us about the two-sample t-test:
+
+
+```{=html}
+<iframe 
+  src="interactive/color.html"
+  width="100%" 
+  height="500"
+  style="border: none;"
+></iframe>
+```
+
+Suppose the conducted this test with 100 students, and the results were as follows:
+
+<table style="border-collapse: collapse; text-align: center;">
+  <thead>
+    <tr style="background-color: #243c59; color: white;">
+      <th style="padding: 10px 20px;">Group</th>
+      <th style="padding: 10px 20px;">n</th>
+      <th style="padding: 10px 20px;">Mean</th>
+      <th style="padding: 10px 20px;">SD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px 20px; text-align: left;">Control</td>
+      <td>50</td>
+      <td>195</td>
+      <td>25</td>
+    </tr>
+    <tr style="background-color: #f3f6f9;">
+      <td style="padding: 10px 20px; text-align: left;">Distraction</td>
+      <td>50</td>
+      <td>188</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+
+1. State the null and alternative hypotheses for this scenario
+2. If the critical t-value = 1.99, determine if there is a significant difference between the control and distraction groups with regards to performance score (let $\alpha=0.05$). Solve using both the critical value method and the confidence interval method.
+
+Note:
+
+$$
+SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}};
+$$
+
+$$
+t = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{SE};
+$$
+
+$$
+CI=(\bar{x}_1 - \bar{x}_2) \pm t^* \times SE
+$$
+
+::: {.callout-note collapse=true}
+
+### Show solution
+
+Hypotheses:
+$$H_{0}:\mu_C-\mu_D=0; H_1:\mu_C-\mu_D\ne0$$
+$$SE=\sqrt{\frac{25^2}{50}+\frac{30^2}{50}}=\sqrt{15.5+18}=5.523$$
+
+$$t=\frac{195-7}{5.523}=1.268$$
+
+Since 1.268 is not larger than 1.99, we fail to reject H0 and conclude that there is no significant difference between the control and distraction groups for color score.
+
+$$95\%CI=(195-188) \pm 1.99 \times 5.523=[-3.96,17.96]$$
+
+Since the 95% Ci captures 0, we fail to reject H0 and conclude that there is no significant difference between the control and distraction groups for color score.
+
+:::
+
+
+
 Now we will use Excel to perform some t-tests.
 
 ### Tasks - Two Sample t-test
@@ -1332,4 +1408,17 @@ download_file(
 4. Why did we use a paired t-test and not a two-sample t-test here?
 
 5. What recommendations would you make about this special training program?
+
+Here is an extra task if we have time:
+
+
+```{=html}
+<iframe 
+  src="interactive/ten_second_challenge.html"
+  width="100%" 
+  height="500"
+  style="border: none;"
+></iframe>
+```
+
 
