@@ -820,11 +820,11 @@ Create the following models in Excel and interpret the coefficients:
 1. Create confusion martrixes for each of your models
 2. Calculate the Sensitivity for each of your models
 
-$$\text{Sensitivity} = \frac{TP}{TP+FN}}$$
+$$\text{Sensitivity} = \frac{TP}{TP+FN}$$
 
 3. Calculate the Specificity for each of your models
 
-$$\text{Specificity} = \frac{TN}{TN+FN}}$$
+$$\text{Specificity} = \frac{TN}{TN+FN}$$
 
 4. Calculate the Overall Accuracy for each of your models
 
