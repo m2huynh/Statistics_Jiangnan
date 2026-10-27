@@ -790,3 +790,60 @@ Note here that because we are dealing with small samples, some of the error valu
 So how do we decide which classification threshold to use? Rather than relying on a single default value, one approach is to examine how model performance changes across all possible thresholds. This idea underpins tools such as the Receiver Operating Characteristic (ROC) curve, which plots the trade-off between the true positive rate and the false positive rate as the threshold varies. The Area Under the Curve (AUC) then provides a single summary of how well the model separates the two classes, independent of any specific threshold choice.
 
 While ROC curves and AUC are widely used in practice, particularly in machine learning and diagnostic testing, they go beyond the scope of this unit. Instead, our focus in this unit is on understanding the conceptual trade-off between false positives and false negatives and choosing thresholds based on the context and consequences of decision-making. This perspective equips us to make informed, transparent classification choices, even without advanced optimisation tools.
+
+## Workshop Exercises
+
+In this we will begin by creating a categorical variable (call it `profit2`) for profit:
+
+- If `profit > 0`: we will code as 1 (meaning "profit")
+- If `profit <= 0`: we will code as 0 (meaning "no profit")
+
+We will not construct linear probability models (LPMs) to predict `profit2`.
+
+### Task 1
+
+Create the following models in Excel and interpret the coefficients:
+
+1. outcome = `profit2`, explanatory = `years`
+2. outcome = `profit2`, explanatory = `employees`
+3. outcome = `profit2`, explanatory = `has_online_store`
+4. outcome = `profit2`, explanatory = `received_grant`
+
+### Task 2
+
+1. Create a new column in your sheets to that looks at the predictions for each model.
+2. Create a column called 'threshold' that is currently 0.50 for all cases
+3. Using your predictions and threshold column, classify the predictions (in a new column) as either `profit` or `no profit`.
+
+### Task 3
+
+1. Create confusion martrixes for each of your models
+2. Calculate the Sensitivity for each of your models
+
+$$\text{Sensitivity} = \frac{TP}{TP+FN}}$$
+
+3. Calculate the Specificity for each of your models
+
+$$\text{Specificity} = \frac{TN}{TN+FN}}$$
+
+4. Calculate the Overall Accuracy for each of your models
+
+$$\text{Overall Accuracy} = \frac{TN+TP}{TN+FN+FP+TP}$$
+
+2. What happens to these results if you chnage the threshold? Try with a few different values (e.g. 0.4, 0.6, etc).
+
+### Task 4
+
+Now try to build a LPM with multiple predictors, up to 4. Your choice for which ones you choose.
+
+Go through a complete the similar steps we did before:
+
+  - Make predictions
+  - Classify the predictions based on a threshold
+  - Create confusion matrixes
+  - Compute Sensitivity, Specificity and Overall Accuracy
+
+
+
+
+
