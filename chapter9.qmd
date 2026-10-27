@@ -1490,3 +1490,143 @@ data.frame(
 ```
 
 The interaction term (Group × Time) is statistically significant (p = .0038), providing strong evidence that the effect of Time on Aggression differs between the two groups. In contrast, the main effect of Time alone (p = 0.1718) is not statistically significant, highlighting that the relationship between Time and Aggression cannot be adequately described by a single common slope. Together, these results confirm that Group moderates the relationship between Time and Aggression, which is precisely what we observed visually in the scatterplots.
+
+## Workshop Exercises
+
+We will continue using the same dataset as last time. You can re-download it here if you did not save the file from last time:
+
+<center>
+```{r}
+library(downloadthis)
+download_file(
+  path = "Data/Business Profits2.xlsx",
+  button_label = "Business Profits",
+  button_type = 'success'
+)
+```
+</center>
+
+<br>
+
+In this workshop, we focus on the following numerical variables:
+
+- `profit` (outcome)
+- `years`
+- `operating_costs`
+- `marketing_spend`
+- `employees`
+
+as well as the following categorical variables:
+
+- `has_online_store`
+- `recieved_grant`
+- `brand_recognition`
+
+
+### Task 1
+
+#### **Simple Linear Regression (numeric predictor)**
+
+Build 3 simple linear regression models using the Data Analysis Toolpak in Excel.
+
+- Model 1: y = profit, x = years
+- Model 2: y = profit, x = operating costs
+- Model 3: y = profit, x = employees
+
+#### **Questions**
+
+1. What is the estimated slope coefficient for each model?
+2. What is the p-value associated with the slope for each model?
+3. At the 5% significance level, are the models statistically significant?
+
+
+### Task 2
+
+#### **Simple Linear Regression (binary predictor)**
+
+1. Create new columns that converts the `No` and `Yes` to `0` and `1` for `has_online_store` and `received_grant``.
+2. Create a new column that converts the `Low` and `High` to `0` and `1` for `brand_recognition`.
+3. Using the ToolPak, construct three simple linear regression models:
+
+- Model 4: y = profit, x = has_online_store
+- Model 5: y = profit, x = received_grant
+- Model 6: y = profit, x = brand_recognition
+
+#### **Questions**
+
+Interpret the slope and associated p-value for each model (use alpha = 0.05).
+
+### Task 3
+
+#### **Simple Linear Regression (categorical predictor)**
+
+The variable industry_sector has 3 levels:
+
+- Hospitality
+- Retail
+- Tech
+
+Create 3 new columns that dummy codes industry_sector into
+
+- Hospitality: 0 (No) and 1 (Yes)
+- Retail: 0 (No) and 1 (Yes)
+- Tech: 0 (No) and 1 (Yes)
+
+Create a simple linear regression model (Model 7) to predict profit with Retail and Tech as the predictors.
+
+
+#### **Questions**
+
+Interpret the slope and associated p-value for each effect in this model (use alpha = 0.05).
+
+### Task 4
+
+#### **Multiple Regression**
+
+Create a multiple Regression model (Model 8) that predicts `profit` with the following as predictors:
+
+- `years`
+- `operating_cost`
+- `brand_recognition`
+
+#### **Questions**
+
+1. Interpret the slope and associated p-value for each effect in this model (use alpha = 0.05).
+2. Using this model, what is the predicted profit for a business that has been running for 5 years, spent $250,000 last year in operating costs (remember this is 250 because of the way the variable is quantified), and has High brand recognition?
+
+### Task 5
+
+#### **Multiple Regression with an Interaction Term**
+
+1. Create a new column to represent the interaction between `year` and `brand_recognition`. 
+
+    - The interaction is the product of the two variables
+    - Make sure you are using the brand_recognition that is 0s and 1s
+
+2. Fit a new model (Model 9) that predicts `profit` with the following as predictors:
+
+- `years`
+- `brand_recognition`
+- `years x brand_recognition`
+
+#### **Questions**
+
+1. What is the regression equation for this scenario?
+2. Using your regression equation, derive separate models for High and Low brand recognition
+
+***
+
+### Task 6
+
+#### **Model Fit**
+
+Create a table that reports the R Squared and Adjusted R Squared for each of your models (Model 1 to Model 9).
+
+<center>![](images/Week 05/06.png){width=50%}</center>
+
+#### **Questions**
+
+1. Which models would be use R Squared and which models would we use Adjusted R Squared?
+2. If we had to choose only 1 model, which model would that be, and why?
+
+***
