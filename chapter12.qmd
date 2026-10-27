@@ -13,6 +13,16 @@ library(gt)
 library(flextable)
 ```
 
+::: callout-note
+### Note
+
+If you have not yet installed R and RStudio, you can still follow along with the activities by using this link:
+
+<https://m2huynh.github.io/Monash-JNU/>
+
+This is not the same thing as using R/RStudio however, so try and install these.
+:::
+
 ## Some background information
 
 ### What is R?
