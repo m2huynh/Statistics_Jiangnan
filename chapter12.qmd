@@ -1062,3 +1062,299 @@ This chapter introduced R and RStudio as powerful, modern tools for data analysi
 You were introduced to core programming ideas in R, including functions, arguments, errors, and the use of the native pipe operator to write clear, step-by-step code. You learned how to enter data manually, create vectors and data frames, inspect data structures, and apply functions to variables using both base R and tidyverse tools such as dplyr. The chapter also covered creating new variables, summarising data, and working with categorical variables (factors), including contingency tables and probabilities.
 
 Finally, you explored data visualisation with ggplot2, learning how to build scatterplots, boxplots, and bar charts using the grammar of graphics. The chapter concluded by introducing good data-management practices, including working directories, RStudio Projects, and importing data from external files such as CSVs. Together, these skills form the foundation for reproducible, efficient, and transparent data analysis in the chapters that follow.
+
+## Workshop Exercises
+
+We will now practice using R to complete all of the tasks we have done in Excel:
+
+- Generate descriptive statistics
+- Create 2x2 tables for categorical data
+- Make graphs / plots
+- Perform t-tests
+- Perform correlation tests
+- Fit linear regression models to our data
+- Fit linear probability models to our data and make classifications
+- Compute Sensitivity, Specificity and Overall Accuracy
+- Fit logistic regression models to our data 
+
+### 1. Create New Project
+
+An R "Project" is similar to a "folder". You want to have different projects for different tasks. For example, you might have: 
+
+- one project for your work, 
+- another for your personal finances, and 
+- another for a research project. 
+
+Each project has its own working directory, which is the folder where all the files related to that project are stored.
+
+We will create a project called "Statistics" and save it to the desktop (or anywhere you will remember).
+
+- File
+- New Project
+
+### 2. Download data
+
+Download the data file and place it into the same project folder.
+
+<center>
+```{r}
+library(downloadthis)
+download_file(
+  path = "Data/Business Profits2.xlsx",
+  button_label = "Business Profits",
+  button_type = 'success'
+)
+```
+</center>
+
+<br>
+
+### 3. Create Script file
+
+Create a script file:
+
+- File
+- New File
+- R Script
+
+Then save it:
+
+- File
+- Save As
+- Provide a name, just make sure the script file is in the same project folder.
+
+### 4. Install and load libraries
+
+We will use the `tidyverse` library to help us perform tasks more quickly. If you don't already have `tidyverse` install it first.
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages("tidyverse")
+```
+
+Then call the two libraries below. The `readxl` library will help us to read Excel files.
+
+```{r, echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(readxl)
+library(tidyverse)
+```
+
+
+### 5. Read the data
+
+Next we will read our data. This is like opening up an Excel File.
+
+```{r, echo=TRUE, eval=FALSE}
+read_excel("Business Profits2.xlsx")
+```
+
+In R, we can assign the data a name so that it is easier to use for analysis (e.g. we don't have to keep using `read_excel`).
+
+```{r, echo=TRUE}
+data <- read_excel("Business Profits2.xlsx")
+```
+
+### 6. Inspect the data
+
+We can use the `str()` function to inspect the structure of our data:
+
+```{r}
+str(data)
+```
+
+### 7. Descriptive Statistics
+
+Let's now generate some descriptive statistics for `profit`:
+
+```{r, echo=TRUE}
+data |> 
+  summarise(
+    mean = mean(profit),
+    sd = sd(profit),
+    median = median(profit),
+    min = min(profit),
+    max = max(profit),
+    range = max - min
+  )
+```
+
+There are other packages that allow you to get descriptive statistics very quickly.
+
+```{r, echo=TRUE, eval=FALSE}
+install.packages('summarytools')
+```
+
+```{r, message=FALSE, warning=FALSE}
+library(summarytools)
+```
+
+```{r}
+descr(data)
+```
+
+### 8. Plots
+
+Let's make several plots to visualise our data.
+
+```{r echo=TRUE}
+data |> 
+  ggplot(aes(x = profit)) +
+  geom_histogram()
+```
+
+```{r echo=TRUE}
+data |> 
+  ggplot(aes(x = has_online_store, y = profit)) +
+  geom_boxplot()
+```
+
+```{r, echo=TRUE}
+data |> 
+  ggplot(aes(x = operating_cost, y = profit)) +
+  geom_point()
+```
+
+We can also create new variables that can be used for our plots. Make sure to assign this data to a name (it can be the same name or a new name).
+
+```{r, echo=TRUE}
+data2 <- data |> 
+  mutate(profit2 = ifelse(profit < 0, "no profit", "profit"))
+```
+
+```{r, echo=TRUE}
+data2 |> 
+  ggplot(aes(x = profit2)) +
+  geom_bar()
+```
+
+```{r, echo=TRUE}
+data2 |> 
+  ggplot(aes(x = profit2, fill = has_online_store)) +
+  geom_bar()
+```
+
+```{r, echo=TRUE}
+data2 |> 
+  ggplot(aes(x = profit2, fill = has_online_store)) +
+  geom_bar() +
+  facet_wrap(~brand_recognition)
+```
+
+### 9. Tables for categorical data
+
+You can use the base R `table()` function to make tables, e.g.
+
+```{r, echo=TRUE}
+table(
+  data2$profit2,
+  data2$has_online_store
+)
+```
+
+However, the table() function has limitations. It'll be better to use a package, so as `janitor`. From this package we can use the `tabyl` function.
+
+```{r, echo=TRUE, eval=FALSE}
+install.packages('janitor')
+```
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
+library(janitor)
+```
+
+```{r}
+data2 |> 
+  tabyl(var1 = profit2, 
+      var2 = has_online_store)
+```
+
+### 10. t-tests
+
+```{r, echo=TRUE, eval=FALSE}
+install.packages("infer")
+```
+
+```{r, echo = TRUE, message = FALSE, warning=FALSE}
+library(infer)
+```
+
+```{r, echo=TRUE}
+t_test(
+  x = data2,
+  formula = profit ~ has_online_store,
+  alternative = "two-sided",
+  conf_level = 0.95
+)
+```
+
+
+```{r, echo=TRUE}
+t_test(
+  x = data2,
+  formula = profit ~ size,
+  alternative = "two-sided",
+  conf_level = 0.95
+)
+```
+
+### 11. Simple Linear Regression
+
+We can use the `lm()` function to fit linear regression models.
+
+```{r, echo=TRUE}
+model1 <- lm(
+  formula = profit ~ operating_cost,
+  data = data2
+)
+```
+
+Then we can use the `summary()` function to inspect the model:
+
+```{r, echo=TRUE}
+summary(model1)
+```
+
+Try fitting and inspecting models for:
+
+- years
+- marketing_spend
+- complaint_rate
+- has_online_store
+- uses_ai
+- size
+
+### 12. Multiple Linear Regression
+
+We can use the same `lm()` function for multiple regression. We just 'add' more terms to the model:
+
+```{r, echo=TRUE}
+model8 <- lm(
+  formula = profit ~ operating_cost + years + has_online_store,
+  data = data2
+)
+```
+
+```{r, echo=TRUE}
+summary(model8)
+```
+
+Try fitting 4 - 5 different models yourself, each with only 3 explanatory variables. Call them model9, model10, etc. Once you have finished fitting each one, decide on the 'best' model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
