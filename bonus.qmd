@@ -1281,4 +1281,213 @@ Age and tenure were generated independently of the underlying purchasing profile
 
 These are alternatives to investigate when the business question or geometry calls for them, not an automatic ranking of methods. Different methods answer somewhat different notions of what a group should be.
 
+## A demonstration
+
+### Unsupervised Learning
+
+<center>
+```{r}
+library(downloadthis)
+download_file(
+  path = "customer_purchases.csv",
+  button_label = "data",
+  button_type = "success"
+)
+```
+</center>
+
+```{r, eval=FALSE}
+# Load libraries
+library(cluster)
+library(factoextra)
+library(tidyverse)
+```
+
+```{r, eval=FALSE}
+# Make custer_id the row column
+df <- column_to_rownames(df, var = "customer_id")
+```
+
+```{r, eval=FALSE}
+# Scale the data
+df_scaled <- scale(df)
+```
+
+```{r, eval=FALSE}
+# Estimating number of clusters
+fviz_nbclust(df_scaled, kmeans, method = "silhouette")
+fviz_nbclust(df_scaled, kmeans, method = "wss")
+fviz_nbclust(df_scaled, kmeans, method = "gap_stat")
+```
+
+```{r, eval=FALSE}
+# Run kmeans
+set.seed(12345)
+result <- kmeans(df_scaled, 4)
+```
+
+```{r, eval=FALSE}
+# Add cluster to the df
+df_scaled2 <- cbind(df_scaled, 
+      cluster = result$cluster)
+
+# Check cluster size
+result$size
+```
+
+```{r, eval=FALSE}
+# Visualising
+fviz_cluster(
+  result,
+  data = df_scaled,
+  ellipse.type = "euclid",
+  star.plot = TRUE
+)
+
+# About the clusters
+aggregate(
+  df,
+  by=list(cluster=result$cluster),
+  mean
+) |> 
+  as_tibble()
+```
+
+### Supervised Learning
+
+```{r, eval=FALSE}
+library(DALEX)
+fifa <- fifa
+
+# Keep only some variables
+df_c <- fifa |> select(-c(1,3,4,5:8))
+```
+
+```{r, eval=FALSE}
+# load additional libraries
+library(randomForest)
+library(e1071)
+library(gbm)
+```
+
+```{r, eval=FALSE}
+# inspect the data
+str(df_c)
+
+# Create 4 models (1 lm and 3 ML models)
+lm_model <- lm(overall ~ ., data = df_c)
+rf_model <- randomForest(overall ~ ., data = df_c)
+svm_model <- svm(overall ~ ., data = df_c)
+gbm_model <- gbm(overall ~ ., data = df_c)
+```
+
+```{r, eval=FALSE}
+# Create explainers
+library(DALEX)
+lm_explainer <- explain(
+  model = lm_model,
+  data = df_c,
+  y = df_c$overall,
+  label = 'lm model'
+)
+
+rf_explainer <- explain(
+  model = rf_model,
+  data = df_c,
+  y = df_c$overall,
+  label = 'rf model'
+)
+
+svm_explainer <- explain(
+  model = svm_model,
+  data = df_c,
+  y = df_c$overall,
+  label = 'lm model'
+)
+
+gbm_explainer <- explain(
+  model = gbm_model,
+  data = df_c,
+  y = df_c$overall,
+  label = 'lm model'
+)
+```
+
+```{r, eval=FALSE}
+# Check model performance
+rbind(
+  model_performance(lm_explainer)$measures |> as_tibble(),
+  model_performance(rf_explainer)$measures |> as_tibble(),
+  model_performance(svm_explainer)$measures |> as_tibble(),
+  model_performance(gbm_explainer)$measures |> as_tibble()
+)
+```
+
+```{r, eval=FALSE}
+# Check variable importance
+model_parts(explainer = lm_explainer) |> plot()
+model_parts(explainer = rf_explainer) |> plot()
+model_parts(explainer = svm_explainer) |> plot()
+model_parts(explainer = gbm_explainer) |> plot()
+
+# Explore mode profiles
+model_profile(explainer = lm_explainer, variables = c("movement_reactions","skill_ball_control")) |> plot()
+model_profile(explainer = rf_explainer, variables = c("movement_reactions","skill_ball_control")) |> plot()
+model_profile(explainer = svm_explainer, variables = c("movement_reactions","skill_ball_control")) |> plot()
+model_profile(explainer = gbm_explainer, variables = c("movement_reactions","skill_ball_control")) |> plot()
+```
+
+```{r, eval=FALSE}
+# Break down plots
+## Choose a player and see how does the models compare
+df_c
+Ronaldo <- df_c["Cristiano Ronaldo", ]
+
+lm_bd_Ronaldo <- 
+  predict_parts(
+    explainer = lm_explainer,
+    new_observation = Ronaldo,
+    type = 'break_down'
+  )
+
+rf_bd_Ronaldo <- 
+  predict_parts(
+    explainer = rf_explainer,
+    new_observation = Ronaldo,
+    type = 'break_down'
+  )
+
+svm_bd_Ronaldo <- 
+  predict_parts(
+    explainer = svm_explainer,
+    new_observation = Ronaldo,
+    type = 'break_down'
+  )
+
+gbm_bd_Ronaldo <- 
+  predict_parts(
+    explainer = gbm_explainer,
+    new_observation = Ronaldo,
+    type = 'break_down'
+  )
+
+library(patchwork)
+plot(lm_bd_Ronaldo) + plot(rf_bd_Ronaldo) +
+  plot(svm_bd_Ronaldo) + plot(gbm_bd_Ronaldo)
+```
+
+```{r, eval=FALSE}
+# Compare players
+Messi <- df_c["L. Messi", ]
+
+rf_bd_Messi <- 
+  predict_parts(
+    explainer = rf_explainer,
+    new_observation = Messi,
+    type = 'break_down'
+  )
+
+plot(rf_bd_Ronaldo) + plot(rf_bd_Messi) 
+```
+
 
