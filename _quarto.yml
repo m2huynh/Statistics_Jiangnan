@@ -34,6 +34,7 @@ book:
     - chapter11.qmd
     - chapter12.qmd
     - GroupProject.qmd
+    - bonus.qmd
     
 format:
   html:

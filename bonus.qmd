@@ -1,0 +1,1284 @@
+---
+title: "Introduction to machine learning and customer segmentation"
+lang: en-AU
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: false
+    code-tools: true
+    embed-resources: true
+    fig-width: 8
+    fig-height: 5
+execute:
+  echo: true
+  warning: true
+  message: false
+  error: false
+  cache: false
+editor: source
+---
+
+```{r}
+#| label: setup
+#| include: false
+options(width = 95, digits = 4)
+knitr::opts_chunk$set(fig.align = "center", out.width = "90%")
+has_cluster <- requireNamespace("cluster", quietly = TRUE)
+```
+
+## Purpose and learning outcomes
+
+You have already studied descriptive statistics, sampling distributions, t-tests, multiple regression, the linear probability model and logistic regression. Several of those models are also used in machine learning. We begin by making that connection explicit, then introduce a different learning task: discovering groups when no outcome label is supplied.
+
+The lecture has two connected parts. **Part I** introduces machine learning, supervised learning, loss functions and evaluation on new observations. **Part II** introduces unsupervised learning and develops k-means clustering through the customer data for **Everyday & Co.**, the fictional retailer in `customer_purchases.csv`.
+
+A retailer can have thousands of customers with different buying habits. Some buy frequently and look for discounts, others choose premium products, and others shop mainly online or have not purchased recently. Customer segmentation groups similar purchasing profiles so managers can investigate more relevant business actions.
+
+
+## Part I: what is machine learning?
+
+### Learning a rule from data
+
+**Machine learning** studies methods that use data to fit patterns or decision rules for a specified task. The task might be predicting a sales value, estimating a default probability, identifying unusual transactions or organising customers into groups. What is learned depends on the task, model and performance criterion.
+
+A learning procedure receives data and produces a fitted model. We write a predictive model as $\widehat{f}$: the hat indicates that the function has been estimated from data. We can then use it to produce a prediction for a new feature vector:
+
+$$
+\widehat{y}_{\text{new}}=\widehat{f}(\mathbf{x}_{\text{new}}).
+$$
+
+The model need not be a neural network or a highly complex algorithm. An ordinary fitted regression line is a learned rule. The analyst specifies its form, such as linearity, while the data determine its fitted coefficients. More flexible methods allow a larger set of possible rules, but this does not automatically make them better.
+
+An ML system also does not learn without human choices. We choose what to measure, how to represent it, what objective to optimise, which observations to learn from and how to evaluate success.
+
+### A vocabulary bridge from statistics
+
+| Familiar statistical term | Common ML term | Meaning |
+|---|---|---|
+| Case, subject or data row | Observation or example | One unit being analysed |
+| Explanatory variable or predictor | Feature or input | Information used by a model |
+| Response or dependent variable | Target, outcome or label | The quantity supplied for supervised learning |
+| Estimation or model fitting | Training | Learning model parameters from observations |
+| Estimated regression equation | Fitted model or prediction rule | The learned relationship |
+| Residual or prediction discrepancy | Error contributing to a loss | Difference assessed by a performance criterion |
+| Prediction on additional observations | Out-of-sample prediction | Applying the fitted rule beyond the fitting data |
+
+For $n$ observations and $p$ features, write the feature matrix as:
+
+$$
+\mathbf{X}=
+\begin{pmatrix}
+x_{11}&x_{12}&\cdots&x_{1p}\\
+x_{21}&x_{22}&\cdots&x_{2p}\\
+\vdots&\vdots&\ddots&\vdots\\
+x_{n1}&x_{n2}&\cdots&x_{np}
+\end{pmatrix}.
+$$
+
+Each row describes an observation; each column contains one feature. In supervised learning we also have outcomes $y_1,\ldots,y_n$. A **label** can be a category or an observed numerical outcome; the word is often used particularly for classification.
+
+### The main learning settings
+
+| Setting | Data supplied for the task | What is learned? | Retail example |
+|---|---|---|---|
+| Supervised learning | Features and observed outcomes | A rule linking inputs to an outcome | Predict next month's spending or campaign response |
+| Unsupervised learning | Features without a target label for the task | Structure in the feature distribution | Group customers with similar purchasing patterns |
+| Reinforcement learning | Actions, feedback and a sequence of rewards | A policy for choosing actions over time | Learn a sequential decision policy in a suitably designed environment |
+
+This lecture concentrates on the first two. Other settings include semi-supervised learning, which combines labelled and unlabelled examples, and self-supervised learning, which constructs training targets from the data themselves. They are useful extensions, but are not prerequisites for understanding regression or k-means.
+
+## Supervised learning: much of this is already familiar
+
+### What supplies the supervision?
+
+The supervised training data consist of input-output pairs:
+
+$$
+\mathcal{D}_{\text{train}}
+=\{(\mathbf{x}_i,y_i):i=1,\ldots,n_{\text{train}}\}.
+$$
+
+The outcome supplies a reference against which the fitted prediction can be compared. For a retailer, each training row could contain past purchasing features and the customer's subsequently observed spending. For a university example, inputs could be attendance and study time, with an observed examination mark as the target.
+
+**Supervised does not mean a teacher manually guides every calculation.** It means observed outcomes guide the fitting criterion. The target is known for the historical training examples, even though it is unknown for a later case when we make its prediction.
+
+### Connecting the material already covered
+
+| Earlier topic | Connection to machine learning | Why? |
+|---|---|---|
+| Descriptive statistics | Foundation for exploration and preparation | Summarises distributions, unusual values and data quality |
+| Sampling distributions | Foundation for uncertainty and repeated-sample reasoning | Helps distinguish stable evidence from sample-specific variation |
+| T-tests | Statistical inference; not usually described as a predictive ML method | Tests hypotheses about population quantities |
+| Multiple linear regression | A supervised regression method | Uses observed numerical outcomes to fit coefficients |
+| Linear probability model | A supervised model for a binary outcome | Uses observed 0/1 outcomes to estimate a linear prediction |
+| Logistic regression | A supervised probability model used for classification | Uses observed class outcomes to fit probabilities |
+
+**A substantial part of our modelling work has therefore already involved supervised learning methods.** The regression models learned coefficients from inputs paired with observed outcomes. We may previously have emphasised coefficients, standard errors and hypothesis tests; we can now use the same methods with a stronger emphasis on predictions for new observations.
+
+The qualification matters: not every statistical activity is called supervised machine learning. Describing a sample or carrying out a t-test is better presented as statistical groundwork, rather than relabelling the entire course as machine learning.
+
+### Regression: a numerical target
+
+In supervised **regression**, the target is numerical, such as sales, spending or marks. A multiple linear regression model is:
+
+$$
+Y_i=\beta_0+\sum_{j=1}^{p}\beta_jx_{ij}+\varepsilon_i,
+\qquad
+\widehat{Y}_i=\widehat{\beta}_0+\sum_{j=1}^{p}\widehat{\beta}_jx_{ij}.
+$$
+
+Ordinary least squares learns coefficients by minimising squared discrepancies from the observed outcomes:
+
+$$
+\widehat{\boldsymbol{\beta}}
+\in\operatorname*{arg\,min}_{\boldsymbol{\beta}}
+\sum_{i=1}^{n_{\text{train}}}
+\left(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij}\right)^2.
+$$
+
+The expression $\operatorname*{arg\,min}$ means “the value or values of the argument that make the objective as small as possible”. The target $y_i$ appears directly in this criterion, which is why fitting this model is supervised. Under appropriate conditions, squared-error prediction aims to estimate the conditional mean $E[Y\mid\mathbf{X}=\mathbf{x}]$.
+
+### Binary outcomes: the linear probability model
+
+For an outcome coded 0 or 1, the conditional mean equals the probability of outcome 1:
+
+$$
+E[Y\mid\mathbf{X}=\mathbf{x}]
+=P(Y=1\mid\mathbf{X}=\mathbf{x}).
+$$
+
+The linear probability model uses a linear expression to approximate this probability. It is fitted from labelled binary outcomes, so it is supervised. Its simplicity is useful, but predictions can fall below 0 or exceed 1, and the conditional variance is generally not constant. These limitations affect how we use and interpret the model; they do not change its learning setting.
+
+### Logistic regression: a probability and a classification decision
+
+Logistic regression models a probability with a linear predictor passed through the logistic function:
+
+$$
+\eta_i=\beta_0+\sum_{j=1}^{p}\beta_jx_{ij},
+\qquad
+\pi_i=P(Y_i=1\mid\mathbf{x}_i)
+=\frac{1}{1+\exp(-\eta_i)}.
+$$
+
+Equivalently, it models the log odds as a linear function of the inputs:
+
+$$
+\log\left(\frac{\pi_i}{1-\pi_i}\right)
+=\beta_0+\sum_{j=1}^{p}\beta_jx_{ij}.
+$$
+
+With observed outcomes $y_i\in\{0,1\}$, the usual maximum-likelihood fit minimises the negative Bernoulli log-likelihood, also called binary log loss:
+
+$$
+\widehat{\boldsymbol{\beta}}
+\in\operatorname*{arg\,min}_{\boldsymbol{\beta}}
+\left[-\sum_{i=1}^{n_{\text{train}}}
+\left\{y_i\log(\pi_i)+(1-y_i)\log(1-\pi_i)\right\}\right].
+$$
+
+The probabilities depend on the coefficient vector. Assigning very low probability to the observed outcome is heavily penalised. Again, the observed outcome directs learning. In a completely separable sample, an ordinary unpenalised logistic fit may not have finite maximum-likelihood coefficients, which is one reason to check fitting diagnostics.
+
+To turn probabilities into class predictions, choose a threshold $t$:
+
+$$
+\widehat{y}_i=
+\begin{cases}
+1,&\widehat{\pi}_i\ge t,\\
+0,&\widehat{\pi}_i<t.
+\end{cases}
+$$
+
+The often-used threshold of 0.5 is not automatically appropriate. For example, the cost of missing a default can differ from the cost of incorrectly flagging a reliable borrower. Probability estimation and the business decision based on the probability are related but distinct tasks.
+
+The name **logistic regression** can be confusing: it is widely used for supervised classification because its outcome is categorical, even though it models a probability through a regression-style predictor.
+
+## A general framework: models, loss and learning
+
+### Model parameters and hyperparameters
+
+Write a model as $f_{\boldsymbol{\theta}}$, where $\boldsymbol{\theta}$ denotes parameters learned during fitting. In a linear model these are the coefficients. A **model class** is the collection of functions allowed by our modelling choice.
+
+A **hyperparameter** is a setting chosen outside the ordinary parameter-fitting step. Examples include polynomial degree, a regularisation strength, the maximum depth of a decision tree, or the requested number of k-means groups. We may select hyperparameters using validation data; “chosen outside fitting” does not mean they can never be chosen using data.
+
+| Choice | Role |
+|---|---|
+| Linear regression coefficients | Learned parameters |
+| Whether to include squared predictor terms | Model specification |
+| Ridge penalty strength | Hyperparameter |
+| Requested number of clusters, $K$ | Hyperparameter |
+| K-means centroids | Learned parameters |
+| Random seed | Reproducibility setting, not an estimate of the relationship |
+
+### A loss function states what counts as an error
+
+A loss function $L(y,\widehat{y})$ assigns a numerical cost to a prediction and its observed outcome. The fitting criterion often averages this cost over the training examples:
+
+$$
+\widehat{R}_{\text{train}}(f)
+=\frac{1}{n_{\text{train}}}\sum_{i=1}^{n_{\text{train}}}
+L\{y_i,f(\mathbf{x}_i)\}.
+$$
+
+This is **empirical risk**: average observed loss on a finite sample. Different loss functions emphasise different mistakes.
+
+| Criterion | Formula for one observation | Useful interpretation |
+|---|---|---|
+| Squared error | $(y-\widehat{y})^2$ | Large numerical misses receive extra weight |
+| Absolute error | $\lvert y-\widehat{y}\rvert$ | Numerical miss size on the outcome's scale |
+| Classification error | $\mathbb{1}(y\ne\widehat{y})$ | Whether the predicted class is wrong |
+| Binary log loss | $-[y\log\widehat{\pi}+(1-y)\log(1-\widehat{\pi})]$ | Quality of the predicted probability of the observed class |
+
+Here $\mathbb{1}(\cdot)$ equals 1 when its condition holds and 0 otherwise. A model's training loss and the metric used to evaluate it need not be identical, but both should be stated clearly.
+
+Many methods can be expressed as **regularised empirical risk minimisation**:
+
+$$
+\widehat{\boldsymbol{\theta}}
+\in\operatorname*{arg\,min}_{\boldsymbol{\theta}}
+\left[
+\frac{1}{n_{\text{train}}}\sum_{i=1}^{n_{\text{train}}}
+L\{y_i,f_{\boldsymbol{\theta}}(\mathbf{x}_i)\}
++\lambda\,\Omega(\boldsymbol{\theta})
+\right].
+$$
+
+The penalty $\Omega$ discourages selected forms of complexity, while $\lambda\ge0$ controls its strength. For example, ridge regression penalises the sum of squared slope coefficients. The intercept is commonly left unpenalised. We introduce this idea to show a common structure across methods, not because regularisation is required for our clustering practical.
+
+### Inference, prediction and causation
+
+| Emphasis | Main question | Typical evidence |
+|---|---|---|
+| Statistical inference | What relationship or population quantity do these data support, under stated assumptions? | Estimates, uncertainty intervals and tests |
+| Prediction | How well does the rule perform on new relevant observations? | Held-out predictive losses and relevant performance measures |
+| Causal inference | What would change if we intervened? | An identification strategy, suitable design and assumptions |
+
+These are overlapping purposes. Statistical modelling includes prediction, and ML methods can be used within inferential or causal analyses. A model's predictive success alone does not identify the effect of an intervention.
+
+For example, customers receiving promotions may have different spending from those who did not receive them. A good prediction based on promotion history does not establish how much an additional promotion would cause a customer to spend. Similarly, a small coefficient p-value does not by itself establish strong out-of-sample prediction.
+
+## Generalisation, overfitting and evaluation
+
+### The target is performance on relevant new observations
+
+**Generalisation** is a fitted model's ability to perform well on observations beyond those used to fit or select it. An ideal predictive objective is expected loss on a new draw from the intended population:
+
+$$
+R(\widehat{f})
+=E_{(\mathbf{X}_{\text{new}},Y_{\text{new}})}
+\left[L\{Y_{\text{new}},\widehat{f}(\mathbf{X}_{\text{new}})\}\right].
+$$
+
+For a fitted model, this expectation is over future or otherwise relevant new observations. We usually cannot calculate it exactly because the population distribution is unknown. An appropriate test sample estimates it.
+
+Training performance is optimistic for this purpose because the model has already been fitted to those examples. A rule that memorises the training outcomes can perform perfectly on them and poorly on new cases.
+
+### Underfitting, overfitting and the bias-variance idea
+
+**Underfitting** occurs when the model is too restrictive to capture important structure. **Overfitting** occurs when it captures sample-specific detail that fails to generalise, including noise. More flexibility usually permits lower best-achievable training loss, but does not guarantee lower future loss.
+
+For squared-error prediction, a common theoretical decomposition at a fixed feature vector is:
+
+$$
+E_{\mathcal{D},Y}\left[(Y-\widehat{f}_{\mathcal{D}}(\mathbf{x}))^2\mid\mathbf{X}=\mathbf{x}\right]
+=\operatorname{Bias}(\mathbf{x})^2
++\operatorname{Var}_{\mathcal{D}}\{\widehat{f}_{\mathcal{D}}(\mathbf{x})\}
++\sigma^2(\mathbf{x}).
+$$
+
+Here $f_0(\mathbf{x})=E[Y\mid\mathbf{X}=\mathbf{x}]$, bias is $E_{\mathcal{D}}[\widehat{f}_{\mathcal{D}}(\mathbf{x})]-f_0(\mathbf{x})$, and $\sigma^2(\mathbf{x})=\operatorname{Var}(Y\mid\mathbf{X}=\mathbf{x})$. The decomposition assumes a fresh test outcome independent of the training sample conditional on the features and finite second moments.
+
+Bias concerns systematic discrepancy from the conditional mean; variance concerns how predictions change across training samples; the remaining term is outcome variation not predictable from these features. Flexible methods often reduce approximation bias while increasing sample sensitivity. This is a useful framework, not a promise that every model comparison follows a simple pattern or that test-error curves must have a particular shape.
+
+### Training, validation and test data
+
+| Subset | Purpose | What must it avoid? |
+|---|---|---|
+| Training | Fit coefficients or other learned parameters | Using information unavailable at prediction time |
+| Validation | Compare model choices and tune hyperparameters | Being treated as an unbiased final assessment after extensive tuning |
+| Test | Assess the selected workflow on held-out observations | Influencing model or feature selection |
+
+A typical workflow is: define the task, split appropriately, learn preprocessing and parameters on training data, compare choices using validation or cross-validation, refit the chosen workflow on the development data, and assess it once on the reserved test set.
+
+There is no universal best split percentage. Dataset size, dependence and intended use matter. For forecasting future outcomes, split in time so later outcomes are not used to predict the past. With repeated records per customer, keep related records together where appropriate to avoid information passing between training and evaluation.
+
+### Cross-validation
+
+Cross-validation reuses the development data to compare models while keeping each evaluated observation out of the corresponding fitting step. Divide development observations into $V$ folds. For each candidate setting, fit on $V-1$ folds and evaluate on the remaining fold, then repeat until every fold has been held out.
+
+For folds $I_1,\ldots,I_V$, a pooled cross-validation score is:
+
+$$
+\operatorname{CV}(h)
+=\frac{1}{n_{\text{dev}}}\sum_{v=1}^{V}\sum_{i\in I_v}
+L\{y_i,\widehat{f}_{h}^{(-v)}(\mathbf{x}_i)\}.
+$$
+
+The setting $h$ is a candidate hyperparameter or model specification, and $\widehat{f}_{h}^{(-v)}$ is fitted without fold $v$. Select a candidate using these scores, then refit it on the development data. Keep the final test set separate. Once many candidates have been compared, the best cross-validation score can itself be optimistic; it is a selection tool, not automatically an unbiased final estimate.
+
+The folds must also respect the intended prediction setting. Ordinary random folds are unsuitable when they leak future information or split strongly related observations in a way that would not occur in use.
+
+### Data leakage includes preprocessing
+
+**Data leakage** occurs when information enters model development that would not legitimately be available in the intended prediction setting. Examples include using future purchases to predict an earlier decision, selecting features using all outcomes before splitting, or calculating transformations from the reserved test data.
+
+If standardisation, imputation or feature selection is part of a supervised pipeline, learn it from the training subset within each validation fold. Apply the learned transformation to that fold's held-out observations. After choosing the workflow, learn it again on the full development data and apply it to the test data.
+
+Later we standardise the complete 600-customer file for an **exploratory segmentation of those customers**. We are not claiming that its in-sample WCSS or silhouette is a held-out estimate of future predictive accuracy. If we assess future assignments or stability, the distinction between fitting and evaluation matters again.
+
+### Choose evaluation measures for the decision
+
+For regression, two common held-out measures are:
+
+$$
+\operatorname{RMSE}
+=\sqrt{\frac{1}{m}\sum_{i=1}^{m}(y_i-\widehat{y}_i)^2},
+\qquad
+\operatorname{MAE}
+=\frac{1}{m}\sum_{i=1}^{m}|y_i-\widehat{y}_i|.
+$$
+
+Here $m$ is the number of evaluated observations. Both are expressed in the outcome's units; RMSE gives large misses more influence.
+
+For classification, accuracy is the proportion correctly classified, but an all-negative rule can achieve 95% accuracy when only 5% of customers respond. Examine the confusion matrix and decision costs, and use probability metrics when probabilities matter. **Precision** is the fraction of predicted positives that are actually positive; **recall** is the fraction of actual positives detected. Check calibration when interpreting probabilities: among cases assigned a probability near 0.7, is the event rate close to 70%?
+
+Always compare with a sensible baseline, such as a training-mean predictor for regression or a simple prevalence-based probability for a binary target. A complex model should earn its additional complexity through useful performance.
+
+## A short R illustration: familiar regression, new evaluation workflow
+
+This self-contained demonstration uses **separately simulated data**, not additional columns in the customer file. We simulate a numerical outcome with a curved relationship, compare polynomial regressions using five-fold cross-validation on development data, and assess the selected model on a held-out test set. Its purpose is to connect familiar regression fitting with ML evaluation; it does not manufacture a supervised outcome for our customer segmentation dataset.
+
+```{r}
+#| label: supervised-demo-data
+set.seed(9026)
+prediction_demo <- data.frame(x = runif(150, -1, 1))
+prediction_demo$y <- 60 + 12 * prediction_demo$x -
+                     10 * prediction_demo$x^2 + rnorm(150, sd = 4)
+development_rows <- sample(seq_len(nrow(prediction_demo)), 100)
+development <- prediction_demo[development_rows, ]
+test_data <- prediction_demo[-development_rows, ]
+
+# Every degree is written literally into its formula so later predictions
+# use the fitted specification rather than a changing loop variable.
+degrees <- 1:8
+model_formulas <- lapply(degrees, function(d) {
+  as.formula(paste0("y ~ poly(x, degree = ", d, ", raw = TRUE)"))
+})
+fold_id <- sample(rep(1:5, length.out = nrow(development)))
+cv_mse <- training_mse <- numeric(length(degrees))
+for (j in seq_along(degrees)) {
+  held_out_predictions <- numeric(nrow(development))
+  for (v in 1:5) {
+    fold_fit <- lm(model_formulas[[j]], data = development[fold_id != v, ])
+    held_out_predictions[fold_id == v] <-
+      predict(fold_fit, newdata = development[fold_id == v, ])
+  }
+  cv_mse[j] <- mean((development$y - held_out_predictions)^2)
+  full_fit <- lm(model_formulas[[j]], data = development)
+  training_mse[j] <- mean(residuals(full_fit)^2)
+}
+chosen_degree <- degrees[which.min(cv_mse)]
+knitr::kable(data.frame(degree = degrees, training_MSE = training_mse,
+                        cross_validation_MSE = cv_mse), digits = 2,
+             caption = "Compare models without looking at the test outcomes")
+```
+
+```{r}
+#| label: fig-supervised-complexity
+#| fig-cap: "Training loss and cross-validation loss serve different purposes."
+matplot(degrees, cbind(training_mse, cv_mse), type = "b", pch = c(16, 17),
+        lty = c(1, 2), col = c("#0072B2", "#D55E00"),
+        xlab = "Polynomial degree", ylab = "Mean squared error",
+        main = "Flexibility and validation performance")
+legend("topleft", legend = c("Training", "Five-fold cross-validation"),
+       col = c("#0072B2", "#D55E00"), pch = c(16, 17), lty = c(1, 2), bty = "n")
+```
+
+```{r}
+#| label: supervised-demo-test
+selected_model <- lm(model_formulas[[which.min(cv_mse)]], data = development)
+test_predictions <- predict(selected_model, newdata = test_data)
+test_rmse <- sqrt(mean((test_data$y - test_predictions)^2))
+baseline_rmse <- sqrt(mean((test_data$y - mean(development$y))^2))
+knitr::kable(data.frame(
+  selected_polynomial_degree = chosen_degree,
+  selected_model_test_RMSE = test_rmse,
+  training_mean_baseline_test_RMSE = baseline_rmse
+), digits = 2, caption = "Final assessment after choosing the specification")
+```
+
+The true simulated mean is quadratic, but finite-sample cross-validation need not choose exactly degree 2 in every sample. The important workflow is that the test outcomes did not choose the degree. If we repeatedly change the model after examining this test result, that dataset starts acting as validation data and we need another way to estimate final performance honestly.
+
+## Part II: unsupervised learning
+
+### What changes when no target is supplied?
+
+For an unsupervised task, our input is:
+
+$$
+\mathcal{D}_{\text{unsup}}
+=\{\mathbf{x}_i:i=1,\ldots,n\}.
+$$
+
+There is no accompanying target label for the pattern we seek. This does not mean the dataset cannot contain quantities such as spending. A quantity's role depends on the question: future spending can be a supervised target, while past spending can be a feature used for unsupervised grouping.
+
+Typical unsupervised tasks include **clustering** to construct groups, **dimensionality reduction** to represent variation with fewer coordinates, and **density or anomaly analysis** to characterise common and unusual observations. Different methods learn different structures and use different objectives; there is no single unsupervised loss function shared by all methods.
+
+| Question | Learning task | What outcome is supplied? |
+|---|---|---|
+| What will this customer spend next month? | Supervised regression | Historical next-month spending |
+| Will this customer respond to a campaign? | Supervised classification | Historical response/nonresponse |
+| Which customers have similar purchasing profiles? | Unsupervised clustering | No existing segment outcome |
+| Can six purchasing measures be summarised in fewer coordinates? | Unsupervised dimensionality reduction | No target outcome |
+
+Our customer file contains past purchasing characteristics but **no observed future spending, campaign response or approved segment label for fitting**. It is ready for the exploratory clustering task, not a complete labelled dataset for those supervised questions. Additional outcomes and a suitable time-aligned design would be needed for a genuine supervised customer prediction exercise.
+
+### Classification and clustering both produce labels, but learn differently
+
+A classifier learns a relationship to supplied outcome classes, such as observed default versus nondefault. A clustering algorithm constructs groups from a chosen representation of the observations. Names such as “frequent value shoppers” are interpretations added after the grouping, rather than targets supplied during fitting.
+
+After fitting clusters, we can assign a later customer to a nearest-centroid segment. This is the application of an unsupervised segmentation rule. It does not make the original discovery process supervised, because no known segment labels directed that fitting.
+
+### How do we evaluate an unsupervised result?
+
+Without labelled outcomes for the clustering task, we cannot ordinarily report classification accuracy against known true customer types. Instead we assess geometric cohesion and separation, sensitivity to modelling choices, stability under appropriate resampling, interpretability and business usefulness.
+
+An unsupervised method still **learns from data**. In k-means, both centroids and memberships are estimated; the objective measures how close customers are to their assigned centres. There is no $y_i$ term guiding those assignments. That contrast with regression's outcome-based loss is the mathematical bridge to the next sections.
+
+### The retail decision we will investigate
+
+We will group customers by purchasing frequency, basket size, recency, discounted-product spending, channel and premium preference. Then we will ask whether those profiles support different marketing actions. A later experiment could test those actions, and a later supervised model could predict response if suitable labelled outcomes become available.
+
+For now, we move from **learning an outcome prediction from labelled examples** to **learning a useful grouping from customer characteristics**.
+
+## The business case and dataset
+
+### Everyday & Co.
+
+Everyday & Co. sells standard and premium home and lifestyle products through stores and a website. Management wants to understand customers' purchasing patterns before deciding how to allocate marketing effort.
+
+The dataset contains **600 synthetic customers**, with one row per customer and a common 12-month observation window ending **30 September 2026**. Every included customer has been registered for at least 12 months and placed at least one order during the window. Currency is AUD; spending excludes delivery and taxes. Returns and missing data are omitted for teaching simplicity.
+
+This population definition matters. Our results describe customers who purchased during the window. They do not describe never-purchasers or customers who were inactive throughout it.
+
+### Data dictionary
+
+| Variable | Meaning | Role in this lecture |
+|---|---|---|
+| `customer_id` | Unique anonymous customer identifier | Join and reporting key only |
+| `age` | Age in completed years | Optional descriptive profiling |
+| `tenure_months` | Completed months since registration | Optional descriptive profiling |
+| `orders_12m` | Number of orders in the window | Clustering feature: frequency |
+| `avg_order_value` | Average order value in AUD | Clustering feature: basket size |
+| `days_since_last_order` | Days from latest order to window end | Clustering feature: recency |
+| `discount_spend_pct` | Percentage of spending on discounted products | Clustering feature: discount purchasing |
+| `online_spend_pct` | Percentage of spending through the website | Clustering feature: channel |
+| `premium_spend_pct` | Percentage of spending on premium products | Clustering feature: product preference |
+| `total_spend_12m` | Orders multiplied by average order value | Derived variable for profiling |
+
+A value of 70 in a percentage field means 70%, not 0.70. The three percentage variables describe **overlapping dimensions**: a premium product can be bought online at a discount. They do not sum to 100.
+
+Frequency, recency and total spending are often summarised as **RFM**: recency, frequency and monetary value. Our model uses frequency, recency and basket size, together with three purchasing shares, to capture a broader behavioural picture.
+
+### Import and validate
+
+```{r}
+#| label: import-data
+data_file <- "customer_purchases.csv"
+if (!file.exists(data_file)) {
+  stop("Place customer_purchases.csv in the same folder as this .qmd file.")
+}
+customers <- read.csv(data_file, stringsAsFactors = FALSE)
+
+features <- c(
+  "orders_12m", "avg_order_value", "days_since_last_order",
+  "discount_spend_pct", "online_spend_pct", "premium_spend_pct"
+)
+required <- c("customer_id", "age", "tenure_months", features, "total_spend_12m")
+stopifnot(all(required %in% names(customers)))
+stopifnot(nrow(customers) == 600L,
+          !anyDuplicated(customers$customer_id),
+          !anyNA(customers[required]))
+stopifnot(all(vapply(customers[features], is.numeric, logical(1))))
+stopifnot(all(vapply(customers[features], function(v) all(is.finite(v)), logical(1))))
+stopifnot(all(customers$orders_12m >= 1),
+          all(customers$avg_order_value > 0),
+          all(customers$days_since_last_order >= 0),
+          all(customers$tenure_months >= 12))
+pct_features <- c("discount_spend_pct", "online_spend_pct", "premium_spend_pct")
+stopifnot(all(vapply(customers[pct_features],
+                    function(v) all(v >= 0 & v <= 100), logical(1))))
+stopifnot(all(abs(customers$total_spend_12m -
+                 round(customers$orders_12m * customers$avg_order_value, 2)) < 0.011))
+knitr::kable(head(customers, 6), caption = "The first six customers")
+```
+
+The first customer, C0001, made 14 orders with an average order value of AUD 92.13. The latest order was six days before the window ended. These observations describe behaviour, but they do not yet tell us which customers are similar across all six features.
+
+### Explore before clustering
+
+```{r}
+#| label: feature-summary
+x <- customers[features]
+summary_table <- data.frame(
+  feature = features,
+  mean = vapply(x, mean, numeric(1)),
+  sd = vapply(x, sd, numeric(1)),
+  minimum = vapply(x, min, numeric(1)),
+  median = vapply(x, median, numeric(1)),
+  maximum = vapply(x, max, numeric(1)),
+  row.names = NULL
+)
+knitr::kable(summary_table, digits = 2,
+             caption = "Feature distributions in original units")
+```
+
+```{r}
+#| label: fig-distributions
+#| fig-cap: "Inspect skewness and possible extreme values before defining distances."
+#| fig-height: 6
+old_par <- par(mfrow = c(2, 3), mar = c(4, 4, 3, 1))
+for (feature in features) {
+  hist(x[[feature]], main = feature, xlab = "Observed value",
+       col = "#80B1D3", border = "white", breaks = 20)
+}
+par(old_par)
+```
+
+Ask whether extreme values are errors, plausible customers or unusual cases requiring separate treatment. Removing a valuable customer simply because they spend more than others can undermine the business purpose. For real data, also check duplicated customer records, inconsistent observation windows and changing definitions of an order.
+
+## Defining similarity with distance
+
+### Represent a customer as a vector
+
+Let $n$ be the number of customers and $p$ the number of features. Here, $n=600$ and $p=6$. Customer $i$ is represented by:
+
+$$
+\mathbf{x}_i = (x_{i1}, x_{i2}, \ldots, x_{ip})^\top.
+$$
+
+For C0001, the vector in the chosen feature order is:
+
+$$
+\mathbf{x}_{\text{C0001}}
+= (14,\;92.13,\;6,\;59.1,\;57.5,\;14.7)^\top.
+$$
+
+These coordinates mix order counts, dollars, days and percentages. A distance calculation treats them as numerical coordinates, so we must consider their scales before using them together.
+
+### Euclidean distance
+
+Euclidean distance between two customers is the straight-line distance in feature space:
+
+$$
+d(\mathbf{x}_i,\mathbf{x}_\ell)
+= \sqrt{\sum_{j=1}^{p}(x_{ij}-x_{\ell j})^2}.
+$$
+
+With two features this is Pythagoras' theorem. With six, the same calculation extends to six coordinates. A smaller distance means greater similarity **under this feature representation**.
+
+K-means minimises **squared Euclidean distance** to cluster centres:
+
+$$
+d^2(\mathbf{x}_i,\boldsymbol{\mu}_k)
+=\sum_{j=1}^{p}(x_{ij}-\mu_{kj})^2.
+$$
+
+Squaring makes large coordinate differences contribute strongly. For a fixed customer and a fixed set of centres, using distance or squared distance gives the same nearest centre, because taking a square root preserves ordering. The squared form is important for the optimisation objective and the use of arithmetic means.
+
+### A calculation using two real rows
+
+For illustration, use only order frequency and basket size. C0001 has $(14,92.13)$ and C0002 has $(8,108.98)$. Their raw squared distance is:
+
+$$
+d^2=(14-8)^2+(92.13-108.98)^2
+=36+283.9225=319.9225.
+$$
+
+Their distance is approximately 17.89 in this mixed coordinate system. The AUD difference contributes much more than the order-count difference. If we express dollars as cents, the basket-size contribution becomes 10,000 times larger, despite no change in purchasing behaviour.
+
+```{r}
+#| label: distance-example
+two_features <- c("orders_12m", "avg_order_value")
+example_rows <- match(c("C0001", "C0002"), customers$customer_id)
+raw_difference <- as.numeric(unlist(customers[example_rows[1], two_features])) -
+                  as.numeric(unlist(customers[example_rows[2], two_features]))
+knitr::kable(data.frame(
+  feature = two_features,
+  difference = raw_difference,
+  squared_contribution = raw_difference^2
+), digits = 4)
+sqrt(sum(raw_difference^2))
+```
+
+## Why standardisation matters
+
+### Z-scores
+
+We will standardise each feature by subtracting its sample mean and dividing by its sample standard deviation:
+
+$$
+z_{ij}=\frac{x_{ij}-\bar{x}_j}{s_j},
+\qquad
+\bar{x}_j=\frac{1}{n}\sum_{i=1}^{n}x_{ij},
+\qquad
+s_j=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{ij}-\bar{x}_j)^2}.
+$$
+
+A z-score of 1 means one sample standard deviation above the feature mean; a score of -1 means one standard deviation below it. Negative z-scores are entirely acceptable, including for variables whose original values cannot be negative.
+
+With the usual centring and scaling settings, R's [`scale()`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/scale.html) performs this transformation column by column and stores the means and scale factors as attributes.
+
+```{r}
+#| label: standardise
+stopifnot(all(vapply(x, sd, numeric(1)) > 0))
+x_scaled <- scale(x)
+training_means <- attr(x_scaled, "scaled:center")
+training_sds <- attr(x_scaled, "scaled:scale")
+
+knitr::kable(data.frame(
+  feature = features,
+  mean_after_scaling = colMeans(x_scaled),
+  sd_after_scaling = apply(x_scaled, 2, sd)
+), digits = 4, caption = "Check the standardisation")
+```
+
+```{r}
+#| label: scaled-distance-example
+scaled_difference <- x_scaled[example_rows[1], two_features] -
+                     x_scaled[example_rows[2], two_features]
+knitr::kable(data.frame(
+  feature = two_features,
+  raw_squared_contribution = raw_difference^2,
+  scaled_squared_contribution = as.numeric(scaled_difference^2)
+), digits = 4, caption = "How scaling changes the definition of similarity")
+```
+
+### Standardisation is also a weighting decision
+
+The squared distance after standardisation can be written as:
+
+$$
+d^2(\mathbf{z}_i,\mathbf{z}_\ell)
+=\sum_{j=1}^{p}\frac{(x_{ij}-x_{\ell j})^2}{s_j^2}.
+$$
+
+Each feature has unit sample variance, so its original units no longer determine its scale. This does **not** guarantee equal influence on every assignment. Correlated features can repeatedly represent the same aspect of behaviour. Features with noisy measurements can also receive substantial weight.
+
+We therefore exclude `total_spend_12m` from the core model. It is exactly frequency multiplied by average basket value in this dataset. Including all three would give extra representation to spending-related behaviour. Similarly, including both online and in-store percentage would duplicate a dimension because one is 100 minus the other.
+
+We also exclude the identifier and leave age and tenure for later profiling. The business question concerns purchasing patterns; numeric storage alone does not make a column an appropriate feature.
+
+## The mathematical objective of k-means
+
+### A partition and its centroids
+
+Suppose we want $K$ clusters. Let $C_1,\ldots,C_K$ be nonempty sets of customer indices. Every customer belongs to exactly one set. Thus:
+
+$$
+\bigcup_{k=1}^{K}C_k=\{1,\ldots,n\},
+\qquad C_k\cap C_\ell=\varnothing\quad\text{for }k\ne\ell.
+$$
+
+The **centroid** of cluster $k$ is the vector of feature means for its members. Using the standardised features:
+
+$$
+\boldsymbol{\mu}_k
+=\frac{1}{n_k}\sum_{i\in C_k}\mathbf{z}_i,
+\qquad n_k=|C_k|.
+$$
+
+There is one mean for each feature. A centroid is an average profile, not necessarily an actual customer. Its order-frequency coordinate can be fractional even though individual customers have integer order counts.
+
+### Within-cluster sum of squares
+
+The within-cluster sum of squares for cluster $k$ is:
+
+$$
+W_k=\sum_{i\in C_k}\|\mathbf{z}_i-\boldsymbol{\mu}_k\|^2
+=\sum_{i\in C_k}\sum_{j=1}^{p}(z_{ij}-\mu_{kj})^2.
+$$
+
+Summing over clusters gives the **total within-cluster sum of squares**, also called WCSS or inertia:
+
+$$
+W(C_1,\ldots,C_K)
+=\sum_{k=1}^{K}W_k.
+$$
+
+K-means seeks the partition and centroids that minimise this objective:
+
+$$
+\min_{C_1,\ldots,C_K,\;\boldsymbol{\mu}_1,\ldots,\boldsymbol{\mu}_K}
+\sum_{k=1}^{K}\sum_{i\in C_k}
+\|\mathbf{z}_i-\boldsymbol{\mu}_k\|^2.
+$$
+
+The constraint is that the sets form a partition into $K$ nonempty groups. A smaller WCSS, for the **same dataset, features, preprocessing and $K$**, means a more compact solution under this objective. It does not directly measure campaign profit or causal impact.
+
+### Why the centre is a mean
+
+For a fixed group and one coordinate, let the proposed centre be $m$. The squared-error objective is:
+
+$$
+f(m)=\sum_{i\in C_k}(z_{ij}-m)^2.
+$$
+
+Differentiate and set the derivative to zero:
+
+$$
+\frac{df}{dm}
+=-2\sum_{i\in C_k}(z_{ij}-m)=0
+\quad\Longrightarrow\quad
+m=\frac{1}{n_k}\sum_{i\in C_k}z_{ij}.
+$$
+
+Because the second derivative is $2n_k>0$, this is the unique minimum for that coordinate. Repeating this argument for each coordinate produces the centroid vector. This connection between squared errors and means explains the name **k-means**. Minimising absolute deviations would lead to a different centre and a different method.
+
+### Total, within and between variation
+
+For any partition with centroids equal to group means:
+
+$$
+T=\sum_{i=1}^{n}\|\mathbf{z}_i-\bar{\mathbf{z}}\|^2,
+\qquad
+B=\sum_{k=1}^{K}n_k\|\boldsymbol{\mu}_k-\bar{\mathbf{z}}\|^2,
+\qquad
+T=W+B.
+$$
+
+The ratio $B/T=1-W/T$ describes the share of total squared variation lying between the fitted clusters. It is a descriptive measure of separation, not regression $R^2$, a hypothesis test or evidence of predictive accuracy. It tends to increase as more clusters are added.
+
+With six sample-standardised features, total variation is:
+
+$$
+T=p(n-1)=6\times599=3594.
+$$
+
+This follows because each feature has a sum of squared z-scores equal to $n-1$.
+
+## How the algorithm works
+
+### Assignment and update: Lloyd's algorithm
+
+Searching every possible partition quickly becomes impractical. A useful algorithm alternates between two easier tasks.
+
+1. **Initialise:** choose $K$ starting centroids.
+2. **Assign:** allocate every customer to the nearest current centroid.
+3. **Update:** replace each centroid with the mean of the customers assigned to it.
+4. **Repeat:** continue until assignments or the objective cease to improve under the stopping rule.
+
+The assignment at iteration $t$ can be written as:
+
+$$
+c_i^{(t+1)}
+=\operatorname*{arg\,min}_{k\in\{1,\ldots,K\}}
+\|\mathbf{z}_i-\boldsymbol{\mu}_k^{(t)}\|^2.
+$$
+
+Given those assignments, the update is:
+
+$$
+\boldsymbol{\mu}_k^{(t+1)}
+=\frac{1}{n_k^{(t+1)}}\sum_{i:c_i^{(t+1)}=k}\mathbf{z}_i.
+$$
+
+For nonempty groups, exact assignment and mean-update steps cannot increase the objective. An empty group needs an additional handling rule because its mean is undefined. Software implementations address such cases in different ways; some starting configurations can fail.
+
+**R implementation note:** Lloyd's algorithm provides the clearest introduction. R's `stats::kmeans()` defaults to **Hartigan–Wong**, which uses different optimisation moves for the same squared-error objective. It is not a literal execution of the simple two-step loop above. We use that default for the main analysis and specify `algorithm = "Lloyd"` only when demonstrating Lloyd's method. See the [official R documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/kmeans.html).
+
+### A small worked example
+
+To see a full update without six-dimensional arithmetic, consider four **illustrative order counts**, 2, 4, 10 and 12. These are a teaching example, not additional records in the customer dataset. Set $K=2$ and choose starting centres 2 and 10.
+
+| Order count | Squared distance to 2 | Squared distance to 10 | Assignment |
+|---:|---:|---:|---|
+| 2 | 0 | 64 | Cluster 1 |
+| 4 | 4 | 36 | Cluster 1 |
+| 10 | 64 | 0 | Cluster 2 |
+| 12 | 100 | 4 | Cluster 2 |
+
+After assignment, WCSS is $0+4+0+4=8$. Update the centres:
+
+$$
+\mu_1=\frac{2+4}{2}=3,
+\qquad
+\mu_2=\frac{10+12}{2}=11.
+$$
+
+With the new centres, WCSS is:
+
+$$
+W=(2-3)^2+(4-3)^2+(10-11)^2+(12-11)^2=4.
+$$
+
+Assignments do not change in the next iteration, so the solution has stabilised. The algorithm reduced WCSS from 8 to 4 by moving the centres to their group means.
+
+```{r}
+#| label: small-lloyd-example
+toy_x <- matrix(c(2, 4, 10, 12), ncol = 1)
+toy_fit <- kmeans(toy_x, centers = matrix(c(2, 10), ncol = 1),
+                  algorithm = "Lloyd", iter.max = 100)
+knitr::kable(data.frame(orders = toy_x[, 1], cluster = toy_fit$cluster))
+toy_fit$centers
+toy_fit$tot.withinss
+```
+
+In the full analysis, each assignment considers all six standardised purchasing measures rather than order frequency alone.
+
+### Local solutions, random starts and reproducibility
+
+The joint optimisation is not a simple convex problem. Different initial centres can lead to different local solutions. **Convergence does not guarantee the global minimum.**
+
+Multiple starts help: fit from several random initial configurations and retain the fit with the smallest WCSS. `nstart = 50` requests 50 starts; it does not request 50 clusters. `set.seed()` makes the random process reproducible within a given computational setup. A seed does not improve the objective by itself.
+
+Cluster numbers are arbitrary labels. Cluster 1 is not intrinsically better, more valuable or more loyal than cluster 2. Two solutions can have identical memberships with their labels permuted.
+
+### What do the boundaries look like?
+
+For two fixed centroids, a customer lies on the assignment boundary when its squared distances to them are equal:
+
+$$
+\|\mathbf{z}-\boldsymbol{\mu}_a\|^2
+=\|\mathbf{z}-\boldsymbol{\mu}_b\|^2.
+$$
+
+Expanding and cancelling the common $\mathbf{z}^\top\mathbf{z}$ term gives:
+
+$$
+2(\boldsymbol{\mu}_b-\boldsymbol{\mu}_a)^\top\mathbf{z}
+=\|\boldsymbol{\mu}_b\|^2-\|\boldsymbol{\mu}_a\|^2.
+$$
+
+This is a straight line in two dimensions and a hyperplane in higher dimensions. With several centres, nearest-centre regions form a Voronoi partition. This geometry helps explain why k-means is not suited to every possible cluster shape: it builds regions defined by proximity to means rather than tracing arbitrary curved or ring-shaped groups.
+
+For a customer near a boundary, a small change in purchasing behaviour can switch the hard label. A change in segment label therefore need not mean a sudden, large change in the underlying customer.
+
+## Fitting k-means to the customers
+
+### Begin with a provisional four-cluster solution
+
+We first fit $K=4$ to learn how to read the output, then examine whether four is a useful choice. In an applied analysis, we would compare candidate values before settling on the reported segmentation.
+
+```{r}
+#| label: fit-four-clusters
+set.seed(2026)
+fit4 <- kmeans(x_scaled, centers = 4, nstart = 50,
+               iter.max = 100, algorithm = "Hartigan-Wong")
+customers$cluster <- factor(fit4$cluster)
+fit4
+```
+
+`centers = 4` sets the requested number of groups. `iter.max = 100` sets an iteration limit, not a guarantee that 100 iterations will be needed. A convergence warning should be investigated rather than hidden by reporting the resulting assignments without qualification.
+
+The returned object contains membership labels (`cluster`), centroids (`centers`), sizes (`size`) and several sums of squares. `withinss` gives one value per group; `tot.withinss` sums them. Large groups can have higher within-group sums simply because they contain more customers, so compare dispersion per member as well as group totals.
+
+```{r}
+#| label: read-model-output
+fit_summary <- data.frame(
+  cluster = seq_along(fit4$size),
+  customers = fit4$size,
+  share_pct = 100 * fit4$size / nrow(customers),
+  within_ss = fit4$withinss,
+  within_ss_per_customer = fit4$withinss / fit4$size
+)
+knitr::kable(fit_summary, digits = 2, caption = "Cluster sizes and dispersion")
+variation <- data.frame(
+  total_ss = fit4$totss,
+  within_ss = fit4$tot.withinss,
+  between_ss = fit4$betweenss,
+  between_share = fit4$betweenss / fit4$totss
+)
+knitr::kable(variation, digits = 3)
+stopifnot(isTRUE(all.equal(unname(fit4$totss), 6 * 599, tolerance = 1e-8)))
+```
+
+### Check what the software minimised
+
+For each customer, look up its assigned centroid, calculate the squared distance and sum across customers. This reconstructs WCSS directly from the formula.
+
+```{r}
+#| label: reconstruct-objective
+assigned_centres <- fit4$centers[fit4$cluster, , drop = FALSE]
+squared_distance_to_assigned <- rowSums((x_scaled - assigned_centres)^2)
+objective_check <- data.frame(
+  reported_WCSS = fit4$tot.withinss,
+  reconstructed_WCSS = sum(squared_distance_to_assigned)
+)
+knitr::kable(objective_check, digits = 6)
+stopifnot(isTRUE(all.equal(sum(squared_distance_to_assigned),
+                           fit4$tot.withinss, tolerance = 1e-8)))
+```
+
+This is a useful connection between the mathematical definition and R output. It also illustrates that the model's objective concerns distances, not customer profitability.
+
+## How many clusters should we use?
+
+### Why choosing the smallest WCSS is insufficient
+
+The best attainable WCSS cannot increase when $K$ increases: an existing cluster can be split to give a solution at least as good. If every distinct observation becomes its own group, WCSS can reach zero, but such a segmentation may be operationally useless.
+
+Estimated WCSS from finite random starts can occasionally increase with $K$ because an optimisation run finds a poor local solution. That would be a reason to investigate starts and convergence, not a reversal of the theoretical result.
+
+### Elbow method
+
+Fit a sequence of candidate values and plot WCSS against $K$. Look for a region where additional groups produce much smaller improvements. The bend is an **elbow**, not a formal hypothesis test. Some datasets have no obvious elbow.
+
+```{r}
+#| label: compare-k
+k_grid <- 1:8
+set.seed(2026)
+fits <- lapply(k_grid, function(k) {
+  kmeans(x_scaled, centers = k, nstart = 50, iter.max = 100)
+})
+names(fits) <- as.character(k_grid)
+diagnostics <- data.frame(
+  K = k_grid,
+  WCSS = vapply(fits, function(f) f$tot.withinss, numeric(1))
+)
+diagnostics$WCSS_reduction_pct <- c(
+  NA_real_, 100 * (1 - diagnostics$WCSS[-1] /
+                    diagnostics$WCSS[-nrow(diagnostics)])
+)
+knitr::kable(diagnostics, digits = 2,
+             caption = "Improvement relative to the preceding K")
+```
+
+```{r}
+#| label: fig-elbow
+#| fig-cap: "WCSS decreases as additional groups increase model flexibility."
+plot(diagnostics$K, diagnostics$WCSS, type = "b", pch = 19,
+     col = "#1B6CA8", xlab = "Number of clusters (K)",
+     ylab = "Total within-cluster sum of squares", main = "Elbow plot")
+abline(v = 4, col = "#D95F02", lty = 2)
+```
+
+In this deliberately structured synthetic dataset, expect a substantial improvement as several broad purchasing profiles are separated, with smaller gains once those profiles are split further. Read the actual graph rather than assuming that a dotted line at four proves the answer.
+
+### Silhouette width
+
+For customer $i$, define $a(i)$ as the mean distance to the **other** customers in its own cluster. For every other cluster, calculate the mean distance from customer $i$ to its members; let $b(i)$ be the smallest of these mean distances.
+
+$$
+a(i)=\frac{1}{n_{c_i}-1}
+\sum_{\substack{\ell\in C_{c_i}\\\ell\ne i}}
+d(\mathbf{z}_i,\mathbf{z}_\ell),
+\qquad
+b(i)=\min_{k\ne c_i}
+\frac{1}{n_k}\sum_{\ell\in C_k}d(\mathbf{z}_i,\mathbf{z}_\ell).
+$$
+
+For a customer in a group of at least two members, its silhouette width is:
+
+$$
+s(i)=\frac{b(i)-a(i)}{\max\{a(i),b(i)\}}.
+$$
+
+The usual convention sets the silhouette to zero for a singleton group, and zero in the degenerate case where both distances are zero. It is defined for comparisons with at least two groups. We use **ordinary Euclidean distances** between standardised customer vectors here, rather than squared distances to centroids.
+
+| Silhouette value | Interpretation |
+|---|---|
+| Close to 1 | Customer is much closer on average to its own group |
+| Around 0 | Customer lies near the boundary between groups |
+| Negative | Another group is closer on average |
+
+A negative silhouette does not necessarily indicate a software error: silhouette assesses average distances to members, whereas k-means optimises squared distances to centroids. The average silhouette summarises the full solution. It is not a probability that assignments are correct. See [`cluster::silhouette()`](https://stat.ethz.ch/R-manual/R-devel/library/cluster/html/silhouette.html).
+
+```{r}
+#| label: silhouette-diagnostics
+distance_matrix <- dist(x_scaled)
+if (has_cluster) {
+  diagnostics$mean_silhouette <- NA_real_
+  for (i in which(diagnostics$K >= 2)) {
+    sil <- cluster::silhouette(fits[[i]]$cluster, distance_matrix)
+    diagnostics$mean_silhouette[i] <- mean(sil[, "sil_width"])
+  }
+  knitr::kable(diagnostics, digits = 3,
+               caption = "Combine WCSS and silhouette evidence")
+  eligible <- diagnostics$K >= 2
+  plot(diagnostics$K[eligible], diagnostics$mean_silhouette[eligible],
+       type = "b", pch = 19, col = "#1B6CA8",
+       xlab = "Number of clusters (K)", ylab = "Mean silhouette width",
+       main = "Average silhouette by K")
+} else {
+  cat("Silhouette analysis skipped. Install package 'cluster' in the console",
+      "if you want this optional diagnostic. The other sections still run.")
+}
+```
+
+### Make a defensible choice
+
+Combine geometric diagnostics with substantive questions. Are the groups large enough to serve? Are profiles different enough to justify different actions? Is an extra segment useful or simply a split within an existing group? Are results sensitive to a few extreme customers or small modelling changes?
+
+For this lecture we retain the earlier four-group fit, `fit4`, for consistent interpretation. The comparison fits were generated separately, so cluster numbers may differ even if memberships agree. We do not replace the earlier fit just because another run gives different label numbers.
+
+An independent Python check on this same file found approximate mean silhouette values of **0.39, 0.46, 0.55 and 0.53** for $K=2,3,4,5$, respectively. These are reference diagnostics from a separate implementation, not promised R output. Differences in algorithms or local solutions can change them. They support examining four groups; they do not establish a universal customer taxonomy.
+
+## Interpreting the customer segments
+
+### Read standardised centroids
+
+```{r}
+#| label: standardised-centroids
+centres_standardised <- data.frame(
+  cluster = seq_len(nrow(fit4$centers)), fit4$centers,
+  row.names = NULL, check.names = FALSE
+)
+knitr::kable(centres_standardised, digits = 2,
+             caption = "Centroids in standard deviation units")
+```
+
+A centroid value of 1.2 for order frequency means that group's mean frequency is 1.2 sample standard deviations above the overall mean. A recency value of -0.8 means that the group purchased more recently than average, because fewer elapsed days means greater recency of activity.
+
+We can convert a standardised centroid back to original units:
+
+$$
+\bar{x}_{kj}=\bar{x}_j+s_j\mu_{kj}.
+$$
+
+Because this transformation is linear, it recovers the ordinary group mean. For a nonlinear transformation such as a logarithm, inverse-transforming the average transformed value generally does **not** recover the arithmetic average in original units. Directly summarising original data is safer for business reporting.
+
+```{r}
+#| label: reverse-scaling
+centres_original <- sweep(fit4$centers, 2, training_sds, "*")
+centres_original <- sweep(centres_original, 2, training_means, "+")
+knitr::kable(data.frame(cluster = seq_len(4), centres_original,
+                        row.names = NULL), digits = 1,
+             caption = "Centroids converted back to original units")
+```
+
+### Profile the groups in business units
+
+```{r}
+#| label: customer-profiles
+profile_vars <- c(features, "total_spend_12m", "age", "tenure_months")
+profiles <- aggregate(customers[profile_vars],
+                      by = list(cluster = customers$cluster), FUN = mean)
+sizes <- data.frame(cluster = factor(seq_len(4)), customers = fit4$size)
+sizes$share_pct <- 100 * sizes$customers / nrow(customers)
+profiles <- merge(sizes, profiles, by = "cluster", sort = TRUE)
+
+knitr::kable(profiles[c("cluster", "customers", "share_pct",
+                         "orders_12m", "avg_order_value", "days_since_last_order")],
+             digits = 1, caption = "Group sizes, frequency, basket size and recency")
+knitr::kable(profiles[c("cluster", "discount_spend_pct", "online_spend_pct",
+                         "premium_spend_pct", "total_spend_12m")],
+             digits = 1, caption = "Purchasing preferences and annual spending")
+```
+
+These tables are deliberately split so that the results remain readable. Profile medians and distributions as well as means when skewness or within-segment variation matters.
+
+Do not estimate a group's average annual spend simply by multiplying its average frequency by its average basket size. In general, the average of products is not the product of averages. The table correctly averages `total_spend_12m` across customers.
+
+### Expected business patterns
+
+The synthetic data were constructed to contain four broad profiles. The following are **rounded reference descriptions**, supported by an independent clustering check. They are not fixed R cluster numbers and not exact membership requirements.
+
+| Suggested name | Approximate purchasing pattern | Interpretation |
+|---|---|---|
+| Frequent value shoppers | 27 orders, AUD 67 baskets, about 71% discounted and 15% premium spend | Frequent purchasing with a strong discounted-product share |
+| Premium omnichannel shoppers | 19 orders, AUD 189 baskets, about 75% premium and 16% discounted spend | Large baskets and a strong premium preference across channels |
+| Occasional online shoppers | 7 orders, AUD 100 baskets, about 90% online spending | Less frequent buying concentrated online |
+| Lapsed occasional shoppers | 4 orders, AUD 84 baskets, roughly 200 days since the latest order | Limited purchasing and a long inactivity gap |
+
+Identify which numbered R cluster corresponds to each description by reading its profile. Avoid a rule such as “cluster 1 is always the premium group”. Some customers are ambiguous, and results may split or combine profiles at other values of $K$.
+
+::: {.callout-warning}
+### A purchasing pattern is not a causal explanation
+
+A high discounted-spend share does not show that a customer would increase spending because of a coupon. They may buy products that are often discounted. A long inactivity gap suggests a reactivation opportunity, but does not prove permanent churn. Use segment descriptions as hypotheses to investigate and test.
+:::
+
+### Connect each segment to a business decision
+
+| Segment | Possible action | Measure of success | Trade-off to examine |
+|---|---|---|---|
+| Frequent value shoppers | Bundles or a frequency-based loyalty offer | Incremental contribution margin | Discounts may subsidise purchases that would occur anyway |
+| Premium omnichannel shoppers | Early access or a personal shopping service | Repeat premium purchases and margin | Service costs can exceed additional contribution |
+| Occasional online shoppers | Relevant product recommendations or a follow-up campaign | Repeat purchase rate over a fixed period | Poor recommendations can reduce engagement |
+| Lapsed occasional shoppers | A controlled reactivation campaign | Incremental profit per eligible customer | A large discount may be unprofitable despite a high response rate |
+
+Define the campaign period and eligible population before measuring success. Where feasible, randomise an offer versus an appropriate control within a segment. Clustering suggests whom to investigate; an experiment estimates whether the action causes improvement.
+
+## Visualising a six-dimensional solution
+
+### A two-feature scatterplot
+
+```{r}
+#| label: fig-frequency-basket
+#| fig-cap: "A two-variable view of groups fitted using all six features."
+cluster_colours <- c("#0072B2", "#D55E00", "#009E73", "#CC79A7")
+plot(customers$orders_12m, customers$avg_order_value,
+     col = adjustcolor(cluster_colours[fit4$cluster], alpha.f = 0.65),
+     pch = 19, xlab = "Orders in 12 months", ylab = "Average order value (AUD)",
+     main = "Purchase frequency and basket size")
+legend("topright", legend = paste("Cluster", 1:4),
+       col = cluster_colours, pch = 19, bty = "n")
+```
+
+Points can overlap in this plot while belonging to different groups because the fit also uses recency, discount share, channel and premium share. Two coordinates are only a partial view of the fitted space.
+
+### Standardised profile plot
+
+```{r}
+#| label: fig-profile-plot
+#| fig-cap: "Compare centroid patterns across all six features."
+old_par <- par(mar = c(7, 4, 3, 1))
+matplot(seq_along(features), t(fit4$centers), type = "b", pch = 1:4,
+        lty = 1, col = cluster_colours, xaxt = "n", xlab = "",
+        ylab = "Centroid (standard deviations)", main = "Cluster profiles")
+axis(1, at = seq_along(features),
+     labels = c("Frequency", "Basket", "Recency", "Discount %", "Online %", "Premium %"),
+     las = 2, cex.axis = 0.85)
+abline(h = 0, lty = 2, col = "grey60")
+legend("topright", legend = paste("Cluster", 1:4),
+       col = cluster_colours, lty = 1, pch = 1:4, bty = "n", cex = 0.8)
+par(old_par)
+```
+
+The connecting lines help follow each profile across discrete features. They do not represent a time trend or imply meaningful intermediate values between features.
+
+### Principal component analysis for a projection
+
+PCA constructs linear combinations of the features that capture successive amounts of variation. We use the first two components to display the observations. **The clustering remains the six-feature fit**; we are not silently replacing it with a fit on two principal components.
+
+```{r}
+#| label: fig-pca-clusters
+#| fig-cap: "PCA projection of the fitted clusters; the axis labels show variance retained."
+pca <- prcomp(x_scaled, center = FALSE, scale. = FALSE)
+pc_variance <- 100 * pca$sdev^2 / sum(pca$sdev^2)
+plot(pca$x[, 1], pca$x[, 2], pch = 19, cex = 0.7,
+     col = adjustcolor(cluster_colours[fit4$cluster], alpha.f = 0.7),
+     xlab = sprintf("PC1 (%.1f%% of variation)", pc_variance[1]),
+     ylab = sprintf("PC2 (%.1f%% of variation)", pc_variance[2]),
+     main = "Customer clusters in a PCA projection")
+legend("topright", legend = paste("Cluster", 1:4),
+       col = cluster_colours, pch = 19, bty = "n")
+```
+
+Inspect the percentage of variation retained. A clear projection can help explain the fit, while an overlapping projection does not alone invalidate separation in the full feature space. PCA signs may flip between implementations without changing their meaning.
+
+## Sensitivity and stability
+
+### Sensitivity to initialisation
+
+Here we deliberately compare **single-start** fits to illustrate the issue that multiple starts address. A tightly separated dataset may show little variability; that itself is a result rather than a failed demonstration.
+
+```{r}
+#| label: random-start-sensitivity
+single_start_wcss <- vapply(1:30, function(seed_value) {
+  set.seed(seed_value)
+  kmeans(x_scaled, centers = 4, nstart = 1, iter.max = 100)$tot.withinss
+}, numeric(1))
+knitr::kable(data.frame(
+  best_single_start = min(single_start_wcss),
+  median_single_start = median(single_start_wcss),
+  worst_single_start = max(single_start_wcss),
+  selected_multistart_fit = fit4$tot.withinss
+), digits = 2)
+```
+
+A multi-start fit need not beat every separate search ever attempted, but it has more opportunities than a single start to find a good objective value. Increasing the number of starts does not solve an inappropriate feature definition.
+
+### Sensitivity to transformations
+
+Frequency, basket size and elapsed days can be right-skewed. A log transformation compresses large values; standardisation alone does not remove skewness. The transformation `log1p(v)` computes $\log(1+v)$ and can handle zeros.
+
+```{r}
+#| label: log-transformation-sensitivity
+x_log <- x
+log_features <- c("orders_12m", "avg_order_value", "days_since_last_order")
+x_log[log_features] <- lapply(x_log[log_features], log1p)
+set.seed(2026)
+fit_log <- kmeans(scale(x_log), centers = 4, nstart = 50, iter.max = 100)
+knitr::kable(table(Original = fit4$cluster, Log_transformed = fit_log$cluster),
+             caption = "Compare memberships after changing the representation")
+```
+
+Read this table allowing for label permutations: a different column number is not automatically a changed segment. Compare the original-unit profiles as well. WCSS values from differently transformed or scaled spaces are not directly comparable measures of which representation is better.
+
+Initialisation sensitivity and transformation sensitivity are different from **sampling stability**. To assess sampling stability, repeatedly resample or subsample customers, refit the complete pipeline and compare partitions on a consistent set of observations using a measure that allows label permutations. Stable results support reproducibility, but a stable segmentation can still be unhelpful for the business.
+
+## Assigning a new customer
+
+### Use the fitted representation
+
+Suppose a later customer has 16 orders, an AUD 175 basket, 14 days since the latest order, 20% discounted spending, 60% online spending and 70% premium spending. Assume these features were measured over a comparable 12-month window.
+
+Standardise this customer's values using the **training** means and standard deviations:
+
+$$
+z_{\text{new},j}
+=\frac{x_{\text{new},j}-\bar{x}_{j,\text{train}}}{s_{j,\text{train}}}.
+$$
+
+Then assign the customer to the nearest fitted centroid:
+
+$$
+\widehat{c}_{\text{new}}
+=\operatorname*{arg\,min}_{k\in\{1,\ldots,K\}}
+\sum_{j=1}^{p}(z_{\text{new},j}-\widehat{\mu}_{kj})^2.
+$$
+
+Do not independently call `scale()` on a single new row. It cannot estimate the required sample standard deviations, and it would not preserve the training coordinate system. Even for a batch of new customers, use the stored training transformations when applying this fitted model.
+
+```{r}
+#| label: assign-new-customer
+new_customer <- data.frame(
+  orders_12m = 16, avg_order_value = 175, days_since_last_order = 14,
+  discount_spend_pct = 20, online_spend_pct = 60, premium_spend_pct = 70
+)
+new_matrix <- as.matrix(new_customer[features])
+new_scaled <- sweep(new_matrix, 2, training_means, "-")
+new_scaled <- sweep(new_scaled, 2, training_sds, "/")
+
+new_squared_distances <- rowSums(
+  sweep(fit4$centers, 2, as.numeric(new_scaled[1, ]), "-")^2
+)
+new_assignment <- which.min(new_squared_distances)
+new_result <- data.frame(
+  cluster = seq_len(4),
+  squared_distance = new_squared_distances,
+  selected = seq_len(4) == new_assignment
+)
+knitr::kable(new_result, digits = 3,
+             caption = "Assign the new customer to the nearest fitted centroid")
+```
+
+Compare the selected centroid with the profile table before giving the assignment a business name. A nearest-centre rule always makes an assignment, including for an unusual customer far from every centre. It does not provide a calibrated membership probability or guarantee that the customer resembles the historical population.
+
+In practice, monitor distance distributions and changing segment sizes, and define a review process for unusual customers. A customer measured over two weeks is not directly comparable with a customer measured over a year. Refit the whole pipeline deliberately when the population or business context changes, and document how new segment names relate to old ones.
+
+## Limitations and alternatives
+
+### What k-means tends to favour
+
+K-means favours groups that are compact around means under Euclidean distance. It often works well for roughly ball-shaped, reasonably separated groups in the chosen representation. It can perform poorly for curved groups, strongly unequal spreads or densities, and clusters distinguished mainly by features we did not include.
+
+It does **not** require normally distributed features as a formal condition for running the algorithm. Nevertheless, data shape, outliers and unequal scales strongly affect its usefulness. Standardisation does not make skewed data normal or remove unusual observations.
+
+### Important practical limitations
+
+- **Outliers:** squared errors make extreme coordinates influential, and means can be pulled towards extreme observations.
+- **Choice of $K$:** the number of groups is supplied by the analyst rather than discovered without any input.
+- **Hard membership:** each customer receives one label, even when their behaviour lies between segment profiles.
+- **Numerical inputs:** assigning arbitrary numeric codes to nominal categories creates artificial distances. For mixed data, choose an appropriate representation and method.
+- **Feature redundancy:** correlated or repeated variables can overweight a dimension even after standardisation.
+- **Population drift:** a segment fitted to last year's customers can become less relevant as products, channels or habits change.
+
+Age and tenure were generated independently of the underlying purchasing profiles in this synthetic example. Similar ages across fitted groups are therefore unsurprising. In real data, descriptive demographic differences still would not by themselves establish causal effects or justify treating every member of a segment the same way.
+
+### Alternative approaches
+
+| Method | When it may help | Main trade-off |
+|---|---|---|
+| Hierarchical clustering | Explore nested group structure without first fixing a single cut | Results depend on distance and linkage choices |
+| K-medoids | Represent groups with actual observations; often less sensitive to extreme values | Can require more computation |
+| Gaussian mixture models | Model different covariance patterns and obtain model-based soft memberships | Adds distributional and model-selection assumptions |
+| Density-based methods | Find irregular groups and flag low-density observations | Sensitive to density settings and differing densities |
+
+These are alternatives to investigate when the business question or geometry calls for them, not an automatic ranking of methods. Different methods answer somewhat different notions of what a group should be.
+
+
